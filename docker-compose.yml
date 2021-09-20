@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  app:
+    image: nlp-web:latest
+    build:
+      context: .
+    volumes:
+      - ./src:/app
+
+    ports:
+      - "8000:8000"
