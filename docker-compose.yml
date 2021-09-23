@@ -5,6 +5,8 @@ services:
     image: nlp-web:latest
     build:
       context: .
+    env_file:
+      - .env
     environment:
       - FLASK_APP=main.py
       - FLASK_RUN_PORT=8000
