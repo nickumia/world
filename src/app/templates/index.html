@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+		{% if section %}
+    <title>NLP - {{ section }}</title>
+    {% else %}
+    <title>NLP - Home</title>
+    {% endif %}
+  </head>
+  <body>
+		{% if section %}
+		<h1>Hello world, I'm the {{ section }} section of an nlp web app!</h1>
+    {% else %}
+		<h1>Hello world, I'm the skeloton of an nlp web app!</h1>
+    {% endif %}
+
+		{% for intro in intros %}
+    <div><p>{{ intro.liason }} says: <b>{{ intro.speech }}</b></p></div>
+    {% endfor %}
+				
+  </body>
+</html>

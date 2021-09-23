@@ -5,6 +5,10 @@ services:
     image: nlp-web:latest
     build:
       context: .
+    environment:
+      - FLASK_APP=main.py
+      - FLASK_RUN_PORT=8000
+      - FLASK_ENV=development
     volumes:
       - ./src:/app
 
