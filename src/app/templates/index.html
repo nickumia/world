@@ -8,6 +8,7 @@
 	<h1>Hello world, I'm the skeloton of an nlp web app!</h1>
   {% endif %}
 
+	<h1>Hi, {{ current_user.username }}!</h1>
 	{% for intro in intros %}
   <div><p>{{ intro.liason }} says: <b>{{ intro.speech }}</b></p></div>
   {% endfor %}

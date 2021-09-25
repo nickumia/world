@@ -11,8 +11,22 @@ services:
       - FLASK_APP=main.py
       - FLASK_RUN_PORT=8000
       - FLASK_ENV=development
+      - DATABASE_URL=postgresql://postgres:pass@db/postgres
     volumes:
       - ./src:/app
+    depends_on:
+      - db
 
     ports:
       - "8000:8000"
+
+  db:
+    image: postgres:12
+    environment:
+    #  - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=pass
+    #  - POSTGRES_DB=default
+    volumes:
+      - ./db_config/create_user_table.sql:/docker-entrypoint-initdb.d/cut.sql
+    ports:
+      - "5432:5432"

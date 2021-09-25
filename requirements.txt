@@ -1,2 +1,8 @@
 Flask
 flask-wtf
+flask-login
+email-validator
+
+flask-sqlalchemy
+psycopg2
+
