@@ -6,3 +6,4 @@ email-validator
 flask-sqlalchemy
 psycopg2
 
+pyjwt
