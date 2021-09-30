@@ -2,8 +2,12 @@
   "name": "nlp-web",
   "version": "1.0.0",
   "description": "A clean, vanilla feel into the world of NLP",
-  "main": "app.js",
-  "scripts": {},
+  "main": "src/ui/app.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "export-css": "cat css/* > output/nlp.css"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nickumia/nlp-web.git"
