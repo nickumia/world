@@ -1,0 +1,23 @@
+{
+  "name": "nlp-web",
+  "version": "1.0.0",
+  "description": "A clean, vanilla feel into the world of NLP",
+  "main": "app.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickumia/nlp-web.git"
+  },
+  "keywords": [
+    "nlp"
+  ],
+  "author": "nickumia",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/nickumia/nlp-web/issues"
+  },
+  "homepage": "https://github.com/nickumia/nlp-web#readme",
+  "dependencies": {
+    "@material/textfield": "^13.0.0"
+  }
+}
