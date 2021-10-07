@@ -128,5 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# NPM stuff
+# Repo stuff
 node_modules
+bower_components
+src/app/static/scripts/js

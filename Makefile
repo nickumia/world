@@ -10,4 +10,6 @@ up: # Start Main App
 
 build-front: # Install dependencies for front-end
 	cd src && npm install
+	cd src && ./node_modules/bower/bin/bower install
+	cd src && ./node_modules/gulp/bin/gulp.js
 	

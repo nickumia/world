@@ -6,8 +6,12 @@
     {% else %}
     <title>NLP - Home</title>
     {% endif %}
+
+		<script src="{{ url_for('static', filename='bower_components/react/react.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/react/react-dom.js') }}"></script>
   </head>
 	<body>
+		<div id="root"></div>
 		<div>NLP -
 			<a href="{{ url_for('index') }}">Home</a>
 			{% if current_user.is_anonymous %}
@@ -27,5 +31,6 @@
       {% endif %}
       {% endwith %}
     {% block content %}{% endblock %}
+		<script src="{{ url_for('static', filename='scripts/js/main.js') }}"></script>
   </body>
 </html>
