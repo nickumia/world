@@ -8,8 +8,10 @@ clean: # Tear down Main App
 up: # Start Main App
 	docker-compose -f docker-compose.yml up
 
-build-front: # Install dependencies for front-end
+install-front: # Install dependencies for front-end
 	cd src && npm install
-	cd src && ./node_modules/bower/bin/bower install
+
+build-front: # Build jsx into js
+	# cd src && ./node_modules/browserify/bin/cmd.js app/static/jsx/*.js --standalone nlp > app/static/js/bundle.js
+	touch src/app/static/js
 	cd src && ./node_modules/gulp/bin/gulp.js
-	

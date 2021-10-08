@@ -131,4 +131,4 @@ dmypy.json
 # Repo stuff
 node_modules
 bower_components
-src/app/static/scripts/js
+src/app/static/js/

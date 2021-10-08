@@ -1,27 +1,18 @@
-
 var gulp = require('gulp');
-var gulpBrowser = require("gulp-browser");
-var reactify = require('reactify');
-var del = require('del');
-var size = require('gulp-size');
+var browserify = require('browserify');
+var babelify = require('babelify');
+var source = require('vinyl-source-stream');
 
-
-// tasks
-
-gulp.task('transform', async function () {
-  var stream = gulp.src('./app/static/scripts/jsx/*.js')
-    .pipe(gulpBrowser.browserify({transform: ['reactify']}))
-    .pipe(gulp.dest('./app/static/scripts/js/'))
-    .pipe(size());
-  return stream;
-});
-
-
-gulp.task('del', function () {
-	return del(['./project/static/scripts/js']);
-});
-
-gulp.task('default', ['del'], function() {
-	gulp.start('transform');
-	// gulp.watch('./project/static/scripts/jsx/*.js', ['transform']);
+gulp.task('default', async function() {
+  return browserify({
+      extensions: ['.js', '.jsx'],
+      entries: 'app/static/jsx/main.js',
+  })
+  .transform(babelify.configure({
+      ignore: [/(node_modules)/]
+  }))
+  .bundle()
+  .on("error", function (err) { console.log("Error : " + err.message); })
+  .pipe(source('bundle.js'))
+  .pipe(gulp.dest('app/static/js'));
 });
