@@ -7,21 +7,22 @@
     <title>NLP - Home</title>
     {% endif %}
 
-		<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-		<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
   </head>
 	<body>
-		<div id="app"></div>
 		<div id="navbar"></div>
-		<div>NLP -
-			<a href="{{ url_for('index') }}">Home</a>
+		<div id="app"></div>
+		<script type="text/javascript">
+			title="NLP | {{ section }}";
+			menu=[
+			{key: 0, name: 'Home', link: "{{ url_for('index') }}"},
 			{% if current_user.is_anonymous %}
-      <a href="{{ url_for('login') }}">Login</a>
+			{key: 1, name: 'Login', link: "{{ url_for('login') }}"},
       {% else %}
-      <a href="{{ url_for('logout') }}">Logout</a>
+			{key: 2, name: 'Logout', link: "{{ url_for('logout') }}"}
       {% endif %}
-		</div>
-		<hr>
+		]
+		</script>
+		<script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
 		{% with messages = get_flashed_messages() %}
       {% if messages %}
       <ul>
@@ -32,6 +33,5 @@
       {% endif %}
       {% endwith %}
     {% block content %}{% endblock %}
-		<script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
   </body>
 </html>

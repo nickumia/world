@@ -31,7 +31,7 @@ def index():
             'speech': 'Welcome, I hope you find yourself at home.'
         }
     ]
-    return render_template('index.html', section='Home', intros=intros)
+    return render_template('index.html', section='Natural Language Processing', intros=intros)
 
 
 @app.route('/register', methods=['GET', 'POST'])

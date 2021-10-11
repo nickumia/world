@@ -8,7 +8,10 @@
 	<h1 class="mdc-typography--headline2">Hello world, I'm the skeloton of an nlp web app!</h1>
   {% endif %}
 
+	{% if not current_user.is_anonymous %}
 	<h1 class="mdc-typography--headline3">Hi, {{ current_user.username }}!</h1>
+  {% endif %}
+
 	{% for intro in intros %}
   <div><p>{{ intro.liason }} says: <b>{{ intro.speech }}</b></p></div>
   {% endfor %}
