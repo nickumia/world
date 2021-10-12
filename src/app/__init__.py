@@ -12,13 +12,11 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 login = LoginManager(app)
-login.login_view = 'login'
+login.login_view = 'auth.login'
 moment = Moment(app)
 
-from app.errors import bp as errors_bp
-app.register_blueprint(errors_bp)
-
 from app import routes, models
+
 
 if not app.debug:
     if not os.path.exists('logs'):
@@ -32,3 +30,12 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('NLP app startup')
+
+
+
+from app.errors import bp as errors_bp
+app.register_blueprint(errors_bp)
+
+from app.auth import bp as auth_bp
+app.register_blueprint(auth_bp, url_prefix='/auth')
+

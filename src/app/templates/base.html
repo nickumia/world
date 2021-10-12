@@ -29,9 +29,9 @@
 			menu=[
 			{key: 0, name: 'Home', link: "{{ url_for('index') }}"},
 			{% if current_user.is_anonymous %}
-			{key: 1, name: 'Login', link: "{{ url_for('login') }}"},
+			{key: 1, name: 'Login', link: "{{ url_for('auth.login') }}"},
       {% else %}
-			{key: 2, name: 'Logout', link: "{{ url_for('logout') }}"}
+			{key: 2, name: 'Logout', link: "{{ url_for('auth.logout') }}"}
       {% endif %}
 		]
 		</script>
