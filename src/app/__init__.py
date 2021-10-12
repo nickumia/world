@@ -15,8 +15,10 @@ login = LoginManager(app)
 login.login_view = 'login'
 moment = Moment(app)
 
+from app.errors import bp as errors_bp
+app.register_blueprint(errors_bp)
 
-from app import routes, models, errors
+from app import routes, models
 
 if not app.debug:
     if not os.path.exists('logs'):
