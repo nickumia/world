@@ -11,6 +11,19 @@
 	<body>
 		<div id="navbar"></div>
 		<div id="app"></div>
+		{% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+    {% block content %}{% endblock %}
+
+		{% block scripts %}
+    {{ moment.include_moment() }}
 		<script type="text/javascript">
 			title="NLP | {{ section }}";
 			menu=[
@@ -23,15 +36,6 @@
 		]
 		</script>
 		<script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
-		{% with messages = get_flashed_messages() %}
-      {% if messages %}
-      <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-      {% endwith %}
-    {% block content %}{% endblock %}
+		{% endblock %}
   </body>
 </html>
