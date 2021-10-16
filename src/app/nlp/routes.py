@@ -1,3 +1,5 @@
+import sys
+import json
 import time
 from datetime import datetime
 
@@ -6,6 +8,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 from app import db
 from app.auth.models import Users
+from app.nlp.models import Posts
 
 from . import bp
 
@@ -46,3 +49,26 @@ def index():
         }
     ]
     return render_template('index.html', section='Natural Language Processing', intros=intros, user=current_user)
+
+@bp.route('/posts')
+def blogs():
+    posts = Posts.query.order_by(Posts.posted_time.desc()).all()
+    posts_json = []
+
+    avatar_dict = {
+        '0' : 'processing',
+        '1' : 'language',
+        '2' : 'natural'
+    }
+
+    for post in posts:
+        transform = post.to_dict()
+        transform['link'] = url_for('nlp.post', post_id=transform['id'])
+        transform['avatar'] = avatar_dict[transform['author']]
+        posts_json.append(transform)
+    return render_template('posts.html', section='Posts', posts=json.dumps(posts_json))
+
+@bp.route('/posts/<post_id>')
+def post(post_id):
+    post_dict = Posts.query.get(post_id).to_dict()
+    return render_template('post.html', section='Posts', post=json.dumps(post_dict))

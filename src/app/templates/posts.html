@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div id="explore"></div>
+{% endblock %}
+
+{% block scripts %}
+		<script type="text/javascript">
+			posts={{ posts|tojson }}
+		</script>
+
+{% endblock scripts %}

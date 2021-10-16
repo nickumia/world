@@ -5,6 +5,8 @@ import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 
 import Navbar from './navbar';
 import SearchResults from './search_results';
+import AllPosts from './posts';
+import PostDisplay from './post';
 
 const theme = createTheme({
 	palette: {
@@ -27,6 +29,8 @@ function App() {
 
 var searchPage = document.querySelector("#searchresults");
 var appPage = document.querySelector("#app");
+var explorePage = document.querySelector("#explore");
+var singlePostPage = document.querySelector("#singlepost");
 
 ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
@@ -43,7 +47,6 @@ if (appPage) {
 }
 
 if (searchPage){
-	console.log("asdf");
 	ReactDOM.render(
 		<SearchResults 
 			results={results}
@@ -51,4 +54,20 @@ if (searchPage){
 			prev_url={prev_url}
 		/>,
 	searchPage);
+}
+
+if (explorePage){
+	ReactDOM.render(
+		<AllPosts
+			posts={posts}
+		/>,
+	explorePage);
+}
+
+if (singlePostPage){
+	ReactDOM.render(
+		<PostDisplay
+			post={post}
+		/>,
+	singlePostPage);
 }

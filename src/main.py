@@ -1,6 +1,9 @@
 from app import create_app # , cli
+from app.nlp.posts.all import initialize
 
 app = create_app()
+
+initialize(app)
 # cli.register(app)
 
 #if __name__ == "__main__":

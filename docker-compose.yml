@@ -29,20 +29,21 @@ services:
     #  - POSTGRES_DB=default
     volumes:
       - ./db_config/create_user_table.sql:/docker-entrypoint-initdb.d/cut.sql
+      - ./db_config/create_post_table.sql:/docker-entrypoint-initdb.d/cut2.sql
     ports:
       - "5432:5432"
 
-  elastic:
-    image: elasticsearch:7.14.1
-    environment:
-      - node.name=es01
-      - discovery.type=single-node
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    volumes:
-      - data01:/usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
+  # elastic:
+  #   image: elasticsearch:7.14.1
+  #   environment:
+  #     - node.name=es01
+  #     - discovery.type=single-node
+  #     - bootstrap.memory_lock=true
+  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #   volumes:
+  #     - data01:/usr/share/elasticsearch/data
+  #   ports:
+  #     - "9200:9200"
 
 volumes:
   data01:

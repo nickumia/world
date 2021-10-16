@@ -1,0 +1,303 @@
+@charset "utf-8";
+/*
+Template Name: Indripress
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+File: Layout CSS
+*/
+
+@import url("framework.css");
+
+h1, h2, h3, h4, h5, h5, h6 {
+	font-family: "Hind Guntur";
+}
+
+.normal {
+	text-transform: none;
+}
+
+body {
+	font-family: "Karla";
+}
+
+.flex-next, .flex-prev, .heading {
+	font-family: "Muli";
+}
+
+
+
+
+/* Content Area
+--------------------------------------------------------------------------------------------------------------- */
+.container{padding:20px 0;}
+
+/* Content */
+.container .content{}
+
+.sectiontitle{margin-bottom:80px;}
+.sectiontitle *{margin:0;}
+
+.emphasise{margin-bottom:80px;}
+.emphasise figure{position:relative; max-width:320px;}
+.emphasise figure::after{display:block; position:absolute; top:0; width:100%; height:100%; content:"";}
+.emphasise figure:last-child{margin-bottom:0;}/* Used when elements stack in smaller viewports */
+.emphasise figure figcaption{display:block; position:absolute; bottom:0; width:100%; padding:0 30px 20px; z-index:1;}
+.emphasise figure figcaption strong{display:block; text-transform:capitalize;}
+
+
+/* Sidebar */
+.container .sidebar{}
+
+.sidebar .sdb_holder{margin-bottom:50px;}
+.sidebar .sdb_holder:last-child{margin-bottom:0;}
+
+
+/* Split Box
+--------------------------------------------------------------------------------------------------------------- */
+.splitclrs{}
+.split{}
+
+.split > div{display:block; float:left; width:50%; padding:80px 50px 80px 0;}
+.split > div:nth-child(2){float:right; padding-right:0; padding-left:50px;}
+
+
+
+
+
+
+/* Rounded Corners
+--------------------------------------------------------------------------------------------------------------- */
+.btn, #footer input, #footer button, #backtotop, .faico a{border-radius:10px; background-clip:padding-box;}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------ */
+
+
+
+/* Breadcrumb */
+#breadcrumb{padding:150px 0 20px;}
+#breadcrumb ul{margin:0; padding:0; list-style:none; text-transform:uppercase;}
+#breadcrumb li{display:inline-block; margin:0 6px 0 0; padding:0;}
+#breadcrumb li a{display:block; position:relative; margin:0; padding:0 12px 0 0; font-size:12px;}
+#breadcrumb li a::after{top:3px; right:0; content:"\f101";}
+#breadcrumb li:last-child a{margin:0; padding:0;}
+#breadcrumb li:last-child a::after{display:none;}
+
+/* Sidebar Navigation */
+.sidebar nav{display:block; width:100%;}
+.sidebar nav li{margin:0 0 3px 0; padding:0;}
+.sidebar nav a{display:block; position:relative; margin:0; padding:5px 10px 5px 15px; text-decoration:none; border:solid; border-width:0 0 1px 0;}
+.sidebar nav a::after{top:9px; left:5px; content:"\f101";}
+.sidebar nav ul ul a{padding-left:35px;}
+.sidebar nav ul ul a::after{left:25px;}
+.sidebar nav ul ul ul a{padding-left:55px;}
+.sidebar nav ul ul ul a::after{left:45px;}
+
+
+/* Tables
+--------------------------------------------------------------------------------------------------------------- */
+table, th, td{border:1px solid; border-collapse:collapse; vertical-align:top;}
+table, th{table-layout:auto;}
+table{width:100%; margin-bottom:15px;}
+th, td{padding:5px 8px;}
+td{border-width:0 1px;}
+
+
+/* Gallery
+--------------------------------------------------------------------------------------------------------------- */
+#gallery{display:block; width:100%; margin-bottom:50px;}
+#gallery figure figcaption{display:block; width:100%; clear:both;}
+#gallery li{margin-bottom:30px;}
+
+
+
+/* Colours
+--------------------------------------------------------------------------------------------------------------- */
+a{color:#05B3F2;}
+a:active, a:focus{background:transparent;}/* IE10 + 11 Bugfix - prevents grey background */
+hr, .borderedbox{border-color:#D7D7D7;}
+label span{color:#FF0000; background-color:inherit;}
+input:focus, textarea:focus, *:required:focus{border-color:#56AED4;}
+.overlay{color:#FFFFFF; background-color:inherit;}
+.overlay::after{color:inherit; background-color:rgba(0,0,0,.55);}
+
+.btn, .btn.inverse:hover{color:#FFFFFF; background-color:#05B3F2; border-color:#05B3F2;}
+.btn:hover, .btn.inverse{color:inherit; background-color:transparent; border-color:inherit;}
+
+blockquote::before{color:rgba(0,0,0,.05);}
+
+
+/* Flexslider */
+.flex-direction-nav a, .flex-direction-nav .flex-disabled:hover{color:#FFFFFF;}
+.flex-direction-nav a:hover{color:#F08714;}
+
+
+/* Rows */
+.row0, .row0 a{color:#929292; background-color:#F6F6F6;}
+.row0{box-shadow:0 10px 10px rgba(0,0,0,.05);}
+.row1{color:#929292; background-color:#FFFFFF;}
+.row2, .row2 a{}
+.row3{color:#929292; background-color:#FFFFFF;}
+.row4{color:#CBCBCB; background-color:#222222;}
+.row5, .row5 a{color:#CBCBCB; background-color:#1A1A1A;}
+
+
+/* Top Bar */
+#topbar, #topbar ul li{border-color:rgba(0,0,0,.1);}
+#topbar > div:last-of-type li:first-child a{color:#05B3F2;}
+
+
+/* Header */
+#header a{color:inherit;}
+
+
+/* Page Intro */
+#pageintro li p:first-of-type{color:rgba(255,255,255,.5);}
+
+
+/* Content Area */
+.emphasise figure:hover::after{background:rgba(0,0,0,.3);}
+.emphasise figure figcaption{color:#FFFFFF;}
+.emphasise figure figcaption a{color:inherit;}
+.emphasise figure:hover figcaption a{color:#05B3F2;}
+
+
+/* Split Box */
+.splitclrs{color:#929292; background:linear-gradient(to right, #F6F6F6 0%,#F6F6F6 50%,#FFFFFF 50%,#FFFFFF 100%);}
+@media screen and (max-width:750px){
+	.splitclrs{background:none;}
+	.split > div:first-child{color:inherit; background-color:#F6F6F6;}
+	.split > div:last-child{color:inherit; background-color:#FFFFFF;}
+}
+
+
+/* Footer */
+#footer .heading{
+	color:#FFFFFF;
+	font-size: 15px;
+}
+#footer hr, #footer .borderedbox, #footer .linklist li{border-color:rgba(255,255,255,.1);}
+
+#footer input, #footer button{border-color:transparent;}
+#footer input{color:#FFFFFF; background-color:#4E4E4E;}
+#footer input:focus{border-color:#05B3F2;}
+#footer button{color:#FFFFFF; background-color:#05B3F2;}
+
+#footer nav a{color:inherit;}
+#footer nav a:hover, #footer nav li:first-child a{color:#05B3F2;}
+
+
+
+#breadcrumb a{color:inherit; background-color:inherit;}
+#breadcrumb li:last-child a{color:#05B3F2;}
+
+.container .sidebar nav a{color:inherit; border-color:#D7D7D7;}
+.container .sidebar nav a:hover{color:#05B3F2;}
+
+.pagination a, .pagination strong{border-color:#D7D7D7;}
+.pagination .current *{color:#FFFFFF; background-color:#05B3F2;}
+
+
+
+/* Tables + Comments */
+table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#D7D7D7;}
+#comments input:focus, #comments textarea:focus, #comments *:required:focus{border-color:#05B3F2;}
+th{color:#FFFFFF; background-color:#373737;}
+tr, #comments li, #comments input[type="submit"], #comments input[type="reset"]{color:inherit; background-color:#FBFBFB;}
+tr:nth-child(even), #comments li:nth-child(even){color:inherit; background-color:#F7F7F7;}
+table a, #comments a{background-color:inherit;}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------ */
+
+
+/* Media Queries
+--------------------------------------------------------------------------------------------------------------- */
+@-ms-viewport{width:device-width;}
+
+
+/* Max Wrapper Width - Laptop, Desktop etc.
+--------------------------------------------------------------------------------------------------------------- */
+@media screen and (min-width:978px){
+	.hoc, .split{max-width:978px;}
+}
+
+
+/* Mobile Devices
+--------------------------------------------------------------------------------------------------------------- */
+@media screen and (max-width:900px){
+	.hoc{max-width:90%;}
+
+	#topbar{}
+
+	#header{}
+
+	#mainav{}
+	#mainav ul{display:none;}
+	#mainav form{display:block;}
+
+	#breadcrumb{}
+
+	.container{}
+	.pagination li{display:inline-block; margin:0 5px 5px 0;}
+
+	#footer{}
+
+}
+
+
+@media screen and (min-width:750px) and (max-width:900px){
+	.split > div, .split > div:nth-child(2){padding:80px 5%;}
+
+	.posts figure figcaption{padding-top:0;}
+}
+
+
+@media screen and (max-width:750px){
+	.imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
+	.fl_left, .fl_right{display:block; float:none;}
+	.group .group > *:last-child, .clear .clear > *:last-child, .clear .group > *:last-child, .group .clear > *:last-child{margin-bottom:0;}/* Experimental - Needs more testing in different situations, stops double margin when stacking */
+	.one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
+
+	#topbar{text-align:center;}
+	#topbar > div:first-of-type > ul{margin-bottom:15px;}
+
+	#pageintro li article{max-width:none; width:100%; overflow:visible;}
+	#pageintro li .heading{font-size:3rem;}
+
+	.split > div{display:block; width:100%;}
+	.split > div, .split > div:nth-child(2){padding:80px 5%;}
+
+	.posts figure{max-width:500px;}/* Same width as the image */
+	.posts figure > div, .posts figure figcaption, .posts figure:nth-child(even) > div, .posts figure:nth-child(even) figcaption{display:block; float:none; width:100%;}
+	.posts figure figcaption, .posts figure:nth-child(even) figcaption{padding:50px 0 0 0;}
+}
+
+
+@media screen and (max-width:450px){
+	#topbar ul li{margin-bottom:2px; padding-right:0; border-right:none;}
+}
+
+
+/* Other
+--------------------------------------------------------------------------------------------------------------- */
+@media screen and (max-width:650px){
+	.scrollable{display:block; width:100%; margin:0 0 30px 0; padding:0 0 15px 0; overflow:auto; overflow-x:scroll;}
+	.scrollable table{margin:0; padding:0; white-space:nowrap;}
+
+	.inline li{display:block; margin-bottom:10px;}
+	.pushright li{margin-right:0;}
+
+	.font-x2{font-size:1.4rem;}
+	.font-x3{font-size:1.6rem;}
+}
