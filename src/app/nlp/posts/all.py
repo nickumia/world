@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from app.nlp.models import Posts
@@ -31,6 +32,54 @@ def initialize(app):
                           title="Introduction (2018)",
                           body=intro_body,
                           author=nick)
+            intro.posted_time = datetime.datetime(2018, 11, 30)
+
+            with open(filepath+'senses.html','r') as f:
+                intro_body = f.read()
+            senses = Posts(id=101,
+                          title="I sense that you sense that ... WE ALL SENSE",
+                          body=intro_body,
+                          author=parry)
+            senses.posted_time = datetime.datetime(2018, 12, 27)
+
+            with open(filepath+'identification.html','r') as f:
+                intro_body = f.read()
+            identification = Posts(id=102,
+                          title="Sensing the world, No Senses Required... jk!",
+                          body=intro_body,
+                          author=parry)
+            identification.posted_time = datetime.datetime(2019, 1, 13)
+
+            with open(filepath+'universalization.html','r') as f:
+                intro_body = f.read()
+            universalization = Posts(id=103,
+                          title="Be Formless, Shapeless like wa.. no, no, no.. like Senses",
+                          body=intro_body,
+                          author=parry)
+            universalization.posted_time = datetime.datetime(2019, 1, 28)
+
+            with open(filepath+'languages.html','r') as f:
+                intro_body = f.read()
+            languages = Posts(id=104,
+                          title="I AM a Language (:",
+                          body=intro_body,
+                          author=lalita)
+            languages.posted_time = datetime.datetime(2019, 2, 23)
+
+            with open(filepath+'consciousness.html','r') as f:
+                intro_body = f.read()
+            consciousness = Posts(id=105,
+                          title="Yeh 'consciousness' kya hai?",
+                          body=intro_body,
+                          author=nick)
+            consciousness.posted_time = datetime.datetime(2019, 10, 16)
+
+
             db.session.add(intro)
+            db.session.add(senses)
+            db.session.add(identification)
+            db.session.add(universalization)
+            db.session.add(languages)
+            db.session.add(consciousness)
             db.session.commit()
     
