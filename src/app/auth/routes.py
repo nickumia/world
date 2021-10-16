@@ -24,7 +24,7 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('auth.login'))
-    return render_template('auth/register.html', title='Register', form=form)
+    return render_template('auth/register.html', section='Register', title='Register', form=form)
 
 @bp.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
@@ -40,7 +40,7 @@ def reset_password_request():
                                    title='Reset Password', token=token)
         # flash('Check your email for the instructions to reset your password')
         # return redirect(url_for('auth.login'))
-    return render_template('auth/reset_password_request.html',
+    return render_template('auth/reset_password_request.html', section='Reset Password',
                            title='Reset Password', form=form)
 
 @bp.route('/reset_password/<token>', methods=['GET', 'POST'])
@@ -56,7 +56,7 @@ def reset_password(token):
         db.session.commit()
         flash('Your password has been reset.')
         return redirect(url_for('auth.login'))
-    return render_template('auth/reset_password.html', form=form)
+    return render_template('auth/reset_password.html', section='Reset Password', form=form)
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -73,7 +73,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('nlp.index')
         return redirect(next_page)
-    return render_template('auth/login.html', title='Sign In', form=form)
+    return render_template('auth/login.html', section='Login', title='Sign In', form=form)
 
 @bp.route('/logout')
 def logout():
