@@ -23,6 +23,7 @@
     {% block content %}{% endblock %}
 
 		{% block scripts %}
+		{% endblock %}
     {{ moment.include_moment() }}
 		<script type="text/javascript">
 			title="NLP | {{ section }}";
@@ -36,6 +37,5 @@
 		]
 		</script>
 		<script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
-		{% endblock %}
   </body>
 </html>

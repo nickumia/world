@@ -14,6 +14,14 @@ from . import bp
 def secret():
     return "sshhhhh, this is secret :)"
 
+@bp.route('/test1')
+def test1():
+    return "I'm open and free!!"
+
+@bp.route('/test2')
+def test2():
+    return "I'm not sure what I am"
+
 @bp.before_request
 def before_request():
     if current_user.is_authenticated:
