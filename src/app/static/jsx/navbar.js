@@ -10,6 +10,7 @@ import Tooltip from '@mui/material/Tooltip';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
+import BookIcon from '@mui/icons-material/Book';
 
 import SearchBar from "material-ui-search-bar";
 
@@ -34,6 +35,7 @@ export default function ButtonAppBar({title, menu, login}) {
 		"Login": <LoginIcon />,
 		"Logout": <LogoutIcon />,
 		"Home": <HomeIcon />,
+		"Posts": <BookIcon />
 	};
 
   return (

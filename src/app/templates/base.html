@@ -29,6 +29,7 @@
 			title="NLP | {{ section }}";
 			menu=[
 			{key: 0, name: 'Home', link: "{{ url_for('nlp.index') }}"},
+			{key: 3, name: 'Posts', link: "{{ url_for('nlp.blogs') }}"},
 			{% if current_user.is_anonymous %}
 			{key: 1, name: 'Login', link: "{{ url_for('auth.login') }}"},
       {% else %}
