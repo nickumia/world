@@ -10,7 +10,12 @@ https://nlp.kamutiv.com/.
 ## Installation / Dev Environment
 
 All of the source code can be found within the `/src` folder.  The main NLP app is wrapped in a Flask app to
-be served in a sandboxed, reproducible way with `docker`.
+be served in a sandboxed, reproducible way with `docker`.  The front-end is developed with React to improve
+server load and UI/UX.
+
+To build the front-end, run:
+
+	```make build-front```
 
 To build the test image, run:
 
@@ -26,5 +31,7 @@ To stop and remove the application, run:
   
   
   
+## Useful Resources
 
-more to come soon..
+- [Material UI Colors](https://materialui.co/colors/)
+- [Material UI Icons](https://mui.com/components/material-icons/)
