@@ -28,7 +28,7 @@ export default function AllPosts({posts}) {
             	primary={post_list.title}
 							// TODO: Implement keyword analysis on post for contextual meaning extraction
               // secondary={post_list.body ? post_list.body : 'Click for more info'}
-							secondary='Click for more info'
+							secondary={post_list.subtitle}
               />
           </ListItemButton>
 				))}

@@ -30,6 +30,7 @@ def initialize(app):
                 intro_body = f.read()
             intro = Posts(id=100,
                           title="Introduction (2018)",
+                          subtitle="End of the begining, because there never truly is a beginning",
                           body=intro_body,
                           author=nick)
             intro.posted_time = datetime.datetime(2018, 11, 30)
@@ -38,6 +39,7 @@ def initialize(app):
                 intro_body = f.read()
             senses = Posts(id=101,
                           title="I sense that you sense that ... WE ALL SENSE",
+                          subtitle="Without senses, what would we know?",
                           body=intro_body,
                           author=parry)
             senses.posted_time = datetime.datetime(2018, 12, 27)
@@ -46,6 +48,7 @@ def initialize(app):
                 intro_body = f.read()
             identification = Posts(id=102,
                           title="Sensing the world, No Senses Required... jk!",
+                          subtitle="How do we know speech is speech?",
                           body=intro_body,
                           author=parry)
             identification.posted_time = datetime.datetime(2019, 1, 13)
@@ -54,6 +57,7 @@ def initialize(app):
                 intro_body = f.read()
             universalization = Posts(id=103,
                           title="Be Formless, Shapeless like wa.. no, no, no.. like Senses",
+                          subtitle="How is a sense perceived as a sense?",
                           body=intro_body,
                           author=parry)
             universalization.posted_time = datetime.datetime(2019, 1, 28)
@@ -62,6 +66,7 @@ def initialize(app):
                 intro_body = f.read()
             languages = Posts(id=104,
                           title="I AM a Language (:",
+                          subtitle="What does it mean to know a language?",
                           body=intro_body,
                           author=lalita)
             languages.posted_time = datetime.datetime(2019, 2, 23)
@@ -70,6 +75,7 @@ def initialize(app):
                 intro_body = f.read()
             consciousness = Posts(id=105,
                           title="Yeh 'consciousness' kya hai?",
+                          subtitle="What is this consciousness idea that we gravitate to?",
                           body=intro_body,
                           author=nick)
             consciousness.posted_time = datetime.datetime(2019, 10, 16)
