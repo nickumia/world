@@ -15,7 +15,7 @@ server load and UI/UX.
 
 To build the front-end, run:
 
-	```make build-front```
+  ```make build-front```
 
 To build the test image, run:
 
