@@ -4,23 +4,24 @@ from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 
-from app import app, db
-from app.models import Users
+from app import db
+from app.auth.models import Users
 
+from . import bp
 
-@app.route('/secret')
+@bp.route('/secret')
 @login_required
 def secret():
     return "sshhhhh, this is secret :)"
 
-@app.before_request
+@bp.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-@app.route('/')
-@app.route('/index')
+@bp.route('/')
+@bp.route('/index')
 def index():
     intros = [
         {
