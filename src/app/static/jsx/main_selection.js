@@ -20,7 +20,7 @@ export default function NLPSelector({selection}) {
 
   return (
     <React.Fragment>
-			<ImageList sx={{ width: "100%", height: "70%" }} cols={3}>
+			<ImageList sx={{ width: "100%" }} cols={3}>
 				{selection.map(selection => (
         	<ImageListItem key={selection.key}>
 						<img
@@ -41,6 +41,9 @@ export default function NLPSelector({selection}) {
 										type="submit"
 		              >
 	  	              <TravelExploreIcon />
+										<Typography variant="subtitle2">
+											Explore
+										</Typography>
 	    	          </IconButton>
 								</Tooltip>
 								</form>

@@ -11,6 +11,9 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
 import BookIcon from '@mui/icons-material/Book';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import ChangeHistoryIcon from '@mui/icons-material/ChangeHistory';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 import SearchBar from "material-ui-search-bar";
 
@@ -35,7 +38,10 @@ export default function ButtonAppBar({title, menu, login}) {
 		"Login": <LoginIcon />,
 		"Logout": <LogoutIcon />,
 		"Home": <HomeIcon />,
-		"Posts": <BookIcon />
+		"Posts": <BookIcon />,
+		"Processing": <ChangeHistoryIcon />,
+		"Language": <CheckBoxOutlineBlankIcon />,
+		"Natural": <CircleOutlinedIcon />
 	};
 
   return (
@@ -56,6 +62,7 @@ export default function ButtonAppBar({title, menu, login}) {
 					))}
 				<SearchBar
 			    onChange={(newValue) => search_value=newValue }
+					// TODO: Fix Search Functionality
 			    onRequestSearch={() => doSomethingWith(search_value)}
 			  />
         </Toolbar>
