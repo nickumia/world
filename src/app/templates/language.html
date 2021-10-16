@@ -7,7 +7,7 @@
 	<h1 class="mdc-typography--headline3">Hi, {{ current_user.username }}!</h1>
   {% endif %}
 
-	<div id="appselector" style="padding-top:20px"></div>
+	<p>Lalita's Language Domain</p>
 
 	{% if user.last_seen %}
   <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
@@ -16,8 +16,5 @@
 {% endblock %}
 
 {% block scripts %}
-		<script type="text/javascript">
-			selection={{ selection|tojson }}
-		</script>
 
 {% endblock scripts %}

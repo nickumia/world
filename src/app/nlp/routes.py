@@ -9,6 +9,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app import db
 from app.auth.models import Users
 from app.nlp.models import Posts
+from app.nlp.selection import getSelection
 
 from . import bp
 
@@ -25,6 +26,25 @@ def test1():
 def test2():
     return "I'm not sure what I am"
 
+@bp.route('/processing')
+def processing():
+    return render_template('processing.html',
+                           section='Processing',
+                           user=current_user)
+
+@bp.route('/language')
+def language():
+    return render_template('language.html',
+                           section='Language',
+                           user=current_user)
+
+@bp.route('/natural')
+def natural():
+    return render_template('natural.html',
+                           section='Natural Core',
+                           user=current_user)
+
+
 @bp.before_request
 def before_request():
     if current_user.is_authenticated:
@@ -34,21 +54,10 @@ def before_request():
 @bp.route('/')
 @bp.route('/index')
 def index():
-    intros = [
-        {
-            'liason': 'Perry',
-            'speech': 'Pleasure to be acquainted!'
-        },
-        {
-            'liason': 'Lalita',
-            'speech': '**squints eyes as she turns to do something**'
-        },
-        {
-            'liason': 'Nick',
-            'speech': 'Welcome, I hope you find yourself at home.'
-        }
-    ]
-    return render_template('index.html', section='Natural Language Processing', intros=intros, user=current_user)
+    return render_template('index.html',
+                           section='Natural Language Processing',
+                           selection=json.dumps(getSelection()),
+                           user=current_user)
 
 @bp.route('/posts')
 def blogs():

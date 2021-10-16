@@ -7,6 +7,7 @@ import Navbar from './navbar';
 import SearchResults from './search_results';
 import AllPosts from './posts';
 import PostDisplay from './post';
+import NLPSelector from './main_selection';
 
 const theme = createTheme({
 	palette: {
@@ -21,14 +22,9 @@ const theme = createTheme({
   }
 });
 
-function App() {
-  return (
-		<></>
-	);
-}
 
 var searchPage = document.querySelector("#searchresults");
-var appPage = document.querySelector("#app");
+var appSelectorPage = document.querySelector("#appselector");
 var explorePage = document.querySelector("#explore");
 var singlePostPage = document.querySelector("#singlepost");
 
@@ -42,8 +38,12 @@ ReactDOM.render(
 	document.querySelector('#navbar')
 );
 
-if (appPage) {
-	ReactDOM.render(<App />, appPage);
+if (appSelectorPage) {
+	ReactDOM.render(
+		<NLPSelector
+			selection={selection}
+		/>,
+	appSelectorPage);
 }
 
 if (searchPage){
