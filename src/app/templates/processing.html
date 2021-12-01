@@ -8,6 +8,7 @@
   {% endif %}
 
 	<p>Parry's Processing Domain</p>
+	<div id="processing"></div>
 
 	{% if user.last_seen %}
   <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
@@ -16,5 +17,8 @@
 {% endblock %}
 
 {% block scripts %}
+		<script type="text/javascript">
+			asteroids={{ asteroids|tojson }}
+		</script>
 
 {% endblock scripts %}

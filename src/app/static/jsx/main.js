@@ -8,6 +8,7 @@ import SearchResults from './search_results';
 import AllPosts from './posts';
 import PostDisplay from './post';
 import NLPSelector from './main_selection';
+import Processing from './processing';
 
 const theme = createTheme({
 	palette: {
@@ -27,6 +28,7 @@ var searchPage = document.querySelector("#searchresults");
 var appSelectorPage = document.querySelector("#appselector");
 var explorePage = document.querySelector("#explore");
 var singlePostPage = document.querySelector("#singlepost");
+var processingPage = document.querySelector("#processing");
 
 ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
@@ -70,4 +72,12 @@ if (singlePostPage){
 			post={post}
 		/>,
 	singlePostPage);
+}
+
+if (processingPage){
+	ReactDOM.render(
+		<Processing
+			asteroids={asteroids}
+		/>,
+	processingPage);
 }

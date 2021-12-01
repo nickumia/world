@@ -28,9 +28,19 @@ def test2():
 
 @bp.route('/processing')
 def processing():
+    asteroids_json = [
+        [{"type": "Syntax/Grammar", "description": "Defining the basic unit of text, understanding how these units interact and combine into larger units..",
+          "link": "test.com", "key": 0},
+         {"type": "Semantics", "description": "The \"Sentence meaning\"",
+          "link": "test.com", "key": 1},
+         {"type": "Pragmatics", "description": "The \"Speaker meaning\"",
+          "link": "test.com", "key": 2}],
+
+    ]
     return render_template('processing.html',
                            section='Processing',
-                           user=current_user)
+                           user=current_user,
+                           asteroids=json.dumps(asteroids_json))
 
 @bp.route('/language')
 def language():
