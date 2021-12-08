@@ -29,13 +29,31 @@ def test2():
 @bp.route('/processing')
 def processing():
     asteroids_json = [
-        [{"type": "Syntax/Grammar", "description": "Defining the basic unit of text, understanding how these units interact and combine into larger units..",
-          "link": "test.com", "key": 0},
-         {"type": "Semantics", "description": "The \"Sentence meaning\"",
-          "link": "test.com", "key": 1},
-         {"type": "Pragmatics", "description": "The \"Speaker meaning\"",
-          "link": "test.com", "key": 2}],
-
+        {"key": 0,
+         "type": "Basic Text",
+         "phrase": "The most \"natural\" language to a computer",
+         "description": """
+• Machines are very simple.  They are not hardwired with things like feelings, emotions, self-awareness, consciousness...<br/>
+• Despite the inability of text to store and retain these things, there are many sources of text and writing where these things are perceived and conveyed to some degree.  When reading a book, an article, a blog, there is a "voice" that is present that influences your understanding of the words used.<br/>
+• The idea is to be able to process the text with an understanding that there is (1) the Intended Meaning and (2) the Perceived Meaning, neither of which may be known at any given time.""",
+         "subject": [
+            {"type": "Syntax/Grammar", "description": "Defining the basic unit of text, understanding how these units interact and combine into larger units..", "link": "test.com", "key": 0},
+            {"type": "Semantics", "description": "The \"Sentence meaning\"", "link": "test.com", "key": 1},
+            {"type": "Pragmatics", "description": "The \"Speaker meaning\"", "link": "test.com", "key": 2}
+         ],
+        },
+        {"key": 1,
+         "type": "Audio",
+         "phrase": "The most \"natural\" language for humans",
+         "description": """
+• There is a lot of information ingrained in the sounds that humans hear.  We can distinguish non-living sounds from sounds of the living, harmonious melodies and discords of noise.
+• Assuming we discern a sound as speech, our understanding of the words spoken is influenced by our recognition of various defining characteristics, such as tone, pitch and loudness.  It's important to note that extracting the speaker's meaning is no easy task.
+• Think about how many different people pronounce the same words differently ... Think about all of the different accents that exist ... The point is to understand how all of these factors effect a word's meaning.
+         """,
+         "subject": [
+            {"type": "Pragmatics", "description": "The \"Speaker meaning\"", "link": "test.com", "key": 3}
+         ]
+        }
     ]
     return render_template('processing.html',
                            section='Processing',
