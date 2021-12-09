@@ -3,6 +3,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
 import yellow from "@material-ui/core/colors/yellow";
+import Button from '@mui/material/Button';
 
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -51,15 +52,14 @@ export default function Processing({asteroids}) {
     <React.Fragment>
 			<Paper
 				style={{padding: 16, backgroundColor: yellow[50]}}>
-				<Typography variant="h4">
+				<Typography variant="h5">
 					Hello, I am <strong>Parry</strong>, the Keeper of the knowledge of the Mode of Processing.
 				</Typography>
-				<Typography variant="subtitle1">
+				<Typography variant="subtitle2">
 					As a Keeper, I merely maintain and distribute the knowledge that was entrusted to me.  You will meet my friends later on who preserve the deeper Modes of NLP.  Together we seek to help foster a world of understanding to bring about peace and harmony between humans and machines.  Prepare yourself mentally and physicially and when you are ready..
 				</Typography>
 			</Paper>
 
-			<hr/>
 
 
 			{asteroid_list.map(asteroid => (
@@ -70,7 +70,7 @@ export default function Processing({asteroids}) {
 					  aria-controls="panel1a-content"
 					  id="panel1a-header"
 					>
-						<Typography variant="h4">
+						<Typography variant="h6">
 							{asteroid.type}
 					  </Typography>
 					</AccordionSummary>
@@ -110,6 +110,20 @@ export default function Processing({asteroids}) {
 				</Accordion>
 				</>
 			))}
+
+
+			<Paper
+				style={{padding: 16, backgroundColor: yellow[50]}}>
+				<Typography variant="h5" align="center">
+					Removing the Limitations
+				</Typography>
+				<Typography variant="subtitle1" align="center">
+					As humans, we have FIVE main senses that we use to experience the world: (1) Sight, (2) Hearing, (3) Touch, (4) Taste and (5) Smell.  Currently, machines are only capable of "understanding" the first two.  However, our understanding of the world is dependent on combinations of these senses, not necessarily any one of them in isolation.  When we form ideas and communicate with each other, these ideas are influenced by our understanding of the other aspects that aren't always explicitly stated.
+				</Typography>
+				<Box textAlign='center'>
+        	<Button size="small" href="/nlp/posts/101">Explore Senses</Button>
+				</Box>
+			</Paper>
 
     </React.Fragment>
 	);

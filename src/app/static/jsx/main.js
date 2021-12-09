@@ -20,7 +20,16 @@ const theme = createTheme({
       main: "#CFD8DC",
       contrastText: "#FFF"
     }
-  }
+  },
+	typography: {
+    fontFamily: [
+      'Karla',
+      'Mirza',
+			'Muli',
+			'Noto Sans',
+			'Hind Guntur'
+    ].join(','),
+  },
 });
 
 
@@ -42,42 +51,52 @@ ReactDOM.render(
 
 if (appSelectorPage) {
 	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
 		<NLPSelector
 			selection={selection}
-		/>,
+		/>
+	</MuiThemeProvider>,
 	appSelectorPage);
 }
 
 if (searchPage){
 	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
 		<SearchResults 
 			results={results}
 			next_url={next_url}
 			prev_url={prev_url}
-		/>,
+		/>
+	</MuiThemeProvider>,
 	searchPage);
 }
 
 if (explorePage){
 	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
 		<AllPosts
 			posts={posts}
-		/>,
+		/>
+	</MuiThemeProvider>,
 	explorePage);
 }
 
 if (singlePostPage){
 	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
 		<PostDisplay
 			post={post}
-		/>,
+		/>
+	</MuiThemeProvider>,
 	singlePostPage);
 }
 
 if (processingPage){
 	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
 		<Processing
 			asteroids={asteroids}
-		/>,
+		/>
+	</MuiThemeProvider>,
 	processingPage);
 }
