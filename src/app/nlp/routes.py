@@ -43,15 +43,31 @@ def processing():
          ],
         },
         {"key": 1,
-         "type": "Audio",
+         "type": "Speech Audio",
          "phrase": "The most \"natural\" language for humans",
          "description": """
-• There is a lot of information ingrained in the sounds that humans hear.  We can distinguish non-living sounds from sounds of the living, harmonious melodies and discords of noise.
-• Assuming we discern a sound as speech, our understanding of the words spoken is influenced by our recognition of various defining characteristics, such as tone, pitch and loudness.  It's important to note that extracting the speaker's meaning is no easy task.
-• Think about how many different people pronounce the same words differently ... Think about all of the different accents that exist ... The point is to understand how all of these factors effect a word's meaning.
+• There is a lot of information ingrained in the sounds that humans hear.  We can distinguish non-living sounds from sounds of the living, harmonious melodies and discords of noise.<br/>
+• Assuming we discern a sound as speech, our understanding of the words spoken is influenced by our recognition of various defining characteristics, such as tone, pitch and loudness.  It's important to note that extracting the speaker's meaning is no easy task.<br/>
+• Think about how many different people pronounce the same words differently ... Think about all of the different accents that exist ... The point is to understand how all of these factors effect a word's meaning.""",
+         "subject": [
+            {"type": "Phonetics", "description": "Understanding the physical properties of speech", "link": "test.com", "key": 1},
+            {"type": "Phonology", "description": "Using the physical properties to create meaning structures", "link": "test.com", "key": 2},
+            {"type": "Morphology", "description": "Understanding the flexibilities of these structures", "link": "test.com", "key": 3}
+         ]
+        },
+        {"key": 2,
+         "type": "Seeing the World",
+         "phrase": "The language no one talks about",
+         "description": """
+Much of the world is never explicitly talked about.  When we talk, we often assume things that make up the context of what is being said.  Consider the following conversation,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;A: What is that?<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;B: I'm not sure.  They've been here for a while now.<br/>
+Without visual knowledge of the world, there is no way a computer would know what "that" refers to.  Granted, with a longer conversation, "that" may become known.  However, a human with vision would have a much different understanding of the conversation.
          """,
          "subject": [
-            {"type": "Pragmatics", "description": "The \"Speaker meaning\"", "link": "test.com", "key": 3}
+            {"type": "Real-world Objects", "description": "What makes up the world around us", "link": "test.com", "key": 1},
+            {"type": "Reference Clues", "description": "Understanding how things are connected", "link": "test.com", "key": 2},
+            {"type": "Object Definitions / Relations", "description": "What defines an object, it's functions and properties", "link": "test.com", "key": 3}
          ]
         }
     ]

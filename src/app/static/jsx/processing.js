@@ -24,6 +24,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
@@ -32,9 +33,18 @@ export default function Processing({asteroids}) {
 
 	var asteroid_list = JSON.parse(asteroids);
 	const pics = {
+		'Basic Text': '/static/img/writing.png',
+		'Speech Audio': '/static/img/audio.png',
+		'Seeing the World': '/static/img/camera.png',
 		'Syntax/Grammar': '/static/img/tag.png',
 		'Semantics': '/static/img/leaf.png',
-		'Pragmatics': '/static/img/bike.png'
+		'Pragmatics': '/static/img/bike.png',
+		'Phonetics': '/static/img/bell.png',
+		'Phonology': '/static/img/comment.png',
+		'Morphology': '/static/img/comments.png',
+		'Real-world Objects': '/static/img/flash.png',
+		'Reference Clues': '/static/img/arrows.png',
+		'Object Definitions / Relations': '/static/img/heartbeat.png',
 	};
 
 	return (
@@ -66,15 +76,23 @@ export default function Processing({asteroids}) {
 					</AccordionSummary>
 					<AccordionDetails>
 						<Box sx={{ minWidth: 275 }}>
-				      <Card variant="outlined">
-								<CardContent>
-								  <Typography sx={{ fontSize: 14 }} color="textSecondary" gutterBottom>
-								    {asteroid.phrase}
-								  </Typography>
-								  <Typography variant="body2"
-										dangerouslySetInnerHTML={{__html: asteroid.description}}>
-								  </Typography>
-								</CardContent>
+				      <Card variant="outlined" sx={{ display: 'flex' }}>
+								<Box sx={{ display: 'flex', flexDirection: 'column' }}>
+									<CardContent>
+									  <Typography sx={{ fontSize: 14 }} color="textSecondary" gutterBottom>
+									    {asteroid.phrase}
+									  </Typography>
+									  <Typography variant="body2"
+											dangerouslySetInnerHTML={{__html: asteroid.description}}>
+									  </Typography>
+									</CardContent>
+								</Box>
+      					<CardMedia
+      					  component="img"
+      					  sx={{ width: 151 }}
+      					  image={pics[asteroid.type]}
+      					  alt={asteroid.type}
+      					/>
 							</Card>
 				    </Box>
 						{asteroid.subject.map(subject => (
