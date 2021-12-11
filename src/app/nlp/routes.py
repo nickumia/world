@@ -10,7 +10,7 @@ from app import db
 from app.auth.models import Users
 from app.nlp.models import Posts
 from app.nlp.selection import getSelection
-from app.nlp.model_pages import asteroid_parry_json, asteroid_lalita_json
+from app.nlp.model_pages import asteroid_parry_json, asteroid_lalita_json, asteroid_nick_json
 
 from . import bp
 
@@ -45,7 +45,8 @@ def language():
 def natural():
     return render_template('natural.html',
                            section='Natural Core',
-                           user=current_user)
+                           user=current_user,
+                           asteroids=json.dumps(asteroid_nick_json))
 
 
 @bp.before_request

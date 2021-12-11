@@ -119,3 +119,82 @@ asteroid_lalita_json = [
      ]
     },
 ]
+
+asteroid_nick_json = [
+    {"key": 0,
+     "type": "Expanding Knowledge",
+     "phrase": "The cause and effect of communication",
+     "description": """
+Why do we use langauge...?<br/>
+....To communicate ideas, theories, beliefs, values, reasoning ... knowledge?<br/>
+What happens when we communicate these things...?<br/>
+....We create more knowledge?<br/>
+How do we use this knowledge...?<br/>
+....By communicating with language?
+     """,
+     "subject": [
+        {"type": "The Self",
+         "description": "Understanding what it means to be an object, a person, a thing, a being... an individual unit",
+         "link": "test.com",
+         "key": 0},
+        {"type": "The Group",
+         "description": "Understanding how the units identify in relation to other similar and/or different units",
+         "link": "test.com",
+         "key": 1},
+        {"type": "The System",
+         "description": "Understanding the process(es) by which units/groups function to find purpose and/or reasoning to exist",
+         "link": "test.com",
+         "key": 2},
+     ],
+    },
+    {"key": 1,
+     "type": "Energy Flow",
+     "phrase": "Even stagnant energy causes motion",
+     "description": """
+• Energy is ubiquitous around us.  It is present in things we can sense and in things we do not yet know how to sense.  One of the first clear distinctions to make is that physical energy is different from life energy.  <b>Physical energy</b> causes much of the world around us to move, change and flow.  <b>Life energy</b> is what we have inside of us that allows us to think, create and make decisions.  They may be one and the same.  However, we do not currently understand them as such.<br/>
+• Energy is very unique because it can always be converted into a form that is relevant to its application.  Matching the form with the application causes wondrous things to happen.  Furthermore, by understanding the flow of energy, the power of its reality can be unlocked..
+• 
+• 
+     """,
+     "subject": [
+        {"type": "Potential Energy",
+         "description": "Energy at rest",
+         "link": "test.com",
+         "key": 0},
+        {"type": "Kinetic Energy",
+         "description": "Energy in motion",
+         "link": "test.com",
+         "key": 1},
+        {"type": "Physical-Metaphysical Interaction",
+         "description": "Understanding the complexities of things both physical and intangible",
+         "link": "test.com",
+         "key": 2},
+     ],
+    },
+    {"key": 2,
+     "type": "The Four Element Model",
+     "phrase": "\"It is important to draw wisdom from many different places\" - Iroh",
+     "description": """
+• This model was created to illustrate the fact that <b>things that we think are rigid and separate are actually more free and connected</b>.  Specifically, this model tries to understand the "Idea Cycle."  The way in which ideas form Information that have Attributes which leads to Action where Knowledge is gained and Information is gathered once again.<br/>
+• Because it is a cycle, the process can be started at any of the four elements.  There is one restriction which is that each element acts as the bridge from the previous element to the next element.  While any combination of the elements can result in something new, "energy" or data must flow in the cycle: <i>Water, Earth, Fire, Air,</i> ...<br/>
+     """,
+     "subject": [
+        {"type": "Water",
+         "description": "The element of Information",
+         "link": "test.com",
+         "key": 0},
+        {"type": "Earth",
+         "description": "The element of Attributes",
+         "link": "test.com",
+         "key": 1},
+        {"type": "Fire",
+         "description": "The element of Actions",
+         "link": "test.com",
+         "key": 2},
+        {"type": "Air",
+         "description": "The element of Knowledge",
+         "link": "test.com",
+         "key": 3},
+     ],
+    },
+]

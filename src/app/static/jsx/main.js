@@ -10,6 +10,7 @@ import PostDisplay from './post';
 import NLPSelector from './main_selection';
 import Processing from './processing';
 import Language from './language';
+import Natural from './natural';
 
 const theme = createTheme({
 	palette: {
@@ -40,6 +41,7 @@ var explorePage = document.querySelector("#explore");
 var singlePostPage = document.querySelector("#singlepost");
 var processingPage = document.querySelector("#processing");
 var languagePage = document.querySelector("#language");
+var naturalPage = document.querySelector("#natural");
 
 ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
@@ -111,4 +113,14 @@ if (languagePage){
 		/>
 	</MuiThemeProvider>,
 	languagePage);
+}
+
+if (naturalPage){
+	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<Natural
+			asteroids={asteroids}
+		/>
+	</MuiThemeProvider>,
+	naturalPage);
 }
