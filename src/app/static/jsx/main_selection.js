@@ -29,26 +29,26 @@ export default function NLPSelector({selection}) {
       	      alt={selection.domain}
         	    loading="lazy"
 	          />
-						<ImageListItemBar
-	          	title={selection.liason}
-	            subtitle={selection.domain}
-	            actionIcon={
-								<form action={selection.link}>
-								<Tooltip title={`Explore the domain of ${selection.liason}`}>
-	              	<IconButton
-	                	sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-		                aria-label={`Explore the domain of ${selection.liason}`}
-										type="submit"
-		              >
-	  	              <TravelExploreIcon />
-										<Typography variant="subtitle2">
-											Explore
-										</Typography>
-	    	          </IconButton>
-								</Tooltip>
-								</form>
-	            }
-	          />
+							<ImageListItemBar
+		          	title={selection.liason}
+		            subtitle={selection.speech}
+		            actionIcon={
+									<form action={selection.link}>
+									<Tooltip title={`Explore the domain of ${selection.liason}`}>
+		              	<IconButton
+		                	sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+			                aria-label={`Explore the domain of ${selection.liason}`}
+											type="submit"
+			              >
+		  	              <TravelExploreIcon />
+											<Typography variant="subtitle2">
+												Explore
+											</Typography>
+		    	          </IconButton>
+									</Tooltip>
+									</form>
+		            }
+		          />
           </ImageListItem>
 				))}
       </ImageList>
