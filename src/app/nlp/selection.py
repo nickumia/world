@@ -6,7 +6,7 @@ def getSelection():
     return [
         {
             'key'   : 0,
-            'liason': 'Perry',
+            'liason': 'Parry',
             'speech': 'Pleasure to be acquainted!',
             'domain': 'Processing',
             'link'  : url_for('nlp.processing')
