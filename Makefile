@@ -15,3 +15,6 @@ build-front: # Build jsx into js
 	# cd src && ./node_modules/browserify/bin/cmd.js app/static/jsx/*.js --standalone nlp > app/static/js/bundle.js
 	touch src/app/static/js
 	cd src && ./node_modules/gulp/bin/gulp.js
+
+test-front: # Test frontend UI
+	docker-compose -f docker-compose.yml run cypress

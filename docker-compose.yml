@@ -45,6 +45,16 @@ services:
   #   ports:
   #     - "9200:9200"
 
+  cypress:
+    image: cypress/included:9.1.0
+    command: /bin/bash -c 'npx cypress install && npx cypress run'
+    working_dir: /e2e
+    depends_on:
+      - app
+      - db
+    volumes:
+      - ./e2e:/e2e
+
 volumes:
   data01:
     driver: local
