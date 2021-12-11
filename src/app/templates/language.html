@@ -7,7 +7,7 @@
 	<h1 class="mdc-typography--headline3">Hi, {{ current_user.username }}!</h1>
   {% endif %}
 
-	<p>Lalita's Language Domain</p>
+	<div id="language"></div>
 
 	{% if user.last_seen %}
   <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
@@ -16,5 +16,8 @@
 {% endblock %}
 
 {% block scripts %}
+		<script type="text/javascript">
+			asteroids={{ asteroids|tojson }}
+		</script>
 
 {% endblock scripts %}
