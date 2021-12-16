@@ -2,11 +2,6 @@
 
 {% block content %}
 
-
-	{% if not current_user.is_anonymous %}
-	<h1 class="mdc-typography--headline3">Hi, {{ current_user.username }}!</h1>
-  {% endif %}
-
 	<div id="kumia"></div>
 
 	{% if user.last_seen %}
