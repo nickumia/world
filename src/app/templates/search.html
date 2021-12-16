@@ -6,13 +6,7 @@
 
 {% block scripts %}
 		<script type="text/javascript">
-			results=[
-				{key: 0, name: 'Test 1', summary: 'some test data 1', link: "{{ url_for('nlp.test1') }}"},
-				{key: 1, name: 'Test 2', summary: 'some test data 2', link: "{{ url_for('nlp.test2') }}"},
-				{% if not current_user.is_anonymous %}
-				{key: 2, name: 'Test 3', summary: 'some secret test data', link: "{{ url_for('nlp.secret') }}"}
-    	  {% endif %}
-			];
+			results={{ posts|tojson }}
 			next_url="{{ next_url or 'test' }}";
 			prev_url="{{ prev_url or 'test' }}";
 		</script>

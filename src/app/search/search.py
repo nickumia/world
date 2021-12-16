@@ -23,4 +23,5 @@ def query_index(index, query, page, per_page):
         body={'query': {'multi_match': {'query': query, 'fields': ['*']}},
               'from': (page - 1) * per_page, 'size': per_page})
     ids = [int(hit['_id']) for hit in search['hits']['hits']]
-    return ids, search['hits']['total']['value']
+    match_score = [hit['_score'] for hit in search['hits']['hits']]
+    return (ids, match_score), search['hits']['total']['value']
