@@ -17,6 +17,7 @@ services:
       - ./src:/app
     depends_on:
       - db
+      - elastic
 
     ports:
       - "8000:8000"
@@ -33,17 +34,22 @@ services:
     ports:
       - "5432:5432"
 
-  # elastic:
-  #   image: elasticsearch:7.14.1
-  #   environment:
-  #     - node.name=es01
-  #     - discovery.type=single-node
-  #     - bootstrap.memory_lock=true
-  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-  #   volumes:
-  #     - data01:/usr/share/elasticsearch/data
-  #   ports:
-  #     - "9200:9200"
+  elastic:
+    image: elasticsearch:7.14.1
+    environment:
+      - node.name=es01
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    healthcheck:
+      test: ['CMD', 'curl' , '-f', 'http://localhost:9200/_cluster/health/']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
 
 volumes:
   data01:

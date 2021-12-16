@@ -88,4 +88,4 @@ def initialize(app):
             db.session.add(languages)
             db.session.add(consciousness)
             db.session.commit()
-    
+            Posts.reindex()

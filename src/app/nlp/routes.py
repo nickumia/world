@@ -27,6 +27,11 @@ def test1():
 def test2():
     return "I'm not sure what I am"
 
+@bp.route('/elastic_index')
+def elastic_index():
+    Posts.reindex()
+    return render_template('indexed.html', section='Posts', user=current_user)
+
 @bp.route('/processing')
 def processing():
     return render_template('processing.html',

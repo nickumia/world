@@ -31,11 +31,11 @@ def create_app(config_class=Config):
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
-    from app.search import bp as search_bp
-    app.register_blueprint(search_bp, url_prefix='/search')
-
     from app.nlp import bp as nlp_bp
     app.register_blueprint(nlp_bp, url_prefix='/nlp')
+
+    from app.search import bp as search_bp
+    app.register_blueprint(search_bp, url_prefix='/search')
 
     from app.kumia import bp as kumia_bp
     app.register_blueprint(kumia_bp, url_prefix='/kumia')
