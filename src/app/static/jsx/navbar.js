@@ -51,7 +51,8 @@ export default function ButtonAppBar({title, menu, login}) {
       <AppBar>	
         <Toolbar color="primary">
           <Typography variant="h6" className={classes.title}>
-            {title}
+						{title}
+            {title == 'NLP | Error' && '	\u{1F627}'}
           </Typography>
 					{menu.map(menu => (
 						<form action={menu.link} key={menu.key}>

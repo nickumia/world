@@ -1,7 +1,9 @@
 <!doctype html>
 <html>
   <head>
-		{% if section %}
+		{% if section == 'Error' %}
+    <title>NLP - {{ section }} &#128551;</title>
+		{% elif section %}
     <title>NLP - {{ section }}</title>
     {% else %}
     <title>NLP - Home</title>
