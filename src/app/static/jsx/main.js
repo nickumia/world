@@ -134,7 +134,6 @@ if (kumiaPage){
 			pubs={pubs}
 			work={work}
 			edu={edu}
-			awards={awards}
 		/>
 	</MuiThemeProvider>,
 	kumiaPage);

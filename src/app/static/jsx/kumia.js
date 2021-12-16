@@ -19,13 +19,22 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Collapse from '@mui/material/Collapse';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+
 
 export default function Kumia({pubs, work, edu}) {
 
 	var pubs_list = JSON.parse(pubs);
-	var work_list = JSON.parse(work);
-	var edu_list = JSON.parse(edu);
-	const [value, setValue] = React.useState('edus');
+	var exps_list = JSON.parse(work);
+	var edus_list = JSON.parse(edu);
+	const [value, setValue] = React.useState('pubs');
 	const [content, setContent] = React.useState('');
 
 	React.useEffect(() => {
@@ -35,7 +44,6 @@ export default function Kumia({pubs, work, edu}) {
 	return (
     <React.Fragment>
 			<BottomNavigation
-			  showLabels
 			  value={value}
 			  onChange={(event, newValue) => {setValue(newValue);}}
 			>
@@ -78,9 +86,10 @@ export default function Kumia({pubs, work, edu}) {
           </ListItemButton>
 					</AccordionSummary>
 					<AccordionDetails>
-						<Box sx={{ minWidth: 275 }}>
+						<Box sx={{ minWidth: 275, mx: "auto" }}>
 							<Typography variant="body2"
-								dangerouslySetInnerHTML={{__html: pubs_list.support}}>
+								dangerouslySetInnerHTML={{__html: pubs_list.support}}
+								align="center">
 							</Typography>
 				    </Box>
 					</AccordionDetails>
@@ -89,9 +98,42 @@ export default function Kumia({pubs, work, edu}) {
 				</>
 			);
 		} else if (tab == "edus") {
-			return (<p>edus</p>);
+			return (
+			<>
+				{edus_list.map(exp_list => (
+					<Card sx={{ mb: 2 }}>
+						<CardHeader
+							title={exp_list.school}
+							subheader={exp_list.date} />
+						<CardContent>
+							<Typography variant="body2" color="textSecondary">
+								{exp_list.degree}
+							</Typography>
+						</CardContent>
+					</Card>
+				))}
+			</>
+			);
 		} else {
-			return (<p>exps</p>);
+			return (
+			<>
+				{exps_list.map(exp_list => (
+					<Card sx={{ mb: 2 }}>
+						<CardHeader
+							title={exp_list.company}
+							subheader={exp_list.date} />
+						<CardContent>
+							<Typography variant="body2" color="textSecondary">
+								{exp_list.role}
+							</Typography>
+							<Typography variant="body2"
+								dangerouslySetInnerHTML={{__html: exp_list.details}}>
+							</Typography>
+						</CardContent>
+					</Card>
+				))}
+			</>
+			);
 		}
 	}
 }
