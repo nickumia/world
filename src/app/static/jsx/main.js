@@ -11,6 +11,7 @@ import NLPSelector from './main_selection';
 import Processing from './processing';
 import Language from './language';
 import Natural from './natural';
+import Kumia from './kumia';
 
 const theme = createTheme({
 	palette: {
@@ -42,6 +43,7 @@ var singlePostPage = document.querySelector("#singlepost");
 var processingPage = document.querySelector("#processing");
 var languagePage = document.querySelector("#language");
 var naturalPage = document.querySelector("#natural");
+var kumiaPage = document.querySelector("#kumia");
 
 ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
@@ -123,4 +125,17 @@ if (naturalPage){
 		/>
 	</MuiThemeProvider>,
 	naturalPage);
+}
+
+if (kumiaPage){
+	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<Kumia
+			pubs={pubs}
+			work={work}
+			edu={edu}
+			awards={awards}
+		/>
+	</MuiThemeProvider>,
+	kumiaPage);
 }

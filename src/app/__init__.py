@@ -37,10 +37,18 @@ def create_app(config_class=Config):
     from app.nlp import bp as nlp_bp
     app.register_blueprint(nlp_bp, url_prefix='/nlp')
 
+    from app.kumia import bp as kumia_bp
+    app.register_blueprint(kumia_bp, url_prefix='/kumia')
+
     @app.route('/')
     @app.route('/index')
     def index():
         return redirect(url_for("nlp.index"), code=302)
+
+    @app.route('/kumia')
+    def kumia():
+        return redirect(url_for("kumia.resume"), code=302)
+
 
     if not app.debug:
         if not os.path.exists('logs'):
