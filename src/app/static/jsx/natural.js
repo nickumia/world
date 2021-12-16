@@ -2,7 +2,7 @@ import React from "react";
 
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
-import yellow from "@material-ui/core/colors/yellow";
+import amber from "@material-ui/core/colors/amber";
 import Button from '@mui/material/Button';
 
 import List from '@mui/material/List';
@@ -52,7 +52,7 @@ export default function Natural({asteroids}) {
 	return (
     <React.Fragment>
 			<Paper
-				style={{padding: 16, backgroundColor: yellow[50]}}>
+				style={{padding: 16, backgroundColor: amber[50]}}>
 				<Typography variant="h5">
 					Hmm.. I am <strong>Nick</strong>, the Keeper of the knowledge of the Mode of the Natural Core.
 				</Typography>
@@ -114,7 +114,7 @@ export default function Natural({asteroids}) {
 
 
 			<Paper
-				style={{padding: 16, backgroundColor: yellow[50]}}>
+				style={{padding: 16, backgroundColor: amber[50]}}>
 				<Typography variant="h5" align="center">
 					What's next?
 				</Typography>

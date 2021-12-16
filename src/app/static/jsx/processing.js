@@ -2,7 +2,7 @@ import React from "react";
 
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
-import yellow from "@material-ui/core/colors/yellow";
+import amber from "@material-ui/core/colors/amber";
 import Button from '@mui/material/Button';
 
 import List from '@mui/material/List';
@@ -51,7 +51,7 @@ export default function Processing({asteroids}) {
 	return (
     <React.Fragment>
 			<Paper
-				style={{padding: 16, backgroundColor: yellow[50]}}>
+				style={{padding: 16, backgroundColor: amber[50]}}>
 				<Typography variant="h5">
 					Hello, I am <strong>Parry</strong>, the Keeper of the knowledge of the Mode of Processing.
 				</Typography>
@@ -113,7 +113,7 @@ export default function Processing({asteroids}) {
 
 
 			<Paper
-				style={{padding: 16, backgroundColor: yellow[50]}}>
+				style={{padding: 16, backgroundColor: amber[50]}}>
 				<Typography variant="h5" align="center">
 					Removing the Limitations
 				</Typography>

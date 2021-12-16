@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+import brown from "@material-ui/core/colors/brown";
+import indigo from "@material-ui/core/colors/indigo";
+import lightGreen from "@material-ui/core/colors/lightGreen";
 
 import Navbar from './navbar';
 import SearchResults from './search_results';
@@ -16,11 +19,11 @@ import Kumia from './kumia';
 const theme = createTheme({
 	palette: {
     primary: {
-      main: "#78909C",
+      main: indigo[300],
       contrastText: "#FFF"
     },
     secondary: {
-      main: "#CFD8DC",
+      main: indigo[50],
       contrastText: "#FFF"
     }
   },

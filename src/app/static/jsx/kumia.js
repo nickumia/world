@@ -1,5 +1,7 @@
 import React from "react";
 
+import Paper from '@mui/material/Paper';
+import amber from "@material-ui/core/colors/amber";
 import Typography from "@material-ui/core/Typography";
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -43,6 +45,22 @@ export default function Kumia({pubs, work, edu}) {
 
 	return (
     <React.Fragment>
+			<Paper
+				style={{padding: 16, backgroundColor: amber[50]}}>
+				<Typography variant="h5">
+					Hi, I'm Nicholas Kumia
+				</Typography>
+				<Typography variant="h6">
+					Human
+				</Typography>
+				<Typography variant="subtitle2">
+					Usually, things like this are supposed to outline the "qualifications, merits, et cetera" of an individual. And sure, that stuff will be present. But I wanted to highlight the fact that defining an individual, and by extension anything, as a relation of other distinct things does not necessarily add to the true essence of that person.. or thing.<br/><br/>
+					For a while now, I've been struggling with finding a meaning of life that aligns with the experiences of my life... I'll probably continue searching for the rest of my life. If there's one thing that really matters to me, it's that everyone should get the opportunity to apply themselves to their fullest. What does that do for me? Haha good question! Maybe one day I'll be able to answer that.<br/><br/>
+					For now, my goal is to ensure that we can still ask questions like that in the future by allowing machines to properly understand our natural language and what connects us as humans. With the very questionable state of Technology, I feel like it is part of my global civic duty to use my knowledge to give the world the opportunity to not be overrun by this "data revolution" ... or any type of change that puts our humanity at stake.<br/>
+				</Typography>
+			</Paper>
+			
+
 			<BottomNavigation
 			  value={value}
 			  onChange={(event, newValue) => {setValue(newValue);}}

@@ -14,6 +14,7 @@ import BookIcon from '@mui/icons-material/Book';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import ChangeHistoryIcon from '@mui/icons-material/ChangeHistory';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import BlurOnIcon from '@mui/icons-material/BlurOn';
 
 import SearchBar from "material-ui-search-bar";
 
@@ -41,7 +42,8 @@ export default function ButtonAppBar({title, menu, login}) {
 		"Posts": <BookIcon />,
 		"Processing": <ChangeHistoryIcon />,
 		"Language": <CheckBoxOutlineBlankIcon />,
-		"Natural": <CircleOutlinedIcon />
+		"Natural": <CircleOutlinedIcon />,
+		"Kumia": <BlurOnIcon />,
 	};
 
   return (
