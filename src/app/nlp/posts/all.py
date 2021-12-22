@@ -82,19 +82,19 @@ def initialize(app):
                           author=nick)
             consciousness.posted_time = datetime.datetime(2019, 10, 16)
 
-            processing = Posts(id=106,
+            processing = Posts(id=997,
                           title="Parry's Processing",
                           subtitle="Crash into the world of inputs, outputs and foreign object analysis",
                           body=parry_summary,
                           author=parry)
             processing.posted_time = datetime.datetime(2018, 5, 20)
-            language = Posts(id=107,
+            language = Posts(id=998,
                           title="Lalita's Language",
                           subtitle="Take a deep breath and navigate the subtle realm of transformations",
                           body=lalita_summary,
                           author=lalita)
             language.posted_time = datetime.datetime(2018, 5, 20)
-            natural = Posts(id=108,
+            natural = Posts(id=999,
                           title="Nick's Natural Core",
                           subtitle="Step back, look inward and appreciate the harmony of the universe",
                           body=nick_summary,
