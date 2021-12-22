@@ -3,6 +3,7 @@ import os
 import sys
 
 from app.nlp.models import Posts
+from app.nlp.model_pages import *
 from app.auth.models import Users
 from app import db
 
@@ -81,6 +82,24 @@ def initialize(app):
                           author=nick)
             consciousness.posted_time = datetime.datetime(2019, 10, 16)
 
+            processing = Posts(id=106,
+                          title="Parry's Processing",
+                          subtitle="Crash into the world of inputs, outputs and foreign object analysis",
+                          body=parry_summary,
+                          author=parry)
+            processing.posted_time = datetime.datetime(2018, 5, 20)
+            language = Posts(id=107,
+                          title="Lalita's Language",
+                          subtitle="Take a deep breath and navigate the subtle realm of transformations",
+                          body=lalita_summary,
+                          author=lalita)
+            language.posted_time = datetime.datetime(2018, 5, 20)
+            natural = Posts(id=108,
+                          title="Nick's Natural Core",
+                          subtitle="Step back, look inward and appreciate the harmony of the universe",
+                          body=nick_summary,
+                          author=nick)
+            natural.posted_time = datetime.datetime(2018, 5, 20)
 
             db.session.add(intro)
             db.session.add(senses)
@@ -88,6 +107,9 @@ def initialize(app):
             db.session.add(universalization)
             db.session.add(languages)
             db.session.add(consciousness)
+            db.session.add(processing)
+            db.session.add(language)
+            db.session.add(natural)
             db.session.commit()
             print("INIT: posts commited to db", file=sys.stderr)
 

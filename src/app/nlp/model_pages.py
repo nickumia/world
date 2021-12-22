@@ -1,4 +1,6 @@
 # Parry, Lalita and Nick Welcome Pages
+import json
+
 
 asteroid_parry_json = [
     {"key": 0,
@@ -198,3 +200,8 @@ How do we use this knowledge...?<br/>
      ],
     },
 ]
+
+
+parry_summary = json.dumps(asteroid_parry_json)
+lalita_summary = json.dumps(asteroid_lalita_json)
+nick_summary = json.dumps(asteroid_nick_json)
