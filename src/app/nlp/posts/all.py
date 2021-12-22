@@ -1,5 +1,6 @@
 import datetime
 import os
+import sys
 
 from app.nlp.models import Posts
 from app.auth.models import Users
@@ -88,4 +89,7 @@ def initialize(app):
             db.session.add(languages)
             db.session.add(consciousness)
             db.session.commit()
-            Posts.reindex()
+            print("INIT: posts commited to db", file=sys.stderr)
+
+        Posts.reindex()
+        print("INIT: posts indexed in elastic", file=sys.stderr)
