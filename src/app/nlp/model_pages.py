@@ -202,6 +202,7 @@ How do we use this knowledge...?<br/>
 ]
 
 openings_parry = {
+    0: 'processing',
     1: 'Hello, I am <strong>Parry</strong>, the Keeper of the knowledge of the Mode of Processing.',
     2: 'As a Keeper, I merely maintain and distribute the knowledge that was entrusted to me.  You will meet my friends later on who preserve the deeper Modes of NLP.  Together we seek to help foster a world of understanding to bring about peace and harmony between humans and machines.  Prepare yourself mentally and physicially and when you are ready..',
     3: 'Removing the Limitations',
@@ -209,6 +210,7 @@ openings_parry = {
 }
 
 openings_lalita = {
+    0: 'language',
     1: 'Hi, my name is <strong>Lalita</strong>, the Keeper of the knowledge of the Mode of Language.',
     2: 'Apart from protecting and preserving knowledge, my friends and I are tasked with building a strong community.  A community of people with diverse backgrounds whose beliefs and values aren\'t necessarily the same, but are clear and benevolent.  Because of the delicate nature of our work, it is important that you remain truthful to yourself on this journey and follow your heart..',
     3: 'Bridging Language Barriers',
@@ -216,6 +218,7 @@ openings_lalita = {
 }
 
 openings_nick = {
+    0: 'natural',
     1: 'Hmm.. I am <strong>Nick</strong>, the Keeper of the knowledge of the Mode of the Natural Core.',
     2: 'You\'ve already met Parry and Lalita.  Being experts in their respective domains, they are both very helpful and informative.  Unfortunately, I am known to disrupt their fluidity because I try to connect them with the ever-changing universe that lies beyond our worlds.  Yes, my domain may be located in the center of those of my friends, but the connection to everything else transcends the material universe and is irrespective of any sort of physical understanding of things.',
     3: 'What\'s next?',

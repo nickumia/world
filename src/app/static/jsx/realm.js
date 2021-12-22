@@ -70,11 +70,15 @@ export default function Realm({domain, asteroids}) {
 		'Earth': '/static/img/earth.png',
 		'Fire': '/static/img/fire.png',
 		'Air': '/static/img/air.png',
+
+		'processing': '/static/img/balloons.jpg',
+		'language': '/static/img/mountains.jpg',
+		'natural': '/static/img/sunset.jpg'
 	};
 
 	const styles = {
     paperContainer: {
-  		backgroundImage: `url(${"/static/img/balloons.jpg"})`,
+  		backgroundImage: `url(${pics[domain_specifics[0]]})`,
 			backgroundRepeat: "no-repeat",
 			backgroundSize: "cover",
 			opacity: 0.7,
