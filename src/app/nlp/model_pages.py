@@ -201,6 +201,27 @@ How do we use this knowledge...?<br/>
     },
 ]
 
+openings_parry = {
+    1: 'Hello, I am <strong>Parry</strong>, the Keeper of the knowledge of the Mode of Processing.',
+    2: 'As a Keeper, I merely maintain and distribute the knowledge that was entrusted to me.  You will meet my friends later on who preserve the deeper Modes of NLP.  Together we seek to help foster a world of understanding to bring about peace and harmony between humans and machines.  Prepare yourself mentally and physicially and when you are ready..',
+    3: 'Removing the Limitations',
+    4: 'As humans, we have FIVE main senses that we use to experience the world: (1) Sight, (2) Hearing, (3) Touch, (4) Taste and (5) Smell.  Currently, machines are only capable of "understanding" the first two.  However, our understanding of the world is dependent on combinations of these senses, not necessarily any one of them in isolation.  When we form ideas and communicate with each other, these ideas are influenced by our understanding of the other aspects that aren\'t always explicitly stated.',
+}
+
+openings_lalita = {
+    1: 'Hi, my name is <strong>Lalita</strong>, the Keeper of the knowledge of the Mode of Language.',
+    2: 'Apart from protecting and preserving knowledge, my friends and I are tasked with building a strong community.  A community of people with diverse backgrounds whose beliefs and values aren\'t necessarily the same, but are clear and benevolent.  Because of the delicate nature of our work, it is important that you remain truthful to yourself on this journey and follow your heart..',
+    3: 'Bridging Language Barriers',
+    4: 'In order to truly understand any given language, it might be helpful to create a "universal language template."  This template will define everything that is known to humans about our language and it is abstract enough to allow new properties and features of a language as necessary.  Not every language will have the same specifications, but just knowing that fact will help understand problems that arise.  It is essential to capture the real-world implications and reasonings as to why something is a certain way.',
+}
+
+openings_nick = {
+    1: 'Hmm.. I am <strong>Nick</strong>, the Keeper of the knowledge of the Mode of the Natural Core.',
+    2: 'You\'ve already met Parry and Lalita.  Being experts in their respective domains, they are both very helpful and informative.  Unfortunately, I am known to disrupt their fluidity because I try to connect them with the ever-changing universe that lies beyond our worlds.  Yes, my domain may be located in the center of those of my friends, but the connection to everything else transcends the material universe and is irrespective of any sort of physical understanding of things.',
+    3: 'What\'s next?',
+    4: 'We still have a long way to go before we can say we understand anything we think we do as humans.  We know so little about our universe, yet we constantly create and indulge in new universes which may or may not be possible.  Our ability to weave together anything and everything makes our existence very dynamic.  We have a word for "<i>everything</i>" and this ability of ours to imagine is only limited by us (when not considering diseases that prohibit mental capacity).  Normally, we don\'t think of humans as God (and imho we aren\'t exactly).  But to think we have all of this power.  You should just think about why we could have possibly been given it.  For what reason do we need it.',
+}
+
 
 parry_summary = json.dumps(asteroid_parry_json)
 lalita_summary = json.dumps(asteroid_lalita_json)

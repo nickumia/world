@@ -10,7 +10,8 @@ from app import db
 from app.auth.models import Users
 from app.nlp.models import Posts
 from app.nlp.selection import getSelection
-from app.nlp.model_pages import asteroid_parry_json, asteroid_lalita_json, asteroid_nick_json
+from app.nlp.model_pages import asteroid_parry_json, asteroid_lalita_json, asteroid_nick_json, \
+        openings_parry, openings_lalita, openings_nick
 
 from . import bp
 
@@ -34,23 +35,26 @@ def elastic_index():
 
 @bp.route('/processing')
 def processing():
-    return render_template('processing.html',
+    return render_template('realm.html',
                            section='Processing',
                            user=current_user,
+                           domain=json.dumps(openings_parry),
                            asteroids=json.dumps(asteroid_parry_json))
 
 @bp.route('/language')
 def language():
-    return render_template('language.html',
+    return render_template('realm.html',
                            section='Language',
                            user=current_user,
+                           domain=json.dumps(openings_lalita),
                            asteroids=json.dumps(asteroid_lalita_json))
 
 @bp.route('/natural')
 def natural():
-    return render_template('natural.html',
+    return render_template('realm.html',
                            section='Natural Core',
                            user=current_user,
+                           domain=json.dumps(openings_nick),
                            asteroids=json.dumps(asteroid_nick_json))
 
 

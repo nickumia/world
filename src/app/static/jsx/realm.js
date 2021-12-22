@@ -30,8 +30,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
 
-export default function Processing({asteroids}) {
+export default function Realm({domain, asteroids}) {
 
+	var domain_specifics = JSON.parse(domain);
 	var asteroid_list = JSON.parse(asteroids);
 	const pics = {
 		'Basic Text': '/static/img/writing.png',
@@ -46,40 +47,79 @@ export default function Processing({asteroids}) {
 		'Real-world Objects': '/static/img/flash.png',
 		'Reference Clues': '/static/img/arrows.png',
 		'Object Definitions / Relations': '/static/img/heartbeat.png',
+
+		'Aspects of Language': '/static/img/language_2.png',
+		'Languages vs. Dialects': '/static/img/dialects.jpg',
+		'Language Structure': '/static/img/db.png',
+		'Language Use': '/static/img/road.png',
+		'Language Expansion': '/static/img/growth.png',
+		'Generality': '/static/img/general.png',
+		'Specialization': '/static/img/special.png',
+		'Known / Unknown Side Effects': '/static/img/unknown.png',
+
+		'Expanding Knowledge': '/static/img/spark.gif',
+		'Energy Flow': '/static/img/energy.gif',
+		'The Four Element Model': '/static/img/four_elements.jpg',
+		'The Self': '/static/img/self.png',
+		'The Group': '/static/img/group.png',
+		'The System': '/static/img/system.png',
+		'Potential Energy': '/static/img/battery.png',
+		'Kinetic Energy': '/static/img/wifi.png',
+		'Physical-Metaphysical Interaction': '/static/img/key.png',
+		'Water': '/static/img/water.png',
+		'Earth': '/static/img/earth.png',
+		'Fire': '/static/img/fire.png',
+		'Air': '/static/img/air.png',
+	};
+
+	const styles = {
+    paperContainer: {
+  		backgroundImage: `url(${"/static/img/balloons.jpg"})`,
+			backgroundRepeat: "no-repeat",
+			backgroundSize: "cover",
+			opacity: 0.7,
+    },
+		transparent: {
+			backgroundColor: `rgba(18,18,18,0.6)`,
+		},
+		transparentFull: {
+			backgroundColor: `rgba(255,255,255,0)`,
+		}
 	};
 
 	return (
+			<div style={styles.paperContainer}>
     <React.Fragment>
 			<Paper
 				style={{padding: 16, backgroundColor: amber[50]}}>
-				<Typography variant="h5">
-					Hello, I am <strong>Parry</strong>, the Keeper of the knowledge of the Mode of Processing.
+				<Typography variant="h5"
+					dangerouslySetInnerHTML={{__html: domain_specifics[1]}}>
 				</Typography>
 				<Typography variant="subtitle2">
-					As a Keeper, I merely maintain and distribute the knowledge that was entrusted to me.  You will meet my friends later on who preserve the deeper Modes of NLP.  Together we seek to help foster a world of understanding to bring about peace and harmony between humans and machines.  Prepare yourself mentally and physicially and when you are ready..
+					{domain_specifics[2]}
 				</Typography>
 			</Paper>
 
 
 
 			{asteroid_list.map(asteroid => (
-				<Accordion key={asteroid.key}>
+				<Accordion key={asteroid.key} style={styles.transparent}>
 					<AccordionSummary
 					  expandIcon={<ExpandMoreIcon />}
 					  aria-controls="panel1a-content"
 					  id="panel1a-header"
 					>
-						<Typography variant="h6">
+						<Typography variant="h6" color="secondary">
 							{asteroid.type}
 					  </Typography>
 					</AccordionSummary>
 					<AccordionDetails>
 						<Box sx={{ minWidth: 275 }}>
-				      <Card variant="outlined" sx={{ display: 'flex' }}>
-								<Box sx={{ display: 'flex', flexDirection: 'column' }}>
+				      <Card variant="outlined" sx={{ display: 'flex' }} style={styles.transparentFull}>
+								<Box sx={{ display: 'flex', flexDirection: 'column' }} justifyContent="center">
 									<CardContent>
-									  <Typography sx={{ fontSize: 14 }} color="textSecondary" gutterBottom>
-									    {asteroid.phrase}
+									  <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+									    <b>{asteroid.phrase}</b>
 									  </Typography>
 									  <Typography variant="body2"
 											dangerouslySetInnerHTML={{__html: asteroid.description}}>
@@ -88,7 +128,7 @@ export default function Processing({asteroids}) {
 								</Box>
       					<CardMedia
       					  component="img"
-      					  sx={{ width: 151 }}
+      					  sx={{ width: 1/3 }}
       					  image={pics[asteroid.type]}
       					  alt={asteroid.type}
       					/>
@@ -100,8 +140,9 @@ export default function Processing({asteroids}) {
 									<Avatar alt={subject.type} src={pics[subject.type]} />
 								</ListItemAvatar>
 						  	<ListItemText
-						    	primary={subject.type}
-									secondary={subject.description}
+									disableTypography
+						    	primary=<Typography color="secondary">{subject.type}</Typography>
+									secondary=<Typography color="secondary">{subject.description}</Typography>
 						      />
 						  </ListItemButton>
 						))}
@@ -113,10 +154,10 @@ export default function Processing({asteroids}) {
 			<Paper
 				style={{padding: 16, backgroundColor: amber[50]}}>
 				<Typography variant="h5" align="center">
-					Removing the Limitations
+					{domain_specifics[3]}
 				</Typography>
 				<Typography variant="subtitle1" align="center">
-					As humans, we have FIVE main senses that we use to experience the world: (1) Sight, (2) Hearing, (3) Touch, (4) Taste and (5) Smell.  Currently, machines are only capable of "understanding" the first two.  However, our understanding of the world is dependent on combinations of these senses, not necessarily any one of them in isolation.  When we form ideas and communicate with each other, these ideas are influenced by our understanding of the other aspects that aren't always explicitly stated.
+					{domain_specifics[4]}
 				</Typography>
 				<Box textAlign='center'>
         	<Button size="small" href="/nlp/posts/101">Explore Senses</Button>
@@ -124,5 +165,6 @@ export default function Processing({asteroids}) {
 			</Paper>
 
     </React.Fragment>
+			</div>
 	);
 }

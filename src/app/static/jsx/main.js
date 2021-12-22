@@ -11,9 +11,7 @@ import SearchResults from './search_results';
 import AllPosts from './posts';
 import PostDisplay from './post';
 import NLPSelector from './main_selection';
-import Processing from './processing';
-import Language from './language';
-import Natural from './natural';
+import Realm from './realm';
 import Kumia from './kumia';
 
 const theme = createTheme({
@@ -25,7 +23,7 @@ const theme = createTheme({
     secondary: {
       main: indigo[50],
       contrastText: "#FFF"
-    }
+    },
   },
 	typography: {
     fontFamily: [
@@ -35,6 +33,9 @@ const theme = createTheme({
 			'Noto Sans',
 			'Hind Guntur'
     ].join(','),
+		body2: {
+			color: "white"
+		},
   },
 });
 
@@ -43,9 +44,7 @@ var searchPage = document.querySelector("#searchresults");
 var appSelectorPage = document.querySelector("#appselector");
 var explorePage = document.querySelector("#explore");
 var singlePostPage = document.querySelector("#singlepost");
-var processingPage = document.querySelector("#processing");
-var languagePage = document.querySelector("#language");
-var naturalPage = document.querySelector("#natural");
+var realmPage = document.querySelector("#realm");
 var kumiaPage = document.querySelector("#kumia");
 
 ReactDOM.render(
@@ -100,34 +99,15 @@ if (singlePostPage){
 	singlePostPage);
 }
 
-if (processingPage){
+if (realmPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
-		<Processing
+		<Realm
+			domain={domain}
 			asteroids={asteroids}
 		/>
 	</MuiThemeProvider>,
-	processingPage);
-}
-
-if (languagePage){
-	ReactDOM.render(
-	<MuiThemeProvider theme={theme}>
-		<Language
-			asteroids={asteroids}
-		/>
-	</MuiThemeProvider>,
-	languagePage);
-}
-
-if (naturalPage){
-	ReactDOM.render(
-	<MuiThemeProvider theme={theme}>
-		<Natural
-			asteroids={asteroids}
-		/>
-	</MuiThemeProvider>,
-	naturalPage);
+	realmPage);
 }
 
 if (kumiaPage){

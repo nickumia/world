@@ -2,7 +2,7 @@
 
 {% block content %}
 
-	<div id="processing"></div>
+	<div id="realm"></div>
 
 	{% if user.last_seen %}
   <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
@@ -12,6 +12,7 @@
 
 {% block scripts %}
 		<script type="text/javascript">
+			domain={{ domain|tojson }}
 			asteroids={{ asteroids|tojson }}
 		</script>
 
