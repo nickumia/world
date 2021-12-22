@@ -28,7 +28,7 @@ export default function SearchResults({results, prev_url, next_url}) {
   			    <NavigateBeforeIcon />
     		  </IconButton>
 				</Tooltip>
-    	<Typography variant="p">
+    	<Typography variant="body1">
       	Navigate
       </Typography>
 				<Tooltip title="Next Results Page">

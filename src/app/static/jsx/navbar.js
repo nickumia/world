@@ -45,6 +45,12 @@ export default function ButtonAppBar({title, menu, login}) {
 		"Natural": <CircleOutlinedIcon />,
 		"Kumia": <BlurOnIcon />,
 	};
+	const [search_api, setSearch] = React.useState('');
+
+	React.useEffect(() => {
+	  searchAPI(search_value);
+	}, [search_api, setSearch]);
+
 
   return (
     <React.Fragment>
@@ -66,10 +72,17 @@ export default function ButtonAppBar({title, menu, login}) {
 				<SearchBar
 			    onChange={(newValue) => search_value=newValue }
 					// TODO: Fix Search Functionality
-			    onRequestSearch={() => doSomethingWith(search_value)}
+			    onRequestSearch={() => searchAPI(search_value)}
 			  />
         </Toolbar>
       </AppBar>
     </React.Fragment>
   );
+
+	
+	function searchAPI(query_text){
+		if( query_text ){
+			window.location.href = '/search?q='+query_text;
+		}
+	}
 }
