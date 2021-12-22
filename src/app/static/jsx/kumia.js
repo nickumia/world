@@ -88,7 +88,7 @@ export default function Kumia({pubs, work, edu}) {
 			return (
 			<>
 				{pubs_list.map(pubs_list => (
-				<Accordion>
+				<Accordion key={pubs_list.key}>
 					<AccordionSummary
 					  expandIcon={<ExpandMoreIcon />}
 					  aria-controls="panel1a-content" id="panel1a-header"
@@ -119,7 +119,7 @@ export default function Kumia({pubs, work, edu}) {
 			return (
 			<>
 				{edus_list.map(exp_list => (
-					<Card sx={{ mb: 2 }}>
+					<Card sx={{ mb: 2 }} key={exp_list.key}>
 						<CardHeader
 							title={exp_list.school}
 							subheader={exp_list.date} />
@@ -136,7 +136,7 @@ export default function Kumia({pubs, work, edu}) {
 			return (
 			<>
 				{exps_list.map(exp_list => (
-					<Card sx={{ mb: 2 }}>
+					<Card sx={{ mb: 2 }} key={exp_list.key}>
 						<CardHeader
 							title={exp_list.company}
 							subheader={exp_list.date} />

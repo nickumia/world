@@ -49,6 +49,10 @@ def create_app(config_class=Config):
     def kumia():
         return redirect(url_for("kumia.resume"), code=302)
 
+    @app.route('/favicon.ico')
+    def favicon():
+        return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 
     if not app.debug:
         if not os.path.exists('logs'):

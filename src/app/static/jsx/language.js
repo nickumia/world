@@ -59,8 +59,7 @@ export default function Language({asteroids}) {
 
 
 			{asteroid_list.map(asteroid => (
-				<>
-				<Accordion>
+				<Accordion key={asteroid.key}>
 					<AccordionSummary
 					  expandIcon={<ExpandMoreIcon />}
 					  aria-controls="panel1a-content"
@@ -104,7 +103,6 @@ export default function Language({asteroids}) {
 						))}
 					</AccordionDetails>
 				</Accordion>
-				</>
 			))}
 
 
