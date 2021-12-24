@@ -25,4 +25,12 @@ test: # Test Flask Backend
 		-v `pwd`:/app \
 		-e SECRET_KEY=something-important \
 		nlp-web:debug bash -c "coverage run -m pytest --disable-pytest-warnings && \
+			coverage report --omit=\"src/tests/*\""
+
+test-cov: # Test Flask Backend
+	docker run --rm \
+		-v `pwd`/src/tests:/app/src/tests \
+		-v `pwd`:/app \
+		-e SECRET_KEY=something-important \
+		nlp-web:debug bash -c "coverage run -m pytest --disable-pytest-warnings && \
 			coverage html --omit=\"src/tests/*\" -d coverage"

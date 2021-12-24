@@ -14,9 +14,10 @@ jobs:
       - name: build
         run: make install-front build-front build-test
       - name: test
-        run: make test
+        run: make test-cov
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage/
           path_to_write_report: ./coverage/index.html
