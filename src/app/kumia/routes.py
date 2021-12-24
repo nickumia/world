@@ -1,9 +1,7 @@
 import json
-import time
-from datetime import datetime
 
-from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_user, logout_user, login_required
+from flask import render_template
+from flask_login import current_user
 
 from app.kumia.resume import publications, experiences, educations
 from . import bp
