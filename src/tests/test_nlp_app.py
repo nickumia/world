@@ -6,6 +6,9 @@ import pytest
 from app import create_app
 
 
+SERVER_NAME = 'localhost:8000'
+
+
 @pytest.fixture
 def app():
     app = create_app()

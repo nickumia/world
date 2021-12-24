@@ -64,7 +64,7 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-@bp.route('/')
+@bp.route('/', methods=['GET'])
 @bp.route('/index')
 def index():
     return render_template('index.html',
