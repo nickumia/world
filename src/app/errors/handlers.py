@@ -17,4 +17,4 @@ def internal_error(error):
 @bp.route('/coming_soon')
 def test1():
     return render_template('errors/coming_soon.html',
-                           section='Coming Soon!'), 200
+                           section='Coming Soon!'), 218

@@ -95,3 +95,74 @@ def test_auth_login_loads(client, app):
 #     print(rv0.data)
 #     assert 'Invalid username or password' in str(rv.data)
 # TODO: Add logout test when DB is available
+
+
+def test_error_404(client, app):
+    """ Test 404 for nonexistant routes. """
+
+    with app.app_context():
+        rv = client.get("/asdf")
+
+    assert ('Information Not Found') in str(rv.data)
+    assert rv.status_code == 404
+
+
+def test_error_500(client, app):
+    """ Test 500 for server errors. """
+
+    # If DB is unavailable, this route works
+    # TODO: update when db integrated into tests
+    with app.app_context():
+        rv = client.get(url_for("nlp.blogs"))
+
+    assert ('The administrator has been notified. Sorry for the '
+            'inconvenience!') in str(rv.data)
+    assert rv.status_code == 500
+
+
+def test_coming_soon(client, app):
+    """ Test coming soon page. """
+
+    with app.app_context():
+        rv = client.get("/coming_soon")
+
+    assert ('&#128679; My Apologies.  This section is still under '
+            'construction. &#128679;') in str(rv.data)
+    assert rv.status_code == 218
+
+
+def test_nlp_realm(client, app):
+    """ Test processing/language/natural routes. """
+
+    with app.app_context():
+        rv = client.get(url_for("nlp.processing"))
+
+    assert 'id="realm"' in str(rv.data)
+    assert rv.status_code == 200
+
+    with app.app_context():
+        rv = client.get(url_for("nlp.language"))
+
+    assert 'id="realm"' in str(rv.data)
+    assert rv.status_code == 200
+
+    with app.app_context():
+        rv = client.get(url_for("nlp.natural"))
+
+    assert 'id="realm"' in str(rv.data)
+    assert rv.status_code == 200
+
+
+def test_nlp_posts(client, app):
+    """ Test coming soon page. """
+
+    # TODO: uncomment when DB is integrated
+    # with app.app_context():
+    #     rv = client.get(url_for("nlp.blogs"))
+
+    # assert 'id="explore"' in str(rv.data)
+    # assert rv.status_code == 218
+    pass
+
+# TODO: add test for url_for('nlp.post')
+# TODO: add test for url_for('search')
