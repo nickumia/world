@@ -20,7 +20,9 @@ build-front: # Build jsx into js
 	cd src && ./node_modules/gulp/bin/gulp.js
 
 test: # Test Flask Backend
-	docker run --rm -v `pwd`/src/tests:/app/src/tests \
+	docker run --rm \
+		-v `pwd`/src/tests:/app/src/tests \
+		-v `pwd`:/app \
 		-e SECRET_KEY=something-important \
 		nlp-web:debug bash -c "coverage run -m pytest --disable-pytest-warnings && \
 			coverage html --omit=\"src/tests/*\" -d coverage"
