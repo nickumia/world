@@ -22,4 +22,4 @@ build-front: # Build jsx into js
 test: # Test Flask Backend
 	docker run --rm -v `pwd`/src/tests:/app/src/tests \
 		-e SECRET_KEY=something-important \
-		nlp-web:debug pytest --disable-pytest-warnings
+		nlp-web:debug bash -c "coverage run -m pytest --disable-pytest-warnings && coverage report"
