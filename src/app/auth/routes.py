@@ -54,7 +54,8 @@ def reset_password_request():
                                             'nickumia@kamutiv.com if you '
                                             'think there\'s an error.'))
 
-    return render_template('auth/reset_password_request.html', section='Reset Password',
+    return render_template('auth/reset_password_request.html',
+                           section='Reset Password',
                            title='Reset Password', form=form)
 
 
