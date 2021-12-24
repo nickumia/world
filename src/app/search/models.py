@@ -1,10 +1,13 @@
 from app.search.search import add_to_index, remove_from_index, query_index
 from app import db
 
+
 class SearchableMixin(object):
+
     @classmethod
     def search(cls, expression, page, per_page):
-        idmatches, total = query_index(cls.__tablename__, expression, page, per_page)
+        idmatches, total = query_index(cls.__tablename__,
+                                       expression, page, per_page)
         if total == 0:
             return cls.query.filter_by(id=0), 0
         when = []
@@ -38,6 +41,7 @@ class SearchableMixin(object):
     def reindex(cls):
         for obj in cls.query:
             add_to_index(cls.__tablename__, obj)
+
 
 db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)

@@ -1,13 +1,13 @@
-from datetime import datetime
-
-from flask import g, render_template, redirect, url_for, request, current_app
-from flask_login import current_user
-
 from app.search.forms import SearchForm
 from app import db
+
+from datetime import datetime
+from flask import g, render_template, redirect, url_for, request, current_app  # NOQA F401
+from flask_login import current_user
 import json
 
 from . import bp
+
 
 @bp.before_app_request
 def before_request():
@@ -15,6 +15,7 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
     db.session.commit()
     g.search_form = SearchForm()
+
 
 @bp.route('/')
 def search():
@@ -25,26 +26,33 @@ def search():
     page = request.args.get('page', 1, type=int)
     # TODO: Search Model when there is information in model to search
     pscore, total = Posts.search(g.search_form.q.data, page,
-                               current_app.config['RESULTS_PER_PAGE'])
-    # next_url = url_for('search.search', q=g.search_form.q.data, page=page + 1) \
+                                 current_app.config['RESULTS_PER_PAGE'])
+    # next_url = url_for('search.search',
+    #                   q=g.search_form.q.data,
+    #                   page=page + 1) \
     #     if total > page * current_app.config['RESULTS_PER_PAGE'] else None
-    # prev_url = url_for('search.search', q=g.search_form.q.data, page=page - 1) \
+    # prev_url = url_for('search.search',
+    #                   q=g.search_form.q.data,
+    #                   page=page - 1) \
     #     if page > 1 else None
     results = []
 
     if total > 0:
         posts = pscore[0]
         score = pscore[1]
-        for i,post in enumerate(posts):
+        for i, post in enumerate(posts):
             result = post.to_dict()
-            org = {'key': i, 
-                   'name': result['title'], 
-                   'link': '/nlp/posts/%d' % result['id'],
-                   'summary': 'Query context score (non-normalized): %.2f' % score[i]
-                  }
+            org = {
+                'key': i,
+                'name': result['title'],
+                'link': '/nlp/posts/%d' % result['id'],
+                'summary': 'Query context score (non-normalized):'
+                           ' %.2f' % score[i]
+            }
             results.append(org)
 
     next_url = ""
     prev_url = ""
-    return render_template('search.html', section='Search Results', title='Search', posts=json.dumps(results),
+    return render_template('search.html', section='Search Results',
+                           title='Search', posts=json.dumps(results),
                            next_url=next_url, prev_url=prev_url)
