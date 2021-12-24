@@ -1,3 +1,4 @@
+-e src/
 Flask
 flask-wtf
 flask-login
