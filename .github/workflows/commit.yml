@@ -19,5 +19,5 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./coverage/
-          path_to_write_report: ./coverage/index.html
+          directory: ./
+          files: ./coverage.xml

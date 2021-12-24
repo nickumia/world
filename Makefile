@@ -33,4 +33,4 @@ test-cov: # Test Flask Backend
 		-v `pwd`:/app \
 		-e SECRET_KEY=something-important \
 		nlp-web:debug bash -c "coverage run -m pytest --disable-pytest-warnings && \
-			coverage html --omit=\"src/tests/*\" -d coverage"
+			coverage xml --omit=\"src/tests/*\""
