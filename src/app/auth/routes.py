@@ -40,12 +40,21 @@ def reset_password_request():
             # send_password_reset_email(user)
             token = user.get_reset_password_token()
             return render_template('auth/reset_password_request_fake.html',
-                                   user=user, title='Reset Password',
-                                   token=token)
-        # flash('Check your email for the instructions to reset your password')
-        # return redirect(url_for('auth.login'))
-    return render_template('auth/reset_password_request.html',
-                           section='Reset Password',
+                                   user=user,
+                                   title='Reset Password', token=token,
+                                   message=('Check your email for the '
+                                            'instructions to reset your '
+                                            'password'))
+        else:
+            return render_template('auth/reset_password_request.html',
+                                   section='Reset Password',
+                                   title='Reset Password', form=form,
+                                   message=('Unable to find account.  Please '
+                                            'register or contact '
+                                            'nickumia@kamutiv.com if you '
+                                            'think there\'s an error.'))
+
+    return render_template('auth/reset_password_request.html', section='Reset Password',
                            title='Reset Password', form=form)
 
 
