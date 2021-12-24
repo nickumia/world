@@ -1,0 +1,17 @@
+---
+name: commit
+
+on:
+  push:
+
+jobs:
+  test:
+    name: Pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build
+        run: make install-front build-front build-test
+      - name: test
+        run: make test
