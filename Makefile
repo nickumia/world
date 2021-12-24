@@ -16,7 +16,7 @@ install-front: # Install dependencies for front-end
 
 build-front: # Build jsx into js
 	# cd src && ./node_modules/browserify/bin/cmd.js app/static/jsx/*.js --standalone nlp > app/static/js/bundle.js
-	touch src/app/static/js
+	mkdir -p src/app/static/js
 	cd src && ./node_modules/gulp/bin/gulp.js
 
 test: # Test Flask Backend
