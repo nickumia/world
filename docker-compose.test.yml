@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  cypress:
+    image: cypress/included:9.1.0
+    entrypoint: []
+    command: /bin/bash -c 'npm install dayjs wait-on --save && npx wait-on http://nlp:8000 && cypress run'
+    working_dir: /e2e
+    environment:
+      - CYPRESS_baseUrl=http://nlp:8000/
+    depends_on:
+      - nlp
+      - db
+      - elastic
+    volumes:
+      - ./e2e:/e2e
+
+  nlp:
+    environment:
+      - SERVER_NAME=nlp:8000
+      - SECRET_KEY=cypress-test
+
+volumes:
+  data01:
+    driver: local

@@ -1,0 +1,5 @@
+{
+  "baseUrl": "http://nlp:8000",
+  "chromeWebSecurity": false,
+  "videoCompression": false
+}

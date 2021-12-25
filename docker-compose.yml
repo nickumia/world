@@ -1,17 +1,22 @@
 version: '3.9'
 
 services:
-  app:
+  nlp:
     image: nlp-web:latest
     build:
       context: .
     env_file:
       - .env
     environment:
+      - SERVER_NAME=localhost:8000
       - FLASK_APP=main.py
       - FLASK_RUN_PORT=8000
       - FLASK_ENV=development
       - DATABASE_URL=postgresql://postgres:pass@db/postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASS=pass
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=postgres
       - ELASTICSEARCH_URL=http://elastic:9200
     volumes:
       - ./src:/app
@@ -20,7 +25,7 @@ services:
       - elastic
 
     ports:
-      - "8000:8000"
+      - "0.0.0.0:8000:8000"
 
   db:
     image: postgres:12

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dayjs": "^1.10.7",
+    "wait-on": "^6.0.0"
+  }
+}
