@@ -4,7 +4,7 @@ services:
   cypress:
     image: cypress/included:9.1.0
     entrypoint: []
-    command: /bin/bash -c 'npm install dayjs --save && cypress run'
+    command: /bin/bash -c 'npm install dayjs wait-on --save && npx wait-on http://nlp:8000 && cypress run'
     working_dir: /e2e
     environment:
       - CYPRESS_baseUrl=http://nlp:8000/
