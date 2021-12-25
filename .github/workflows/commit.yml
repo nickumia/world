@@ -33,4 +33,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./
           files: ./coverage.xml
-          target: 0%
