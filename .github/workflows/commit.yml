@@ -51,3 +51,18 @@ jobs:
           wait-on: 'http://nlp:8000'
           start: npx cypress run
           working-directory: e2e
+  
+  cypress:
+    name: Cypress Tests - make
+    runs-on: ubuntu-latest
+    env:
+      CYPRESS_baseUrl: http://nlp:8000/
+      SECRET_KEY: github-ci
+      SERVER_NAME: nlp:8000
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build
+        run: make build install-front build-front up-ga
+      - name: run cypress
+        run: make test-front
