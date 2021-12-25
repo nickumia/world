@@ -12,7 +12,7 @@ up: # Start Main App
 	docker-compose -f docker-compose.yml up -d
 
 up-ga: # Start main app for cypress tests
-	docker-compose -f docker-compose.actions.yml up nlp
+	docker-compose -f docker-compose.actions.yml up db
 
 install-front: # Install dependencies for front-end
 	cd src && npm install
