@@ -48,5 +48,6 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           build: npm install dayjs wait-on cypress
-          start: npx wait-on http://nlp:8000 && npx cypress run
+          start: npx cypress run
           working-directory: e2e
+          wait-on: http://nlp:8000
