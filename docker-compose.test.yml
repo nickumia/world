@@ -18,6 +18,7 @@ services:
   nlp:
     environment:
       - SERVER_NAME=nlp:8000
+      - SECRET_KEY=cypress-test
 
 volumes:
   data01:

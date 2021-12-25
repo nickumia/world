@@ -9,6 +9,7 @@ services:
       - .env
     environment:
       - SERVER_NAME=nlp:8000
+      - SECRET_KEY=github-ci
       - FLASK_APP=main.py
       - FLASK_RUN_PORT=8000
       - FLASK_ENV=development
