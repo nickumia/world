@@ -30,7 +30,7 @@ export default function NLPSelector({selection}) {
         	    loading="lazy"
 	          />
 							<ImageListItemBar
-		          	title={selection.liason}
+		          	title={selection.liason + "'s " + selection.domain}
 		            subtitle={selection.speech}
 		            actionIcon={
 									<form action={selection.link}>

@@ -14,6 +14,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 export default function SearchResults({results, prev_url, next_url}) {
 
+	var matches = JSON.parse(results);
 	return (
     <React.Fragment>
       <Toolbar color="secondary" style={{
@@ -27,7 +28,7 @@ export default function SearchResults({results, prev_url, next_url}) {
   			    <NavigateBeforeIcon />
     		  </IconButton>
 				</Tooltip>
-    	<Typography variant="p">
+    	<Typography variant="body1">
       	Navigate
       </Typography>
 				<Tooltip title="Next Results Page">
@@ -38,7 +39,7 @@ export default function SearchResults({results, prev_url, next_url}) {
 			</Toolbar>
 
 			<List dense={false}>
-				{results.map(results => (
+				{matches.length > 0 && matches.map(results => (
         	<ListItemButton component='a' href={results.link} key={results.key}>
           	<ListItemText
             	primary={results.name}
@@ -47,6 +48,7 @@ export default function SearchResults({results, prev_url, next_url}) {
           </ListItemButton>
 				))}
       </List>
+			{matches.length == 0 && <Typography variant="h4">No Search Results</Typography>} 
 
     </React.Fragment>
 	);

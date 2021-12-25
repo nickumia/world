@@ -2,26 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+import brown from "@material-ui/core/colors/brown";
+import indigo from "@material-ui/core/colors/indigo";
+import lightGreen from "@material-ui/core/colors/lightGreen";
 
 import Navbar from './navbar';
 import SearchResults from './search_results';
 import AllPosts from './posts';
 import PostDisplay from './post';
 import NLPSelector from './main_selection';
-import Processing from './processing';
-import Language from './language';
-import Natural from './natural';
+import Realm from './realm';
+import Kumia from './kumia';
 
 const theme = createTheme({
 	palette: {
     primary: {
-      main: "#78909C",
+      main: indigo[300],
       contrastText: "#FFF"
     },
     secondary: {
-      main: "#CFD8DC",
+      main: indigo[50],
       contrastText: "#FFF"
-    }
+    },
   },
 	typography: {
     fontFamily: [
@@ -31,6 +33,9 @@ const theme = createTheme({
 			'Noto Sans',
 			'Hind Guntur'
     ].join(','),
+		body2: {
+			color: "white"
+		},
   },
 });
 
@@ -39,9 +44,8 @@ var searchPage = document.querySelector("#searchresults");
 var appSelectorPage = document.querySelector("#appselector");
 var explorePage = document.querySelector("#explore");
 var singlePostPage = document.querySelector("#singlepost");
-var processingPage = document.querySelector("#processing");
-var languagePage = document.querySelector("#language");
-var naturalPage = document.querySelector("#natural");
+var realmPage = document.querySelector("#realm");
+var kumiaPage = document.querySelector("#kumia");
 
 ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
@@ -95,32 +99,25 @@ if (singlePostPage){
 	singlePostPage);
 }
 
-if (processingPage){
+if (realmPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
-		<Processing
+		<Realm
+			domain={domain}
 			asteroids={asteroids}
 		/>
 	</MuiThemeProvider>,
-	processingPage);
+	realmPage);
 }
 
-if (languagePage){
+if (kumiaPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
-		<Language
-			asteroids={asteroids}
+		<Kumia
+			pubs={pubs}
+			work={work}
+			edu={edu}
 		/>
 	</MuiThemeProvider>,
-	languagePage);
-}
-
-if (naturalPage){
-	ReactDOM.render(
-	<MuiThemeProvider theme={theme}>
-		<Natural
-			asteroids={asteroids}
-		/>
-	</MuiThemeProvider>,
-	naturalPage);
+	kumiaPage);
 }

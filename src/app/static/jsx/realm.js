@@ -2,7 +2,7 @@ import React from "react";
 
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
-import yellow from "@material-ui/core/colors/yellow";
+import amber from "@material-ui/core/colors/amber";
 import Button from '@mui/material/Button';
 
 import List from '@mui/material/List';
@@ -30,10 +30,24 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
 
-export default function Language({asteroids}) {
+export default function Realm({domain, asteroids}) {
 
+	var domain_specifics = JSON.parse(domain);
 	var asteroid_list = JSON.parse(asteroids);
 	const pics = {
+		'Basic Text': '/static/img/writing.png',
+		'Speech Audio': '/static/img/audio.png',
+		'Seeing the World': '/static/img/camera.png',
+		'Syntax/Grammar': '/static/img/tag.png',
+		'Semantics': '/static/img/leaf.png',
+		'Pragmatics': '/static/img/bike.png',
+		'Phonetics': '/static/img/bell.png',
+		'Phonology': '/static/img/comment.png',
+		'Morphology': '/static/img/comments.png',
+		'Real-world Objects': '/static/img/flash.png',
+		'Reference Clues': '/static/img/arrows.png',
+		'Object Definitions / Relations': '/static/img/heartbeat.png',
+
 		'Aspects of Language': '/static/img/language_2.png',
 		'Languages vs. Dialects': '/static/img/dialects.jpg',
 		'Language Structure': '/static/img/db.png',
@@ -42,41 +56,74 @@ export default function Language({asteroids}) {
 		'Generality': '/static/img/general.png',
 		'Specialization': '/static/img/special.png',
 		'Known / Unknown Side Effects': '/static/img/unknown.png',
+
+		'Expanding Knowledge': '/static/img/spark.gif',
+		'Energy Flow': '/static/img/energy.gif',
+		'The Four Element Model': '/static/img/four_elements.jpg',
+		'The Self': '/static/img/self.png',
+		'The Group': '/static/img/group.png',
+		'The System': '/static/img/system.png',
+		'Potential Energy': '/static/img/battery.png',
+		'Kinetic Energy': '/static/img/wifi.png',
+		'Physical-Metaphysical Interaction': '/static/img/key.png',
+		'Water': '/static/img/water.png',
+		'Earth': '/static/img/earth.png',
+		'Fire': '/static/img/fire.png',
+		'Air': '/static/img/air.png',
+
+		'processing': '/static/img/balloons.jpg',
+		'language': '/static/img/mountains.jpg',
+		'natural': '/static/img/sunset.jpg'
+	};
+
+	const styles = {
+    paperContainer: {
+  		backgroundImage: `url(${pics[domain_specifics[0]]})`,
+			backgroundRepeat: "no-repeat",
+			backgroundSize: "cover",
+			opacity: 0.7,
+    },
+		transparent: {
+			backgroundColor: `rgba(18,18,18,0.6)`,
+		},
+		transparentFull: {
+			backgroundColor: `rgba(255,255,255,0)`,
+		}
 	};
 
 	return (
+			<div style={styles.paperContainer}>
     <React.Fragment>
 			<Paper
-				style={{padding: 16, backgroundColor: yellow[50]}}>
-				<Typography variant="h5">
-					Hi, my name is <strong>Lalita</strong>, the Keeper of the knowledge of the Mode of Language.
+				style={{padding: 16, backgroundColor: amber[50]}}>
+				<Typography variant="h5"
+					dangerouslySetInnerHTML={{__html: domain_specifics[1]}}>
 				</Typography>
 				<Typography variant="subtitle2">
-					Apart from protecting and preserving knowledge, my friends and I are tasked with building a strong community.  A community of people with diverse backgrounds whose beliefs and values aren't necessarily the same, but are clear and benevolent.  Because of the delicate nature of our work, it is important that you remain truthful to yourself on this journey and follow your heart..
+					{domain_specifics[2]}
 				</Typography>
 			</Paper>
 
 
 
 			{asteroid_list.map(asteroid => (
-				<>
-				<Accordion>
+				<Accordion key={asteroid.key} style={styles.transparent}>
 					<AccordionSummary
 					  expandIcon={<ExpandMoreIcon />}
 					  aria-controls="panel1a-content"
 					  id="panel1a-header"
 					>
-						<Typography variant="h6">
+						<Typography variant="h6" color="secondary">
 							{asteroid.type}
 					  </Typography>
 					</AccordionSummary>
 					<AccordionDetails>
 						<Box sx={{ minWidth: 275 }}>
-				      <Card variant="outlined" sx={{ display: 'flex' }}>
-								<Box sx={{ display: 'flex', flexDirection: 'column' }}>
+				      <Card variant="outlined" sx={{ display: 'flex' }} style={styles.transparentFull}>
+								<Box sx={{ display: 'flex', flexDirection: 'column' }} justifyContent="center">
 									<CardContent>
-									  <Typography sx={{ fontSize: 14 }} color="textSecondary" gutterBottom>
-									    {asteroid.phrase}
+									  <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+									    <b>{asteroid.phrase}</b>
 									  </Typography>
 									  <Typography variant="body2"
 											dangerouslySetInnerHTML={{__html: asteroid.description}}>
@@ -85,7 +132,7 @@ export default function Language({asteroids}) {
 								</Box>
       					<CardMedia
       					  component="img"
-      					  sx={{ width: 151 }}
+      					  sx={{ width: 1/3 }}
       					  image={pics[asteroid.type]}
       					  alt={asteroid.type}
       					/>
@@ -97,30 +144,31 @@ export default function Language({asteroids}) {
 									<Avatar alt={subject.type} src={pics[subject.type]} />
 								</ListItemAvatar>
 						  	<ListItemText
-						    	primary={subject.type}
-									secondary={subject.description}
+									disableTypography
+						    	primary=<Typography color="secondary">{subject.type}</Typography>
+									secondary=<Typography color="secondary">{subject.description}</Typography>
 						      />
 						  </ListItemButton>
 						))}
 					</AccordionDetails>
 				</Accordion>
-				</>
 			))}
 
 
 			<Paper
-				style={{padding: 16, backgroundColor: yellow[50]}}>
+				style={{padding: 16, backgroundColor: amber[50]}}>
 				<Typography variant="h5" align="center">
-					Bridging Language Barriers
+					{domain_specifics[3]}
 				</Typography>
 				<Typography variant="subtitle1" align="center">
-					In order to truly understand any given language, it might be helpful to create a "universal language template."  This template will define everything that is known to humans about our language and it is abstract enough to allow new properties and features of a language as necessary.  Not every language will have the same specifications, but just knowing that fact will help understand problems that arise.  It is essential to capture the real-world implications and reasonings as to why something is a certain way.
+					{domain_specifics[4]}
 				</Typography>
 				<Box textAlign='center'>
-        	<Button size="small" href="/nlp/posts/104">Explore Languages</Button>
+        	<Button size="small" href="/nlp/posts/101">Explore Senses</Button>
 				</Box>
 			</Paper>
 
     </React.Fragment>
+			</div>
 	);
 }

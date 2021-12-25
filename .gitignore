@@ -132,3 +132,5 @@ dmypy.json
 node_modules
 bower_components
 src/app/static/js/
+*.swp
+logs/

@@ -1,0 +1,35 @@
+---
+name: commit
+
+on:
+  push:
+
+jobs:
+  pylint:
+    name: Python lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: lint
+        run: make build-test
+      - name: test
+        run: make lint
+
+  test:
+    name: Pytest
+    runs-on: ubuntu-latest
+    needs: pylint
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build
+        run: make install-front build-front build-test
+      - name: test
+        run: make test-cov
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./
+          files: ./coverage.xml

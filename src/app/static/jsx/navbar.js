@@ -14,6 +14,7 @@ import BookIcon from '@mui/icons-material/Book';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import ChangeHistoryIcon from '@mui/icons-material/ChangeHistory';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import BlurOnIcon from '@mui/icons-material/BlurOn';
 
 import SearchBar from "material-ui-search-bar";
 
@@ -41,15 +42,23 @@ export default function ButtonAppBar({title, menu, login}) {
 		"Posts": <BookIcon />,
 		"Processing": <ChangeHistoryIcon />,
 		"Language": <CheckBoxOutlineBlankIcon />,
-		"Natural": <CircleOutlinedIcon />
+		"Natural": <CircleOutlinedIcon />,
+		"Kumia": <BlurOnIcon />,
 	};
+	const [search_api, setSearch] = React.useState('');
+
+	React.useEffect(() => {
+	  searchAPI(search_value);
+	}, [search_api, setSearch]);
+
 
   return (
     <React.Fragment>
       <AppBar>	
         <Toolbar color="primary">
           <Typography variant="h6" className={classes.title}>
-            {title}
+						{title}
+            {title == 'NLP | Error' && '	\u{1F627}'}
           </Typography>
 					{menu.map(menu => (
 						<form action={menu.link} key={menu.key}>
@@ -63,10 +72,17 @@ export default function ButtonAppBar({title, menu, login}) {
 				<SearchBar
 			    onChange={(newValue) => search_value=newValue }
 					// TODO: Fix Search Functionality
-			    onRequestSearch={() => doSomethingWith(search_value)}
+			    onRequestSearch={() => searchAPI(search_value)}
 			  />
         </Toolbar>
       </AppBar>
     </React.Fragment>
   );
+
+	
+	function searchAPI(query_text){
+		if( query_text ){
+			window.location.href = '/search?q='+query_text;
+		}
+	}
 }
