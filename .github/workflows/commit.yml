@@ -44,7 +44,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: build
-        run: make build install-front build-front up
+        run: make build install-front build-front up-ga
       - name: run cypress
         uses: cypress-io/github-action@v2
         with:
