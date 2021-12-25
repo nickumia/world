@@ -4,10 +4,10 @@ services:
   cypress:
     image: cypress/included:9.1.0
     entrypoint: []
-    command: /bin/bash -c 'npm install dayjs wait-on --save && npx wait-on http://nlp:8000 && cypress run'
+    command: /bin/bash -c 'npm install dayjs wait-on --save && npx wait-on http://localhost:8000 && cypress run'
     working_dir: /e2e
     environment:
-      - CYPRESS_baseUrl=http://nlp:8000/
+      - CYPRESS_baseUrl=http://localhost:8000/
     depends_on:
       - nlp
       - db
@@ -17,7 +17,7 @@ services:
 
   nlp:
     environment:
-      - SERVER_NAME=nlp:8000
+      - SERVER_NAME=localhost:8000
 
 volumes:
   data01:
