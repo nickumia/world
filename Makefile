@@ -6,7 +6,7 @@ build-test: # Build Main App
 	docker build -t nlp-web:debug . --build-arg debug=1
 
 clean: # Tear down Main App
-	docker-compose -f docker-compose.yml down -v --remove-orphan
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml down -v --remove-orphan
 
 up: # Start Main App
 	docker-compose -f docker-compose.yml up -d
@@ -39,4 +39,4 @@ test-cov: # Test Flask Backend
 		-v `pwd`:/app \
 		-e SECRET_KEY=something-important \
 		nlp-web:debug bash -c "coverage run -m pytest --disable-pytest-warnings && \
-			coverage xml --omit=\"src/tests/*\""
+		coverage xml --omit=\"src/tests/*\""
