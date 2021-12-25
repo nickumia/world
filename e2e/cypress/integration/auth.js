@@ -1,3 +1,7 @@
+const dayjs = require("dayjs");
+const current_time = dayjs().format("hhmmssa");
+const user = 'test-user'+current_time;
+const email = 'user'+current_time+"@email.com";
 
 describe('Login Functionality', () => {
 	before(() => {
@@ -8,8 +12,8 @@ describe('Login Functionality', () => {
 	
 	it('Can register new user', () => {
 		cy.visit('/auth/register');
-		cy.get('input[name="username"]').type('test-user');
-		cy.get('input[name="email"]').type('user@email.com');
+		cy.get('input[name="username"]').type(user);
+		cy.get('input[name="email"]').type(email);
 		cy.get('input[name="password"]').type('test');
 		cy.get('input[name="password2"]').type('test');
 		cy.get('input[name="submit"]').click();
@@ -19,22 +23,22 @@ describe('Login Functionality', () => {
 
 	it('Login as new user', () => {
 		cy.visit('/auth/login');
-		cy.get('input[name="username"]').type('test-user');
+		cy.get('input[name="username"]').type(user);
 		cy.get('input[name="password"]').type('test');
 		cy.get('input[name="submit"]').click();
 
-		cy.contains('Hi, test-user!');
+		cy.contains('Hi, '+user+'!');
 	});
 
 	it('Reset new user password', () => {
 		cy.visit('/auth/reset_password_request');
 
 		// Fill out reset password request form
-		cy.get('input[name="email"]').type('user@email.com');
+		cy.get('input[name="email"]').type(email);
 		cy.get('input[name="submit"]').click();
 
 		// Get reset link
-		cy.contains('My Dear test-user,');
+		cy.contains('My Dear '+user+',');
 		cy.get('a').contains('click here').click();
 
 		// Fill out reset password form
@@ -44,11 +48,11 @@ describe('Login Functionality', () => {
 		cy.contains('Your password has been reset.');
 		
 		// Login with new password
-		cy.get('input[name="username"]').type('test-user');
+		cy.get('input[name="username"]').type(user);
 		cy.get('input[name="password"]').type('test2');
 		cy.get('input[name="submit"]').click();
 
-		cy.contains('Hi, test-user!');
+		cy.contains('Hi, '+user+'!');
 	});
 
 });
