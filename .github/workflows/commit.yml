@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: lint
+      - name: build
         run: make build-test
-      - name: test
+      - name: lint
         run: make lint
 
   test:
@@ -33,3 +33,14 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./
           files: ./coverage.xml
+
+  cypress:
+    name: Cypress Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build
+        run: make install-front build-front
+      - name: run cypress
+        run: make test-front
