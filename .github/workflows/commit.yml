@@ -50,3 +50,4 @@ jobs:
         with:
           build: npm install dayjs wait-on
           start: npx wait-on http://nlp:8000 && cypress run
+          working-directory: e2e
