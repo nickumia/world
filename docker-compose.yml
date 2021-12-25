@@ -1,13 +1,14 @@
 version: '3.9'
 
 services:
-  app:
+  nlp:
     image: nlp-web:latest
     build:
       context: .
     env_file:
       - .env
     environment:
+      - SERVER_NAME=localhost:8000
       - FLASK_APP=main.py
       - FLASK_RUN_PORT=8000
       - FLASK_ENV=development
@@ -50,16 +51,6 @@ services:
       - data01:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
-
-  cypress:
-    image: cypress/included:9.1.0
-    command: /bin/bash -c 'npx cypress install && npx cypress run'
-    working_dir: /e2e
-    depends_on:
-      - app
-      - db
-    volumes:
-      - ./e2e:/e2e
 
 volumes:
   data01:

@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  cypress:
+    image: cypress/included:7.3.0
+    # command: /bin/bash -c 'npx cypress install && npx wait-on http://app:8000 && npx cypress run'
+    working_dir: /e2e
+    environment:
+      - CYPRESS_baseUrl=http://nlp:8000/
+    depends_on:
+      - nlp
+      - db
+      - elastic
+    volumes:
+      - ./e2e:/e2e
+
+  nlp:
+    environment:
+      - SERVER_NAME=nlp:8000
+
+volumes:
+  data01:
+    driver: local
