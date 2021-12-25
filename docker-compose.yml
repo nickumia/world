@@ -21,7 +21,7 @@ services:
       - elastic
 
     ports:
-      - "8000:8000"
+      - "0.0.0.0:8000:8000"
 
   db:
     image: postgres:12
