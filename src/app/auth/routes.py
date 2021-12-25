@@ -1,8 +1,8 @@
 import time
-from datetime import datetime
+from urllib.parse import urlparse
 
 from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_user, logout_user
 
 from app import db
 from app.auth.forms import LoginForm, RegistrationForm, ResetPasswordForm, \
@@ -18,13 +18,16 @@ def register():
         return redirect(url_for('nlp.index'))
     form = RegistrationForm(time.time())
     if form.validate_on_submit():
-        user = Users(id=time.time(), username=form.username.data, email=form.email.data)
+        user = Users(id=time.time(), username=form.username.data,
+                     email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('auth.login'))
-    return render_template('auth/register.html', section='Register', title='Register', form=form)
+    return render_template('auth/register.html', section='Register',
+                           title='Register', form=form)
+
 
 @bp.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
@@ -36,17 +39,25 @@ def reset_password_request():
         if user:
             # send_password_reset_email(user)
             token = user.get_reset_password_token()
-            return render_template('auth/reset_password_request_fake.html', user=user,
+            return render_template('auth/reset_password_request_fake.html',
+                                   user=user,
                                    title='Reset Password', token=token,
-                                   message='Check your email for the instructions to reset your password')
+                                   message=('Check your email for the '
+                                            'instructions to reset your '
+                                            'password'))
         else:
-            return render_template('auth/reset_password_request.html', section='Reset Password',
+            return render_template('auth/reset_password_request.html',
+                                   section='Reset Password',
                                    title='Reset Password', form=form,
-                                   message='Unable to find account.  Please register or contact '
-                                           'nickumia@kamutiv.com if you think there\'s an error.')
+                                   message=('Unable to find account.  Please '
+                                            'register or contact '
+                                            'nickumia@kamutiv.com if you '
+                                            'think there\'s an error.'))
 
-    return render_template('auth/reset_password_request.html', section='Reset Password',
+    return render_template('auth/reset_password_request.html',
+                           section='Reset Password',
                            title='Reset Password', form=form)
+
 
 @bp.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
@@ -61,7 +72,9 @@ def reset_password(token):
         db.session.commit()
         flash('Your password has been reset.')
         return redirect(url_for('auth.login'))
-    return render_template('auth/reset_password.html', section='Reset Password', form=form)
+    return render_template('auth/reset_password.html',
+                           section='Reset Password', form=form)
+
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -75,10 +88,12 @@ def login():
             return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
+        if not next_page or urlparse(next_page).netloc != '':
             next_page = url_for('nlp.index')
         return redirect(next_page)
-    return render_template('auth/login.html', section='Login', title='Sign In', form=form)
+    return render_template('auth/login.html', section='Login',
+                           title='Sign In', form=form)
+
 
 @bp.route('/logout')
 def logout():

@@ -3,6 +3,7 @@ from app import db
 from app.search.models import SearchableMixin
 from sqlalchemy.dialects.mysql import MEDIUMTEXT
 
+
 class Posts(SearchableMixin, db.Model):
     __searchable__ = ['title', 'body']
 

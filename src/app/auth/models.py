@@ -36,9 +36,10 @@ class Users(UserMixin, db.Model):
         try:
             id = jwt.decode(token, current_app.config['SECRET_KEY'],
                             algorithms=['HS256'])['reset_password']
-        except:
+        except BaseException:  # TODO: Figure out what this exception is
             return
         return Users.query.get(id)
+
 
 @login.user_loader
 def load_user(id):

@@ -1,9 +1,9 @@
-import os
-import tempfile
-
 import pytest
 
 from app import create_app
+
+
+SERVER_NAME = 'localhost:8000'
 
 
 @pytest.fixture

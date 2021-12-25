@@ -19,6 +19,9 @@ build-front: # Build jsx into js
 	mkdir -p src/app/static/js
 	cd src && ./node_modules/gulp/bin/gulp.js
 
+lint: # Lint python code
+	docker run --rm -v "$(shell pwd)":/app nlp-web:debug bash -c "cd /app/src/ && flake8 . --count --show-source --statistics"
+
 test: # Test Flask Backend
 	docker run --rm \
 		-v `pwd`/src/tests:/app/src/tests \

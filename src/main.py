@@ -1,10 +1,9 @@
-from app import create_app # , cli
+from app import create_app  # , cli
 from app.nlp.posts.all import initialize
 import wait
 
 import os
 import sys
-import time
 
 
 app = create_app()
@@ -19,5 +18,5 @@ print("ES up", file=sys.stderr)
 initialize(app)
 # cli.register(app)
 
-#if __name__ == "__main__":
+# if __name__ == "__main__":
 #    app.run(host="0.0.0.0", port=8000, debug=True)

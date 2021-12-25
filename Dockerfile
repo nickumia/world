@@ -6,7 +6,7 @@ ENV FLASK_APP=0.0.0.0
 WORKDIR /app
 
 # Dependencies
-COPY requirements.txt dev-requirements.txt /app/
+COPY requirements.txt dev-requirements.txt codecov.yml /app/
 COPY src/app/ /app/src/app/
 COPY src/*.py src/setup.cfg /app/src/
 COPY src/tests/* /app/src/tests/
