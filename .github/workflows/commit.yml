@@ -37,10 +37,6 @@ jobs:
   cypress:
     name: Cypress Tests
     runs-on: ubuntu-latest
-    env:
-      CYPRESS_baseUrl: http://nlp:8000/
-      SECRET_KEY: github-ci
-      SERVER_NAME: nlp:8000
     steps:
       - name: checkout
         uses: actions/checkout@v2
