@@ -20,7 +20,7 @@ build-front: # Build jsx into js
 	cd src && ./node_modules/gulp/bin/gulp.js
 
 test-front: # Test frontend UI
-	docker-compose -f docker-compose.yml -f docker-compose.test.yml up cypress
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml up --abort-on-container-exit cypress
 
 lint: # Lint python code
 	docker run --rm -v "$(shell pwd)":/app nlp-web:debug bash -c "cd /app/src/ && flake8 . --count --show-source --statistics"
