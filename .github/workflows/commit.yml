@@ -52,7 +52,7 @@ jobs:
           start: npx cypress run
           working-directory: e2e
   
-  cypress:
+  cypress2:
     name: Cypress Tests - make
     runs-on: ubuntu-latest
     env:
