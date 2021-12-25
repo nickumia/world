@@ -37,10 +37,17 @@ jobs:
   cypress:
     name: Cypress Tests
     runs-on: ubuntu-latest
+    env:
+      SERVER_NAME: nlp:8000
+      CYPRESS_baseUrl: http://nlp:8000/
     steps:
       - name: checkout
         uses: actions/checkout@v2
       - name: build
-        run: make build install-front build-front
+        run: make build install-front build-front up
       - name: run cypress
-        run: make test-front
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm install dayjs wait-on
+          start: npx wait-on http://nlp:8000 && cypress run
+      - 
