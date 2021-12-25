@@ -144,7 +144,7 @@ export default function Kumia({pubs, work, edu}) {
 							<Typography variant="body2" color="textSecondary">
 								{exp_list.role}
 							</Typography>
-							<Typography variant="body2"
+							<Typography variant="body1"
 								dangerouslySetInnerHTML={{__html: exp_list.details}}>
 							</Typography>
 						</CardContent>
