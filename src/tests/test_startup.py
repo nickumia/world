@@ -2,6 +2,7 @@
 
 from flask import url_for
 import os
+import time
 
 from app import wait
 from app.nlp.posts.all import initialize
@@ -17,6 +18,8 @@ def init(app, client):
     initialize(app)
     with app.app_context():
         rv = client.get(url_for('nlp.elastic_index'))
+        # Add delay since indexing takes a some time
+        time.sleep(5)
     assert ("Posts was indexed") in str(rv.data)
 
 
