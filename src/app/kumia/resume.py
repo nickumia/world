@@ -5,7 +5,7 @@ publications = [
      "key": 9,
      "image": "/static/img/datagov.svg",
      "place": "GSA TTS Data.gov",
-     "date": "June 2021 - Present",
+     "date": "Finished Sep 2021 | Deployed Dec 2021",
      "link": "https://catalog.data.gov/api/3/action/status_show",
      "support": """<a href="https://github.com/GSA/datagov-deploy/issues/3401#issuecomment-1001082123">PY3 Conversion of catalog.data.gov and inventory.data.gov</a>
      """,  # NOQA
