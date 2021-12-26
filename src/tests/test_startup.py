@@ -20,7 +20,6 @@ def init(app, client):
     assert ("Posts was indexed") in str(rv.data)
 
 
-
 def test_blogs(client, app):
     """ Test explore all blogs page. """
     init(app, client)
