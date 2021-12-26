@@ -78,5 +78,5 @@ def test_search_results(client, app):
     assert ('{\\\\"key\\\\": 1, \\\\"name\\\\": \\\\"Parry\\\\u0027s '
             'Processing\\\\", \\\\"link\\\\": \\\\"/nlp/posts/997\\\\"'
             ', \\\\"summary\\\\": \\\\"Query context score (non-normalized)'
-            ': 0.50\\\\"}') in response
+            ': 0.') in response
     assert rv.status_code == 200
