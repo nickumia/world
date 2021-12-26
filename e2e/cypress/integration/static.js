@@ -23,6 +23,7 @@ describe('Static NLP Pages', () => {
 		cy.contains('Hi, I\'m Nicholas Kumia');
 
 		cy.get('[data-testid="NewspaperIcon"]').click();
+		cy.contains('Data.gov Python 3 Migration');
 		cy.contains('CURRE Robotics Demonstration');
 		cy.contains('Integrating Robotics Education in Pre-College Engineering Program');
 
@@ -31,8 +32,9 @@ describe('Static NLP Pages', () => {
 		cy.contains('Vaughn College');
 
 		cy.get('[data-testid="SchoolIcon"]').click();
-		cy.contains('Hofstra University');
-		cy.contains('Vaughn College of Aeronautics and Technology');
+		cy.contains('AWS Certified Cloud Practitioner');
+		cy.contains('M.S. Computer Science, Networking Concentration');
+		cy.contains('B.S. Mechatronics Engineering, summa cum laude');
 	});
 
 	it('Loads Parry\'s Page', () => {
