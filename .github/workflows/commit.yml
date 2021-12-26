@@ -41,6 +41,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: build
-        run: make build install-front build-front up
+        run: TEST_ENV=CI make build install-front build-front up
       - name: run cypress
-        run: make test-front
+        run: TEST_ENV=CI make test-front
