@@ -1,6 +1,6 @@
 from app import create_app  # , cli
 from app.nlp.posts.all import initialize
-import wait
+from app import wait
 
 import os
 import sys

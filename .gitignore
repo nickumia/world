@@ -136,3 +136,4 @@ src/app/static/js/
 logs/
 e2e/cypress/support
 e2e/cypress/videos
+e2e/cypress/screenshots

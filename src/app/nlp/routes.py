@@ -103,11 +103,11 @@ def blogs():
 
 @bp.route('/posts/<post_id>')
 def post(post_id):
-    if post_id == '106':
+    if post_id == '997':
         return redirect(url_for('nlp.processing'), code=302)
-    if '107' in post_id:
+    if '998' in post_id:
         return redirect(url_for('nlp.language'), code=302)
-    if post_id == '108':
+    if post_id == '999':
         return redirect(url_for('nlp.natural'), code=302)
     post_dict = Posts.query.get(post_id).to_dict()
     return render_template('post.html', section='Posts',

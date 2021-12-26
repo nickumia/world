@@ -16,6 +16,7 @@ services:
       - ./e2e:/e2e
 
   nlp:
+    image: nlp-web:debug
     environment:
       - SERVER_NAME=nlp:8000
       - SECRET_KEY=cypress-test

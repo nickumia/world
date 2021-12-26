@@ -33,12 +33,8 @@ lint: # Lint python code
 	docker run --rm -v "$(shell pwd)":/app nlp-web:debug bash -c "cd /app/src/ && flake8 . --count --show-source --statistics"
 
 test: # Test Flask Backend
-	docker run --rm \
-		-v `pwd`/src/tests:/app/src/tests \
-		-v `pwd`:/app \
-		-e SECRET_KEY=something-important \
-		-e SERVER_NAME=localhost:8000 \
-		nlp-web:debug bash -c "coverage run -m pytest --disable-pytest-warnings && \
+	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm nlp \
+		bash -c "coverage run -m pytest --disable-pytest-warnings && \
 			coverage report --omit=\"src/tests/*\""
 
 test-cov: # Test Flask Backend

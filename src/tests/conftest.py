@@ -3,7 +3,7 @@ import pytest
 from app import create_app
 
 
-SERVER_NAME = 'localhost:8000'
+SERVER_NAME = 'nlp:8000'
 
 
 @pytest.fixture
