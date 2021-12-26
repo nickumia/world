@@ -125,7 +125,8 @@ export default function Kumia({pubs, work, edu}) {
 							subheader={exp_list.date} />
 						<CardContent>
 							<Typography variant="body2" color="textSecondary">
-								{exp_list.degree}
+								{exp_list.link && <a href={exp_list.link}>{exp_list.degree}</a>}
+								{exp_list.link === "" && exp_list.degree}
 							</Typography>
 						</CardContent>
 					</Card>
