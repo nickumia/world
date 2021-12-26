@@ -26,6 +26,9 @@ def create_app(config_class=Config):
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
         if app.config['ELASTICSEARCH_URL'] else None
 
+    from app.encryption import bp as encryption_filter
+    app.register_blueprint(encryption_filter)
+
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
 
