@@ -7,7 +7,7 @@ from app import wait
 from app.nlp.posts.all import initialize
 
 
-def init(app):
+def init(app, client):
     """ Test startup, wait for services, initial data entry. """
     wait.postgres(os.getenv('POSTGRES_DB'),
                   os.getenv('POSTGRES_USER'),
@@ -15,11 +15,15 @@ def init(app):
                   os.getenv('POSTGRES_PASS'))
     wait.elastics(app.elasticsearch)
     initialize(app)
+    with app.app_context():
+        rv = client.get(url_for('nlp.elastic_index'))
+    assert ("Posts was indexed") in str(rv.data)
+
 
 
 def test_blogs(client, app):
     """ Test explore all blogs page. """
-    init(app)
+    init(app, client)
 
     with app.app_context():
         rv = client.get(url_for('nlp.blogs'))
