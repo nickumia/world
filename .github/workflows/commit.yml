@@ -43,4 +43,4 @@ jobs:
       - name: build
         run: TEST_ENV=CI make build install-front build-front up
       - name: run cypress
-        run: make test-front
+        run: TEST_ENV=CI make test-front
