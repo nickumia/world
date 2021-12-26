@@ -8,10 +8,10 @@ export default function PostDisplay({post}) {
 
 	return (
     <React.Fragment>
-    	<Typography variant="h6">
+    	<Typography variant="h3">
       	{post_dict.title}
       </Typography>
-    	<Typography variant="subtitle1">
+    	<Typography variant="h6">
       	Posted: {post_dict.posted_time}
       </Typography>
 

@@ -14,6 +14,11 @@ h1, h2, h3, h4, h5, h5, h6 {
 	font-family: "Hind Guntur";
 }
 
+div p, h1, h2, h3, h4, h5, h6 {
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
 .normal {
 	text-transform: none;
 }
