@@ -33,9 +33,9 @@ import IconButton from '@mui/material/IconButton';
 
 export default function Kumia({pubs, work, edu}) {
 
-	var pubs_list = JSON.parse(pubs);
-	var exps_list = JSON.parse(work);
-	var edus_list = JSON.parse(edu);
+	var pubs_list = JSON.parse(JSON.parse(pubs));
+	var exps_list = JSON.parse(JSON.parse(work));
+	var edus_list = JSON.parse(JSON.parse(edu));
 	const [value, setValue] = React.useState('pubs');
 	const [content, setContent] = React.useState('');
 

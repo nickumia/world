@@ -14,6 +14,9 @@ import NLPSelector from './main_selection';
 import Realm from './realm';
 import Kumia from './kumia';
 
+import decrypt from "./encryption";
+
+
 const theme = createTheme({
 	palette: {
     primary: {
@@ -114,9 +117,9 @@ if (kumiaPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<Kumia
-			pubs={pubs}
-			work={work}
-			edu={edu}
+			pubs={decrypt(JSON.parse(pubs).data)}
+			work={decrypt(JSON.parse(work).data)}
+			edu={decrypt(JSON.parse(edu).data)}
 		/>
 	</MuiThemeProvider>,
 	kumiaPage);
