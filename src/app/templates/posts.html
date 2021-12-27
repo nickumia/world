@@ -6,7 +6,7 @@
 
 {% block scripts %}
 		<script type="text/javascript">
-			posts={{ posts|tojson|encryptdata }}
+			posts={{ posts|tojson|encryptdata|tojson }}
 		</script>
 
 {% endblock scripts %}
