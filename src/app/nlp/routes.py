@@ -94,6 +94,7 @@ def blogs():
 
     for post in posts:
         transform = post.to_dict()
+        transform['body'] = ""
         transform['link'] = url_for('nlp.post', post_id=transform['id'])
         transform['avatar'] = avatar_dict[transform['author']]
         posts_json.append(transform)
