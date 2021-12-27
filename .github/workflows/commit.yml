@@ -24,9 +24,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: build
-        run: make install-front build-front build-test
+        run: TEST_ENV=CI make install-front build-front build-test
       - name: test
-        run: make test-cov
+        run: TEST_ENV=CI make test-cov
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v1
         with:

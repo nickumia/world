@@ -12,25 +12,46 @@ https://nlp.kamutiv.com/.
 
 ## Installation / Dev Environment
 
-All of the source code can be found within the `/src` folder.  The main NLP app is wrapped in a Flask app to
-be served in a sandboxed, reproducible way with `docker`.  The front-end is developed with React to improve
-server load and UI/UX.
+All of the source code can be found within the `/src` folder.  
+  - The main NLP app is wrapped in a Flask app to be served in a sandboxed, reproducible way with `docker`.
+  - The front-end is developed with React to improve server load and UI/UX.  
+  - Pytests are written to test backend functionality (`/src/tests`).
+  - Cypress tests are written to test front-end functionality (`/e2e`).
 
 To build the front-end, run:
 
-  ```make build-front```
+  ```
+  make install-front  # Install npm dependencies
+  make build-front    # Builds and bundles front-end into /src/app/static/js/bundle.js
+  ```
 
-To build the test image, run:
+There are two images that can be built from the Dockerfile, `nlp-web:latest` and `nlp-web:debug`.  The `latest`
+tag denotes the more production-ready version of the web app.  The `debug` tag represents the dev test image
+equipped with pytest dependencies.  To build either image, run:
 
-  ```make build```
+  ```
+  make build        # Build 'latest'
+  make build-test   # Build 'debug'
+  ```
   
-To start the application, run:
+To start the application at http://localhost:8000, run:
 
-  ```make up```
+  ```
+  make up
+  ```
   
 To stop and remove the application, run:
 
-  ```make clean```
+  ```
+  make clean
+  ```
+  
+To run tests, run:
+
+  ```
+  make test         # Run pytests
+  make test-front   # Run cypress tests
+  ```
   
   
   

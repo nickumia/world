@@ -113,7 +113,7 @@ def test_error_500(client, app):
     # If DB is unavailable, this route works
     # TODO: update when db integrated into tests
     with app.app_context():
-        rv = client.get(url_for("nlp.blogs"))
+        rv = client.get("/test_500/500")
 
     assert ('The administrator has been notified. Sorry for the '
             'inconvenience!') in str(rv.data)
