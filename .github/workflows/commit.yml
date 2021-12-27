@@ -32,7 +32,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./
-          files: ./coverage.xml
+          files: ./src/coverage.xml
 
   cypress:
     name: Cypress Tests

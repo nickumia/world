@@ -38,6 +38,6 @@ test: # Test Flask Backend
 			coverage report --omit=\"src/tests/*\""
 
 test-cov: # Test Flask Backend
-	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm nlp \
+	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm -v $(shell pwd):/app nlp \
 		bash -c "coverage run -m pytest --disable-pytest-warnings && \
 		coverage xml --omit=\"src/tests/*\""
