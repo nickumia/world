@@ -7,10 +7,10 @@ import sys
 
 
 app = create_app()
-wait.postgres(os.getenv('POSTGRES_DB'),
-              os.getenv('POSTGRES_USER'),
-              os.getenv('POSTGRES_HOST'),
-              os.getenv('POSTGRES_PASS'))
+wait.postgres(os.getenv('POSTGRES_DB', 'postgres'),
+              os.getenv('POSTGRES_USER', 'postgres'),
+              os.getenv('POSTGRES_HOST', 'db'),
+              os.getenv('POSTGRES_PASS', 'pass'))
 print("DB up", file=sys.stderr)
 wait.elastics(app.elasticsearch)
 print("ES up", file=sys.stderr)

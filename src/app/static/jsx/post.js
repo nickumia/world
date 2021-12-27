@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 
 export default function PostDisplay({post}) {
 
-	var post_dict = JSON.parse(post)
+	var post_dict = JSON.parse(JSON.parse(post));
 
 	return (
     <React.Fragment>

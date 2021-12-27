@@ -14,6 +14,9 @@ import NLPSelector from './main_selection';
 import Realm from './realm';
 import Kumia from './kumia';
 
+import decrypt from "./encryption";
+
+
 const theme = createTheme({
 	palette: {
     primary: {
@@ -61,7 +64,7 @@ if (appSelectorPage) {
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<NLPSelector
-			selection={selection}
+			selection={decrypt(JSON.parse(selection).data)}
 		/>
 	</MuiThemeProvider>,
 	appSelectorPage);
@@ -71,7 +74,7 @@ if (searchPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<SearchResults 
-			results={results}
+			results={decrypt(JSON.parse(results).data)}
 			next_url={next_url}
 			prev_url={prev_url}
 		/>
@@ -83,7 +86,7 @@ if (explorePage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<AllPosts
-			posts={posts}
+			posts={decrypt(JSON.parse(posts).data)}
 		/>
 	</MuiThemeProvider>,
 	explorePage);
@@ -93,7 +96,7 @@ if (singlePostPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<PostDisplay
-			post={post}
+			post={decrypt(JSON.parse(post).data)}
 		/>
 	</MuiThemeProvider>,
 	singlePostPage);
@@ -103,8 +106,8 @@ if (realmPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<Realm
-			domain={domain}
-			asteroids={asteroids}
+			domain={decrypt(JSON.parse(domain).data)}
+			asteroids={decrypt(JSON.parse(asteroids).data)}
 		/>
 	</MuiThemeProvider>,
 	realmPage);
@@ -114,9 +117,9 @@ if (kumiaPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<Kumia
-			pubs={pubs}
-			work={work}
-			edu={edu}
+			pubs={decrypt(JSON.parse(pubs).data)}
+			work={decrypt(JSON.parse(work).data)}
+			edu={decrypt(JSON.parse(edu).data)}
 		/>
 	</MuiThemeProvider>,
 	kumiaPage);

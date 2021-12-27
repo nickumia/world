@@ -32,8 +32,8 @@ import CardContent from '@mui/material/CardContent';
 
 export default function Realm({domain, asteroids}) {
 
-	var domain_specifics = JSON.parse(domain);
-	var asteroid_list = JSON.parse(asteroids);
+	var domain_specifics = JSON.parse(JSON.parse(domain));
+	var asteroid_list = JSON.parse(JSON.parse(asteroids));
 	const pics = {
 		'Basic Text': '/static/img/writing.png',
 		'Speech Audio': '/static/img/audio.png',

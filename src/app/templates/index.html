@@ -17,7 +17,7 @@
 
 {% block scripts %}
 		<script type="text/javascript">
-			selection={{ selection|tojson }}
+			selection={{ selection|tojson|encryptdata|tojson }}
 		</script>
 
 {% endblock scripts %}

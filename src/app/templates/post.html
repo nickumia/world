@@ -10,7 +10,7 @@
 
 {% block scripts %}
 		<script type="text/javascript">
-			post={{ post|tojson }}
+			post={{ post|tojson|encryptdata|tojson }}
 		</script>
 
 {% endblock scripts %}
