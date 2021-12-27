@@ -14,7 +14,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 export default function SearchResults({results, prev_url, next_url}) {
 
-	var matches = JSON.parse(results);
+	var matches = JSON.parse(JSON.parse(results));
 	return (
     <React.Fragment>
       <Toolbar color="secondary" style={{

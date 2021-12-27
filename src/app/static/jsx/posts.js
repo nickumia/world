@@ -9,7 +9,7 @@ import Avatar from '@mui/material/Avatar';
 
 export default function AllPosts({posts}) {
 
-	var post_list = JSON.parse(posts);
+	var post_list = JSON.parse(JSON.parse(posts));
 	const pics = {
 		'processing': '/static/img/processing.png',
 		'language': '/static/img/language.png',

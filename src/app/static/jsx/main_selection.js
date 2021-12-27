@@ -11,7 +11,7 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 
 export default function NLPSelector({selection}) {
 
-	var selection = JSON.parse(selection)
+	var selection = JSON.parse(JSON.parse(selection));
 	const domain = {
 		'Processing': '/static/img/balloons.jpg',
 		'Language': '/static/img/mountains.jpg',
