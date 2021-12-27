@@ -1,4 +1,3 @@
-from cryptography.fernet import Fernet
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -7,7 +6,8 @@ class Config(object):
     SERVER_NAME = os.getenv('SERVER_NAME', 'localhost:8000')
     SECRET_KEY = os.getenv('SECRET_KEY', 'have-fun')
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL',
-        'postgresql://postgres:pass@db/postgres')
+                                        'postgresql://postgres:pass@db/'
+                                        'postgres')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL',
                                        'http://localhost:9200')
