@@ -12,9 +12,9 @@
 
 {% block scripts %}
 		<script type="text/javascript">
-			pubs={{ pubs|tojson }}
-			work={{ work|tojson }}
-			edu={{ edu|tojson }}
+			pubs={{ pubs|tojson|encryptdata }}
+			work={{ work|tojson|encryptdata }}
+			edu={{ edu|tojson|encryptdata }}
 		</script>
 
 {% endblock scripts %}

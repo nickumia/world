@@ -6,7 +6,7 @@
 
 {% block scripts %}
 		<script type="text/javascript">
-			results={{ posts|tojson }}
+			results={{ posts|tojson|encryptdata }}
 			next_url="{{ next_url or 'test' }}";
 			prev_url="{{ prev_url or 'test' }}";
 		</script>
