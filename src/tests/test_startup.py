@@ -12,10 +12,10 @@ from app.encryption import decryptdata
 
 def init(app, client):
     """ Test startup, wait for services, initial data entry. """
-    wait.postgres(os.getenv('POSTGRES_DB'),
-                  os.getenv('POSTGRES_USER'),
-                  os.getenv('POSTGRES_HOST'),
-                  os.getenv('POSTGRES_PASS'))
+    wait.postgres(os.getenv('POSTGRES_DB', 'postgres'),
+                  os.getenv('POSTGRES_USER', 'postgres'),
+                  os.getenv('POSTGRES_HOST', 'db'),
+                  os.getenv('POSTGRES_PASS', 'pass'))
     wait.elastics(app.elasticsearch)
     initialize(app)
     with app.app_context():
