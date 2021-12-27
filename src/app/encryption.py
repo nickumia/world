@@ -11,11 +11,17 @@ bp = Blueprint('encryption', __name__)
 @bp.app_template_filter()
 def encryptdata(context, value):
     a = Fernet(current_app.config['ENCRYPTION_KEY'])
-    return json.dumps({'data': base64.b64encode(a.encrypt(value.encode('utf8'))).decode('ascii')})
+    return json.dumps({
+        'data': base64.b64encode(a.encrypt(
+            value.encode('utf8'))).decode('ascii')
+    })
 
 
 @jinja2.contextfilter
 @bp.app_template_filter()
-def decryptdata(context, value):
+def decryptdata(context, value, bypass=False):
     a = Fernet(current_app.config['ENCRYPTION_KEY'])
-    return a.decrypt(value)
+    if bypass:
+        return a.decrypt(value)
+    else:
+        return a.decrypt(base64.b64decode(json.loads(value)['data']))

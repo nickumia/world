@@ -1,11 +1,13 @@
 # Test the initialize() called from main.py
 
+import base64
 from flask import url_for
 import os
 import time
 
 from app import wait
 from app.nlp.posts.all import initialize
+from app.encryption import decryptdata
 
 
 def init(app, client):
@@ -27,29 +29,36 @@ def test_blogs(client, app):
     """ Test explore all blogs page. """
     init(app, client)
 
+    raw = None
     with app.app_context():
         rv = client.get(url_for('nlp.blogs'))
-    response = str(rv.data)
-    assert ("Introduction (2018)") in response
-    assert ("I sense that you sense that ... WE ALL SENSE") in response
-    assert ("Sensing the world, No Senses Required... jk!") in response
+        response = str(rv.data)
+        # Assume the longest string is the encoded data **sweat_smile**
+        encoded = max(response.split('"'), key=len)[:-2]
+        raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
+    assert ("Introduction (2018)") in raw
+    assert ("I sense that you sense that ... WE ALL SENSE") in raw
+    assert ("Sensing the world, No Senses Required... jk!") in raw
     assert ("Be Formless, Shapeless like wa.. no, no, no.. like Senses") \
-        in response
-    assert ("I AM a Language (:") in response
-    assert ("Yeh \\\\u0027consciousness\\\\u0027 kya hai?") in response
+        in raw
+    assert ("I AM a Language (:") in raw
+    assert ("Yeh \\\\u0027consciousness\\\\u0027 kya hai?") in raw
     assert rv.status_code == 200
 
 
 def test_blog_normal(client, app):
     """ Test a normal post page """
 
+    raw = None
     with app.app_context():
         rv = client.get(url_for('nlp.post', post_id=101))
-    response = str(rv.data)
+        response = str(rv.data)
+        encoded = max(response.split('"'), key=len)[:-2]
+        raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
     assert ('\\\\"title\\\\": \\\\"I sense that you sense that ... WE '
-            'ALL SENSE\\\\"') in response
-    assert ('\\\\"id\\\\": 101') in response
-    assert ('\\\\"body\\\\": \\\\"\\\\u003cp\\\\u003eAs humans') in response
+            'ALL SENSE\\\\"') in raw
+    assert ('\\\\"id\\\\": 101') in raw
+    assert ('\\\\"body\\\\": \\\\"\\\\u003cp\\\\u003eAs humans') in raw
     assert rv.status_code == 200
 
 
@@ -77,12 +86,14 @@ def test_blog_redirect(client, app):
 def test_search_results(client, app):
     """ Test that the search API works """
 
+    raw = None
     with app.app_context():
         rv = client.get(url_for('search.search', q="world"))
-    response = str(rv.data)
-    print(response)
+        response = str(rv.data)
+        encoded = max(response.split('"'), key=len)[:-2]
+        raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
     assert ('{\\\\"key\\\\": 1, \\\\"name\\\\": \\\\"Parry\\\\u0027s '
             'Processing\\\\", \\\\"link\\\\": \\\\"/nlp/posts/997\\\\"'
             ', \\\\"summary\\\\": \\\\"Query context score (non-normalized)'
-            ': 0.') in response
+            ': 0.') in raw
     assert rv.status_code == 200
