@@ -186,7 +186,7 @@ educations = [
      "date": "2016 - 2018",
      "degree": "M.S. Computer Science, Networking Concentration",
      "image": "/static/img/hofstra.png",
-     "link": "https://issuu.com/hofstra/docs/may_2018_commencement-correctedbypa/62",
+     "link": "https://issuu.com/hofstra/docs/may_2018_commencement-correctedbypa/62",  # NOQA
      "tooltip": "<img src=\"/static/img/hofstra_grad.jpg\" height=\"300\"/>",
      },
     {"school": "Vaughn College of Aeronautics and Technology",
@@ -194,7 +194,7 @@ educations = [
      "date": "2013 - 2016",
      "degree": "B.S. Mechatronics Engineering, summa cum laude",
      "image": "/static/img/vaughn.png",
-     "link": "https://www.vaughn.edu/news/vaughn-invites-family-friends-honor-students-annual-honors-convocation-ceremony/",
+     "link": "https://www.vaughn.edu/news/vaughn-invites-family-friends-honor-students-annual-honors-convocation-ceremony/",  # NOQA
      "tooltip": "<img src=\"/static/img/vaughn_grad.jpg\" height=\"300\"/>",
      },
 ]
