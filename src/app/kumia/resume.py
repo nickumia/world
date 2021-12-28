@@ -97,7 +97,7 @@ experiences = [
 ▪ Testing Frameworks: Pytest, Jest, Cypress<br/>
 ▪ Issues closed and presented: <a href="https://github.com/GSA/datagov-deploy/issues?q=assignee%3Anickumia-reisys">Github</a>
 """,  # NOQA
-     "link": "https://avtsim.com/",
+     "link": "https://reisystems.com/",
      },
     {"role": "Cybersecurity/Software Engineer",
      "key": 5,
@@ -186,15 +186,15 @@ educations = [
      "date": "2016 - 2018",
      "degree": "M.S. Computer Science, Networking Concentration",
      "image": "/static/img/hofstra.png",
-     "link": "",
-     "badge": "",
+     "link": "https://issuu.com/hofstra/docs/may_2018_commencement-correctedbypa/62",
+     "tooltip": "<img src=\"/static/img/hofstra_grad.jpg\" height=\"300\"/>",
      },
     {"school": "Vaughn College of Aeronautics and Technology",
      "key": 0,
      "date": "2013 - 2016",
      "degree": "B.S. Mechatronics Engineering, summa cum laude",
      "image": "/static/img/vaughn.png",
-     "link": "",
-     "badge": "",
+     "link": "https://www.vaughn.edu/news/vaughn-invites-family-friends-honor-students-annual-honors-convocation-ceremony/",
+     "tooltip": "<img src=\"/static/img/vaughn_grad.jpg\" height=\"300\"/>",
      },
 ]

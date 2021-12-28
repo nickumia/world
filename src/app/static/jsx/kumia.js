@@ -30,6 +30,8 @@ import Collapse from '@mui/material/Collapse';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
+import Tooltip from '@mui/material/Tooltip';
+
 
 export default function Kumia({pubs, work, edu}) {
 
@@ -131,10 +133,19 @@ export default function Kumia({pubs, work, edu}) {
 								title={exp_list.school}
 								subheader={exp_list.date} />
 							<CardContent>
-								<Typography variant="body2" color="textSecondary">
-									{exp_list.link && <a href={exp_list.link}>{exp_list.degree}</a>}
-									{exp_list.link === "" && exp_list.degree}
-								</Typography>
+								<Tooltip
+									title={
+										<React.Fragment>
+										<Typography variant="body1"
+											dangerouslySetInnerHTML={{__html: exp_list.tooltip}}>
+										</Typography>
+										</React.Fragment>
+									} followCursor>
+									<Typography variant="body2" color="textSecondary">
+										{exp_list.link && <a href={exp_list.link}>{exp_list.degree}</a>}
+										{exp_list.link === "" && exp_list.degree}
+									</Typography>
+								</Tooltip>
 							</CardContent>
 						</Box>
 					</Card>
