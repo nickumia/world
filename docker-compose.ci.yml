@@ -20,10 +20,6 @@ services:
 
   db:
     image: postgres:12
-    environment:
-    #  - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=pass
-    #  - POSTGRES_DB=default
     volumes:
       - ./db_config/create_user_table.sql:/docker-entrypoint-initdb.d/cut.sql
       - ./db_config/create_post_table.sql:/docker-entrypoint-initdb.d/cut2.sql

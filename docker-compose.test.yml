@@ -20,6 +20,10 @@ services:
     environment:
       - SERVER_NAME=nlp:8000
       - SECRET_KEY=cypress-test
+      - FLASK_ENV=production
+  db:
+    environment:
+      - POSTGRES_PASSWORD=pass
 
 volumes:
   data01:

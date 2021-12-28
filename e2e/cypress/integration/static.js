@@ -33,6 +33,7 @@ describe('Static NLP Pages', () => {
 
 		cy.get('[data-testid="SchoolIcon"]').click();
 		cy.contains('AWS Certified Cloud Practitioner');
+		cy.get('[src="/static/img/aws-cp.png"]');
 		cy.contains('M.S. Computer Science, Networking Concentration');
 		cy.contains('B.S. Mechatronics Engineering, summa cum laude');
 	});

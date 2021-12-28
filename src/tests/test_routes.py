@@ -1,4 +1,5 @@
 from flask import url_for
+# from flask_login import current_user
 
 from conftest import SERVER_NAME
 
@@ -24,7 +25,7 @@ def test_kumia(client, app):
     """ Test personal home page redirect. """
 
     with app.app_context():
-        rv = client.get(url_for('kumia'))
+        rv = client.get("/kumia")
     assert ('You should be redirected automatically to target URL: <a href="'
             'http://'+SERVER_NAME+'/kumia/">http://'+SERVER_NAME+'/kumia/'
             '</a>.') in str(rv.data)
@@ -35,6 +36,16 @@ def test_kumia(client, app):
     with app.app_context():
         rv = client.get(url_for('kumia.resume'))
     assert 'id="kumia"' in str(rv.data)
+    assert rv.status_code == 200
+
+
+def test_favicon(client, app):
+    """ Test favicon.ico load """
+
+    with app.app_context():
+        rv = client.get("/favicon.ico")
+    assert (b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR') \
+        in rv.data
     assert rv.status_code == 200
 
 
@@ -83,6 +94,14 @@ def test_auth_login_loads(client, app):
 
 
 # TODO: Add successful login test when DB is available
+# def test_login(client, app):
+#     """ Test user login """
+#
+#     with app.app_context():
+#         rv = client.post(url_for('auth.login'), data={'username': 'asdf',
+#                                                  'password': 'asdf'})
+#         assert current_user.username == 'asdf'
+
 # TODO: Add unsuccessful login test when DB is available
 # def test_auth_login_bad(client,app):
 #     """ Test bad login attempt. """
@@ -110,8 +129,6 @@ def test_error_404(client, app):
 def test_error_500(client, app):
     """ Test 500 for server errors. """
 
-    # If DB is unavailable, this route works
-    # TODO: update when db integrated into tests
     with app.app_context():
         rv = client.get("/test_500/500")
 
@@ -151,18 +168,3 @@ def test_nlp_realm(client, app):
 
     assert 'id="realm"' in str(rv.data)
     assert rv.status_code == 200
-
-
-def test_nlp_posts(client, app):
-    """ Test coming soon page. """
-
-    # TODO: uncomment when DB is integrated
-    # with app.app_context():
-    #     rv = client.get(url_for("nlp.blogs"))
-
-    # assert 'id="explore"' in str(rv.data)
-    # assert rv.status_code == 218
-    pass
-
-# TODO: add test for url_for('nlp.post')
-# TODO: add test for url_for('search')

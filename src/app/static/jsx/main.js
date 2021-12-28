@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import brown from "@material-ui/core/colors/brown";
 import indigo from "@material-ui/core/colors/indigo";
+import blue from "@material-ui/core/colors/blue";
 import lightGreen from "@material-ui/core/colors/lightGreen";
 
 import Navbar from './navbar';
@@ -20,11 +21,11 @@ import decrypt from "./encryption";
 const theme = createTheme({
 	palette: {
     primary: {
-      main: indigo[300],
+      main: blue[800],
       contrastText: "#FFF"
     },
     secondary: {
-      main: indigo[50],
+      main: blue[50],
       contrastText: "#FFF"
     },
   },
