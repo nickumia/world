@@ -39,10 +39,10 @@
 			{key: 5, name: 'Language', link: "{{ url_for('nlp.language') }}"},
 			{key: 6, name: 'Natural', link: "{{ url_for('nlp.natural') }}"},
 			{key: 7, name: 'Kumia', link: "{{ url_for('kumia') }}"},
-			{% if current_user.is_anonymous %}
-			{key: 1, name: 'Login', link: "{{ url_for('auth.login') }}"},
-      {% else %}
-			{key: 2, name: 'Logout', link: "{{ url_for('auth.logout') }}"}
+			// {% if current_user.is_anonymous %}
+			// {key: 1, name: 'Login', link: "{{ url_for('auth.login') }}"},
+      // {% else %}
+			// {key: 2, name: 'Logout', link: "{{ url_for('auth.logout') }}"}
       {% endif %}
 		]
 		</script>
