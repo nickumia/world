@@ -158,7 +158,7 @@ export default function Kumia({pubs, work, edu}) {
 				{exps_list.map(exp_list => (
 					<Card sx={{ mb: 2 }} key={exp_list.key}>
 						<CardHeader
-							title={exp_list.company}
+							title={exp_list.link && <a href={exp_list.link}>{exp_list.company}</a>}
 							subheader={exp_list.date} />
 						<CardContent>
 							<Typography variant="body2" color="textSecondary">
