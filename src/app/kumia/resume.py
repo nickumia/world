@@ -88,7 +88,7 @@ publications = [
 experiences = [
     {"role": "DevOps Engineer",
      "key": 6,
-     "date": "June 2021 - Predent",
+     "date": "June 2021 - Present",
      "company": "REI Systems",
      "details": """
 ▪ Support development, maintenance, operations, cybersecurity, new features of Data.gov<br/>
