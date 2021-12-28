@@ -119,16 +119,24 @@ export default function Kumia({pubs, work, edu}) {
 			return (
 			<>
 				{edus_list.map(exp_list => (
-					<Card sx={{ mb: 2 }} key={exp_list.key}>
-						<CardHeader
-							title={exp_list.school}
-							subheader={exp_list.date} />
-						<CardContent>
-							<Typography variant="body2" color="textSecondary">
-								{exp_list.link && <a href={exp_list.link}>{exp_list.degree}</a>}
-								{exp_list.link === "" && exp_list.degree}
-							</Typography>
-						</CardContent>
+					<Card sx={{ mb: 2, display: 'flex' }} key={exp_list.key}>
+						<CardMedia
+			        component="img"
+						  sx={{ width: 151 }}
+			        image={exp_list.image}
+						  alt={exp_list.image.split('/')[-1]}
+			      />
+						<Box sx={{ display: 'flex', flexDirection: 'column' }}>
+							<CardHeader
+								title={exp_list.school}
+								subheader={exp_list.date} />
+							<CardContent>
+								<Typography variant="body2" color="textSecondary">
+									{exp_list.link && <a href={exp_list.link}>{exp_list.degree}</a>}
+									{exp_list.link === "" && exp_list.degree}
+								</Typography>
+							</CardContent>
+						</Box>
 					</Card>
 				))}
 			</>
