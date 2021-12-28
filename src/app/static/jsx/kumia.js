@@ -46,7 +46,7 @@ export default function Kumia({pubs, work, edu}) {
 	return (
     <React.Fragment>
 			<Paper
-				style={{padding: 16, backgroundColor: amber[50]}}>
+				style={{backgroundColor: amber[50]}} sx={{px: 8, py: 4}}>
 				<Typography variant="h5">
 					Hi, I'm Nicholas Kumia
 				</Typography>
