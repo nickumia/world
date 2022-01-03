@@ -4,7 +4,7 @@
 # nlp-web
 Example applications for PLaN Framework
 
-Live Test Site: http://3.145.120.47:8000/
+Live Test Site: http://nlp-web-lb-531335820.us-east-2.elb.amazonaws.com
 
 ## Intro
 
