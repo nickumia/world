@@ -6,7 +6,7 @@ else
 endif
 
 build: # Build Main App
-	docker-compose -f $(COMPOSE_FILE) build
+	docker build -t nlp-web:latest .
 
 build-test: # Build Main App
 	docker build -t nlp-web:debug . --build-arg debug=1
