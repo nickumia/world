@@ -4,6 +4,8 @@
 # nlp-web
 Example applications for PLaN Framework
 
+Live Test Site: http://3.145.120.47:8000/
+
 ## Intro
 
 The Processing Language in a Natural way (PLaN) Framwork is an abstraction of how to approach NLP problems 

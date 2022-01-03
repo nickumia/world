@@ -1,4 +1,5 @@
 FROM python:latest
+LABEL org.opencontainers.image.source https://github.com/nickumia/nlp-web
 ARG debug=0
 
 # Config and Setup
