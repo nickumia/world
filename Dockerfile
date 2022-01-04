@@ -16,4 +16,4 @@ RUN pip install -r requirements.txt
 RUN if [ $debug -eq 1 ]; then pip install -r dev-requirements.txt; fi
 
 # Run Code
-CMD flask run --host=${FLASK_HOST}
+CMD gunicorn --bind 0.0.0.0:8000 main:app
