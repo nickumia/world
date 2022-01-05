@@ -18,7 +18,7 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t4g.small"
   ebs_optimized = false
-  key_name = var.ssh_key
+  key_name      = var.ssh_key
 
   network_interface {
     network_interface_id = aws_network_interface.private_nlp.id

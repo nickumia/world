@@ -1,14 +1,14 @@
 
 variable "ssh_key" {
-  type = string
+  type        = string
   description = "Key to ssh into EC2"
-  default = ""
+  default     = ""
 }
 
 variable "region" {
-  type = string
+  type        = string
   description = "Default region to deploy to"
-  default = "us-east-2"
+  default     = "us-east-2"
 }
 
 
