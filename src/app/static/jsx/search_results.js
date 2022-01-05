@@ -12,9 +12,12 @@ import Tooltip from '@mui/material/Tooltip';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
+import json_parse from './json_parse';
+
+
 export default function SearchResults({results, prev_url, next_url}) {
 
-	var matches = JSON.parse(JSON.parse(results));
+	var matches = json_parse(results);
 	return (
     <React.Fragment>
       <Toolbar color="secondary" style={{

@@ -11,10 +11,12 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 
+import json_parse from './json_parse';
+
 
 export default function NLPSelector({selection}) {
 
-	var selection = JSON.parse(JSON.parse(selection));
+	var selection = json_parse(selection);
 	const domain = {
 		'Processing': '/static/img/balloons.jpg',
 		'Language': '/static/img/mountains.jpg',

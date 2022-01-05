@@ -32,12 +32,14 @@ import IconButton from '@mui/material/IconButton';
 
 import Tooltip from '@mui/material/Tooltip';
 
+import json_parse from './json_parse';
+
 
 export default function Kumia({pubs, work, edu}) {
 
-	var pubs_list = JSON.parse(JSON.parse(pubs));
-	var exps_list = JSON.parse(JSON.parse(work));
-	var edus_list = JSON.parse(JSON.parse(edu));
+	var pubs_list = json_parse(pubs);
+	var exps_list = json_parse(work);
+	var edus_list = json_parse(edu);
 	const [value, setValue] = React.useState('pubs');
 	const [content, setContent] = React.useState('');
 
