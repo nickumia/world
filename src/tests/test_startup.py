@@ -1,13 +1,13 @@
 # Test the initialize() called from main.py
 
-import base64
+# import base64
 from flask import url_for
 import os
 import time
 
 from app import wait
 from app.nlp.posts.all import initialize
-from app.encryption import decryptdata
+# from app.encryption import decryptdata
 
 
 def init(app, client):
@@ -34,8 +34,9 @@ def test_blogs(client, app):
         rv = client.get(url_for('nlp.blogs'))
         response = str(rv.data)
         # Assume the longest string is the encoded data **sweat_smile**
-        encoded = max(response.split('"'), key=len)[:-2]
-        raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
+        # encoded = max(response.split('"'), key=len)[:-2]
+        # raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
+    raw = response
     assert ("Introduction (2018)") in raw
     assert ("I sense that you sense that ... WE ALL SENSE") in raw
     assert ("Sensing the world, No Senses Required... jk!") in raw
@@ -53,8 +54,9 @@ def test_blog_normal(client, app):
     with app.app_context():
         rv = client.get(url_for('nlp.post', post_id=101))
         response = str(rv.data)
-        encoded = max(response.split('"'), key=len)[:-2]
-        raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
+        # encoded = max(response.split('"'), key=len)[:-2]
+        # raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
+    raw = response
     assert ('\\\\"title\\\\": \\\\"I sense that you sense that ... WE '
             'ALL SENSE\\\\"') in raw
     assert ('\\\\"id\\\\": 101') in raw
@@ -90,8 +92,9 @@ def test_search_results(client, app):
     with app.app_context():
         rv = client.get(url_for('search.search', q="world"))
         response = str(rv.data)
-        encoded = max(response.split('"'), key=len)[:-2]
-        raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
+        # encoded = max(response.split('"'), key=len)[:-2]
+        # raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
+    raw = response
     assert ('{\\\\"key\\\\": 1, \\\\"name\\\\": \\\\"Parry\\\\u0027s '
             'Processing\\\\", \\\\"link\\\\": \\\\"/nlp/posts/997\\\\"'
             ', \\\\"summary\\\\": \\\\"Query context score (non-normalized)'

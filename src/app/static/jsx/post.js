@@ -1,10 +1,12 @@
 import React from "react";
-
 import Typography from "@material-ui/core/Typography";
+
+import json_parse from './json_parse';
+
 
 export default function PostDisplay({post}) {
 
-	var post_dict = JSON.parse(JSON.parse(post));
+	var post_dict = json_parse(post);
 
 	return (
     <React.Fragment>

@@ -65,7 +65,8 @@ if (appSelectorPage) {
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<NLPSelector
-			selection={decrypt(JSON.parse(selection).data)}
+			// selection={decrypt(JSON.parse(selection).data)}
+			selection={selection}
 		/>
 	</MuiThemeProvider>,
 	appSelectorPage);
@@ -75,7 +76,8 @@ if (searchPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<SearchResults 
-			results={decrypt(JSON.parse(results).data)}
+			// results={decrypt(JSON.parse(results).data)}
+			results={results}
 			next_url={next_url}
 			prev_url={prev_url}
 		/>
@@ -87,7 +89,8 @@ if (explorePage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<AllPosts
-			posts={decrypt(JSON.parse(posts).data)}
+			// posts={decrypt(JSON.parse(posts).data)}
+			posts={posts}
 		/>
 	</MuiThemeProvider>,
 	explorePage);
@@ -97,7 +100,8 @@ if (singlePostPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<PostDisplay
-			post={decrypt(JSON.parse(post).data)}
+			// post={decrypt(JSON.parse(post).data)}
+			post={post}
 		/>
 	</MuiThemeProvider>,
 	singlePostPage);
@@ -107,8 +111,10 @@ if (realmPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<Realm
-			domain={decrypt(JSON.parse(domain).data)}
-			asteroids={decrypt(JSON.parse(asteroids).data)}
+			// domain={decrypt(JSON.parse(domain).data)}
+			// asteroids={decrypt(JSON.parse(asteroids).data)}
+			domain={domain}
+			asteroids={asteroids}
 		/>
 	</MuiThemeProvider>,
 	realmPage);
@@ -118,9 +124,12 @@ if (kumiaPage){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<Kumia
-			pubs={decrypt(JSON.parse(pubs).data)}
-			work={decrypt(JSON.parse(work).data)}
-			edu={decrypt(JSON.parse(edu).data)}
+			// pubs={decrypt(JSON.parse(pubs).data)}
+			// work={decrypt(JSON.parse(work).data)}
+			// edu={decrypt(JSON.parse(edu).data)}
+			pubs={pubs}
+			work={work}
+			edu={edu}
 		/>
 	</MuiThemeProvider>,
 	kumiaPage);

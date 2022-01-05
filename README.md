@@ -4,7 +4,7 @@
 # nlp-web
 Example applications for PLaN Framework
 
-Live Test Site: http://nlp-web-lb-531335820.us-east-2.elb.amazonaws.com
+Live Test Site: https://kamutiv.com
 
 ## Intro
 
