@@ -1,13 +1,13 @@
 # Test the initialize() called from main.py
 
-import base64
+# import base64
 from flask import url_for
 import os
 import time
 
 from app import wait
 from app.nlp.posts.all import initialize
-from app.encryption import decryptdata
+# from app.encryption import decryptdata
 
 
 def init(app, client):
