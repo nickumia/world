@@ -17,7 +17,6 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t4g.small"
-  associate_public_ip_address = false
   ebs_optimized = false
   key_name = var.ssh_key
 

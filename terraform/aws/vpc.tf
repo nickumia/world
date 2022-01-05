@@ -9,7 +9,7 @@ resource "aws_vpc" "web_vpc" {
 resource "aws_subnet" "nlp_subnet" {
   vpc_id            = aws_vpc.web_vpc.id
   cidr_block        = "172.18.10.0/24"
-  availability_zone = "us-west-2a"
+  availability_zone = "${var.region}a"
 
   tags = {
     Name = "nlp-private-subnet"
@@ -17,7 +17,7 @@ resource "aws_subnet" "nlp_subnet" {
 }
 
 resource "aws_network_interface" "private_nlp" {
-  subnet_id   = aws_subnet.my_subnet.id
+  subnet_id   = aws_subnet.nlp_subnet.id
   private_ips = ["172.18.10.100"]
 
   tags = {

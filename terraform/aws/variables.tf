@@ -5,4 +5,10 @@ variable "ssh_key" {
   default = ""
 }
 
+variable "region" {
+  type = string
+  description = "Default region to deploy to"
+  default = "us-east-2"
+}
+
 
