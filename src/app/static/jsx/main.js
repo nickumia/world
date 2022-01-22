@@ -35,7 +35,8 @@ const theme = createTheme({
       'Mirza',
 			'Muli',
 			'Noto Sans',
-			'Hind Guntur'
+			'Hind Guntur',
+			'Arial'
     ].join(','),
 		body2: {
 			color: "white"
