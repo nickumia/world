@@ -41,6 +41,7 @@ describe('Static NLP Pages', () => {
 	it('Loads Parry\'s Page', () => {
 		cy.visit('/nlp/processing');
 		cy.contains('Hello, I am Parry, the Keeper of the knowledge of the Mode of Processing.');
+		cy.contains('Syntax App');
 	});
 
 	it('Loads Lalita\'s Page', () => {
