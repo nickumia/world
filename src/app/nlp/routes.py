@@ -12,6 +12,8 @@ from app.nlp.selection import getSelection
 from app.nlp.model_pages import \
     asteroid_parry_json, asteroid_lalita_json, asteroid_nick_json, \
     openings_parry, openings_lalita, openings_nick
+from app.nlp.realm_navigation import \
+    parry_navbar, lalita_navbar, nick_navbar
 
 from . import bp
 
@@ -44,7 +46,8 @@ def processing():
                            section='Processing',
                            user=current_user,
                            domain=json.dumps(openings_parry),
-                           asteroids=json.dumps(asteroid_parry_json))
+                           asteroids=json.dumps(asteroid_parry_json),
+                           navigate=parry_navbar)
 
 
 @bp.route('/language')
@@ -53,7 +56,8 @@ def language():
                            section='Language',
                            user=current_user,
                            domain=json.dumps(openings_lalita),
-                           asteroids=json.dumps(asteroid_lalita_json))
+                           asteroids=json.dumps(asteroid_lalita_json),
+                           navigate=lalita_navbar)
 
 
 @bp.route('/natural')
@@ -62,7 +66,8 @@ def natural():
                            section='Natural Core',
                            user=current_user,
                            domain=json.dumps(openings_nick),
-                           asteroids=json.dumps(asteroid_nick_json))
+                           asteroids=json.dumps(asteroid_nick_json),
+                           navigate=nick_navbar)
 
 
 @bp.before_request

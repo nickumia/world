@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 
+
+{% block realm_header %}
+
+	<div id="realmnav"></div>
+	<script type="text/javascript">
+		navigate={{ navigate|tojson }};
+	</script>
+
+{% endblock %}
+
+
 {% block content %}
 
 	<div id="realm"></div>
@@ -12,8 +23,9 @@
 
 {% block scripts %}
 		<script type="text/javascript">
-			domain={{ domain|tojson }}
-			asteroids={{ asteroids|tojson }}
+			domain={{ domain|tojson }};
+			asteroids={{ asteroids|tojson }};
+			navigate={{ navigate|tojson }};
 		</script>
 
 {% endblock scripts %}

@@ -8,6 +8,7 @@ import blue from "@material-ui/core/colors/blue";
 import lightGreen from "@material-ui/core/colors/lightGreen";
 
 import Navbar from './navbar';
+import RealmNavbar from './realmnav';
 import SearchResults from './search_results';
 import AllPosts from './posts';
 import PostDisplay from './post';
@@ -28,6 +29,10 @@ const theme = createTheme({
       main: blue[50],
       contrastText: "#FFF"
     },
+    // warning: {
+    //   main: blue[700],
+    //   contrastText: "#FFF"
+    // },
   },
 	typography: {
     fontFamily: [
@@ -45,6 +50,8 @@ const theme = createTheme({
 });
 
 
+var realmNav = document.querySelector('#realmnav');
+
 var searchPage = document.querySelector("#searchresults");
 var appSelectorPage = document.querySelector("#appselector");
 var explorePage = document.querySelector("#explore");
@@ -61,6 +68,17 @@ ReactDOM.render(
 	</MuiThemeProvider>,
 	document.querySelector('#navbar')
 );
+
+if (realmNav){
+	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<RealmNavbar
+			domain={domain}
+			pages={navigate}
+		/>
+	</MuiThemeProvider>,
+	realmNav);
+}
 
 if (appSelectorPage) {
 	ReactDOM.render(
