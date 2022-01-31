@@ -5,11 +5,17 @@ else
 	COMPOSE_FILE = docker-compose.ci.yml
 endif
 
+deploy: build-local build-front
+	gunicorn --bind 0.0.0.0:8000 main:app
+
 build: # Build Main App
 	docker build -t nlp-web:latest .
 
 build-test: # Build Main App
 	docker build -t nlp-web:debug . --build-arg debug=1
+
+build-local:
+	pip3 install -r requirements.txt
 
 clean: # Tear down Main App
 	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml down -v --remove-orphan

@@ -21,6 +21,7 @@ variable "ssh_keys" {
   type = string
   description = "SSH key to connect"
   default = ""
+}
 
 variable "port" {
   type = number

@@ -118,7 +118,7 @@ resource "aws_lb_target_group" "nlp_web" {
     healthy_threshold = 5
     unhealthy_threshold = 5
     interval = 30
-    matcher = "200,302,404"
+    matcher = "200,301,302,404"
     path = "/index"
     timeout = 10
   }
@@ -149,9 +149,9 @@ resource "aws_lb_listener" "nlp_443" {
   }
 }
 
-resource "aws_lb_listener" "nlp_80" {
+resource "aws_lb_listener" "nlp_8000" {
   load_balancer_arn = aws_lb.nlp_lb.arn
-  port              = "80"
+  port              = "8000"
   protocol          = "HTTP"
 
   default_action {

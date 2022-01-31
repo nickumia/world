@@ -36,12 +36,13 @@ resource "aws_instance" "web" {
     volume_size = 8
   }
 
-  user_data = <<EOF
+  user_data = <<-EOF
 		#! /bin/bash
     sudo apt-get update
-		sudo apt-get install -y apache2
-		sudo systemctl start apache2
-		sudo systemctl enable apache2
+		sudo apt-get install -y git python3 python3-pip postgresql-client-common postgresql-client-12 nodejs npm
+    git clone https://github.com/nickumia/nlp-web.git
+    cd nlp-web
+    pip3 install -r requirements.txt
 		echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
 	EOF
 
