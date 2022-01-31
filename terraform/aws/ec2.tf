@@ -30,7 +30,7 @@ resource "aws_instance" "web" {
   root_block_device {
     delete_on_termination = true
     encrypted = true
-    volume_size = 4
+    volume_size = 8
   }
 
   user_data = <<-EOF
