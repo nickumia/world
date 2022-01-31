@@ -30,7 +30,7 @@ resource "aws_instance" "web" {
   root_block_device {
     delete_on_termination = true
     encrypted = true
-    volume_size = 8
+    volume_size = 4
   }
 
   user_data = <<-EOF
@@ -40,20 +40,23 @@ resource "aws_instance" "web" {
     git clone https://github.com/nickumia/nlp-web.git
     cd nlp-web
     touch /nlp-web/.env
-    echo "POSTGRES_USER=${var.db_user}" >> /nlp-web/.env
-    echo "POSTGRES_PASSWORD=${var.db_pass}" >> /nlp-web/.env
-    echo "POSTGRES_DB=${var.db_name}" >> /nlp-web/.env
+    echo "export POSTGRES_USER=${var.db_user}" >> /nlp-web/.env
+    echo "export POSTGRES_PASSWORD=${var.db_pass}" >> /nlp-web/.env
+    echo "export POSTGRES_DB=${var.db_name}" >> /nlp-web/.env
     echo "node.name=es01" >> /nlp-web/.env
     echo "discovery.type=single-node" >> /nlp-web/.env
     echo "bootstrap.memory_lock=true" >> /nlp-web/.env
-    echo "ES_JAVA_OPTS=\"-Xms512m -Xmx512m\"" >> /nlp-web/.env
-    echo "SERVER_NAME=kamutiv.com" >> /nlp-web/.env
-    echo "FLASK_APP=main.py" >>  /nlp-web/.env
-    echo "FLASK_RUN_PORT=8000" >> /nlp-web/.env
-    echo "FLASK_ENV=production" >> /nlp-web/.env
-    echo "DATABASE_URL=postgresql://${var.db_user}:${var.db_pass}@${aws_db_instance.nlpdb.address}:5432/${var.db_name}" >> /nlp-web/.env
-    echo "POSTGRES_HOST=${aws_db_instance.nlpdb.address}" >> /nlp-web/.env
-    echo "ELASTICSEARCH_URL=http://172.31.27.58:80" >> /nlp-web/.env
+    echo "export ES_JAVA_OPTS=\"-Xms512m -Xmx512m\"" >> /nlp-web/.env
+    echo "export SERVER_NAME=kamutiv.com" >> /nlp-web/.env
+    echo "export FLASK_APP=main.py" >>  /nlp-web/.env
+    echo "export FLASK_RUN_PORT=8000" >> /nlp-web/.env
+    echo "export FLASK_ENV=production" >> /nlp-web/.env
+    echo "export DATABASE_URL=postgresql://${var.db_user}:${var.db_pass}@${aws_db_instance.nlpdb.address}:5432/${var.db_name}" >> /nlp-web/.env
+    echo "export POSTGRES_HOST=${aws_db_instance.nlpdb.address}" >> /nlp-web/.env
+    echo "export ELASTICSEARCH_URL=http://${aws_elasticsearch_domain.nlpes.endpoint}:80" >> /nlp-web/.env
+    source .env
+    PGPASSWORD=$POSTGRES_PASSWORD psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $POSTGRES_DB -f db_config/create_post_table.sql
+    PGPASSWORD=$POSTGRES_PASSWORD psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $POSTGRES_DB -f db_config/create_user_table.sql
     make deploy
 	EOF
 
@@ -62,6 +65,7 @@ resource "aws_instance" "web" {
   }
 
   depends_on = [
-    aws_db_instance.nlpdb
+    aws_db_instance.nlpdb,
+    aws_elasticsearch_domain.nlpes
   ]
 }
