@@ -117,9 +117,9 @@ resource "aws_lb_target_group" "nlp_web" {
   vpc_id   = module.vpc.vpc_id
 
   health_check {
-    healthy_threshold = 5
-    unhealthy_threshold = 5
-    interval = 30
+    healthy_threshold = 3
+    unhealthy_threshold = 3
+    interval = 11
     matcher = "200,301,302,404"
     path = "/index"
     timeout = 10
@@ -129,7 +129,7 @@ resource "aws_lb_target_group" "nlp_web" {
 resource "aws_lb_target_group_attachment" "nlp_instance" {
   target_group_arn = aws_lb_target_group.nlp_web.arn
   target_id        = aws_instance.web.id
-  port             = 80
+  port             = var.port
 }
 
 data "aws_acm_certificate" "kamutiv_ssl" {
