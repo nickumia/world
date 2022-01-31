@@ -28,3 +28,19 @@ variable "port" {
   description = "Web App port number"
   default = 80
 }
+
+variable "db_name" {
+  type = string
+  description = "Database name"
+  default = ""
+}
+variable "db_user" {
+  type = string
+  description = "Database username"
+  default = ""
+}
+variable "db_pass" {
+  type = string
+  description = "Database password"
+  default = ""
+}

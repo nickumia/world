@@ -16,19 +16,12 @@ module "vpc" {
   enable_classiclink = false
   enable_classiclink_dns_support = false
 
+  database_subnet_group_name = "nlpdb"
+  database_subnets = ["172.20.10.0/24", "172.20.11.0/24"]
+
   tags = {
     Terraform = "true"
     Environment = "production"
-  }
-}
-
-resource "aws_network_interface" "private_nlp" {
-  subnet_id   = module.vpc.public_subnets[0]
-  private_ips = ["172.20.101.100"]
-  security_groups = [aws_security_group.allow_web.id]
-
-  tags = {
-    Name = "nlp-public-interface"
   }
 }
 
