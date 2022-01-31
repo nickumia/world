@@ -1,8 +1,8 @@
 
 variable "instance_type" {
-  type = string
+  type        = string
   description = "The type of EC2 instance to use"
-  default = "t3a.micro"
+  default     = "t3a.micro"
 }
 
 variable "region" {
@@ -12,35 +12,35 @@ variable "region" {
 }
 
 variable "ssh_hosts" {
-  type = list
+  type        = list(any)
   description = "Hosts to allow ssh from"
-  default = []
+  default     = []
 }
 
 variable "ssh_keys" {
-  type = string
+  type        = string
   description = "SSH key to connect"
-  default = ""
+  default     = ""
 }
 
 variable "port" {
-  type = number
+  type        = number
   description = "Web App port number"
-  default = 80
+  default     = 80
 }
 
 variable "db_name" {
-  type = string
+  type        = string
   description = "Database name"
-  default = ""
+  default     = ""
 }
 variable "db_user" {
-  type = string
+  type        = string
   description = "Database username"
-  default = ""
+  default     = ""
 }
 variable "db_pass" {
-  type = string
+  type        = string
   description = "Database password"
-  default = ""
+  default     = ""
 }

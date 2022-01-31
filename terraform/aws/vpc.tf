@@ -9,18 +9,18 @@ module "vpc" {
   private_subnets = ["172.20.1.0/24", "172.20.2.0/24"]
   public_subnets  = ["172.20.101.0/24", "172.20.102.0/24"]
 
-  enable_nat_gateway = false
-  single_nat_gateway = false
+  enable_nat_gateway   = false
+  single_nat_gateway   = false
   enable_dns_hostnames = true
 
-  enable_classiclink = false
+  enable_classiclink             = false
   enable_classiclink_dns_support = false
 
   database_subnet_group_name = "nlpdb"
-  database_subnets = ["172.20.10.0/24", "172.20.11.0/24"]
+  database_subnets           = ["172.20.10.0/24", "172.20.11.0/24"]
 
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = "production"
   }
 }
@@ -31,11 +31,11 @@ resource "aws_security_group" "allow_web" {
   vpc_id      = module.vpc.vpc_id
 
   ingress {
-    description      = "HTTP to VPC"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "HTTP to VPC"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -56,7 +56,7 @@ resource "aws_security_group_rule" "allow_self" {
   from_port         = 0
   to_port           = 65535
   protocol          = "all"
-  self = true
+  self              = true
   security_group_id = aws_security_group.allow_web.id
 }
 
@@ -117,12 +117,12 @@ resource "aws_lb_target_group" "nlp_web" {
   vpc_id   = module.vpc.vpc_id
 
   health_check {
-    healthy_threshold = 3
+    healthy_threshold   = 3
     unhealthy_threshold = 3
-    interval = 11
-    matcher = "200,301,302,404"
-    path = "/index"
-    timeout = 10
+    interval            = 11
+    matcher             = "200,301,302,404"
+    path                = "/index"
+    timeout             = 10
   }
 }
 

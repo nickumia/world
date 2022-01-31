@@ -6,14 +6,14 @@ resource "aws_elasticsearch_domain" "nlpes" {
 
   cluster_config {
     # instance_type = "t2.small.search"
-    instance_type = "t2.small.elasticsearch"
-    instance_count = 1
-    warm_enabled = false
+    instance_type          = "t2.small.elasticsearch"
+    instance_count         = 1
+    warm_enabled           = false
     zone_awareness_enabled = false
   }
 
   vpc_options {
-    subnet_ids = [module.vpc.private_subnets[0]]
+    subnet_ids         = [module.vpc.private_subnets[0]]
     security_group_ids = [aws_security_group.allow_web.id]
   }
 
@@ -43,7 +43,7 @@ resource "aws_elasticsearch_domain" "nlpes" {
     enabled = true
   }
   domain_endpoint_options {
-    enforce_https = false
+    enforce_https       = false
     tls_security_policy = "Policy-Min-TLS-1-2-2019-07"
   }
 

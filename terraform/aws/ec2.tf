@@ -20,18 +20,18 @@ resource "aws_key_pair" "default" {
 }
 
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-  ebs_optimized = false
-  key_name      = aws_key_pair.default.id
-  subnet_id = module.vpc.public_subnets[0]
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = var.instance_type
+  ebs_optimized          = false
+  key_name               = aws_key_pair.default.id
+  subnet_id              = module.vpc.public_subnets[0]
   vpc_security_group_ids = [module.vpc.default_security_group_id, aws_security_group.allow_web.id]
-  private_ip  = "172.20.101.100"
+  private_ip             = "172.20.101.100"
 
   root_block_device {
     delete_on_termination = true
-    encrypted = true
-    volume_size = 8
+    encrypted             = true
+    volume_size           = 8
   }
 
   user_data = <<-EOF
