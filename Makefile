@@ -5,8 +5,8 @@ else
 	COMPOSE_FILE = docker-compose.ci.yml
 endif
 
-deploy: build-local build-front
-	gunicorn --bind 0.0.0.0:8000 main:app
+deploy: build-local install-front build-front
+	python3 -m gunicorn --bind 0.0.0.0:8000 main:app
 
 build: # Build Main App
 	docker build -t nlp-web:latest .

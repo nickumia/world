@@ -27,7 +27,7 @@ services:
       - "5432:5432"
 
   elastic:
-    image: elasticsearch:7.14.1
+    image: elasticsearch:7.10.1
     env_file:
       - .env
     healthcheck:

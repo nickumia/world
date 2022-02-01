@@ -12,8 +12,8 @@
 
 {% block scripts %}
 		<script type="text/javascript">
-			domain={{ domain|tojson|encryptdata|tojson }}
-			asteroids={{ asteroids|tojson|encryptdata|tojson }}
+			domain={{ domain|tojson }}
+			asteroids={{ asteroids|tojson }}
 		</script>
 
 {% endblock scripts %}
