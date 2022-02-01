@@ -48,7 +48,7 @@ resource "aws_instance" "web" {
     echo "discovery.type=single-node" >> /nlp-web/.env
     echo "bootstrap.memory_lock=true" >> /nlp-web/.env
     echo "export ES_JAVA_OPTS=\"-Xms512m -Xmx512m\"" >> /nlp-web/.env
-    echo "export SERVER_NAME=172.20.101.100:8000" >> /nlp-web/.env
+    echo "export SERVER_NAME=kamutiv.com" >> /nlp-web/.env
     echo "export FLASK_APP=main.py" >>  /nlp-web/.env
     echo "export FLASK_RUN_PORT=8000" >> /nlp-web/.env
     echo "export FLASK_ENV=production" >> /nlp-web/.env
