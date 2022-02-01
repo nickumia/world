@@ -1,0 +1,19 @@
+---
+name: terraform
+
+on:
+  push:
+
+jobs:
+  terraformlint:
+    name: Terraform Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: sudo apt-get install -y terraform
+      - name: validate
+        run: |
+          cd terraform/aws
+          terraform validate
