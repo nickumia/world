@@ -6,10 +6,12 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
+import json_parse from './json_parse';
+
 
 export default function AllPosts({posts}) {
 
-	var post_list = JSON.parse(JSON.parse(posts));
+	var post_list = json_parse(posts);
 	const pics = {
 		'processing': '/static/img/processing.png',
 		'language': '/static/img/language.png',

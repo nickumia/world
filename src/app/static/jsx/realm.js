@@ -29,11 +29,13 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
+import json_parse from './json_parse';
+
 
 export default function Realm({domain, asteroids}) {
 
-	var domain_specifics = JSON.parse(JSON.parse(domain));
-	var asteroid_list = JSON.parse(JSON.parse(asteroids));
+	var domain_specifics = json_parse(domain);
+	var asteroid_list = json_parse(asteroids);
 	const pics = {
 		'Basic Text': '/static/img/writing.png',
 		'Speech Audio': '/static/img/audio.png',
