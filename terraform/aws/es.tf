@@ -5,8 +5,7 @@ resource "aws_elasticsearch_domain" "nlpes" {
   elasticsearch_version = "7.10"
 
   cluster_config {
-    # instance_type = "t2.small.search"
-    instance_type          = "t2.small.elasticsearch"
+    instance_type          = var.es_instance_type
     instance_count         = 1
     warm_enabled           = false
     zone_awareness_enabled = false
