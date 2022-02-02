@@ -1,5 +1,6 @@
 [![codecov](https://codecov.io/gh/nickumia/nlp-web/branch/main/graph/badge.svg?token=AS2C57SSHY)](https://codecov.io/gh/nickumia/nlp-web)
 [![Tests](https://github.com/nickumia/nlp-web/actions/workflows/commit.yml/badge.svg)](https://github.com/nickumia/nlp-web/actions/workflows/commit.yml)
+[![Deployment](https://github.com/nickumia/nlp-web/actions/workflows/deploy.yml/badge.svg)](https://github.com/nickumia/nlp-web/actions/workflows/deploy.yml)
 
 # nlp-web
 Example applications for PLaN Framework
