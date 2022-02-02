@@ -61,3 +61,8 @@ To run tests, run:
 
 - [Material UI Colors](https://materialui.co/colors/)
 - [Material UI Icons](https://mui.com/components/material-icons/)
+
+## AWS Resources
+
+- [Instance Pricing](https://aws.amazon.com/ec2/pricing/on-demand/)
+- [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)

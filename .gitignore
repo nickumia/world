@@ -137,3 +137,8 @@ logs/
 e2e/cypress/support
 e2e/cypress/videos
 e2e/cypress/screenshots
+
+terraform.tfvars
+terraform.tfstate*
+.terraform*
+*env*
