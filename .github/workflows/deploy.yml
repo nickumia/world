@@ -1,4 +1,4 @@
-name: "Terraform"
+name: "Terraform Deploy"
 
 on:
   push:
@@ -22,20 +22,28 @@ jobs:
 
       - name: Terraform Format
         id: fmt
-        run: terraform fmt -check
+        run: |
+          cd terraform/aws
+          terraform fmt -check
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: |
+          cd terraform/aws
+          terraform init
       
       - name: Terraform Validate
         id: validate
-        run: terraform validate -no-color
+        run: |
+          cd terraform/aws
+          terraform validate -no-color
 
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color
+        run: |
+          cd terraform/aws
+          terraform plan -no-color
         continue-on-error: true
 
       - uses: actions/github-script@0.9.0
@@ -67,4 +75,6 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
+        run: |
+          cd terraform/aws
+          terraform apply -auto-approve
