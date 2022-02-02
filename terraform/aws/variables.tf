@@ -6,15 +6,15 @@ variable "instance_type" {
 }
 
 variable "db_instance_type" {
-  type = string
+  type        = string
   description = "The compute type of the RDS instance"
-  default = "db.t4g.micro"
+  default     = "db.t4g.micro"
 }
 
 variable "es_instance_type" {
-  type = string
+  type        = string
   description = "The compute type of the ElasticSearch instance"
-  default = "t2.micro.search"
+  default     = "t2.micro.search"
 }
 
 variable "region" {
