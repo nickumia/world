@@ -23,7 +23,6 @@ module "vpc" {
     Terraform   = "true"
     Environment = "production"
   }
-  sensitive = var.sensitivity
 }
 
 resource "aws_security_group" "allow_web" {
