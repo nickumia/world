@@ -26,26 +26,9 @@ module "vpc" {
 }
 
 resource "aws_security_group" "allow_web" {
-  count       = 1
   name        = "allow_web"
   description = "Allow HTTP/S Traffic"
   vpc_id      = module.vpc.vpc_id
-
-  ingress {
-    description = "HTTP to VPC"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
 
   tags = {
     Name = "allow_web"
@@ -53,43 +36,49 @@ resource "aws_security_group" "allow_web" {
 }
 
 resource "aws_security_group_rule" "allow_self" {
-  count             = 1
   type              = "ingress"
   from_port         = 0
   to_port           = 65535
   protocol          = "all"
   self              = true
-  security_group_id = aws_security_group.allow_web[0].id
+  security_group_id = aws_security_group.allow_web.id
 }
 
 resource "aws_security_group_rule" "allow_https" {
-  count             = 1
   type              = "ingress"
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.allow_web[0].id
+  security_group_id = aws_security_group.allow_web.id
 }
 
-resource "aws_security_group_rule" "allow_test" {
-  count             = 1
+resource "aws_security_group_rule" "allow_egress" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  ipv6_cidr_blocks  = ["::/0"]
+  security_group_id = aws_security_group.allow_web.id
+}
+
+resource "aws_security_group_rule" "allow_http" {
   type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.allow_web[0].id
+  security_group_id = aws_security_group.allow_web.id
 }
 
 resource "aws_security_group_rule" "allow_ssh" {
-  count             = 1
   type              = "ingress"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = var.ssh_hosts
-  security_group_id = aws_security_group.allow_web[0].id
+  security_group_id = aws_security_group.allow_web.id
 }
 
 # Load Balancer
@@ -98,7 +87,7 @@ resource "aws_lb" "nlp_lb" {
   name               = "nlpalb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.allow_web[0].id]
+  security_groups    = [aws_security_group.allow_web.id]
   subnets            = module.vpc.public_subnets
 
   enable_deletion_protection = false
