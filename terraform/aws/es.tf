@@ -13,7 +13,7 @@ resource "aws_elasticsearch_domain" "nlpes" {
 
   vpc_options {
     subnet_ids         = [module.vpc.private_subnets[0]]
-    security_group_ids = [aws_security_group.allow_web.id]
+    security_group_ids = [aws_security_group.allow_web[0].id]
   }
 
   access_policies = <<-CONFIG

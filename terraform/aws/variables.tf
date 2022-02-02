@@ -27,12 +27,14 @@ variable "ssh_hosts" {
   type        = list(any)
   description = "Hosts to allow ssh from"
   default     = []
+  sensitive   = true
 }
 
 variable "ssh_keys" {
   type        = string
   description = "SSH key to connect"
   default     = ""
+  sensitive   = true
 }
 
 variable "port" {
@@ -45,14 +47,17 @@ variable "db_name" {
   type        = string
   description = "Database name"
   default     = ""
+  sensitive   = true
 }
 variable "db_user" {
   type        = string
   description = "Database username"
   default     = ""
+  sensitive   = true
 }
 variable "db_pass" {
   type        = string
   description = "Database password"
   default     = ""
+  sensitive   = true
 }

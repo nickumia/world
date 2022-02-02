@@ -26,6 +26,7 @@ module "vpc" {
 }
 
 resource "aws_security_group" "allow_web" {
+  count       = 1
   name        = "allow_web"
   description = "Allow HTTP/S Traffic"
   vpc_id      = module.vpc.vpc_id
@@ -52,39 +53,43 @@ resource "aws_security_group" "allow_web" {
 }
 
 resource "aws_security_group_rule" "allow_self" {
+  count             = 1
   type              = "ingress"
   from_port         = 0
   to_port           = 65535
   protocol          = "all"
   self              = true
-  security_group_id = aws_security_group.allow_web.id
+  security_group_id = aws_security_group.allow_web[0].id
 }
 
 resource "aws_security_group_rule" "allow_https" {
+  count             = 1
   type              = "ingress"
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.allow_web.id
+  security_group_id = aws_security_group.allow_web[0].id
 }
 
 resource "aws_security_group_rule" "allow_test" {
+  count             = 1
   type              = "ingress"
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.allow_web.id
+  security_group_id = aws_security_group.allow_web[0].id
 }
 
 resource "aws_security_group_rule" "allow_ssh" {
+  count             = 1
   type              = "ingress"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = var.ssh_hosts
-  security_group_id = aws_security_group.allow_web.id
+  security_group_id = aws_security_group.allow_web[0].id
 }
 
 # Load Balancer
@@ -93,7 +98,7 @@ resource "aws_lb" "nlp_lb" {
   name               = "nlpalb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.allow_web.id]
+  security_groups    = [aws_security_group.allow_web[0].id]
   subnets            = module.vpc.public_subnets
 
   enable_deletion_protection = false
