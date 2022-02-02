@@ -49,4 +49,5 @@ resource "aws_elasticsearch_domain" "nlpes" {
   tags = {
     Domain = "TestDomain"
   }
+  sensitive = var.sensitivity
 }

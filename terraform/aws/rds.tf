@@ -1,5 +1,6 @@
 data "aws_kms_alias" "db" {
   name = "alias/aws/rds"
+  sensitive = var.sensitivity
 }
 
 resource "aws_db_instance" "nlpdb" {
@@ -17,4 +18,5 @@ resource "aws_db_instance" "nlpdb" {
   db_subnet_group_name = module.vpc.database_subnet_group_name
   # storage_encrypted = true
   # kms_key_id = data.aws_kms_alias.db.id
+  sensitive = var.sensitivity
 }

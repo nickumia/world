@@ -17,6 +17,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_key_pair" "default" {
   key_name   = "temp_default"
   public_key = var.ssh_keys
+  sensitive = var.sensitivity
 }
 
 resource "aws_instance" "web" {
@@ -69,4 +70,5 @@ resource "aws_instance" "web" {
     aws_db_instance.nlpdb,
     aws_elasticsearch_domain.nlpes
   ]
+  sensitive = var.sensitivity
 }

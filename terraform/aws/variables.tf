@@ -1,3 +1,8 @@
+variable "sensitivity" {
+  type = bool
+  description = "Hide details on terraform plans/outputs"
+  default = true
+}
 
 variable "instance_type" {
   type        = string
