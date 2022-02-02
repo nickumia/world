@@ -5,6 +5,11 @@ variable "instance_type" {
   default     = "t3a.micro"
 }
 
+variable "db_instance_type" {
+  type = string
+  description = "The compute type of the RDS instance"
+  default = "db.t4g.micro"
+
 variable "region" {
   type        = string
   description = "Default region to deploy to"
