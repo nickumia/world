@@ -10,7 +10,7 @@ terraform {
     organization = "kamutiv"
 
     workspaces {
-      name = "nlp-web"
+      name = "nlp-web-cd"
     }
   }
 }
