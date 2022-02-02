@@ -1,5 +1,5 @@
 data "aws_route53_zone" "primary" {
-  name = "kamutiv.com"
+  name      = "kamutiv.com"
   sensitive = var.sensitivity
 }
 

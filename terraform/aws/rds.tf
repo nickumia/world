@@ -1,5 +1,5 @@
 data "aws_kms_alias" "db" {
-  name = "alias/aws/rds"
+  name      = "alias/aws/rds"
   sensitive = var.sensitivity
 }
 

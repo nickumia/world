@@ -27,7 +27,7 @@ module "vpc" {
 }
 
 resource "aws_security_group" "allow_web" {
-  count = 1
+  count       = 1
   name        = "allow_web"
   description = "Allow HTTP/S Traffic"
   vpc_id      = module.vpc.vpc_id
@@ -55,47 +55,47 @@ resource "aws_security_group" "allow_web" {
 }
 
 resource "aws_security_group_rule" "allow_self" {
-  count = 1
+  count             = 1
   type              = "ingress"
   from_port         = 0
   to_port           = 65535
   protocol          = "all"
   self              = true
   security_group_id = aws_security_group.allow_web.id
-  sensitive = var.sensitivity
+  sensitive         = var.sensitivity
 }
 
 resource "aws_security_group_rule" "allow_https" {
-  count = 1
+  count             = 1
   type              = "ingress"
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.allow_web.id
-  sensitive = var.sensitivity
+  sensitive         = var.sensitivity
 }
 
 resource "aws_security_group_rule" "allow_test" {
-  count = 1
+  count             = 1
   type              = "ingress"
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.allow_web.id
-  sensitive = var.sensitivity
+  sensitive         = var.sensitivity
 }
 
 resource "aws_security_group_rule" "allow_ssh" {
-  count = 1
+  count             = 1
   type              = "ingress"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = var.ssh_hosts
   security_group_id = aws_security_group.allow_web.id
-  sensitive = var.sensitivity
+  sensitive         = var.sensitivity
 }
 
 # Load Balancer
@@ -143,13 +143,13 @@ resource "aws_lb_target_group_attachment" "nlp_instance" {
   target_group_arn = aws_lb_target_group.nlp_web.arn
   target_id        = aws_instance.web.id
   port             = var.port
-  sensitive = var.sensitivity
+  sensitive        = var.sensitivity
 }
 
 data "aws_acm_certificate" "kamutiv_ssl" {
-  domain   = "kamutiv.com"
-  statuses = ["ISSUED"]
-  types    = ["AMAZON_ISSUED"]
+  domain    = "kamutiv.com"
+  statuses  = ["ISSUED"]
+  types     = ["AMAZON_ISSUED"]
   sensitive = var.sensitivity
 }
 

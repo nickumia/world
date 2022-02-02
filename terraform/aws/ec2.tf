@@ -17,7 +17,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_key_pair" "default" {
   key_name   = "temp_default"
   public_key = var.ssh_keys
-  sensitive = var.sensitivity
+  sensitive  = var.sensitivity
 }
 
 resource "aws_instance" "web" {
