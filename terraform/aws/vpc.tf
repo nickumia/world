@@ -50,7 +50,6 @@ resource "aws_security_group" "allow_web" {
   tags = {
     Name = "allow_web"
   }
-  sensitive = var.sensitivity
 }
 
 resource "aws_security_group_rule" "allow_self" {
@@ -61,7 +60,6 @@ resource "aws_security_group_rule" "allow_self" {
   protocol          = "all"
   self              = true
   security_group_id = aws_security_group.allow_web.id
-  sensitive         = var.sensitivity
 }
 
 resource "aws_security_group_rule" "allow_https" {
@@ -72,7 +70,6 @@ resource "aws_security_group_rule" "allow_https" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.allow_web.id
-  sensitive         = var.sensitivity
 }
 
 resource "aws_security_group_rule" "allow_test" {
@@ -83,7 +80,6 @@ resource "aws_security_group_rule" "allow_test" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.allow_web.id
-  sensitive         = var.sensitivity
 }
 
 resource "aws_security_group_rule" "allow_ssh" {
@@ -94,7 +90,6 @@ resource "aws_security_group_rule" "allow_ssh" {
   protocol          = "tcp"
   cidr_blocks       = var.ssh_hosts
   security_group_id = aws_security_group.allow_web.id
-  sensitive         = var.sensitivity
 }
 
 # Load Balancer
@@ -118,7 +113,6 @@ resource "aws_lb" "nlp_lb" {
   tags = {
     Environment = "production-nlp-web"
   }
-  sensitive = var.sensitivity
 }
 
 resource "aws_lb_target_group" "nlp_web" {
@@ -135,21 +129,18 @@ resource "aws_lb_target_group" "nlp_web" {
     path                = "/index"
     timeout             = 10
   }
-  sensitive = var.sensitivity
 }
 
 resource "aws_lb_target_group_attachment" "nlp_instance" {
   target_group_arn = aws_lb_target_group.nlp_web.arn
   target_id        = aws_instance.web.id
   port             = var.port
-  sensitive        = var.sensitivity
 }
 
 data "aws_acm_certificate" "kamutiv_ssl" {
-  domain    = "kamutiv.com"
-  statuses  = ["ISSUED"]
-  types     = ["AMAZON_ISSUED"]
-  sensitive = var.sensitivity
+  domain   = "kamutiv.com"
+  statuses = ["ISSUED"]
+  types    = ["AMAZON_ISSUED"]
 }
 
 resource "aws_lb_listener" "nlp_443" {
@@ -163,7 +154,6 @@ resource "aws_lb_listener" "nlp_443" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.nlp_web.arn
   }
-  sensitive = var.sensitivity
 }
 
 resource "aws_lb_listener" "nlp_8000" {
@@ -180,5 +170,4 @@ resource "aws_lb_listener" "nlp_8000" {
       status_code = "HTTP_301"
     }
   }
-  sensitive = var.sensitivity
 }

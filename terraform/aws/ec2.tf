@@ -70,5 +70,4 @@ resource "aws_instance" "web" {
     aws_db_instance.nlpdb,
     aws_elasticsearch_domain.nlpes
   ]
-  sensitive = var.sensitivity
 }

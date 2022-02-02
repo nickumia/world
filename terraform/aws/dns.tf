@@ -1,6 +1,5 @@
 data "aws_route53_zone" "primary" {
-  name      = "kamutiv.com"
-  sensitive = var.sensitivity
+  name = "kamutiv.com"
 }
 
 resource "aws_route53_record" "main" {
@@ -13,5 +12,4 @@ resource "aws_route53_record" "main" {
     zone_id                = aws_lb.nlp_lb.zone_id
     evaluate_target_health = true
   }
-  sensitive = var.sensitivity
 }
