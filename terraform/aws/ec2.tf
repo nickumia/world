@@ -25,7 +25,7 @@ resource "aws_instance" "web" {
   ebs_optimized          = false
   key_name               = aws_key_pair.default.id
   subnet_id              = module.vpc.public_subnets[0]
-  vpc_security_group_ids = [module.vpc.default_security_group_id, aws_security_group.allow_web.id]
+  vpc_security_group_ids = [module.vpc.default_security_group_id, aws_security_group.allow_web[0].id]
   private_ip             = "172.20.101.100"
 
   root_block_device {
