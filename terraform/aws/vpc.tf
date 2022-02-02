@@ -59,7 +59,7 @@ resource "aws_security_group_rule" "allow_self" {
   to_port           = 65535
   protocol          = "all"
   self              = true
-  security_group_id = aws_security_group.allow_web.id
+  security_group_id = aws_security_group.allow_web[0].id
 }
 
 resource "aws_security_group_rule" "allow_https" {
@@ -69,7 +69,7 @@ resource "aws_security_group_rule" "allow_https" {
   to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.allow_web.id
+  security_group_id = aws_security_group.allow_web[0].id
 }
 
 resource "aws_security_group_rule" "allow_test" {
@@ -79,7 +79,7 @@ resource "aws_security_group_rule" "allow_test" {
   to_port           = 8080
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.allow_web.id
+  security_group_id = aws_security_group.allow_web[0].id
 }
 
 resource "aws_security_group_rule" "allow_ssh" {
@@ -89,7 +89,7 @@ resource "aws_security_group_rule" "allow_ssh" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = var.ssh_hosts
-  security_group_id = aws_security_group.allow_web.id
+  security_group_id = aws_security_group.allow_web[0].id
 }
 
 # Load Balancer
@@ -98,7 +98,7 @@ resource "aws_lb" "nlp_lb" {
   name               = "nlpalb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.allow_web.id]
+  security_groups    = [aws_security_group.allow_web[0].id]
   subnets            = module.vpc.public_subnets
 
   enable_deletion_protection = false
