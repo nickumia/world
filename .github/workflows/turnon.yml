@@ -1,4 +1,4 @@
-name: "Terraform Deploy - Schedule On"
+name: "Schedule On"
 
 on:
   schedule:
