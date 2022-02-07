@@ -4,7 +4,8 @@ import Tooltip from '@mui/material/Tooltip';
 import cyan from "@material-ui/core/colors/cyan";
 import orange from "@material-ui/core/colors/orange";
 
-import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
@@ -30,21 +31,21 @@ export default function Offline() {
 			<Paper
 				style={{
 					backgroundColor: orange[100],
-					marginLeft: 100, marginRight: 100,
-					textAlign: 'center', justifyContent: 'center', alignItems: 'center', display: 'flex'}} sx={{px: 8, py: 4}} elevation={10}>
-				<Grid container spacing={-20} style={{margin: 0, padding: 0}}>
-					<Box> <p style={{height: 'inherit', fontSize: 20}}> &#129402; </p> </Box>
+					marginLeft: '8%', marginRight: '8%',
+					textAlign: 'center', justifyContent: 'center', alignItems: 'center', display: 'flex'}} sx={{px: 2, py: 1}} elevation={10}>
+				<List component={Stack} direction="row">
+					<Box> <p style={{height: 'inherit', fontSize: 30}}> &#129402; </p> </Box>
 					<Box>
 						<Typography variant="h6">
 							Please excuse the limited functionality.  We are trying to save costs during our development. <br/>
 							Full functionality is currently available from 7:00 am EST to 6:00 pm EST
 						</Typography>
 					</Box>
-					<Box> <p style={{height: 'inherit', fontSize: 20}}> &#129402; </p> </Box>
-				</Grid>
+					<Box> <p style={{height: 'inherit', fontSize: 30}}> &#129402; </p> </Box>
+				</List>
 			</Paper>
 			<Paper
-				style={{backgroundColor: cyan[50]}} sx={{px: 8, py: 4}}>
+				style={{backgroundColor: cyan[50], marginTop: '10px'}} sx={{px: 8, py: 4}}>
 				<Typography variant="h5">
 					Hi there!
 				</Typography>
