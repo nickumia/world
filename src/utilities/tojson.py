@@ -11,17 +11,20 @@ from app.kumia.resume import publications, experiences, educations
 # Processing page
 if sys.argv[1] == 'processing':
     print("domain=" + fjson.htmlsafe_dumps(json.dumps(openings_parry)))
-    print("asteroids=" + fjson.htmlsafe_dumps(json.dumps(asteroid_parry_json)))
+    print("asteroids=" + fjson.htmlsafe_dumps(json.dumps(
+        asteroid_parry_json)))
 
 # Language page
 if sys.argv[1] == 'language':
     print("domain=" + fjson.htmlsafe_dumps(json.dumps(openings_lalita)))
-    print("asteroids=" + fjson.htmlsafe_dumps(json.dumps(asteroid_lalita_json)))
+    print("asteroids=" + fjson.htmlsafe_dumps(json.dumps(
+        asteroid_lalita_json)))
 
 # Natural page
 if sys.argv[1] == 'natural':
     print("domain=" + fjson.htmlsafe_dumps(json.dumps(openings_nick)))
-    print("asteroids=" + fjson.htmlsafe_dumps(json.dumps(asteroid_nick_json)))
+    print("asteroids=" + fjson.htmlsafe_dumps(json.dumps(
+        asteroid_nick_json)))
 
 # Kumia page
 if sys.argv[1] == 'kumia':
