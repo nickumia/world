@@ -7,6 +7,8 @@ Example applications for PLaN Framework
 
 Live Test Site: https://kamutiv.com
 
+Backup Site: http://nlp-web-offline.s3-website.us-east-2.amazonaws.com/
+
 ## Intro
 
 The Processing Language in a Natural way (PLaN) Framwork is an abstraction of how to approach NLP problems 
