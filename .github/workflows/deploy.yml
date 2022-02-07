@@ -43,7 +43,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           cd terraform/aws
-          terraform plan -no-color
+          terraform plan -no-color > /dev/null 2>&1
         continue-on-error: true
 
       - uses: actions/github-script@0.9.0
@@ -72,4 +72,4 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           cd terraform/aws
-          terraform apply -auto-approve
+          terraform apply -auto-approve > /dev/null 2>&1
