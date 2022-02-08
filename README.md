@@ -7,7 +7,7 @@ Example applications for PLaN Framework
 
 Live Test Site: https://kamutiv.com
 
-Backup Site: http://nlp-web-offline.s3-website.us-east-2.amazonaws.com/
+Backup Site: https://offline.kamutiv.com/
 
 ## Intro
 
