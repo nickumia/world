@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function RealmNavbar({domain, pages}) {
+export default function RealmNavbar({pages}) {
 	
 	var pages = json_parse(pages);
   const classes = useStyles();

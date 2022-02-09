@@ -14,6 +14,7 @@ from app.nlp.model_pages import \
     openings_parry, openings_lalita, openings_nick
 from app.nlp.realm_navigation import \
     parry_navbar, lalita_navbar, nick_navbar
+from app.nlp.syntax import syntax_content
 
 from . import bp
 
@@ -118,3 +119,12 @@ def post(post_id):
     post_dict = Posts.query.get(post_id).to_dict()
     return render_template('post.html', section='Posts',
                            post=json.dumps(post_dict))
+
+
+@bp.route('/syntax')
+def syntax_app():
+    return render_template('syntax.html',
+                           section='Syntax App',
+                           user=current_user,
+                           details=json.dumps(syntax_content),
+                           navigate=parry_navbar)

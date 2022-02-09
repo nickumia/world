@@ -15,6 +15,7 @@ import PostDisplay from './post';
 import NLPSelector from './main_selection';
 import Realm from './realm';
 import Kumia from './kumia';
+import SyntaxApp from './syntax';
 
 import decrypt from "./encryption";
 
@@ -47,6 +48,7 @@ const theme = createTheme({
 			color: "white"
 		},
   },
+	spacing: 8,
 });
 
 
@@ -58,6 +60,7 @@ var explorePage = document.querySelector("#explore");
 var singlePostPage = document.querySelector("#singlepost");
 var realmPage = document.querySelector("#realm");
 var kumiaPage = document.querySelector("#kumia");
+var syntaxPage = document.querySelector("#syntaxapp");
 
 ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
@@ -73,7 +76,6 @@ if (realmNav){
 	ReactDOM.render(
 	<MuiThemeProvider theme={theme}>
 		<RealmNavbar
-			domain={domain}
 			pages={navigate}
 		/>
 	</MuiThemeProvider>,
@@ -152,4 +154,14 @@ if (kumiaPage){
 		/>
 	</MuiThemeProvider>,
 	kumiaPage);
+}
+
+if (syntaxPage){
+	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<SyntaxApp
+			details={details}
+		/>
+	</MuiThemeProvider>,
+	syntaxPage);
 }
