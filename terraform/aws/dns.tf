@@ -20,6 +20,7 @@ resource "aws_route53_record" "main" {
   name            = "kamutiv.com"
   type            = "A"
   health_check_id = aws_route53_health_check.nlp_lb.id
+  set_identifier  = "live"
 
   failover_routing_policy {
     type = "PRIMARY"
