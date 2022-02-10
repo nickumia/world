@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ButtonAppBar({title, menu, login}) {
+export default function ButtonAppBar({title, menu, login, searchToggle}) {
 	// Adapted from https://react.school/material-ui/appbar/
   const classes = useStyles();
 	var search_value = '';
@@ -69,11 +69,13 @@ export default function ButtonAppBar({title, menu, login}) {
 							</Tooltip>
 						</form>
 					))}
+				{searchToggle == 'true' &&
 				<SearchBar
 			    onChange={(newValue) => search_value=newValue }
 					// TODO: Fix Search Functionality
 			    onRequestSearch={() => searchAPI(search_value)}
 			  />
+				}
         </Toolbar>
       </AppBar>
     </React.Fragment>

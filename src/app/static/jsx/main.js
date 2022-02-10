@@ -16,6 +16,7 @@ import NLPSelector from './main_selection';
 import Realm from './realm';
 import Kumia from './kumia';
 import SyntaxApp from './syntax';
+import Offline from './offline';
 
 import decrypt from "./encryption";
 
@@ -54,6 +55,7 @@ const theme = createTheme({
 
 var realmNav = document.querySelector('#realmnav');
 
+var navBar = document.querySelector('#navbar');
 var searchPage = document.querySelector("#searchresults");
 var appSelectorPage = document.querySelector("#appselector");
 var explorePage = document.querySelector("#explore");
@@ -61,16 +63,19 @@ var singlePostPage = document.querySelector("#singlepost");
 var realmPage = document.querySelector("#realm");
 var kumiaPage = document.querySelector("#kumia");
 var syntaxPage = document.querySelector("#syntaxapp");
+var offlinePage = document.querySelector("#offline");
 
-ReactDOM.render(
-	<MuiThemeProvider theme={theme}>
-		<Navbar
-			title={title}
-			menu={menu}
-		/>
-	</MuiThemeProvider>,
-	document.querySelector('#navbar')
-);
+if (navBar) {
+	ReactDOM.render(
+		<MuiThemeProvider theme={theme}>
+			<Navbar
+				title={title}
+				menu={menu}
+				searchToggle={searchOn}
+			/>
+		</MuiThemeProvider>,
+	navBar);
+}
 
 if (realmNav){
 	ReactDOM.render(
@@ -164,4 +169,12 @@ if (syntaxPage){
 		/>
 	</MuiThemeProvider>,
 	syntaxPage);
+}
+
+if (offlinePage){
+	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<Offline />
+	</MuiThemeProvider>,
+	offlinePage);
 }

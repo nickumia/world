@@ -1,10 +1,13 @@
 [![codecov](https://codecov.io/gh/nickumia/nlp-web/branch/main/graph/badge.svg?token=AS2C57SSHY)](https://codecov.io/gh/nickumia/nlp-web)
 [![Tests](https://github.com/nickumia/nlp-web/actions/workflows/commit.yml/badge.svg)](https://github.com/nickumia/nlp-web/actions/workflows/commit.yml)
+[![Deployment](https://github.com/nickumia/nlp-web/actions/workflows/deploy.yml/badge.svg)](https://github.com/nickumia/nlp-web/actions/workflows/deploy.yml)
 
 # nlp-web
 Example applications for PLaN Framework
 
 Live Test Site: https://kamutiv.com
+
+Backup Site: https://offline.kamutiv.com/
 
 ## Intro
 
@@ -61,3 +64,8 @@ To run tests, run:
 
 - [Material UI Colors](https://materialui.co/colors/)
 - [Material UI Icons](https://mui.com/components/material-icons/)
+
+## AWS Resources
+
+- [Instance Pricing](https://aws.amazon.com/ec2/pricing/on-demand/)
+- [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)

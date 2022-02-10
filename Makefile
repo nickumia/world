@@ -5,14 +5,21 @@ else
 	COMPOSE_FILE = docker-compose.ci.yml
 endif
 
+deploy: build-local install-front build-front
+	python3 -m gunicorn --bind 0.0.0.0:8000 main:app
+
 build: # Build Main App
 	docker build -t nlp-web:latest .
 
 build-test: # Build Main App
 	docker build -t nlp-web:debug . --build-arg debug=1
 
+build-local:
+	pip3 install -r requirements.txt
+
 clean: # Tear down Main App
 	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml down -v --remove-orphan
+	rm -rf testtest
 
 up: # Start Main App
 	docker-compose -f $(COMPOSE_FILE) up -d
@@ -25,6 +32,9 @@ build-front: # Build jsx into js
 	# cd src && ./node_modules/browserify/bin/cmd.js app/static/jsx/*.js --standalone nlp > app/static/js/bundle.js
 	mkdir -p src/app/static/js
 	cd src && ./node_modules/gulp/bin/gulp.js
+
+build-static: # Convert python structures to javascript
+	./static.sh
 
 test-front: # Test frontend UI
 	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml up --abort-on-container-exit cypress
