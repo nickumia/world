@@ -113,12 +113,12 @@ def initialize(app):
                             author=nick)
             natural.posted_time = datetime.datetime(2018, 5, 20)
             syntax_app = Posts(id=900,
-                            title="Syntax App",
-                            subtitle="Play around with text structures "
-                                     "and learn about how words are "
-                                     "represented!",
-                            body=syn_body,
-                            author=nick)
+                               title="Syntax App",
+                               subtitle="Play around with text structures "
+                                        "and learn about how words are "
+                                        "represented!",
+                               body=syn_body,
+                               author=nick)
             natural.posted_time = datetime.datetime(2022, 2, 10)
 
             db.session.add(intro)

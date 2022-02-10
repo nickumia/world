@@ -1,7 +1,5 @@
 from flask import url_for, json
 
-from conftest import SERVER_NAME
-
 
 def test_api_syntax(client, app):
     """Test the home page redirect."""
