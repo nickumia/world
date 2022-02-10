@@ -13,7 +13,7 @@ asteroid_parry_json = [
      "subject": [
         {"type": "Syntax/Grammar",
          "description": "Defining the basic unit of text, understanding how these units interact and combine into larger units..",  # NOQA
-         "link": "/coming_soon",
+         "link": '/nlp/syntax',
          "key": 0},
         {"type": "Semantics",
          "description": "The \"Sentence meaning\"",
