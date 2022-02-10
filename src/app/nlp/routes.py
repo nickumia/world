@@ -1,9 +1,13 @@
 import json
+from flask import json as fjson
 from datetime import datetime
 
-from flask import render_template, redirect, url_for, request  # , flash
+from flask import render_template, redirect, url_for, request, current_app, Response
 from flask_login import current_user, login_required
 # , login_user, logout_user
+
+import nlp.processing.corpus.identity as npci
+import nlp.processing.filters as npf
 
 from app import db
 # from app.auth.models import Users
@@ -131,8 +135,7 @@ def syntax_app():
 
 @bp.route('/api/syntax', methods=['POST'])
 def syntax_groups():
-    print(request.data)
-    if request.data is not None:
-        return json.dumps('1')
-    else:
-        return json.dumps('0')
+    text = request.data.decode('utf-8')
+    current_app.logger.info(text)
+    groups = npci.group(npf.semi_sanitize(text))
+    return Response(json.dumps(groups), mimetype='application/json')
