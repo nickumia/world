@@ -112,24 +112,11 @@ export default function SyntaxApp({details}) {
 		}
 		return false;
 	}
-	// 			    event.preventDefault();
-
-  //   if (value === 'best') {
-  //     setHelperText('You got it!');
-  //     setError(false);
-  //   } else if (value === 'worst') {
-  //     setHelperText('Sorry, wrong answer!');
-  //     setError(true);
-  //   } else {
-  //     setHelperText('Please select an option.');
-  //     setError(true);
-  //   }
 
   return (
     <React.Fragment>
 			<Grid
 			  container
-			  //spacing={0}
 				sx={{ marginTop: 2, marginBottom: 2 }}
 			  direction="column"
 			  alignItems="center"
@@ -162,7 +149,7 @@ export default function SyntaxApp({details}) {
 				</Box>
 				<Skeleton variant="rectangular" animation="wave"
 					style={{ marginTop: '24px' }} width={'100%'} height={'16px'} />
-		    <form onSubmit={handleSubmit}>
+		    <form onSubmit={handleSubmit} id="groups">
 		      <FormControl sx={{ m: 3 }} error={error} variant="standard">
 				    <FormLabel id="syntax-radios" style={{ justifyContent: "center" }} >
 							Choose a structure class to extract
@@ -184,6 +171,7 @@ export default function SyntaxApp({details}) {
 						  </RadioGroup>
 							<TextareaAutosize
 							  maxRows={10}
+								id="text_input"
 							  aria-label="text input"
 							  defaultValue={page_details.definition.end}
 								onChange={handleTextChange}
