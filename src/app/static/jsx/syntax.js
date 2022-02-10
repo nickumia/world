@@ -37,7 +37,7 @@ export default function SyntaxApp({details}) {
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
 	const [out_value, setOutput] = React.useState('');
-	var text = '';
+	const [text, setInput] = React.useState('');
   const [helperText, setHelperText] = React.useState('Fun Fact: This is all done with simple regular expressions!');
 
 	const handleRadioChange = (event) => {
@@ -46,7 +46,7 @@ export default function SyntaxApp({details}) {
     setError(false);
   };
 	const handleTextChange = (event) => {
-		text = event.target.value;
+		setInput(event.target.value);
 	};
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -57,9 +57,59 @@ export default function SyntaxApp({details}) {
 	      'Content-Type': 'application/json'
 		  }
 	  });
-		const myJson = await response.json();
-		console.log(myJson);
-		setOutput(myJson);
+		const parsed_json = await response.json();
+
+		if (value === 'words') {
+			try {
+				setOutput(parsed_json.alpha_char_only.join(', '));
+			} catch (ex) {
+				setOutput('There were no words found.')
+			}
+		} else if (value === 'quotes') {
+			try {
+				setOutput(parsed_json.quotes_only.join(', '));
+			} catch (ex) {
+				setOutput('There were no quotes found.')
+			}
+		} else if (value === 'sentences') {
+			try {
+			setOutput(parsed_json.sentences_only.join(', '));
+			} catch (ex) {
+				setOutput('There were no sentences found.')
+			}
+		} else if (value === 'questions') {
+			try {
+			setOutput(parsed_json.questions_only.join(', '));
+			} catch (ex) {
+				setOutput('There were no questions found.')
+			}
+		} else if (value === 'exclamations') {
+			try {
+			setOutput(parsed_json.exclamation_only.join(', '));
+			} catch (ex) {
+				setOutput('There were no exclamations found.')
+			}
+		} else if (value === 'enclosure') {
+			try {
+			setOutput(parsed_json.paren_brack_curly_only.join(', '));
+			} catch (ex) {
+				setOutput('There were no enclosed statements found.')
+			}
+		} else if (value === 'numbers') {
+			try {
+			setOutput(parsed_json.numbers_only.join(', '));
+			} catch (ex) {
+				setOutput('There were no numbers found.')
+			}
+		} else if (value === 'number_expressions') {
+			try {
+			setOutput(parsed_json.numbers_with_referring_expression.join(', '));
+			} catch (ex) {
+				setOutput('There were no numbers with contexts found.')
+			}
+		} else {
+			setOutput('');
+		}
 		return false;
 	}
 	// 			    event.preventDefault();
