@@ -27,22 +27,41 @@ export default function SyntaxApp({details}) {
 	var opening_array = page_details.opening.split('\n');
 	var start_array = page_details.definition.start.split('\n');
 	var end_array = page_details.definition.end.split('\n');
-
-  const [value, setValue] = React.useState('');
-  const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState('Fun Fact: This is all done with simple regular expressions!');
-	const handleRadioChange = (event) => {
-    setValue(event.target.value);
-    setHelperText(' ');
-    setError(false);
-  };
 	const typo_style = {
 		whiteSpace: 'pre-wrap',
 		marginBottom: '10px',
 		marginLeft: '30px',
 		marginRight: '30px'
 	}
-	const handleSubmit = (event) => { return False;}
+
+  const [value, setValue] = React.useState('');
+  const [error, setError] = React.useState(false);
+	const [out_value, setOutput] = React.useState('');
+	var text = '';
+  const [helperText, setHelperText] = React.useState('Fun Fact: This is all done with simple regular expressions!');
+
+	const handleRadioChange = (event) => {
+    setValue(event.target.value);
+    setHelperText(' ');
+    setError(false);
+  };
+	const handleTextChange = (event) => {
+		text = event.target.value;
+	};
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		const response = await fetch('/nlp/api/syntax', {
+	    method: 'POST',
+		  body: text,
+			headers: {
+	      'Content-Type': 'application/json'
+		  }
+	  });
+		const myJson = await response.json();
+		console.log(myJson);
+		setOutput(myJson);
+		return false;
+	}
 	// 			    event.preventDefault();
 
   //   if (value === 'best') {
@@ -117,6 +136,7 @@ export default function SyntaxApp({details}) {
 							  maxRows={10}
 							  aria-label="text input"
 							  defaultValue={page_details.definition.end}
+								onChange={handleTextChange}
 							  style={{ width: "60%", height: 'auto', margin: '16px', padding: '8px' }} />
 						</div>
 					  <FormHelperText>{helperText}</FormHelperText>
@@ -125,6 +145,12 @@ export default function SyntaxApp({details}) {
 					  </Button>
 				  </FormControl>
 			  </form>
+				<TextareaAutosize
+				  maxRows={10}
+					disabled
+					value={out_value}
+				  aria-label="text output"
+				  style={{ width: "80%", margin: '20px', padding: '12px' }} />
 				<Skeleton variant="rectangular" animation="wave"
 					width={'100%'} height={'16px'} />
 			</Grid>

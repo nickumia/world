@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from flask import render_template, redirect, url_for  # , flash, request
+from flask import render_template, redirect, url_for, request  # , flash
 from flask_login import current_user, login_required
 # , login_user, logout_user
 
@@ -128,3 +128,11 @@ def syntax_app():
                            user=current_user,
                            details=json.dumps(syntax_content),
                            navigate=parry_navbar)
+
+@bp.route('/api/syntax', methods=['POST'])
+def syntax_groups():
+    print(request.data)
+    if request.data is not None:
+        return json.dumps('1')
+    else:
+        return json.dumps('0')
