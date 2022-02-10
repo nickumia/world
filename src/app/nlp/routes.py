@@ -1,8 +1,8 @@
 import json
-from flask import json as fjson
 from datetime import datetime
 
-from flask import render_template, redirect, url_for, request, current_app, Response
+from flask import render_template, redirect, url_for, request, current_app, \
+    Response
 from flask_login import current_user, login_required
 # , login_user, logout_user
 
@@ -132,6 +132,7 @@ def syntax_app():
                            user=current_user,
                            details=json.dumps(syntax_content),
                            navigate=parry_navbar)
+
 
 @bp.route('/api/syntax', methods=['POST'])
 def syntax_groups():
