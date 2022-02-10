@@ -64,3 +64,6 @@ syntax_content = {
         "end": structure3
     }
 }
+
+syn_body = opening + " " + structure + " " + structure3
+syn_body += " ".join([i['value'] for i in structure2])

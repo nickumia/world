@@ -120,6 +120,8 @@ def post(post_id):
         return redirect(url_for('nlp.language'), code=302)
     if post_id == '999':
         return redirect(url_for('nlp.natural'), code=302)
+    if post_id == '900':
+        return redirect(url_for('nlp.syntax_groups'), code=302)
     post_dict = Posts.query.get(post_id).to_dict()
     return render_template('post.html', section='Posts',
                            post=json.dumps(post_dict))
