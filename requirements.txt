@@ -15,3 +15,5 @@ wtforms>=3.0.0a1 # not directly required, pinned by Snyk to avoid a vulnerabilit
 cryptography
 
 gunicorn
+
+nlp @ git+https://github.com/nickumia/nlp.git@main#egg=nlp

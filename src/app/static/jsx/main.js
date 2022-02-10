@@ -8,12 +8,14 @@ import blue from "@material-ui/core/colors/blue";
 import lightGreen from "@material-ui/core/colors/lightGreen";
 
 import Navbar from './navbar';
+import RealmNavbar from './realmnav';
 import SearchResults from './search_results';
 import AllPosts from './posts';
 import PostDisplay from './post';
 import NLPSelector from './main_selection';
 import Realm from './realm';
 import Kumia from './kumia';
+import SyntaxApp from './syntax';
 import Offline from './offline';
 
 import decrypt from "./encryption";
@@ -29,6 +31,10 @@ const theme = createTheme({
       main: blue[50],
       contrastText: "#FFF"
     },
+    // warning: {
+    //   main: blue[700],
+    //   contrastText: "#FFF"
+    // },
   },
 	typography: {
     fontFamily: [
@@ -36,14 +42,18 @@ const theme = createTheme({
       'Mirza',
 			'Muli',
 			'Noto Sans',
-			'Hind Guntur'
+			'Hind Guntur',
+			'Arial'
     ].join(','),
 		body2: {
 			color: "white"
 		},
   },
+	spacing: 8,
 });
 
+
+var realmNav = document.querySelector('#realmnav');
 
 var navBar = document.querySelector('#navbar');
 var searchPage = document.querySelector("#searchresults");
@@ -52,6 +62,7 @@ var explorePage = document.querySelector("#explore");
 var singlePostPage = document.querySelector("#singlepost");
 var realmPage = document.querySelector("#realm");
 var kumiaPage = document.querySelector("#kumia");
+var syntaxPage = document.querySelector("#syntaxapp");
 var offlinePage = document.querySelector("#offline");
 
 if (navBar) {
@@ -64,6 +75,16 @@ if (navBar) {
 			/>
 		</MuiThemeProvider>,
 	navBar);
+}
+
+if (realmNav){
+	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<RealmNavbar
+			pages={navigate}
+		/>
+	</MuiThemeProvider>,
+	realmNav);
 }
 
 if (appSelectorPage) {
@@ -138,6 +159,16 @@ if (kumiaPage){
 		/>
 	</MuiThemeProvider>,
 	kumiaPage);
+}
+
+if (syntaxPage){
+	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<SyntaxApp
+			details={details}
+		/>
+	</MuiThemeProvider>,
+	syntaxPage);
 }
 
 if (offlinePage){

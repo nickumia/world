@@ -1,9 +1,13 @@
 import json
 from datetime import datetime
 
-from flask import render_template, redirect, url_for  # , flash, request
+from flask import render_template, redirect, url_for, request, current_app, \
+    Response
 from flask_login import current_user, login_required
 # , login_user, logout_user
+
+import nlp.processing.corpus.identity as npci
+import nlp.processing.filters as npf
 
 from app import db
 # from app.auth.models import Users
@@ -12,6 +16,9 @@ from app.nlp.selection import getSelection
 from app.nlp.model_pages import \
     asteroid_parry_json, asteroid_lalita_json, asteroid_nick_json, \
     openings_parry, openings_lalita, openings_nick
+from app.nlp.realm_navigation import \
+    parry_navbar, lalita_navbar, nick_navbar
+from app.nlp.syntax import syntax_content
 
 from . import bp
 
@@ -44,7 +51,8 @@ def processing():
                            section='Processing',
                            user=current_user,
                            domain=json.dumps(openings_parry),
-                           asteroids=json.dumps(asteroid_parry_json))
+                           asteroids=json.dumps(asteroid_parry_json),
+                           navigate=parry_navbar)
 
 
 @bp.route('/language')
@@ -53,7 +61,8 @@ def language():
                            section='Language',
                            user=current_user,
                            domain=json.dumps(openings_lalita),
-                           asteroids=json.dumps(asteroid_lalita_json))
+                           asteroids=json.dumps(asteroid_lalita_json),
+                           navigate=lalita_navbar)
 
 
 @bp.route('/natural')
@@ -62,7 +71,8 @@ def natural():
                            section='Natural Core',
                            user=current_user,
                            domain=json.dumps(openings_nick),
-                           asteroids=json.dumps(asteroid_nick_json))
+                           asteroids=json.dumps(asteroid_nick_json),
+                           navigate=nick_navbar)
 
 
 @bp.before_request
@@ -110,6 +120,25 @@ def post(post_id):
         return redirect(url_for('nlp.language'), code=302)
     if post_id == '999':
         return redirect(url_for('nlp.natural'), code=302)
+    if post_id == '900':
+        return redirect(url_for('nlp.syntax_app'), code=302)
     post_dict = Posts.query.get(post_id).to_dict()
     return render_template('post.html', section='Posts',
                            post=json.dumps(post_dict))
+
+
+@bp.route('/syntax')
+def syntax_app():
+    return render_template('syntax.html',
+                           section='Syntax App',
+                           user=current_user,
+                           details=json.dumps(syntax_content),
+                           navigate=parry_navbar)
+
+
+@bp.route('/api/syntax', methods=['POST'])
+def syntax_groups():
+    text = request.data.decode('utf-8')
+    current_app.logger.info(text)
+    groups = npci.group(npf.semi_sanitize(text))
+    return Response(json.dumps(groups), mimetype='application/json')

@@ -13,6 +13,7 @@
 		<div id="navbar"></div>
   </head>
 	<body style="padding-top:50px; background-color:#E0E0E0;">
+		{% block realm_header %}{% endblock %}
 		{% with messages = get_flashed_messages() %}
       {% if messages %}
       <ul>

@@ -83,6 +83,11 @@ def test_blog_redirect(client, app):
     assert ('You should be redirected automatically to target URL: <a '
             'href="/nlp/natural">/nlp/natural</a>.') in str(rv.data)
     assert rv.status_code == 302
+    with app.app_context():
+        rv = client.get(url_for('nlp.post', post_id=900))
+    assert ('You should be redirected automatically to target URL: <a '
+            'href="/nlp/syntax">/nlp/syntax</a>.') in str(rv.data)
+    assert rv.status_code == 302
 
 
 def test_search_results(client, app):

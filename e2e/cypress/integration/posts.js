@@ -15,7 +15,7 @@ describe('Blog Posts', () => {
 	it('Loads a specific post page', () => {
 		cy.visit('/nlp/posts');
 		cy.get('ul a:first').click();
-		cy.contains('Yeh \'consciousness\' kya hai?');
+		cy.contains('As with most of the concepts described here, syntax and grammar');
 	});
 
 });

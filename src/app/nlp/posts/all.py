@@ -5,6 +5,7 @@ import sys
 from app.nlp.models import Posts
 from app.nlp.model_pages import \
     parry_summary, lalita_summary, nick_summary
+from app.nlp.syntax import syn_body
 from app.auth.models import Users
 from app import db
 
@@ -111,6 +112,14 @@ def initialize(app):
                             body=nick_summary,
                             author=nick)
             natural.posted_time = datetime.datetime(2018, 5, 20)
+            syntax_app = Posts(id=900,
+                               title="Syntax App",
+                               subtitle="Play around with text structures "
+                                        "and learn about how words are "
+                                        "represented!",
+                               body=syn_body,
+                               author=nick)
+            natural.posted_time = datetime.datetime(2022, 2, 10)
 
             db.session.add(intro)
             db.session.add(senses)
@@ -121,6 +130,7 @@ def initialize(app):
             db.session.add(processing)
             db.session.add(language)
             db.session.add(natural)
+            db.session.add(syntax_app)
             db.session.commit()
             print("INIT: posts commited to db", file=sys.stderr)
 
