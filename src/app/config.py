@@ -10,7 +10,8 @@ class Config(object):
                                         'postgres')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL',
-                                       'http://elastic:9200')
+                                       'http://elastic:somethingsecure'
+                                       '@elastic:9200')
     RESULTS_PER_PAGE = 10
     ENCRYPTION_KEY = os.getenv('ENCRYPTION_KEY',
                                'IS4KazwEAVpe4nMagfV54pxnuL9ufzsAsvQyjozvgTw=')

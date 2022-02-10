@@ -33,6 +33,9 @@ services:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=true
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=somethingsecure
     healthcheck:
       test: ['CMD', 'curl' , '-f', 'http://localhost:9200/_cluster/health/']
       interval: 10s
