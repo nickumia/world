@@ -7,8 +7,8 @@ resource "aws_route53_health_check" "nlp_lb" {
   port              = 80
   type              = "HTTP"
   resource_path     = "/"
-  failure_threshold = "5"
-  request_interval  = "10"
+  failure_threshold = "3"
+  request_interval  = "30"
 
   tags = {
     Name = "nlp-web-lb-health-check"
