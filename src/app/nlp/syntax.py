@@ -65,5 +65,5 @@ syntax_content = {
     }
 }
 
-syn_body = opening + " " + structure + " " + structure3
+syn_body = opening + " " + structure + " " + structure3 + " motivation"
 syn_body += " ".join([i['value'] for i in structure2])

@@ -36,6 +36,7 @@ resource "aws_elasticsearch_domain" "nlpes" {
   }
 
   encrypt_at_rest {
+    # TODO: Try to enable once Free Tier restrictions are gone
     enabled = false
   }
   node_to_node_encryption {
