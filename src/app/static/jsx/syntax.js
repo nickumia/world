@@ -37,7 +37,7 @@ export default function SyntaxApp({details}) {
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
 	const [out_value, setOutput] = React.useState('');
-	const [text, setInput] = React.useState('');
+	const [text, setInput] = React.useState(page_details.definition.end);
   const [helperText, setHelperText] = React.useState('Fun Fact: This is all done with simple regular expressions!');
 
 	const handleRadioChange = (event) => {
@@ -61,51 +61,57 @@ export default function SyntaxApp({details}) {
 
 		if (value === 'words') {
 			try {
-				setOutput(parsed_json.alpha_char_only.join(', '));
+				setOutput(parsed_json.alpha_char_only.join(' \n--\n'));
 			} catch (ex) {
 				setOutput('There were no words found.')
 			}
 		} else if (value === 'quotes') {
 			try {
-				setOutput(parsed_json.quotes_only.join(', '));
+				setOutput(parsed_json.quotes_only.join(' \n--\n'));
 			} catch (ex) {
 				setOutput('There were no quotes found.')
 			}
 		} else if (value === 'sentences') {
 			try {
-			setOutput(parsed_json.sentences_only.join(', '));
+				setOutput(parsed_json.sentences_only.join(' \n--\n'));
 			} catch (ex) {
 				setOutput('There were no sentences found.')
 			}
 		} else if (value === 'questions') {
 			try {
-			setOutput(parsed_json.questions_only.join(', '));
+				setOutput(parsed_json.questions_only.join(' \n--\n'));
 			} catch (ex) {
 				setOutput('There were no questions found.')
 			}
 		} else if (value === 'exclamations') {
 			try {
-			setOutput(parsed_json.exclamation_only.join(', '));
+				setOutput(parsed_json.exclamation_only.join(' \n--\n'));
 			} catch (ex) {
 				setOutput('There were no exclamations found.')
 			}
 		} else if (value === 'enclosure') {
 			try {
-			setOutput(parsed_json.paren_brack_curly_only.join(', '));
+				setOutput(parsed_json.paren_brack_curly_only.join(' \n--\n'));
 			} catch (ex) {
 				setOutput('There were no enclosed statements found.')
 			}
 		} else if (value === 'numbers') {
 			try {
-			setOutput(parsed_json.numbers_only.join(', '));
+				setOutput(parsed_json.numbers_only.join(' \n--\n'));
 			} catch (ex) {
 				setOutput('There were no numbers found.')
 			}
 		} else if (value === 'number_expressions') {
 			try {
-			setOutput(parsed_json.numbers_with_referring_expression.join(', '));
+				setOutput(parsed_json.numbers_with_referring_expression.join(' \n--\n'));
 			} catch (ex) {
 				setOutput('There were no numbers with contexts found.')
+			}
+		} else if (value === 'nothing') {
+			if (text === ''){
+				setOutput('You\'re right!  There\'s nothing there 🙃');
+			} else {
+				setOutput('Are you messing with me?  Of course, there\'s something there! 😉')
 			}
 		} else {
 			setOutput('');
@@ -167,7 +173,8 @@ export default function SyntaxApp({details}) {
 			          <FormControlLabel value="exclamations" control={<Radio />} label="EXCLAMATIONS" />
 					      <FormControlLabel value="enclosure" control={<Radio />} label="ENCLOSURES" />
 								<FormControlLabel value="numbers" control={<Radio />} label="NUMBERS" />
-					      <FormControlLabel value="number_expressions" control={<Radio />} label="NUMBERS WITH CONTEXT" />
+								<FormControlLabel value="number_expressions" control={<Radio />} label="NUMBERS WITH CONTEXT" />
+					      <FormControlLabel value="nothing" control={<Radio />} label="NOTHING" />
 						  </RadioGroup>
 							<TextareaAutosize
 							  maxRows={10}
