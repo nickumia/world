@@ -168,6 +168,13 @@ Arduino, C++, MatLab, MakerBot, Open-source 3D Printers, TPU Filament, G-Code, S
 
 educations = [
     {"school": "Amazon Web Services (AWS)",
+     "key": 4,
+     "date": "Mar 2022 - Mar 2025",
+     "degree": "AWS Certified Solution Architect Associate",
+     "image": "/static/img/aws-sa-a.png",
+     "link": "https://www.credly.com/badges/47309dee-4f27-4b01-8d95-ad96a90f3155/public_url",  # NOQA
+     },
+    {"school": "Amazon Web Services (AWS)",
      "key": 3,
      "date": "Mar 2021 - Mar 2024",
      "degree": "AWS Certified Cloud Practitioner",
