@@ -172,11 +172,11 @@ educations = [
      "date": "Mar 2022 - Mar 2025",
      "degree": "AWS Certified Solution Architect Associate",
      "image": "/static/img/aws-sa-a.png",
-     "link": "https://www.credly.com/badges/47309dee-4f27-4b01-8d95-ad96a90f3155/public_url",  # NOQA
+     "link": "https://www.credly.com/badges/9292640a-731d-403e-ac7e-140adab1a139/public_url",  # NOQA
      },
     {"school": "Amazon Web Services (AWS)",
      "key": 3,
-     "date": "Mar 2021 - Mar 2024",
+     "date": "Mar 2021 - Mar 2025",
      "degree": "AWS Certified Cloud Practitioner",
      "image": "/static/img/aws-cp.png",
      "link": "https://www.credly.com/badges/47309dee-4f27-4b01-8d95-ad96a90f3155/public_url",  # NOQA
