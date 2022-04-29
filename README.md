@@ -26,6 +26,7 @@ All of the source code can be found within the `/src` folder.
 To build the front-end, run:
 
   ```
+  # sudo apt install nodejs npm
   make install-front  # Install npm dependencies
   make build-front    # Builds and bundles front-end into /src/app/static/js/bundle.js
   ```

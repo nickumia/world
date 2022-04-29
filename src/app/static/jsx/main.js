@@ -17,6 +17,7 @@ import Realm from './realm';
 import Kumia from './kumia';
 import SyntaxApp from './syntax';
 import Offline from './offline';
+import OfflineMain from './offline_main';
 
 import decrypt from "./encryption";
 
@@ -64,6 +65,7 @@ var realmPage = document.querySelector("#realm");
 var kumiaPage = document.querySelector("#kumia");
 var syntaxPage = document.querySelector("#syntaxapp");
 var offlinePage = document.querySelector("#offline");
+var offlineMainPage = document.querySelector("#offlinemain");
 
 if (navBar) {
 	ReactDOM.render(
@@ -177,4 +179,12 @@ if (offlinePage){
 		<Offline />
 	</MuiThemeProvider>,
 	offlinePage);
+}
+
+if (offlineMainPage){
+	ReactDOM.render(
+	<MuiThemeProvider theme={theme}>
+		<OfflineMain />
+	</MuiThemeProvider>,
+	offlineMainPage);
 }

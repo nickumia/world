@@ -7,7 +7,7 @@ from flask import current_app, Blueprint
 bp = Blueprint('encryption', __name__)
 
 
-@jinja2.contextfilter
+@jinja2.pass_context
 @bp.app_template_filter()
 def encryptdata(context, value):
     a = Fernet(current_app.config['ENCRYPTION_KEY'])
@@ -17,7 +17,7 @@ def encryptdata(context, value):
     })
 
 
-@jinja2.contextfilter
+@jinja2.pass_context
 @bp.app_template_filter()
 def decryptdata(context, value, bypass=False):
     a = Fernet(current_app.config['ENCRYPTION_KEY'])
