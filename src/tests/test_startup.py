@@ -75,7 +75,7 @@ def test_blog_redirect(client, app):
 
     with app.app_context():
         rv = client.get(url_for('nlp.post', post_id=998))
-    assert ('You should be redirected automatically to  the target URL: <a '
+    assert ('You should be redirected automatically to the target URL: <a '
             'href="/nlp/language">/nlp/language</a>.') in str(rv.data)
     assert rv.status_code == 302
     with app.app_context():
