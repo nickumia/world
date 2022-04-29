@@ -26,9 +26,9 @@ def test_kumia(client, app):
 
     with app.app_context():
         rv = client.get("/kumia")
-    assert ('You should be redirected automatically to the target URL: <a href="'
-            'http://'+SERVER_NAME+'/kumia/">http://'+SERVER_NAME+'/kumia/'
-            '</a>.') in str(rv.data)
+    assert ('You should be redirected automatically to the target URL: <a '
+            'href="http://'+SERVER_NAME+'/kumia/">http://'+SERVER_NAME+''
+            '/kumia/</a>.') in str(rv.data)
     assert rv.status_code == 308
 
     """ Test personal home page. """
