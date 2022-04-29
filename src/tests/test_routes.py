@@ -9,7 +9,7 @@ def test_home(client, app):
 
     with app.app_context():
         rv = client.get(url_for('index'))
-    assert ('You should be redirected automatically to target URL: <a '
+    assert ('You should be redirected automatically to the target URL: <a '
             'href="/nlp/index">/nlp/index</a>.') in str(rv.data)
     assert rv.status_code == 302
 
@@ -26,7 +26,7 @@ def test_kumia(client, app):
 
     with app.app_context():
         rv = client.get("/kumia")
-    assert ('You should be redirected automatically to target URL: <a href="'
+    assert ('You should be redirected automatically to the target URL: <a href="'
             'http://'+SERVER_NAME+'/kumia/">http://'+SERVER_NAME+'/kumia/'
             '</a>.') in str(rv.data)
     assert rv.status_code == 308
