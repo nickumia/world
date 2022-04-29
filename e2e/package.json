@@ -4,6 +4,6 @@
     "wait-on": "^6.0.0"
   },
   "devDependencies": {
-    "follow-redirects": ">=1.14.7"
+    "follow-redirects": ">=1.14.8"
   }
 }
