@@ -3,12 +3,11 @@ data "aws_route53_zone" "primary" {
 }
 
 resource "aws_route53_health_check" "nlp_lb" {
-  fqdn              = aws_lb.nlp_lb.dns_name
-  port              = 80
-  type              = "HTTP"
-  resource_path     = "/"
-  failure_threshold = "3"
-  request_interval  = "30"
+  fqdn             = aws_lb.nlp_lb.dns_name
+  port             = 80
+  type             = "HTTP"
+  resource_path    = "/"
+  request_interval = "30"
 
   tags = {
     Name = "nlp-web-lb-health-check"
