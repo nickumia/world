@@ -1,0 +1,25 @@
+---
+name: commit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-s3:
+    name: Upload new offline pages to S3 Bucket
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build
+        run: TEST_ENV=CI make build-test install-front build-front
+      - name: create offline files
+        run: TEST_ENV=CI make build-static
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id:${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key:${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Upload
+        run: aws s3 cp src/app/static/offline/ s3://offline.kamutiv.com/ --recursive

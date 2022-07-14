@@ -167,6 +167,13 @@ Arduino, C++, MatLab, MakerBot, Open-source 3D Printers, TPU Filament, G-Code, S
 
 
 educations = [
+    {"school": "CompTIA",
+     "key": 5,
+     "date": "Jun 2022 - Jun 2025",
+     "degree": "CompTIA CySA+ ce Certification",
+     "image": "/static/img/comptia-cysa.png",
+     "link": "https://www.credly.com/badges/df446150-bc7f-4bd7-aef8-e04231e079f6/public_url",  # NOQA
+     },
     {"school": "Amazon Web Services (AWS)",
      "key": 4,
      "date": "Mar 2022 - Mar 2025",
@@ -183,7 +190,7 @@ educations = [
      },
     {"school": "CompTIA",
      "key": 2,
-     "date": "Nov 2019 - Nov 2022",
+     "date": "Nov 2019 - Jun 2025",
      "degree": "CompTIA Security+ ce Certification",
      "image": "/static/img/comptia-security.png",
      "link": "https://www.credly.com/badges/e885d9f2-613a-4374-8934-6ac63fe14654/public_url",  # NOQA
