@@ -19,7 +19,7 @@ def postgres(db_name, user, host, password):
 
 
 def elastics(es):
-    while(not es.ping()):
+    while not es.ping():
         print("ELASTICSEARCH: waiting for server..", file=sys.stderr)
         time.sleep(1)
 
