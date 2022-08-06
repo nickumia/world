@@ -203,6 +203,13 @@ educations = [
      "link": "https://issuu.com/hofstra/docs/may_2018_commencement-correctedbypa/62",  # NOQA
      "tooltip": "<img src=\"/static/img/hofstra_grad.jpg\" height=\"300\"/>",
      },
+    {"school": "NCEES",
+     "key": 2,
+     "date": "Dec 2016",
+     "degree": "Fundamentals of Engineering (FE) - Mechanical",
+     "image": "/static/img/ncees.png",
+     "link": "https://account.ncees.org/rn/1718546-963148-ac26ebc",  # NOQA
+     },
     {"school": "Vaughn College of Aeronautics and Technology",
      "key": 0,
      "date": "2013 - 2016",
