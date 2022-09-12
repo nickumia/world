@@ -167,7 +167,7 @@ Arduino, C++, MatLab, MakerBot, Open-source 3D Printers, TPU Filament, G-Code, S
 
 
 educations = [
-    {"school": "American Flyers / FAA",
+    {"school": "American Flyers",
      "key": 6,
      "date": "Sep 2022",
      "degree": "Private Pilot - ASEL (Search my last name, KUMIA)",
