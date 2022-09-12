@@ -34,7 +34,7 @@ def test_kumia(client, app):
                              ' target URL: <a href="%s/kumia/">%s/kumia/</a>.'
                              % (p, p)) in str(rv.data))
     assert any(at_least_one)
-    assert rv.status_code == 308
+    assert rv.status_code in [302, 308]
 
     """ Test personal home page. """
 
