@@ -26,10 +26,15 @@ def test_kumia(client, app):
 
     with app.app_context():
         rv = client.get("/kumia")
-    assert ('You should be redirected automatically to the target URL: <a '
-            'href="http://'+SERVER_NAME+'/kumia/">http://'+SERVER_NAME+''
-            '/kumia/</a>.') in str(rv.data)
-    assert rv.status_code == 308
+    possible = ['http://'+SERVER_NAME, '']
+    at_least_one = []
+
+    for p in possible:
+        at_least_one.append(('You should be redirected automatically to the'
+                             ' target URL: <a href="%s/kumia/">%s/kumia/</a>.'
+                             % (p, p)) in str(rv.data))
+    assert any(at_least_one)
+    assert rv.status_code in [302, 308]
 
     """ Test personal home page. """
 

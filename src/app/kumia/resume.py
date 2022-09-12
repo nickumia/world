@@ -167,6 +167,13 @@ Arduino, C++, MatLab, MakerBot, Open-source 3D Printers, TPU Filament, G-Code, S
 
 
 educations = [
+    {"school": "American Flyers",
+     "key": 6,
+     "date": "Sep 2022",
+     "degree": "Private Pilot - ASEL (Search my last name, KUMIA)",
+     "image": "/static/img/af.png",
+     "link": "https://amsrvs.registry.faa.gov/airmeninquiry/Main.aspx",  # NOQA
+     },
     {"school": "CompTIA",
      "key": 5,
      "date": "Jun 2022 - Jun 2025",
