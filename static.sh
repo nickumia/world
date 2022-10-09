@@ -23,5 +23,5 @@ rm -rf testtest
 # export kumia.html
 docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py kumia > testtest"
 
-cat <(sed -n '1,26p' src/app/static/offline/kumia_template.html) testtest <(sed -n '26,1000p' src/app/static/offline/kumia_template.html) > src/app/static/offline/kumia.html
+cat <(sed -n '1,26p' src/app/static/offline/kumia_template.html) testtest <(sed -n '27,1000p' src/app/static/offline/kumia_template.html) > src/app/static/offline/kumia.html
 rm -rf testtest
