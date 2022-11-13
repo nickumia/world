@@ -1,6 +1,15 @@
 # Resume content
 
 publications = [
+    {"title": "Data.gov Re-Architect Solr Infrastructure",
+     "key": 10,
+     "image": "/static/img/datagov.svg",
+     "place": "GSA TTS Data.gov",
+     "date": "Sep 2022",
+     "link": "https://github.com/GSA/data.gov/issues/3826#issuecomment-1312186346",  # NOQA
+     "support": """<a href="https://github.com/GSA/data.gov/issues/3826#issuecomment-1312186346">Summary of work</a>
+     """,  # NOQA
+     },
     {"title": "Data.gov Python 3 Migration",
      "key": 9,
      "image": "/static/img/datagov.svg",
@@ -168,25 +177,32 @@ Arduino, C++, MatLab, MakerBot, Open-source 3D Printers, TPU Filament, G-Code, S
 
 educations = [
     {"school": "American Flyers",
-     "key": 6,
+     "key": 7,
      "date": "Sep 2022",
      "degree": "Private Pilot - ASEL (Search my last name, KUMIA)",
      "image": "/static/img/af.png",
      "link": "https://amsrvs.registry.faa.gov/airmeninquiry/Main.aspx",  # NOQA
      },
     {"school": "CompTIA",
-     "key": 5,
+     "key": 6,
      "date": "Jun 2022 - Jun 2025",
      "degree": "CompTIA CySA+ ce Certification",
      "image": "/static/img/comptia-cysa.png",
      "link": "https://www.credly.com/badges/df446150-bc7f-4bd7-aef8-e04231e079f6/public_url",  # NOQA
      },
     {"school": "Amazon Web Services (AWS)",
-     "key": 4,
+     "key": 5,
      "date": "Mar 2022 - Mar 2025",
      "degree": "AWS Certified Solution Architect Associate",
      "image": "/static/img/aws-sa-a.png",
      "link": "https://www.credly.com/badges/9292640a-731d-403e-ac7e-140adab1a139/public_url",  # NOQA
+     },
+    {"school": "REI Systems",
+     "key": 4,
+     "date": "Mar 2022",
+     "degree": "Going the Extra Mile (GEM) Award",
+     "image": "/static/img/rei.png",
+     "link": "https://youtu.be/yaORuihV7QI?t=87",  # NOQA
      },
     {"school": "Amazon Web Services (AWS)",
      "key": 3,
