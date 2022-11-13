@@ -6,7 +6,7 @@ publications = [
      "image": "/static/img/datagov.svg",
      "place": "GSA TTS Data.gov",
      "date": "Sep 2022",
-     "link": "https://github.com/GSA/data.gov/issues/3826#issuecomment-1312186346",
+     "link": "https://github.com/GSA/data.gov/issues/3826#issuecomment-1312186346",  # NOQA
      "support": """<a href="https://github.com/GSA/data.gov/issues/3826#issuecomment-1312186346">Summary of work</a>
      """,  # NOQA
      },
