@@ -26,7 +26,8 @@ up: # Start Main App
 	
 
 install-front: # Install dependencies for front-end
-	cd src && npm install
+	# TODO: fix mui imports :/
+	cd src && npm install --legacy-peer-deps
 
 build-front: # Build jsx into js
 	# cd src && ./node_modules/browserify/bin/cmd.js app/static/jsx/*.js --standalone nlp > app/static/js/bundle.js
