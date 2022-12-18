@@ -189,6 +189,7 @@ educations = [
      "degree": "Private Pilot - ASEL (Search my last name, KUMIA)",
      "image": "/static/img/af.png",
      "link": "https://amsrvs.registry.faa.gov/airmeninquiry/Main.aspx",  # NOQA
+     "tooltip": "<img src=\"/static/img/private_plane.jpg\" height=\"300\"/>",
      },
     {"school": "CompTIA",
      "key": 7,
