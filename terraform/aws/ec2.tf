@@ -58,7 +58,6 @@ resource "aws_instance" "web" {
     echo "export FLASK_ENV=production" >> /nlp-web/.env
     echo "export DATABASE_URL=postgresql://${var.db_user}:${var.db_pass}@${aws_db_instance.nlpdb.address}:5432/${var.db_name}" >> /nlp-web/.env
     echo "export POSTGRES_HOST=${aws_db_instance.nlpdb.address}" >> /nlp-web/.env
-    echo "export ELASTICSEARCH_URL=http://${aws_elasticsearch_domain.nlpes.endpoint}:80" >> /nlp-web/.env
     source .env
     PGPASSWORD=$POSTGRES_PASSWORD psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $POSTGRES_DB -f db_config/create_post_table.sql
     PGPASSWORD=$POSTGRES_PASSWORD psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $POSTGRES_DB -f db_config/create_user_table.sql
@@ -71,6 +70,5 @@ resource "aws_instance" "web" {
 
   depends_on = [
     aws_db_instance.nlpdb,
-    aws_elasticsearch_domain.nlpes
   ]
 }
