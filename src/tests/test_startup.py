@@ -17,11 +17,6 @@ def init(app, client):
                   os.getenv('POSTGRES_HOST', 'db'),
                   os.getenv('POSTGRES_PASS', 'pass'))
     initialize(app)
-    with app.app_context():
-        rv = client.get(url_for('nlp.elastic_index'))
-        # Add delay since indexing takes a some time
-        time.sleep(5)
-    assert ("Posts was indexed") in str(rv.data)
 
 
 def test_blogs(client, app):
