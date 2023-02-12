@@ -11,7 +11,6 @@ services:
     depends_on:
       - nlp
       - db
-      - elastic
     volumes:
       - ./e2e:/e2e
 
