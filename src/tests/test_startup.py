@@ -3,7 +3,6 @@
 # import base64
 from flask import url_for
 import os
-import time
 
 from app import wait
 from app.nlp.posts.all import initialize
