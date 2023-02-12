@@ -1,11 +1,9 @@
 from datetime import datetime
 from app import db
-from app.search.models import SearchableMixin
 from sqlalchemy.dialects.mysql import MEDIUMTEXT
 
 
-class Posts(SearchableMixin, db.Model):
-    __searchable__ = ['title', 'body']
+class Posts(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140))
