@@ -2,7 +2,6 @@ from flask import Flask, url_for, redirect, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_moment import Moment
-from elasticsearch import Elasticsearch
 
 import logging
 from logging.handlers import RotatingFileHandler
@@ -23,8 +22,6 @@ def create_app(config_class=Config):
     db.init_app(app)
     login.init_app(app)
     moment.init_app(app)
-    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
-        if app.config['ELASTICSEARCH_URL'] else None
 
     from app.encryption import bp as encryption_filter
     app.register_blueprint(encryption_filter)
@@ -37,9 +34,6 @@ def create_app(config_class=Config):
 
     from app.nlp import bp as nlp_bp
     app.register_blueprint(nlp_bp, url_prefix='/nlp')
-
-    from app.search import bp as search_bp
-    app.register_blueprint(search_bp, url_prefix='/search')
 
     from app.kumia import bp as kumia_bp
     app.register_blueprint(kumia_bp, url_prefix='/kumia')

@@ -3,7 +3,6 @@
 # import base64
 from flask import url_for
 import os
-import time
 
 from app import wait
 from app.nlp.posts.all import initialize
@@ -16,13 +15,7 @@ def init(app, client):
                   os.getenv('POSTGRES_USER', 'postgres'),
                   os.getenv('POSTGRES_HOST', 'db'),
                   os.getenv('POSTGRES_PASS', 'pass'))
-    wait.elastics(app.elasticsearch)
     initialize(app)
-    with app.app_context():
-        rv = client.get(url_for('nlp.elastic_index'))
-        # Add delay since indexing takes a some time
-        time.sleep(5)
-    assert ("Posts was indexed") in str(rv.data)
 
 
 def test_blogs(client, app):
@@ -88,20 +81,3 @@ def test_blog_redirect(client, app):
     assert ('You should be redirected automatically to the target URL: <a '
             'href="/nlp/syntax">/nlp/syntax</a>.') in str(rv.data)
     assert rv.status_code == 302
-
-
-def test_search_results(client, app):
-    """ Test that the search API works """
-
-    raw = None
-    with app.app_context():
-        rv = client.get(url_for('search.search', q="world"))
-        response = str(rv.data)
-        # encoded = max(response.split('"'), key=len)[:-2]
-        # raw = str(decryptdata({}, base64.b64decode(encoded), bypass=True))
-    raw = response
-    assert ('{\\\\"key\\\\": 1, \\\\"name\\\\": \\\\"Parry\\\\u0027s '
-            'Processing\\\\", \\\\"link\\\\": \\\\"/nlp/posts/997\\\\"'
-            ', \\\\"summary\\\\": \\\\"Query context score (non-normalized)'
-            ': 0.') in raw
-    assert rv.status_code == 200

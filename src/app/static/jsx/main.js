@@ -9,7 +9,6 @@ import lightGreen from "@material-ui/core/colors/lightGreen";
 
 import Navbar from './navbar';
 import RealmNavbar from './realmnav';
-import SearchResults from './search_results';
 import AllPosts from './posts';
 import PostDisplay from './post';
 import NLPSelector from './main_selection';
@@ -57,7 +56,6 @@ const theme = createTheme({
 var realmNav = document.querySelector('#realmnav');
 
 var navBar = document.querySelector('#navbar');
-var searchPage = document.querySelector("#searchresults");
 var appSelectorPage = document.querySelector("#appselector");
 var explorePage = document.querySelector("#explore");
 var singlePostPage = document.querySelector("#singlepost");
@@ -73,7 +71,6 @@ if (navBar) {
 			<Navbar
 				title={title}
 				menu={menu}
-				searchToggle={searchOn}
 			/>
 		</MuiThemeProvider>,
 	navBar);
@@ -98,19 +95,6 @@ if (appSelectorPage) {
 		/>
 	</MuiThemeProvider>,
 	appSelectorPage);
-}
-
-if (searchPage){
-	ReactDOM.render(
-	<MuiThemeProvider theme={theme}>
-		<SearchResults 
-			// results={decrypt(JSON.parse(results).data)}
-			results={results}
-			next_url={next_url}
-			prev_url={prev_url}
-		/>
-	</MuiThemeProvider>,
-	searchPage);
 }
 
 if (explorePage){

@@ -16,7 +16,6 @@ import ChangeHistoryIcon from '@mui/icons-material/ChangeHistory';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import BlurOnIcon from '@mui/icons-material/BlurOn';
 
-import SearchBar from "material-ui-search-bar";
 
 // react.school/material-ui
 
@@ -31,10 +30,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ButtonAppBar({title, menu, login, searchToggle}) {
+export default function ButtonAppBar({title, menu, login}) {
 	// Adapted from https://react.school/material-ui/appbar/
   const classes = useStyles();
-	var search_value = '';
 	const icons = {
 		"Login": <LoginIcon />,
 		"Logout": <LogoutIcon />,
@@ -45,11 +43,7 @@ export default function ButtonAppBar({title, menu, login, searchToggle}) {
 		"Natural": <CircleOutlinedIcon />,
 		"Kumia": <BlurOnIcon />,
 	};
-	const [search_api, setSearch] = React.useState('');
 
-	React.useEffect(() => {
-	  searchAPI(search_value);
-	}, [search_api, setSearch]);
 
 
   return (
@@ -69,22 +63,8 @@ export default function ButtonAppBar({title, menu, login, searchToggle}) {
 							</Tooltip>
 						</form>
 					))}
-				{searchToggle == 'true' &&
-				<SearchBar
-			    onChange={(newValue) => search_value=newValue }
-					// TODO: Fix Search Functionality
-			    onRequestSearch={() => searchAPI(search_value)}
-			  />
-				}
         </Toolbar>
       </AppBar>
     </React.Fragment>
   );
-
-	
-	function searchAPI(query_text){
-		if( query_text ){
-			window.location.href = '/search?q='+query_text;
-		}
-	}
 }

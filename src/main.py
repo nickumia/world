@@ -12,8 +12,6 @@ wait.postgres(os.getenv('POSTGRES_DB', 'postgres'),
               os.getenv('POSTGRES_HOST', 'db'),
               os.getenv('POSTGRES_PASSWORD', 'pass'))
 print("DB up", file=sys.stderr)
-wait.elastics(app.elasticsearch)
-print("ES up", file=sys.stderr)
 
 initialize(app)
 # cli.register(app)

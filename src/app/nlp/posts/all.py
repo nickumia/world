@@ -133,6 +133,3 @@ def initialize(app):
             db.session.add(syntax_app)
             db.session.commit()
             print("INIT: posts commited to db", file=sys.stderr)
-
-        Posts.reindex()
-        print("INIT: posts indexed in elastic", file=sys.stderr)

@@ -10,7 +10,6 @@ psycopg2
 
 pyjwt
 
-elasticsearch==7.10.0
 wtforms>=3.0.0a1 # not directly required, pinned by Snyk to avoid a vulnerability
 cryptography
 

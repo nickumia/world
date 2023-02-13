@@ -13,7 +13,6 @@ services:
       - ./src:/app
     depends_on:
       - db
-      - elastic
 
     ports:
       - "0.0.0.0:8000:8000"
@@ -25,26 +24,6 @@ services:
       - ./db_config/create_post_table.sql:/docker-entrypoint-initdb.d/cut2.sql
     ports:
       - "5432:5432"
-
-  elastic:
-    image: elasticsearch:7.10.1
-    environment:
-      - node.name=es01
-      - discovery.type=single-node
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - xpack.security.enabled=true
-      - ELASTIC_USERNAME=elastic
-      - ELASTIC_PASSWORD=somethingsecure
-    healthcheck:
-      test: ['CMD', 'curl' , '-f', 'http://localhost:9200/_cluster/health/']
-      interval: 10s
-      timeout: 5s
-      retries: 10
-    volumes:
-      - data01:/usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
 
 volumes:
   data01:
