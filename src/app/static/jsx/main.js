@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import brown from "@material-ui/core/colors/brown";
@@ -66,8 +66,7 @@ var offlinePage = document.querySelector("#offline");
 var offlineMainPage = document.querySelector("#offlinemain");
 
 if (navBar) {
-	const root = ReactDOM.createRoot(navBar);
-	root.render(
+	createRoot(navBar).render(
 		<MuiThemeProvider theme={theme}>
 			<Navbar
 				title={title}
@@ -78,8 +77,7 @@ if (navBar) {
 }
 
 if (realmNav){
-	const root = ReactDOM.createRoot(realmNav);
-	root.render(
+	createRoot(realmNav).render(
 	<MuiThemeProvider theme={theme}>
 		<RealmNavbar
 			pages={navigate}
@@ -89,8 +87,7 @@ if (realmNav){
 }
 
 if (appSelectorPage) {
-	const root = ReactDOM.createRoot(appSelectorPage);
-	root.render(
+	createRoot(appSelectorPage).render(
 	<MuiThemeProvider theme={theme}>
 		<NLPSelector
 			// selection={decrypt(JSON.parse(selection).data)}
@@ -101,8 +98,7 @@ if (appSelectorPage) {
 }
 
 if (explorePage){
-	const root = ReactDOM.createRoot(explorePage);
-	root.render(
+	createRoot(explorePage).render(
 	<MuiThemeProvider theme={theme}>
 		<AllPosts
 			// posts={decrypt(JSON.parse(posts).data)}
@@ -113,8 +109,7 @@ if (explorePage){
 }
 
 if (singlePostPage){
-	const root = ReactDOM.createRoot(singlePostPage);
-	root.render(
+	createRoot(singlePostPage).render(
 	<MuiThemeProvider theme={theme}>
 		<PostDisplay
 			// post={decrypt(JSON.parse(post).data)}
@@ -125,8 +120,7 @@ if (singlePostPage){
 }
 
 if (realmPage){
-	const root = ReactDOM.createRoot(realmPage);
-	root.render(
+	createRoot(realmPage).render(
 	<MuiThemeProvider theme={theme}>
 		<Realm
 			// domain={decrypt(JSON.parse(domain).data)}
@@ -139,8 +133,7 @@ if (realmPage){
 }
 
 if (kumiaPage){
-	const root = ReactDOM.createRoot(kumiaPage);
-	root.render(
+	createRoot(kumiaPage).render(
 	<MuiThemeProvider theme={theme}>
 		<Kumia
 			// pubs={decrypt(JSON.parse(pubs).data)}
@@ -155,8 +148,7 @@ if (kumiaPage){
 }
 
 if (syntaxPage){
-	const root = ReactDOM.createRoot(syntaxPage);
-	root.render(
+	createRoot(syntaxPage).render(
 	<MuiThemeProvider theme={theme}>
 		<SyntaxApp
 			details={details}
@@ -166,8 +158,7 @@ if (syntaxPage){
 }
 
 if (offlinePage){
-	const root = ReactDOM.createRoot(offlinePage);
-	root.render(
+	createRoot(offlinePage).render(
 	<MuiThemeProvider theme={theme}>
 		<Offline />
 	</MuiThemeProvider>
@@ -175,8 +166,7 @@ if (offlinePage){
 }
 
 if (offlineMainPage){
-	const root = ReactDOM.createRoot(offlineMainPage);
-	root.render(
+	createRoot(offlineMainPage).render(
 	<MuiThemeProvider theme={theme}>
 		<OfflineMain />
 	</MuiThemeProvider>
