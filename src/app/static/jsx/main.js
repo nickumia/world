@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import brown from "@material-ui/core/colors/brown";
@@ -66,61 +66,61 @@ var offlinePage = document.querySelector("#offline");
 var offlineMainPage = document.querySelector("#offlinemain");
 
 if (navBar) {
-	ReactDOM.render(
+	createRoot(navBar).render(
 		<MuiThemeProvider theme={theme}>
 			<Navbar
 				title={title}
 				menu={menu}
 			/>
-		</MuiThemeProvider>,
-	navBar);
+		</MuiThemeProvider>
+	);
 }
 
 if (realmNav){
-	ReactDOM.render(
+	createRoot(realmNav).render(
 	<MuiThemeProvider theme={theme}>
 		<RealmNavbar
 			pages={navigate}
 		/>
-	</MuiThemeProvider>,
-	realmNav);
+	</MuiThemeProvider>
+	);
 }
 
 if (appSelectorPage) {
-	ReactDOM.render(
+	createRoot(appSelectorPage).render(
 	<MuiThemeProvider theme={theme}>
 		<NLPSelector
 			// selection={decrypt(JSON.parse(selection).data)}
 			selection={selection}
 		/>
-	</MuiThemeProvider>,
-	appSelectorPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (explorePage){
-	ReactDOM.render(
+	createRoot(explorePage).render(
 	<MuiThemeProvider theme={theme}>
 		<AllPosts
 			// posts={decrypt(JSON.parse(posts).data)}
 			posts={posts}
 		/>
-	</MuiThemeProvider>,
-	explorePage);
+	</MuiThemeProvider>
+	);
 }
 
 if (singlePostPage){
-	ReactDOM.render(
+	createRoot(singlePostPage).render(
 	<MuiThemeProvider theme={theme}>
 		<PostDisplay
 			// post={decrypt(JSON.parse(post).data)}
 			post={post}
 		/>
-	</MuiThemeProvider>,
-	singlePostPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (realmPage){
-	ReactDOM.render(
+	createRoot(realmPage).render(
 	<MuiThemeProvider theme={theme}>
 		<Realm
 			// domain={decrypt(JSON.parse(domain).data)}
@@ -128,12 +128,12 @@ if (realmPage){
 			domain={domain}
 			asteroids={asteroids}
 		/>
-	</MuiThemeProvider>,
-	realmPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (kumiaPage){
-	ReactDOM.render(
+	createRoot(kumiaPage).render(
 	<MuiThemeProvider theme={theme}>
 		<Kumia
 			// pubs={decrypt(JSON.parse(pubs).data)}
@@ -143,32 +143,32 @@ if (kumiaPage){
 			work={work}
 			edu={edu}
 		/>
-	</MuiThemeProvider>,
-	kumiaPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (syntaxPage){
-	ReactDOM.render(
+	createRoot(syntaxPage).render(
 	<MuiThemeProvider theme={theme}>
 		<SyntaxApp
 			details={details}
 		/>
-	</MuiThemeProvider>,
-	syntaxPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (offlinePage){
-	ReactDOM.render(
+	createRoot(offlinePage).render(
 	<MuiThemeProvider theme={theme}>
 		<Offline />
-	</MuiThemeProvider>,
-	offlinePage);
+	</MuiThemeProvider>
+	);
 }
 
 if (offlineMainPage){
-	ReactDOM.render(
+	createRoot(offlineMainPage).render(
 	<MuiThemeProvider theme={theme}>
 		<OfflineMain />
-	</MuiThemeProvider>,
-	offlineMainPage);
+	</MuiThemeProvider>
+	);
 }
