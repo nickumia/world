@@ -66,61 +66,67 @@ var offlinePage = document.querySelector("#offline");
 var offlineMainPage = document.querySelector("#offlinemain");
 
 if (navBar) {
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(navBar);
+	root.render(
 		<MuiThemeProvider theme={theme}>
 			<Navbar
 				title={title}
 				menu={menu}
 			/>
-		</MuiThemeProvider>,
-	navBar);
+		</MuiThemeProvider>
+	);
 }
 
 if (realmNav){
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(realmNav);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<RealmNavbar
 			pages={navigate}
 		/>
-	</MuiThemeProvider>,
-	realmNav);
+	</MuiThemeProvider>
+	);
 }
 
 if (appSelectorPage) {
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(appSelectorPage);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<NLPSelector
 			// selection={decrypt(JSON.parse(selection).data)}
 			selection={selection}
 		/>
-	</MuiThemeProvider>,
-	appSelectorPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (explorePage){
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(explorePage);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<AllPosts
 			// posts={decrypt(JSON.parse(posts).data)}
 			posts={posts}
 		/>
-	</MuiThemeProvider>,
-	explorePage);
+	</MuiThemeProvider>
+	);
 }
 
 if (singlePostPage){
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(singlePostPage);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<PostDisplay
 			// post={decrypt(JSON.parse(post).data)}
 			post={post}
 		/>
-	</MuiThemeProvider>,
-	singlePostPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (realmPage){
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(realmPage);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<Realm
 			// domain={decrypt(JSON.parse(domain).data)}
@@ -128,12 +134,13 @@ if (realmPage){
 			domain={domain}
 			asteroids={asteroids}
 		/>
-	</MuiThemeProvider>,
-	realmPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (kumiaPage){
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(kumiaPage);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<Kumia
 			// pubs={decrypt(JSON.parse(pubs).data)}
@@ -143,32 +150,35 @@ if (kumiaPage){
 			work={work}
 			edu={edu}
 		/>
-	</MuiThemeProvider>,
-	kumiaPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (syntaxPage){
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(syntaxPage);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<SyntaxApp
 			details={details}
 		/>
-	</MuiThemeProvider>,
-	syntaxPage);
+	</MuiThemeProvider>
+	);
 }
 
 if (offlinePage){
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(offlinePage);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<Offline />
-	</MuiThemeProvider>,
-	offlinePage);
+	</MuiThemeProvider>
+	);
 }
 
 if (offlineMainPage){
-	ReactDOM.render(
+	const root = ReactDOM.createRoot(offlineMainPage);
+	root.render(
 	<MuiThemeProvider theme={theme}>
 		<OfflineMain />
-	</MuiThemeProvider>,
-	offlineMainPage);
+	</MuiThemeProvider>
+	);
 }
