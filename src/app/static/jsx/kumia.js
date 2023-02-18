@@ -49,8 +49,8 @@ export default function Kumia({pubs, work, edu}) {
 
 	return (
     <React.Fragment>
-			<div style={{paddingBottom: '30px'}}>
-			<div style={{position: 'relative', float: "left", width:'50%', overflowY: "scroll"}}>
+			<div style={{overflow: "hidden", flexGrow: 1, position: "relative"}}>
+			<div style={{float: "right", width:'50%', overflow: "auto", top: 0, bottom: 0}}>
 			<Paper
 				style={{backgroundColor: brown[50]}} sx={{px: 8, py: 4}}>
 				<Typography variant="h5"> Hi, I'm Nicholas Kumia </Typography>
@@ -63,7 +63,7 @@ As a final point, technology is stretched way past its tangible usefulness.  It 
 				</Typography>
 			</Paper>
 			</div>
-			<div style={{position: 'relative', float: "right", width:'50%', overflowY: "scroll"}}>
+			<div style={{position: 'absolute', float: "left", width:'50%', overflow: "auto", top: 0, bottom: 0, paddingTop: 10}}>
 			<BottomNavigation
 			  value={value}
 			  onChange={(event, newValue) => {setValue(newValue);}}
@@ -119,14 +119,17 @@ As a final point, technology is stretched way past its tangible usefulness.  It 
 			<>
 				{edus_list.map(exp_list => (
 					<Card sx={{ mb: 2, display: 'flex' }} key={exp_list.key}>
-						<CardMedia component="img" sx={{ width: 121, height: 121, paddingLeft: 1.5 }}
+						<CardMedia component="img" sx={{ width: 151, height: 151, paddingLeft: 1.5 }}
 								image={exp_list.image} alt={exp_list.image.split('/')[-1]} />
 						<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 							<CardHeader title={exp_list.school} subheader={exp_list.date} />
-								<Tooltip style={{ paddingLeft: 18, paddingBottom: 10}}
+								<CardContent>
+								<Tooltip
 									title={
 										<React.Fragment>
-										<Typography variant="body1" dangerouslySetInnerHTML={{__html: exp_list.tooltip}}> </Typography>
+										<Typography variant="body1"
+											dangerouslySetInnerHTML={{__html: exp_list.tooltip}}>
+										</Typography>
 										</React.Fragment>
 									} followCursor>
 									<Typography variant="body2" color="textSecondary">
@@ -134,6 +137,7 @@ As a final point, technology is stretched way past its tangible usefulness.  It 
 										{exp_list.link === "" && exp_list.degree}
 									</Typography>
 								</Tooltip>
+								</CardContent>
 						</Box>
 					</Card>
 				))}
@@ -156,7 +160,8 @@ As a final point, technology is stretched way past its tangible usefulness.  It 
 						<Box sx={{ minWidth: 275, mx: "auto" }}>
 							<Typography variant="body2" color="textSecondary"> {exp_list.role} </Typography>
 							<Typography variant="body1"
-								dangerouslySetInnerHTML={{__html: exp_list.details}}>
+								dangerouslySetInnerHTML={{__html: exp_list.details}}
+								>
 							</Typography>
 				    </Box>
 					</AccordionDetails>
