@@ -181,7 +181,7 @@ educations = [
      "date": "May 2023 - Not sure",
      "degree": "Computer Science PhD - TBD",
      "image": "/static/img/fau.png",
-     "link": "https://amsrvs.registry.faa.gov/airmeninquiry/Main.aspx",  # NOQA
+     "link": "",  # NOQA
      },
     {"school": "American Flyers",
      "key": 8,
