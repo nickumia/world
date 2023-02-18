@@ -49,6 +49,7 @@ export default function Kumia({pubs, work, edu}) {
 
 	return (
     <React.Fragment>
+			<div style={{paddingBottom: '30px'}}>
 			<div style={{position: 'relative', float: "left", width:'50%', overflowY: "scroll"}}>
 			<Paper
 				style={{backgroundColor: brown[50]}} sx={{px: 8, py: 4}}>
@@ -85,6 +86,7 @@ export default function Kumia({pubs, work, edu}) {
 					icon={<SchoolIcon />} />
 			</BottomNavigation>
 			{content}
+			</div>
 			</div>
 		</React.Fragment>
 	);
@@ -129,7 +131,7 @@ export default function Kumia({pubs, work, edu}) {
 					<Card sx={{ mb: 2, display: 'flex' }} key={exp_list.key}>
 						<CardMedia
 			        component="img"
-						  sx={{ width: 151 }}
+						  sx={{ width: 121, height: 121, paddingLeft: 1.5 }}
 			        image={exp_list.image}
 						  alt={exp_list.image.split('/')[-1]}
 			      />
@@ -137,8 +139,7 @@ export default function Kumia({pubs, work, edu}) {
 							<CardHeader
 								title={exp_list.school}
 								subheader={exp_list.date} />
-							<CardContent>
-								<Tooltip
+								<Tooltip style={{ paddingLeft: 18, paddingBottom: 10}}
 									title={
 										<React.Fragment>
 										<Typography variant="body1"
@@ -151,7 +152,6 @@ export default function Kumia({pubs, work, edu}) {
 										{exp_list.link === "" && exp_list.degree}
 									</Typography>
 								</Tooltip>
-							</CardContent>
 						</Box>
 					</Card>
 				))}
@@ -161,19 +161,29 @@ export default function Kumia({pubs, work, edu}) {
 			return (
 			<>
 				{exps_list.map(exp_list => (
-					<Card sx={{ mb: 2 }} key={exp_list.key}>
-						<CardHeader
-							title={exp_list.link && <a href={exp_list.link}>{exp_list.company}</a>}
-							subheader={exp_list.date} />
-						<CardContent>
+				<Accordion key={exp_list.key}>
+					<AccordionSummary
+					  expandIcon={<ExpandMoreIcon />}
+					  aria-controls="panel1a-content" id="panel1a-header"
+					>
+        	<ListItemButton key={exp_list.key}>
+          	<ListItemText
+            	primary={exp_list.link && <a href={exp_list.link}>{exp_list.company}</a>}
+							secondary={exp_list.date}
+              />
+          </ListItemButton>
+					</AccordionSummary>
+					<AccordionDetails>
+						<Box sx={{ minWidth: 275, mx: "auto" }}>
 							<Typography variant="body2" color="textSecondary">
-								{exp_list.role}
+                {exp_list.role}
 							</Typography>
 							<Typography variant="body1"
 								dangerouslySetInnerHTML={{__html: exp_list.details}}>
 							</Typography>
-						</CardContent>
-					</Card>
+				    </Box>
+					</AccordionDetails>
+				</Accordion>
 				))}
 			</>
 			);
