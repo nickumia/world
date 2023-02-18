@@ -49,6 +49,7 @@ export default function Kumia({pubs, work, edu}) {
 
 	return (
     <React.Fragment>
+			<div style={{position: 'relative', float: "left", width:'50%', "overflow-y": "scroll"}}>
 			<Paper
 				style={{backgroundColor: amber[50]}} sx={{px: 8, py: 4}}>
 				<Typography variant="h5">
@@ -64,8 +65,8 @@ export default function Kumia({pubs, work, edu}) {
 					As a final point, technology is stretched way past its tangible usefulness.  It is tool that is meant to aid in the amelioration of the world.  It is not a leader that can impart direction and guidance.  It can not yield answers to meaningful questions.  Its unethical use is very much contributing to the deteriorating state of the world.<br/>
 				</Typography>
 			</Paper>
-			
-
+			</div>
+			<div style={{position: 'relative', float: "right", width:'50%', "overflow-y": "scroll"}}>
 			<BottomNavigation
 			  value={value}
 			  onChange={(event, newValue) => {setValue(newValue);}}
@@ -84,6 +85,7 @@ export default function Kumia({pubs, work, edu}) {
 					icon={<SchoolIcon />} />
 			</BottomNavigation>
 			{content}
+			</div>
 		</React.Fragment>
 	);
 
