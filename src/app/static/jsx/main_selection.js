@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
-import cyan from "@material-ui/core/colors/cyan";
+import brown from "@material-ui/core/colors/brown";
 
 import Paper from '@mui/material/Paper';
 
@@ -26,7 +26,7 @@ export default function NLPSelector({selection}) {
   return (
     <React.Fragment>
 			<Paper
-				style={{backgroundColor: cyan[50]}} sx={{px: 8, py: 4}}>
+				style={{backgroundColor: brown[50]}} sx={{px: 8, py: 4}}>
 				<Typography variant="h5">
 					Hi there!
 				</Typography>

@@ -24,11 +24,11 @@ import decrypt from "./encryption";
 const theme = createTheme({
 	palette: {
     primary: {
-      main: blue[800],
+      main: "#c7a97b",
       contrastText: "#FFF"
     },
     secondary: {
-      main: blue[50],
+      main: "#ffe396",
       contrastText: "#FFF"
     },
     // warning: {

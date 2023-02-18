@@ -1,7 +1,7 @@
 import React from "react";
 
 import Paper from '@mui/material/Paper';
-import amber from "@material-ui/core/colors/amber";
+import brown from "@material-ui/core/colors/brown";
 import Typography from "@material-ui/core/Typography";
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -49,9 +49,9 @@ export default function Kumia({pubs, work, edu}) {
 
 	return (
     <React.Fragment>
-			<div style={{position: 'relative', float: "left", width:'50%', "overflow-y": "scroll"}}>
+			<div style={{position: 'relative', float: "left", width:'50%', overflowY: "scroll"}}>
 			<Paper
-				style={{backgroundColor: amber[50]}} sx={{px: 8, py: 4}}>
+				style={{backgroundColor: brown[50]}} sx={{px: 8, py: 4}}>
 				<Typography variant="h5">
 					Hi, I'm Nicholas Kumia
 				</Typography>
@@ -66,7 +66,7 @@ export default function Kumia({pubs, work, edu}) {
 				</Typography>
 			</Paper>
 			</div>
-			<div style={{position: 'relative', float: "right", width:'50%', "overflow-y": "scroll"}}>
+			<div style={{position: 'relative', float: "right", width:'50%', overflowY: "scroll"}}>
 			<BottomNavigation
 			  value={value}
 			  onChange={(event, newValue) => {setValue(newValue);}}
