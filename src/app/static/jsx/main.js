@@ -67,7 +67,6 @@ var pages = {
 }
 
 for (let page in pages) {
-	console.log(page, pageElement, pages[page])
 	var pageElement = document.querySelector(page);
 	if (pageElement) {
 		createRoot(pageElement).render(
