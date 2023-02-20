@@ -183,7 +183,7 @@ educations = [
      "image": "/static/img/fau.png",
      "link": "",  # NOQA
      },
-    {"school": "Florida Department of Agriculture and Consumer Services - Department of Licensing",
+    {"school": "Florida Department of Agriculture and Consumer Services - Department of Licensing",  # NOQA
      "key": 9,
      "date": "Jan 2023 - Jan 2025",
      "degree": "Security Officer 'D' License",
