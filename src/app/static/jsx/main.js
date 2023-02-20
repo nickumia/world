@@ -24,11 +24,11 @@ import decrypt from "./encryption";
 const theme = createTheme({
 	palette: {
     primary: {
-      main: blue[800],
+      main: "#c7a97b",
       contrastText: "#FFF"
     },
     secondary: {
-      main: blue[50],
+      main: "#ffe396",
       contrastText: "#FFF"
     },
     // warning: {
@@ -53,122 +53,26 @@ const theme = createTheme({
 });
 
 
-var realmNav = document.querySelector('#realmnav');
-
-var navBar = document.querySelector('#navbar');
-var appSelectorPage = document.querySelector("#appselector");
-var explorePage = document.querySelector("#explore");
-var singlePostPage = document.querySelector("#singlepost");
-var realmPage = document.querySelector("#realm");
-var kumiaPage = document.querySelector("#kumia");
-var syntaxPage = document.querySelector("#syntaxapp");
-var offlinePage = document.querySelector("#offline");
-var offlineMainPage = document.querySelector("#offlinemain");
-
-if (navBar) {
-	createRoot(navBar).render(
-		<MuiThemeProvider theme={theme}>
-			<Navbar
-				title={title}
-				menu={menu}
-			/>
-		</MuiThemeProvider>
-	);
+var pages = {
+	"#navbar": function test1() {return <Navbar title={title} menu={menu} />},
+	"#realmnav": function test1() {return <RealmNavbar pages={navigate} />},
+	"#appselector": function test1() {return <NLPSelector selection={selection} />},
+	"#explore": function test1() {return <AllPosts posts={posts} />},
+	"#singlepost": function test1() {return <PostDisplay post={post} />},
+	"#realm": function test1() {return <Realm domain={domain} asteroids={asteroids} />},
+	"#kumia": function test1() {return <Kumia pubs={pubs} work={work} edu={edu} />},
+	"#syntaxapp": function test1() {return <SyntaxApp details={details} />},
+	"#offline": function test1() {return <Offline />},
+	"#offlinemain": function test1() {return <OfflineMain />}
 }
 
-if (realmNav){
-	createRoot(realmNav).render(
-	<MuiThemeProvider theme={theme}>
-		<RealmNavbar
-			pages={navigate}
-		/>
-	</MuiThemeProvider>
-	);
-}
-
-if (appSelectorPage) {
-	createRoot(appSelectorPage).render(
-	<MuiThemeProvider theme={theme}>
-		<NLPSelector
-			// selection={decrypt(JSON.parse(selection).data)}
-			selection={selection}
-		/>
-	</MuiThemeProvider>
-	);
-}
-
-if (explorePage){
-	createRoot(explorePage).render(
-	<MuiThemeProvider theme={theme}>
-		<AllPosts
-			// posts={decrypt(JSON.parse(posts).data)}
-			posts={posts}
-		/>
-	</MuiThemeProvider>
-	);
-}
-
-if (singlePostPage){
-	createRoot(singlePostPage).render(
-	<MuiThemeProvider theme={theme}>
-		<PostDisplay
-			// post={decrypt(JSON.parse(post).data)}
-			post={post}
-		/>
-	</MuiThemeProvider>
-	);
-}
-
-if (realmPage){
-	createRoot(realmPage).render(
-	<MuiThemeProvider theme={theme}>
-		<Realm
-			// domain={decrypt(JSON.parse(domain).data)}
-			// asteroids={decrypt(JSON.parse(asteroids).data)}
-			domain={domain}
-			asteroids={asteroids}
-		/>
-	</MuiThemeProvider>
-	);
-}
-
-if (kumiaPage){
-	createRoot(kumiaPage).render(
-	<MuiThemeProvider theme={theme}>
-		<Kumia
-			// pubs={decrypt(JSON.parse(pubs).data)}
-			// work={decrypt(JSON.parse(work).data)}
-			// edu={decrypt(JSON.parse(edu).data)}
-			pubs={pubs}
-			work={work}
-			edu={edu}
-		/>
-	</MuiThemeProvider>
-	);
-}
-
-if (syntaxPage){
-	createRoot(syntaxPage).render(
-	<MuiThemeProvider theme={theme}>
-		<SyntaxApp
-			details={details}
-		/>
-	</MuiThemeProvider>
-	);
-}
-
-if (offlinePage){
-	createRoot(offlinePage).render(
-	<MuiThemeProvider theme={theme}>
-		<Offline />
-	</MuiThemeProvider>
-	);
-}
-
-if (offlineMainPage){
-	createRoot(offlineMainPage).render(
-	<MuiThemeProvider theme={theme}>
-		<OfflineMain />
-	</MuiThemeProvider>
-	);
+for (let page in pages) {
+	var pageElement = document.querySelector(page);
+	if (pageElement) {
+		createRoot(pageElement).render(
+			<MuiThemeProvider theme={theme}>
+						{pages[page].call()}
+			</MuiThemeProvider>
+		);
+	}
 }

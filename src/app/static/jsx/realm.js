@@ -2,7 +2,7 @@ import React from "react";
 
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
-import amber from "@material-ui/core/colors/amber";
+import brown from "@material-ui/core/colors/brown";
 import Button from '@mui/material/Button';
 
 import List from '@mui/material/List';
@@ -97,7 +97,7 @@ export default function Realm({domain, asteroids}) {
 			<div style={styles.paperContainer}>
     <React.Fragment>
 			<Paper
-				style={{padding: 16, backgroundColor: amber[50]}}>
+				style={{padding: 16, backgroundColor: brown[50]}}>
 				<Typography variant="h5"
 					dangerouslySetInnerHTML={{__html: domain_specifics[1]}}>
 				</Typography>
@@ -158,7 +158,7 @@ export default function Realm({domain, asteroids}) {
 
 
 			<Paper
-				style={{padding: 16, backgroundColor: amber[50]}}>
+				style={{padding: 16, backgroundColor: brown[50]}}>
 				<Typography variant="h5" align="center">
 					{domain_specifics[3]}
 				</Typography>
