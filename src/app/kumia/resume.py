@@ -177,11 +177,18 @@ Arduino, C++, MatLab, MakerBot, Open-source 3D Printers, TPU Filament, G-Code, S
 
 educations = [
     {"school": "Florida Atlantic Univertify (FAU)",
-     "key": 9,
+     "key": 10,
      "date": "May 2023 - Not sure",
      "degree": "Computer Science PhD - TBD",
      "image": "/static/img/fau.png",
      "link": "",  # NOQA
+     },
+    {"school": "Florida Department of Agriculture and Consumer Services - Department of Licensing",
+     "key": 9,
+     "date": "Jan 2023 - Jan 2025",
+     "degree": "Security Officer 'D' License",
+     "image": "/static/img/fdacs.png",
+     "link": "https://licensing.freshfromflorida.com/access/individual.aspx?TYPE=INDIVIDUAL&CATEGORY=&COUNTY=00&LICENSE=D%203300056&STATUS=IND_DETAIL",  # NOQA
      },
     {"school": "American Flyers",
      "key": 8,
