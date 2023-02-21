@@ -50,7 +50,7 @@ export default function Kumia({pubs, work, edu}) {
 	return (
     <React.Fragment>
 			<div style={{overflow: "hidden", flexGrow: 1, position: "relative"}}>
-			<div style={{float: "right", width:'50%', overflow: "auto", top: 0, bottom: 0}}>
+			<div className={"sidebyside1"}>
 			<Paper
 				style={{backgroundColor: brown[50]}} sx={{px: 8, py: 4}}>
 				<Typography variant="h5"> Hi, I'm Nicholas Kumia </Typography>
@@ -63,7 +63,7 @@ As a final point, technology is stretched way past its tangible usefulness.  It 
 				</Typography>
 			</Paper>
 			</div>
-			<div style={{position: 'absolute', float: "left", width:'50%', overflow: "auto", top: 0, bottom: 0, paddingTop: 10}}>
+			<div className={"sidebyside2"}>
 			<BottomNavigation
 			  value={value}
 			  onChange={(event, newValue) => {setValue(newValue);}}

@@ -1,0 +1,25 @@
+
+hr {
+	border-top: 3px solid #bbb;
+	border-radius: 5px;
+	width: 100%;
+}
+
+@media (min-width: 800px) {
+	.sidebyside1 {
+		float: right;
+		width: 50%;
+		overflow: auto;
+		top: 0px;
+		bottom: 0px;
+	}
+	.sidebyside2 {
+		position: absolute;
+		float: left;
+		width: 50%;
+		overflow: auto;
+		top: 0px;
+		bottom: 0px;
+		padding-top: 10px;
+	}
+}
