@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  blah:
+  terraform:
     name: "Placeholder"
     runs-on: ubuntu-latest
     steps:
