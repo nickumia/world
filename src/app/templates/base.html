@@ -8,17 +8,11 @@
     {% else %}
     <title>NLP - Home</title>
     {% endif %}
+		<link rel="stylesheet" href="{{ url_for('static', filename='react.css') }}">
 
 		<link href= "https://fonts.googleapis.com/css?family=Karla|Mirza|Muli:400,300i|Noto+Sans|Hind+Guntur:600" rel='stylesheet' type='text/css'>
 		<div id="navbar"></div>
 
-		<style>
-			hr {
-				border-top: 3px solid #bbb;
-				border-radius: 5px;
-				width: 100%;
-			}
-		</style>
   </head>
 	<body style="padding-top:50px;">
 		{% block realm_header %}{% endblock %}
