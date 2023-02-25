@@ -15,7 +15,6 @@ import NLPSelector from './main_selection';
 import Realm from './realm';
 import Kumia from './kumia';
 import SyntaxApp from './syntax';
-import Offline from './offline';
 import OfflineMain from './offline_main';
 
 import decrypt from "./encryption";
@@ -62,7 +61,6 @@ var pages = {
 	"#realm": function test1() {return <Realm domain={domain} asteroids={asteroids} />},
 	"#kumia": function test1() {return <Kumia pubs={pubs} work={work} edu={edu} />},
 	"#syntaxapp": function test1() {return <SyntaxApp details={details} />},
-	"#offline": function test1() {return <Offline />},
 	"#offlinemain": function test1() {return <OfflineMain />}
 }
 
