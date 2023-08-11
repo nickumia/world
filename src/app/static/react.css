@@ -23,3 +23,8 @@ hr {
 		padding-top: 10px;
 	}
 }
+
+a:hover {
+  background: rgba(76, 175, 80, 0.3);
+  border-radius: 25px;
+}

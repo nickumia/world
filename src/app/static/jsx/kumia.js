@@ -30,6 +30,11 @@ import Collapse from '@mui/material/Collapse';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
+import Chip from '@mui/material/Chip';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
 import Tooltip from '@mui/material/Tooltip';
 
 import json_parse from './json_parse';
@@ -54,15 +59,21 @@ export default function Kumia({pubs, work, edu}) {
 			<Paper
 				style={{backgroundColor: brown[50]}} sx={{px: 8, py: 4}}>
 				<Typography variant="h5"> Hi, I'm Nicholas Kumia </Typography>
-				<Typography variant="h6"> Human </Typography>
-				<Typography variant="subtitle2">
-With each passing moment, life as we know it continues to change.  There's always been the changes that occur as we grow up.  However, the changes I'm referring to are the fact that ... society is growing more divided ... the Earth's health is declining as evident from climate change ... Poverty, Pollution, Crime, War, Inequality, Human Rights attacks, Deteriorating Economies ... the list of terrible changes seems never-ending.  It doesn't mean life is all bad.  It's just really heart-breaking to know that, as a human race, we are failing.<br/><br/>
-With everything that's wrong in the world, I've taken it upon myself to make my disapproval with many of our foundational systems known.  Working is no longer productive, nor is it effective in being the primary means of providing a living.  Education is so fractured that our knowledge transfer rate is nowhere near the level it should be for our level of intelligence.  While I use the term "resume" nostalgically, please do not mistake this part of my website to be an affirmation that I believe in any of the government/academic/corporate institutions in which I have and will continue to exist.  I've had both wonderful and not-so-wonderful experiences on my journey to figure out life and I've met truly extraordinary people along the way.  Ethics aside, there is no right way of living.  No one culture is better than any other culture.  There is no set path to succeed in life.  The optimization problem between working together as a society and growing as an individual is so difficult.<br/><br/>
-I want to highlight the fact that defining an individual, and by extension anything, as a relation of other distinct things does not necessarily add to the true essence of that person.. or thing.  These standardized mechanisms that we have as a society (aptitude tests, certifications, driving tests, working, taxes, et cetera) are important, but they do not define who we are as people.  As a multi-faceted person (just like so many others in the world), I don't believe in judging someone primarily from "qualifications" and "merits" on a piece of paper.<br/><br/>
-As a final point, technology is stretched way past its tangible usefulness.  It is tool that is meant to aid in the amelioration of the world.  It is not a leader that can impart direction and guidance.  It can not yield answers to meaningful questions.  Its unethical use is very much contributing to the deteriorating state of the world.<br/>
-				</Typography>
+				<Typography variant="h6"> Integrator </Typography>
+        <div style={{float: 'right'}}>
+        <a href="https://github.com/nickumia/">
+          <Chip icon={<GitHubIcon />} label="Github" variant="outlined" />
+        </a>&nbsp;
+        <a href="https://dreambuilderfs.com/nickumia">
+          <Chip icon={<MonetizationOnIcon />} label="Financial Services" variant="outlined" />
+        </a>&nbsp;
+        <a href="https://www.instagram.com/nickumia/">
+          <Chip icon={<InstagramIcon />} label="Instagram" variant="outlined" />
+        </a>&nbsp;
+        </div><br/><br/>
+        <img src="/static/img/profile.jpg" style={{width: '100%'}}/>
 			</Paper>
-			</div>
+			</div><br/>
 			<div className={"sidebyside2"}>
 			<BottomNavigation
 			  value={value}
