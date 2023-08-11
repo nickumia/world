@@ -1,6 +1,20 @@
 # Resume content
 
 publications = [
+    {"title": "Data.gov Projects Mashup",
+     "key": 11,
+     "image": "/static/img/datagov.svg",
+     "place": "GSA TTS Data.gov",
+     "date": "2022-2023",
+     "link": "https://github.com/GSA/data.gov/issues?page=2&q=is%3Aissue+is%3Aclosed+assignee%3Anickumia-reisys",  # NOQA
+     "support": """
+     Jul 2023 <a href="https://github.com/GSA/data.gov/issues/4209">CKAN 2.10 Upgrade</a>
+     Feb 2023 <a href="https://github.com/GSA/data.gov/issues/4133">Design an "Organization Distribution" Metric</a>
+     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4068#issuecomment-1335510390">Keyword Analysis of Datasets on catalog.data.gov</a>
+     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4121">Optimizing Github Actions with Reusable Workflows</a>
+     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4089#issuecomment-1334782444">Review of Open Data Act</a>
+     """,  # NOQA
+     },
     {"title": "Data.gov Re-Architect Solr Infrastructure",
      "key": 10,
      "image": "/static/img/datagov.svg",
@@ -177,11 +191,18 @@ Arduino, C++, MatLab, MakerBot, Open-source 3D Printers, TPU Filament, G-Code, S
 
 educations = [
     {"school": "Florida Atlantic Univertify (FAU)",
-     "key": 10,
+     "key": 11,
      "date": "May 2023 - Not sure",
      "degree": "Computer Science PhD - TBD",
      "image": "/static/img/fau.png",
      "link": "",  # NOQA
+     },
+    {"school": "Florida Division of Insurance Agent and Agency Services (IAAS), Bureau of Licensing",
+     "key": 10,
+     "date": "Mar 2023",
+     "degree": "Life and Health Insurance License",
+     "image": "https://licenseesearch.fldfs.com/images/CFOLogo.png",
+     "link": "https://licenseesearch.fldfs.com/Licensee/2343303",  # NOQA
      },
     {"school": "Florida Department of Agriculture and Consumer Services - Department of Licensing",  # NOQA
      "key": 9,
