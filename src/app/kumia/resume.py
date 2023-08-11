@@ -197,7 +197,7 @@ educations = [
      "image": "/static/img/fau.png",
      "link": "",  # NOQA
      },
-    {"school": "Florida Division of Insurance Agent and Agency Services (IAAS), Bureau of Licensing",
+    {"school": "Florida Division of Insurance Agent and Agency Services (IAAS), Bureau of Licensing",  # NOQA
      "key": 10,
      "date": "Mar 2023",
      "degree": "Life and Health Insurance License",
