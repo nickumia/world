@@ -26,13 +26,24 @@ resource "aws_api_gateway_integration" "lambda_root" {
 }
 
 resource "aws_api_gateway_deployment" "cap6635" {
-  depends_on = [
-    "aws_api_gateway_integration.lambda",
-    "aws_api_gateway_integration.lambda_root",
-  ]
-
   rest_api_id = "${aws_api_gateway_rest_api.cap6635.id}"
-  stage_name  = "test"
+
+  triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_integration.lambda.uri,
+      aws_api_gateway_integration.lambda_root.uri
+    ]))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "cap6635" {
+  deployment_id = aws_api_gateway_deployment.cap6635.id
+  rest_api_id   = aws_api_gateway_rest_api.cap6635.id
+  stage_name    = "cap6635"
 }
 
 resource "aws_lambda_permission" "apigw" {
