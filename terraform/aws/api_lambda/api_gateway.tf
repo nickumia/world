@@ -3,9 +3,36 @@ output "base_url" {
   value = "${aws_api_gateway_deployment.cap6635.invoke_url}"
 }
 
+data "aws_route53_zone" "kamutiv" {
+  name         = "kamutiv.com."
+}
+
+data "aws_acm_certificate" "cap6635" {
+  domain      = "cap6635.kamutiv.com"
+  types       = ["AMAZON_ISSUED"]
+}
+
+resource "aws_api_gateway_domain_name" "cap6635" {
+  certificate_arn = data.aws_acm_certificate.cap6635.arn
+  domain_name     = "cap6635.kamutiv.com"
+}
+
+resource "aws_route53_record" "cap6635" {
+  name    = aws_api_gateway_domain_name.cap6635.domain_name
+  type    = "A"
+  zone_id = data.aws_route53_zone.kamutiv.id
+
+  alias {
+    evaluate_target_health = true
+    name                   = aws_api_gateway_domain_name.cap6635.cloudfront_domain_name
+    zone_id                = aws_api_gateway_domain_name.cap6635.cloudfront_zone_id
+  }
+}
+
 resource "aws_api_gateway_rest_api" "cap6635" {
   name        = "cap6635"
   description = "API to call CAP6635 AI algorithms"
+  disable_execute_api_endpoint = true
 
   body = jsonencode({
     openapi = "3.0.1"
@@ -15,7 +42,7 @@ resource "aws_api_gateway_rest_api" "cap6635" {
     }
     paths = {
       "/reflex" = {
-        post = {
+        get = {
           x-amazon-apigateway-integration = {
             credentials          = "${aws_iam_role.main.arn}"
             httpMethod           = "POST"
@@ -41,6 +68,12 @@ resource "aws_api_gateway_deployment" "cap6635" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+resource "aws_api_gateway_base_path_mapping" "cap6635" {
+  api_id      = aws_api_gateway_rest_api.cap6635.id
+  stage_name  = aws_api_gateway_stage.cap6635.stage_name
+  domain_name = aws_api_gateway_domain_name.cap6635.domain_name
 }
 
 resource "aws_api_gateway_stage" "cap6635" {
