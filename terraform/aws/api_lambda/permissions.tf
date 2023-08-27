@@ -7,7 +7,7 @@ resource "aws_lambda_permission" "apigw" {
 
   # The /*/*/* portion grants access from any method on any resource
   # within the API Gateway "REST API".
-  source_arn = "${aws_api_gateway_rest_api.cap6635.execution_arn}/*/*/*"
+  source_arn = "${aws_api_gateway_rest_api.cap6635.execution_arn}/*/GET/reflex"
 }
 
 resource "aws_lambda_permission" "logging" {
@@ -43,12 +43,17 @@ data "aws_iam_policy_document" "assume_role_api" {
 }
 
 resource "aws_iam_role" "main" {
-  name = "api-gateway-logs-role"
+  name = "api-gateway-role"
 
   assume_role_policy = data.aws_iam_policy_document.assume_role_api.json
 }
 
-resource "aws_iam_role_policy_attachment" "api_main" {
+resource "aws_iam_role_policy_attachment" "api_logs" {
   role       = aws_iam_role.main.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+}
+
+resource "aws_iam_role_policy_attachment" "api_lambda" {
+  role       = aws_iam_role.main.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaRole"
 }
