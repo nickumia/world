@@ -14,9 +14,9 @@ resource "aws_api_gateway_deployment" "cap6635" {
 
   triggers = {
     redeployment = sha1(jsonencode([
-      aws_api_gateway_resource.reflex.id,
-      aws_api_gateway_method.reflex.id,
-      aws_api_gateway_integration.reflex.id
+      aws_api_gateway_resource.reflex,
+      aws_api_gateway_method.reflex,
+      aws_api_gateway_integration.reflex
     ]))
   }
 
@@ -94,7 +94,7 @@ resource "aws_api_gateway_method" "reflex" {
   http_method          = "GET"
   authorization        = "COGNITO_USER_POOLS"
   authorizer_id        = "${aws_api_gateway_authorizer.authorizer.id}"
-  api_key_required     = true
+  api_key_required     = false
   authorization_scopes = aws_cognito_resource_server.resource_server.scope_identifiers
 }
 

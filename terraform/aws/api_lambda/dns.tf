@@ -46,7 +46,7 @@ resource "aws_acm_certificate_validation" "api" {
 }
 
 resource "aws_api_gateway_domain_name" "cap6635" {
-  certificate_arn = aws_acm_certificate.cap6635.arn
+  certificate_arn = aws_acm_certificate_validation.cap6635.certificate_arn
   domain_name     = "cap6635.kamutiv.com"
 }
 
