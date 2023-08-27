@@ -1,6 +1,6 @@
 
-output "base_url" {
-  value = aws_api_gateway_deployment.cap6635.invoke_url
+output "cognito_url" {
+  value = aws_cognito_user_pool_domain.cap6635.domain
 }
 
 resource "aws_api_gateway_rest_api" "cap6635" {
@@ -14,7 +14,9 @@ resource "aws_api_gateway_deployment" "cap6635" {
 
   triggers = {
     redeployment = sha1(jsonencode([
-      aws_api_gateway_rest_api.cap6635.body
+      aws_api_gateway_resource.reflex.id,
+      aws_api_gateway_method.reflex.id,
+      aws_api_gateway_integration.reflex.id
     ]))
   }
 
@@ -39,6 +41,19 @@ resource "aws_api_gateway_stage" "cap6635" {
   ]
 }
 
+resource "aws_api_gateway_method_settings" "all" {
+  rest_api_id = aws_api_gateway_rest_api.cap6635.id
+  stage_name  = aws_api_gateway_stage.cap6635.stage_name
+  method_path = "*/*"
+
+  settings {
+    metrics_enabled = true
+    logging_level   = "INFO"
+    throttling_burst_limit = 5000
+    throttling_rate_limit = 10000
+  }
+}
+
 resource "aws_cloudwatch_log_group" "cap6635" {
   name              = "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.cap6635.id}/cap6635"
   retention_in_days = 7
@@ -50,7 +65,7 @@ resource "aws_api_gateway_account" "main" {
 
 resource "aws_cognito_resource_server" "resource_server" {
   name         = "cap6635_auth_server"
-  identifier   = "https://${aws_route53_record.cap6635.fqdn}"
+  identifier   = "https://${aws_route53_record.api.fqdn}"
   user_pool_id = "${aws_cognito_user_pool.cap6635.id}"
 
   scope {
@@ -101,6 +116,16 @@ resource "aws_cognito_user_pool" "cap6635" {
 
 resource "aws_cognito_user_pool_client" "cap6635" {
   name = "client"
-
   user_pool_id = aws_cognito_user_pool.cap6635.id
+  generate_secret = true
+  allowed_oauth_flows                  = ["client_credentials"]
+  supported_identity_providers         = ["COGNITO"]
+  allowed_oauth_flows_user_pool_client = true
+  allowed_oauth_scopes                 = aws_cognito_resource_server.resource_server.scope_identifiers
+}
+
+resource "aws_cognito_user_pool_domain" "cap6635" {
+  domain          = aws_acm_certificate.api.domain_name
+  certificate_arn = aws_acm_certificate_validation.api.certificate_arn
+  user_pool_id    = aws_cognito_user_pool.cap6635.id
 }
