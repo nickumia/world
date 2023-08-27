@@ -1,9 +1,14 @@
 
+variable "software_version" {
+  type        = string
+  description = "Version of code to pull from S3"
+}
+
 resource "aws_lambda_function" "reflexvacuum" {
   function_name = "ReflexVacuum"
 
   s3_bucket = "offline.kamutiv.com"
-  s3_key    = "reflexvacuum.zip"
+  s3_key    = "v${var.software_version}/reflexvacuum.zip"
 
   handler = "main.handler"
   runtime = "python3.10"
