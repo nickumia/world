@@ -47,10 +47,10 @@ resource "aws_api_gateway_method_settings" "all" {
   method_path = "*/*"
 
   settings {
-    metrics_enabled = true
-    logging_level   = "INFO"
+    metrics_enabled        = true
+    logging_level          = "INFO"
     throttling_burst_limit = 5000
-    throttling_rate_limit = 10000
+    throttling_rate_limit  = 10000
   }
 }
 
@@ -66,7 +66,7 @@ resource "aws_api_gateway_account" "main" {
 resource "aws_cognito_resource_server" "resource_server" {
   name         = "cap6635_auth_server"
   identifier   = "https://${aws_route53_record.api.fqdn}"
-  user_pool_id = "${aws_cognito_user_pool.cap6635.id}"
+  user_pool_id = aws_cognito_user_pool.cap6635.id
 
   scope {
     scope_name        = "all"
@@ -75,33 +75,33 @@ resource "aws_cognito_resource_server" "resource_server" {
 }
 
 resource "aws_api_gateway_resource" "reflex" {
-  rest_api_id = "${aws_api_gateway_rest_api.cap6635.id}"
-  parent_id   = "${aws_api_gateway_rest_api.cap6635.root_resource_id}"
+  rest_api_id = aws_api_gateway_rest_api.cap6635.id
+  parent_id   = aws_api_gateway_rest_api.cap6635.root_resource_id
   path_part   = "reflex"
 }
 
 resource "aws_api_gateway_authorizer" "authorizer" {
   name          = "cap6635"
   type          = "COGNITO_USER_POOLS"
-  rest_api_id   = "${aws_api_gateway_rest_api.cap6635.id}"
+  rest_api_id   = aws_api_gateway_rest_api.cap6635.id
   provider_arns = [aws_cognito_user_pool.cap6635.arn]
 
 }
 
 resource "aws_api_gateway_method" "reflex" {
-  rest_api_id          = "${aws_api_gateway_rest_api.cap6635.id}"
-  resource_id          = "${aws_api_gateway_resource.reflex.id}"
+  rest_api_id          = aws_api_gateway_rest_api.cap6635.id
+  resource_id          = aws_api_gateway_resource.reflex.id
   http_method          = "GET"
   authorization        = "COGNITO_USER_POOLS"
-  authorizer_id        = "${aws_api_gateway_authorizer.authorizer.id}"
+  authorizer_id        = aws_api_gateway_authorizer.authorizer.id
   api_key_required     = false
   authorization_scopes = aws_cognito_resource_server.resource_server.scope_identifiers
 }
 
 resource "aws_api_gateway_integration" "reflex" {
-  rest_api_id             = "${aws_api_gateway_rest_api.cap6635.id}"
-  resource_id             = "${aws_api_gateway_resource.reflex.id}"
-  http_method             = "${aws_api_gateway_method.reflex.http_method}"
+  rest_api_id             = aws_api_gateway_rest_api.cap6635.id
+  resource_id             = aws_api_gateway_resource.reflex.id
+  http_method             = aws_api_gateway_method.reflex.http_method
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.reflexvacuum.invoke_arn
@@ -115,12 +115,12 @@ resource "aws_cognito_user_pool" "cap6635" {
 }
 
 resource "aws_cognito_user_pool_client" "cap6635" {
-  name = "client"
-  user_pool_id = aws_cognito_user_pool.cap6635.id
-  generate_secret = true
+  name                                 = "client"
+  user_pool_id                         = aws_cognito_user_pool.cap6635.id
+  generate_secret                      = true
   allowed_oauth_flows                  = ["client_credentials"]
   supported_identity_providers         = ["COGNITO"]
-  access_token_validity = 3
+  access_token_validity                = 3
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_scopes                 = aws_cognito_resource_server.resource_server.scope_identifiers
 }
