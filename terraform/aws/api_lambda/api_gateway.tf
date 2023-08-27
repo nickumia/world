@@ -5,6 +5,10 @@ resource "aws_api_gateway_rest_api" "cap6635" {
   disable_execute_api_endpoint = true
 }
 
+resource "aws_api_gateway_account" "main" {
+  cloudwatch_role_arn = aws_iam_role.main.arn
+}
+
 resource "aws_api_gateway_deployment" "cap6635" {
   rest_api_id = aws_api_gateway_rest_api.cap6635.id
 
@@ -53,33 +57,4 @@ resource "aws_api_gateway_method_settings" "all" {
 resource "aws_cloudwatch_log_group" "cap6635" {
   name              = "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.cap6635.id}/cap6635"
   retention_in_days = 7
-}
-
-resource "aws_api_gateway_account" "main" {
-  cloudwatch_role_arn = aws_iam_role.main.arn
-}
-
-resource "aws_api_gateway_resource" "reflex" {
-  rest_api_id = aws_api_gateway_rest_api.cap6635.id
-  parent_id   = aws_api_gateway_rest_api.cap6635.root_resource_id
-  path_part   = "reflex"
-}
-
-resource "aws_api_gateway_method" "reflex" {
-  rest_api_id          = aws_api_gateway_rest_api.cap6635.id
-  resource_id          = aws_api_gateway_resource.reflex.id
-  http_method          = "GET"
-  authorization        = "COGNITO_USER_POOLS"
-  authorizer_id        = aws_api_gateway_authorizer.authorizer.id
-  api_key_required     = false
-  authorization_scopes = aws_cognito_resource_server.resource_server.scope_identifiers
-}
-
-resource "aws_api_gateway_integration" "reflex" {
-  rest_api_id             = aws_api_gateway_rest_api.cap6635.id
-  resource_id             = aws_api_gateway_resource.reflex.id
-  http_method             = aws_api_gateway_method.reflex.http_method
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.reflexvacuum.invoke_arn
 }

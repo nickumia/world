@@ -3,6 +3,22 @@ output "cognito_url" {
   value = aws_cognito_user_pool_domain.cap6635.domain
 }
 
+# Main User Pool
+resource "aws_cognito_user_pool" "cap6635" {
+  name = "cap6635"
+  admin_create_user_config {
+    allow_admin_create_user_only = true
+  }
+}
+
+# Assign domain + certificate to user pool
+resource "aws_cognito_user_pool_domain" "cap6635" {
+  domain          = aws_acm_certificate.api.domain_name
+  certificate_arn = aws_acm_certificate_validation.api.certificate_arn
+  user_pool_id    = aws_cognito_user_pool.cap6635.id
+}
+
+# Not sure if this is required...
 resource "aws_cognito_resource_server" "resource_server" {
   name         = "cap6635_auth_server"
   identifier   = "https://${aws_route53_record.api.fqdn}"
@@ -14,6 +30,7 @@ resource "aws_cognito_resource_server" "resource_server" {
   }
 }
 
+# Add authorization service to API Gateway
 resource "aws_api_gateway_authorizer" "authorizer" {
   name          = "cap6635"
   type          = "COGNITO_USER_POOLS"
@@ -22,13 +39,7 @@ resource "aws_api_gateway_authorizer" "authorizer" {
 
 }
 
-resource "aws_cognito_user_pool" "cap6635" {
-  name = "cap6635"
-  admin_create_user_config {
-    allow_admin_create_user_only = true
-  }
-}
-
+# Create user to access API
 resource "aws_cognito_user_pool_client" "cap6635" {
   name                                 = "client"
   user_pool_id                         = aws_cognito_user_pool.cap6635.id
@@ -38,10 +49,4 @@ resource "aws_cognito_user_pool_client" "cap6635" {
   access_token_validity                = 3
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_scopes                 = aws_cognito_resource_server.resource_server.scope_identifiers
-}
-
-resource "aws_cognito_user_pool_domain" "cap6635" {
-  domain          = aws_acm_certificate.api.domain_name
-  certificate_arn = aws_acm_certificate_validation.api.certificate_arn
-  user_pool_id    = aws_cognito_user_pool.cap6635.id
 }

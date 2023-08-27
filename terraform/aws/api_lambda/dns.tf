@@ -7,6 +7,43 @@ data "aws_route53_zone" "kamutiv" {
   name = "kamutiv.com."
 }
 
+###############################################################################
+
+# Grant API Gateway access to custom domain certificate
+resource "aws_api_gateway_domain_name" "cap6635" {
+  certificate_arn = aws_acm_certificate_validation.cap6635.certificate_arn
+  domain_name     = "cap6635.kamutiv.com"
+}
+
+# Point custom domain to API Gateway
+resource "aws_route53_record" "cap6635" {
+  name    = aws_api_gateway_domain_name.cap6635.domain_name
+  type    = "A"
+  zone_id = data.aws_route53_zone.kamutiv.id
+
+  alias {
+    evaluate_target_health = true
+    name                   = aws_api_gateway_domain_name.cap6635.cloudfront_domain_name
+    zone_id                = aws_api_gateway_domain_name.cap6635.cloudfront_zone_id
+  }
+}
+
+# Point custom domain to Cognito Auth
+resource "aws_route53_record" "api" {
+  name    = aws_acm_certificate.api.domain_name
+  type    = "A"
+  zone_id = data.aws_route53_zone.kamutiv.id
+
+  alias {
+    evaluate_target_health = true
+    name                   = aws_api_gateway_domain_name.cap6635.cloudfront_domain_name
+    zone_id                = aws_api_gateway_domain_name.cap6635.cloudfront_zone_id
+  }
+}
+
+###############################################################################
+# Create SSL Certificates for all custom domains
+
 resource "aws_acm_certificate" "cap6635" {
   domain_name       = "cap6635.kamutiv.com"
   validation_method = "DNS"
@@ -43,35 +80,6 @@ resource "aws_acm_certificate" "api" {
 resource "aws_acm_certificate_validation" "api" {
   certificate_arn         = aws_acm_certificate.api.arn
   validation_record_fqdns = [for record in aws_route53_record.api_validation : record.fqdn]
-}
-
-resource "aws_api_gateway_domain_name" "cap6635" {
-  certificate_arn = aws_acm_certificate_validation.cap6635.certificate_arn
-  domain_name     = "cap6635.kamutiv.com"
-}
-
-resource "aws_route53_record" "cap6635" {
-  name    = aws_api_gateway_domain_name.cap6635.domain_name
-  type    = "A"
-  zone_id = data.aws_route53_zone.kamutiv.id
-
-  alias {
-    evaluate_target_health = true
-    name                   = aws_api_gateway_domain_name.cap6635.cloudfront_domain_name
-    zone_id                = aws_api_gateway_domain_name.cap6635.cloudfront_zone_id
-  }
-}
-
-resource "aws_route53_record" "api" {
-  name    = aws_acm_certificate.api.domain_name
-  type    = "A"
-  zone_id = data.aws_route53_zone.kamutiv.id
-
-  alias {
-    evaluate_target_health = true
-    name                   = aws_api_gateway_domain_name.cap6635.cloudfront_domain_name
-    zone_id                = aws_api_gateway_domain_name.cap6635.cloudfront_zone_id
-  }
 }
 
 resource "aws_route53_record" "cap6635_validation" {
