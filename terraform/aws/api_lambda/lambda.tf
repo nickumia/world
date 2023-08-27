@@ -12,5 +12,5 @@ resource "aws_lambda_function" "reflexvacuum" {
   handler = "main.handler"
   runtime = "python3.10"
 
-  role = "${aws_iam_role.main.arn}"
+  role = aws_iam_role.main.arn
 }

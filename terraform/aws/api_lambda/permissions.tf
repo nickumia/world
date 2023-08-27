@@ -2,7 +2,7 @@
 resource "aws_lambda_permission" "apigw" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.reflexvacuum.function_name}"
+  function_name = aws_lambda_function.reflexvacuum.function_name
   principal     = "apigateway.amazonaws.com"
 
   # The /*/*/* portion grants access from any method on any resource
@@ -13,14 +13,14 @@ resource "aws_lambda_permission" "apigw" {
 resource "aws_lambda_permission" "logging" {
   statement_id  = "AllowCloudwatchInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.reflexvacuum.function_name}"
+  function_name = aws_lambda_function.reflexvacuum.function_name
   principal     = "logs.amazonaws.com"
   source_arn    = "${aws_cloudwatch_log_group.cap6635.arn}:*"
 }
 
 data "aws_iam_policy_document" "assume_role_api" {
   statement {
-    effect = "Allow"
+    effect  = "Allow"
     actions = ["sts:AssumeRole"]
 
     principals {
@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "assume_role_api" {
   # IAM role which dictates what other AWS services the Lambda function
   # may access.
   statement {
-    effect = "Allow"
+    effect  = "Allow"
     actions = ["sts:AssumeRole"]
 
     principals {

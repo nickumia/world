@@ -1,11 +1,11 @@
 
 data "aws_route53_zone" "kamutiv" {
-  name         = "kamutiv.com."
+  name = "kamutiv.com."
 }
 
 data "aws_acm_certificate" "cap6635" {
-  domain      = "cap6635.kamutiv.com"
-  types       = ["AMAZON_ISSUED"]
+  domain = "cap6635.kamutiv.com"
+  types  = ["AMAZON_ISSUED"]
 }
 
 resource "aws_api_gateway_domain_name" "cap6635" {

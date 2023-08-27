@@ -1,11 +1,11 @@
 
 output "base_url" {
-  value = "${aws_api_gateway_deployment.cap6635.invoke_url}"
+  value = aws_api_gateway_deployment.cap6635.invoke_url
 }
 
 resource "aws_api_gateway_rest_api" "cap6635" {
-  name        = "cap6635"
-  description = "API to call CAP6635 AI algorithms"
+  name                         = "cap6635"
+  description                  = "API to call CAP6635 AI algorithms"
   disable_execute_api_endpoint = true
 
   body = jsonencode({
@@ -31,7 +31,7 @@ resource "aws_api_gateway_rest_api" "cap6635" {
 }
 
 resource "aws_api_gateway_deployment" "cap6635" {
-  rest_api_id = "${aws_api_gateway_rest_api.cap6635.id}"
+  rest_api_id = aws_api_gateway_rest_api.cap6635.id
 
   triggers = {
     redeployment = sha1(jsonencode([
