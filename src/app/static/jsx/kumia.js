@@ -64,7 +64,7 @@ export default function Kumia({pubs, work, edu}) {
         <a href="https://github.com/nickumia/">
           <Chip icon={<GitHubIcon />} label="Github" variant="outlined" />
         </a>&nbsp;
-        <a href="https://dreambuilderfs.com/nickumia">
+        <a href="https://agents.worldfinancialgroup.com/Nicholas-Kumia-92UJS">
           <Chip icon={<MonetizationOnIcon />} label="Financial Services" variant="outlined" />
         </a>&nbsp;
         <a href="https://www.instagram.com/nickumia/">
