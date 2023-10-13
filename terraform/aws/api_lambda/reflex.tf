@@ -2,6 +2,7 @@
 variable "software_version" {
   type        = string
   description = "Version of code to pull from S3"
+  default     = "0.0.0"
 }
 
 resource "aws_lambda_function" "reflexvacuum" {
