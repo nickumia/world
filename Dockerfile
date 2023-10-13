@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.11.6-slim
 LABEL org.opencontainers.image.source https://github.com/nickumia/nlp-web
 ARG debug=0
 
