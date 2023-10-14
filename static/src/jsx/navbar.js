@@ -52,7 +52,7 @@ export default function ButtonAppBar({title, menu, login}) {
         <Toolbar color="primary">
           <Typography variant="h6" className={classes.title}>
 						{title}
-            {title == 'NLP | Error' && '	\u{1F627}'}
+            {title == 'Kamutiv Tech | Error' && '	\u{1F627}'}
           </Typography>
 					{menu.map(menu => (
 						<form action={menu.link} key={menu.key}>

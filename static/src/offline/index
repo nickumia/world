@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>NLP - Home</title>
+    <title>Kamutiv Tech | Home</title>
 
 		<link rel="stylesheet" href="react.css">
 		<link href= "https://fonts.googleapis.com/css?family=Karla|Mirza|Muli:400,300i|Noto+Sans|Hind+Guntur:600" rel='stylesheet' type='text/css'>
@@ -15,7 +15,7 @@
 			<p>Kamutiv Technologies <br/> © Copyrights Reserved 2023</p>
 		</div>
 		<script>
-			title="NLP | Home";
+			title="Kamutiv Tech | Home";
 			menu=[
 				{key: 0, name: 'Home', link: "index"},
 				{key: 4, name: 'Processing', link: "processing"},
