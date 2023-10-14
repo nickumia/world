@@ -9,6 +9,7 @@ WORKDIR /app
 # Dependencies
 COPY requirements.txt dev-requirements.txt codecov.yml /app/
 COPY src/app/ /app/src/app/
+COPY static/src/ /app/src/app/static/
 COPY src/utilities/ /app/src/utilities/
 COPY src/*.py src/setup.cfg /app/src/
 COPY src/tests/* /app/src/tests/
