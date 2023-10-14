@@ -132,6 +132,10 @@ dmypy.json
 node_modules
 bower_components
 static/src/js/
+static/src/offline/kumia
+static/src/offline/processing
+static/src/offline/language
+static/src/offline/natural
 *.swp
 logs/
 e2e/cypress/support
