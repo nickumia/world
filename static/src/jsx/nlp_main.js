@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 import json_parse from './json_parse';
 
 
-export default function OfflineMain() {
+export default function NLPMain() {
 
   return (
     <React.Fragment>

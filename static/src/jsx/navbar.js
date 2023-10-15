@@ -15,6 +15,7 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import ChangeHistoryIcon from '@mui/icons-material/ChangeHistory';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import BlurOnIcon from '@mui/icons-material/BlurOn';
+import CoPresent from '@mui/icons-material/CoPresent';
 
 
 // react.school/material-ui
@@ -38,6 +39,7 @@ export default function ButtonAppBar({title, menu, login}) {
 		"Logout": <LogoutIcon />,
 		"Home": <HomeIcon />,
 		"Posts": <BookIcon />,
+    "NLP": <CoPresent />,
 		"Processing": <ChangeHistoryIcon />,
 		"Language": <CheckBoxOutlineBlankIcon />,
 		"Natural": <CircleOutlinedIcon />,

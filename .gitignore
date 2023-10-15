@@ -136,6 +136,8 @@ static/src/offline/kumia
 static/src/offline/processing
 static/src/offline/language
 static/src/offline/natural
+static/src/offline/nlp
+static/src/offline/index
 *.swp
 logs/
 e2e/cypress/support
