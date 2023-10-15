@@ -36,21 +36,21 @@ export default function NLPMain() {
           avatar={<Avatar alt="Parry" src="/static/img/balloons.jpg" />}
           label="Parry"
           component="a"
-          href="https://kamutiv.com/processing.html"
+          href="processing"
           variant="outlined"
         />
         <Chip
           avatar={<Avatar alt="Lalita" src="/static/img/mountains.jpg" />}
           label="Lalita"
           component="a"
-          href="https://kamutiv.com/language.html"
+          href="language"
           variant="outlined"
         />
         <Chip
           avatar={<Avatar alt="Nick" src="/static/img/sunset.jpg" />}
           label="Nick"
           component="a"
-          href="https://kamutiv.com/natural.html"
+          href="natural"
           variant="outlined"
         />
       </Stack>
