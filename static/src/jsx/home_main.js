@@ -58,31 +58,37 @@ const images = [
     url: 'https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400',
     title: 'NLP Research',
     width: '30%',
+    link: 'nlp',
   },
   {
     url: 'https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=400',
     title: 'London 2023',
     width: '40%',
+    link: 'london',
   },
   {
     url: 'https://images.unsplash.com/photo-1453747063559-36695c8771bd?auto=format&fit=crop&w=400',
     title: 'Kumia',
     width: '30%',
+    link: 'kumia',
   },
   {
     url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
     title: 'Road Trip Across America',
     width: '40%',
+    link: 'coming_soon',
   },
   {
     url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
     title: 'TBD',
     width: '30%',
+    link: '',
   },
   {
     url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
-    title: 'TBD',
+    title: 'TBD 2',
     width: '30%',
+    link: '',
   },
 ];
 
@@ -97,6 +103,7 @@ export default function HomeMain() {
         {images.map((image) => (
           <ImageIconButton
             key={image.title}
+            href={image.link}
             style={{
               width: image.width,
             }}
