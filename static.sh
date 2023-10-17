@@ -16,9 +16,9 @@ sed -i 's/MAIN_CONTENT_PLACEHOLDER/nlpmain/g' static/src/offline/nlp
 # Build Sample post page
 cp static/src/offline/template.html static/src/offline/sample_temp
 sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Sample/g' static/src/offline/sample_temp
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/post/g' static/src/offline/sample_temp
+sed -i 's/MAIN_CONTENT_PLACEHOLDER/singlepost/g' static/src/offline/sample_temp
 cat > testtest << EOT
-<p>Something cool!</p>
+post="{\"title\": \"Test!\", \"posted_time\": \"Oct 17th, 2023\", \"body\": \"<p>Something cool!</p>\" }"
 EOT
 
 cat <(sed -n "1,${CUT_START}p" static/src/offline/sample_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/sample_temp) > static/src/offline/sample
