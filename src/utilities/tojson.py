@@ -7,6 +7,7 @@ from app.nlp.model_pages import \
     asteroid_parry_json, asteroid_lalita_json, asteroid_nick_json, \
     openings_parry, openings_lalita, openings_nick
 from app.kumia.resume import publications, experiences, educations
+from app.travel.posts import london
 
 # Processing page
 if sys.argv[1] == 'processing':
@@ -31,3 +32,7 @@ if sys.argv[1] == 'kumia':
     print("work=" + flask.json.dumps(json.dumps(experiences)))
     print("pubs=" + flask.json.dumps(json.dumps(publications)))
     print("edu=" + flask.json.dumps(json.dumps(educations)))
+
+# London page
+if sys.argv[1] == 'london':
+    print("post=" + flask.json.dumps(json.dumps(london)))

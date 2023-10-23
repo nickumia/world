@@ -13,19 +13,6 @@ cp static/src/offline/template.html static/src/offline/nlp
 sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | NLP/g' static/src/offline/nlp
 sed -i 's/MAIN_CONTENT_PLACEHOLDER/nlpmain/g' static/src/offline/nlp
 
-# Build Sample post page
-cp static/src/offline/template.html static/src/offline/sample_temp
-sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Sample/g' static/src/offline/sample_temp
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/singlepost/g' static/src/offline/sample_temp
-cat > testtest << EOT
-post="{\"title\": \"Test!\", \"posted_time\": \"Oct 17th, 2023\", \"body\": \"<p>Something cool!</p>\" }"
-EOT
-
-cat <(sed -n "1,${CUT_START}p" static/src/offline/sample_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/sample_temp) > static/src/offline/sample
-rm -rf testtest static/src/offline/sample_temp
-sleep 2
-
-
 # Export processing page
 cp static/src/offline/template.html static/src/offline/processing_temp
 sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Processing/g' static/src/offline/processing_temp
@@ -63,3 +50,15 @@ docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojso
 
 cat <(sed -n "1,${CUT_START}p" static/src/offline/kumia_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/kumia_temp) > static/src/offline/kumia
 rm -rf testtest static/src/offline/kumia_temp
+
+# Build London post page
+cp static/src/offline/template.html static/src/offline/london_temp
+sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Sample/g' static/src/offline/london_temp
+sed -i 's/MAIN_CONTENT_PLACEHOLDER/singlepost/g' static/src/offline/london_temp
+docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py london > testtest"
+
+cat <(sed -n "1,${CUT_START}p" static/src/offline/london_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/london_temp) > static/src/offline/london
+rm -rf testtest static/src/offline/london_temp
+sleep 2
+
+
