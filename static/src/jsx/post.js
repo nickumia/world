@@ -16,7 +16,7 @@ export default function PostDisplay({post}) {
             {post_dict.title}
           </Typography>
           <Typography variant="h6">
-            Posted: {post_dict.posted_time}
+            {post_dict.posted_time}
           </Typography>
           <hr/>
 
