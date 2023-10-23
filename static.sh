@@ -3,62 +3,40 @@
 CUT_START='26'
 CUT_END='27'
 
-# Build index
-cp static/src/offline/template.html static/src/offline/index
-sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Home/g' static/src/offline/index
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/homemain/g' static/src/offline/index
+declare -a simple_pages=(
+[0]='index Home homemain'
+[1]='nlp NLP nlpmain'
+)
 
-# Build NLP Home page
-cp static/src/offline/template.html static/src/offline/nlp
-sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | NLP/g' static/src/offline/nlp
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/nlpmain/g' static/src/offline/nlp
+declare -a content_pages=(
+[0]='processing Processing realm'
+[1]='language Language realm'
+[2]='natural Natural realm'
+[3]='kumia Kumia kumia'
+[4]='london London singlepost'
+)
 
-# Export processing page
-cp static/src/offline/template.html static/src/offline/processing_temp
-sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Processing/g' static/src/offline/processing_temp
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/realm/g' static/src/offline/processing_temp
-docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py processing > testtest"
+for page in "${simple_pages[@]}"
+do
+  read -ra page_parts <<< "$page"
+  # Build page
+  cp static/src/offline/template.html static/src/offline/$page_parts[0]
+  sed -i "s/TITLE_PLACEHOLDER/Kamutiv Tech | ${page_parts[1]}/g" static/src/offline/$page_parts[0]
+  sed -i "s/MAIN_CONTENT_PLACEHOLDER/${page_parts[2]}/g" static/src/offline/$page_parts[0]
+  echo "Done with...${page_parts[0]}"
+done
 
-cat <(sed -n "1,${CUT_START}p" static/src/offline/processing_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/processing_temp) > static/src/offline/processing
-rm -rf testtest static/src/offline/processing_temp
-sleep 2
+for page in "${content_pages[@]}"
+do
+  read -ra page_parts <<< "$page"
+  # Export page
+  cp static/src/offline/template.html static/src/offline/temp
+  sed -i "s/TITLE_PLACEHOLDER/Kamutiv Tech | ${page_parts[1]}/g" static/src/offline/temp
+  sed -i "s/MAIN_CONTENT_PLACEHOLDER/${page_parts[2]}/g" static/src/offline/temp
+  docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py ${page_parts[0]} > testtest"
 
-# Export language page
-cp static/src/offline/template.html static/src/offline/language_temp
-sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Language/g' static/src/offline/language_temp
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/realm/g' static/src/offline/language_temp
-docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py language > testtest"
-
-cat <(sed -n "1,${CUT_START}p" static/src/offline/language_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/language_temp) > static/src/offline/language
-rm -rf testtest static/src/offline/language_temp
-sleep 2
-
-# export natural page
-cp static/src/offline/template.html static/src/offline/natural_temp
-sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Natural/g' static/src/offline/natural_temp
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/realm/g' static/src/offline/natural_temp
-docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py natural > testtest"
-
-cat <(sed -n "1,${CUT_START}p" static/src/offline/natural_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/natural_temp) > static/src/offline/natural
-rm -rf testtest static/src/offline/natural_temp
-
-# export kumia page
-cp static/src/offline/template.html static/src/offline/kumia_temp
-sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Kumia/g' static/src/offline/kumia_temp
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/kumia/g' static/src/offline/kumia_temp
-docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py kumia > testtest"
-
-cat <(sed -n "1,${CUT_START}p" static/src/offline/kumia_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/kumia_temp) > static/src/offline/kumia
-rm -rf testtest static/src/offline/kumia_temp
-
-# Build London post page
-cp static/src/offline/template.html static/src/offline/london_temp
-sed -i 's/TITLE_PLACEHOLDER/Kamutiv Tech | Sample/g' static/src/offline/london_temp
-sed -i 's/MAIN_CONTENT_PLACEHOLDER/singlepost/g' static/src/offline/london_temp
-docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py london > testtest"
-
-cat <(sed -n "1,${CUT_START}p" static/src/offline/london_temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/london_temp) > static/src/offline/london
-rm -rf testtest static/src/offline/london_temp
-sleep 2
-
-
+  cat <(sed -n "1,${CUT_START}p" static/src/offline/temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/temp) > static/src/offline/$page_parts[0]
+  rm -rf testtest static/src/offline/temp
+  echo "Done with...${page_parts[0]}"
+  sleep 1
+done
