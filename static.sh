@@ -38,5 +38,4 @@ do
   cat <(sed -n "1,${CUT_START}p" static/src/offline/temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/temp) > static/src/offline/${page_parts[0]}
   rm -rf testtest static/src/offline/temp
   echo "Done with...${page_parts[0]}"
-  sleep 1
 done
