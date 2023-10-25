@@ -30,7 +30,7 @@
     "@material-ui/icons": "^4.11.2",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.10",
-    "crypto-js": "^4.1.1",
+    "crypto-js": "^4.2.0",
     "fernet": "^0.4.0",
     "glob-parent": "^6.0.2",
     "react": "^18.2.0",
