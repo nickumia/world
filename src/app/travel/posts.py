@@ -7,7 +7,7 @@ with open(filepath + '2023_london.html') as f:
     london_post = f.read()
 
 london = {
-    "title": "London 2023",
-    "posted_time": "October 23rd, 2023",
+    "title": "London: A Turn of a New Leaf 🍂",
+    "posted_time": "October 14 - 22, 2023",
     "body": london_post
 }
