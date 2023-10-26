@@ -34,7 +34,7 @@ a:hover {
   border-radius: 25px;
 }
 
-#carouselFirst, img {
+#carouselFirst, .postimg {
   max-height: 300px;
   display: block;
   object-fit: contain;
