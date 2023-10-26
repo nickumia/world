@@ -6,7 +6,7 @@ var source = require('vinyl-source-stream');
 gulp.task('default', async function() {
   return browserify({
       extensions: ['.js', '.jsx'],
-      entries: 'app/static/jsx/main.js',
+      entries: 'src/jsx/main.js',
   })
   .transform(babelify.configure({
       ignore: [/(node_modules)/]
@@ -14,5 +14,5 @@ gulp.task('default', async function() {
   .bundle()
   .on("error", function (err) { console.log("Error : " + err.message); })
   .pipe(source('bundle.js'))
-  .pipe(gulp.dest('app/static/js'));
+  .pipe(gulp.dest('src/js'));
 });

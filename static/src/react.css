@@ -1,4 +1,9 @@
 
+p, li {
+  font-family: Mirza;
+  text-align: justify;
+}
+
 hr {
 	border-top: 3px solid #bbb;
 	border-radius: 5px;
@@ -27,4 +32,13 @@ hr {
 a:hover {
   background: rgba(76, 175, 80, 0.3);
   border-radius: 25px;
+}
+
+#carouselFirst, .postimg {
+  max-height: 300px;
+  display: block;
+  object-fit: contain;
+  float: right;
+  margin: 10px;
+  width: 50%;
 }
