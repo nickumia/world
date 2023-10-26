@@ -19,8 +19,8 @@ export default function PostDisplay({post}) {
             {post_dict.posted_time}
           </Typography>
           <hr/>
-
           <div className="content" dangerouslySetInnerHTML={{__html: post_dict.body}}></div>
+          <hr/>
         </main>
       </div>
 

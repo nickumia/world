@@ -55,19 +55,19 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
 
 const images = [
   {
-    url: 'https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400',
+    url: '/static/img/20231018_180624_optimized.jpg',
     title: 'NLP Research',
     width: '30%',
     link: 'nlp',
   },
   {
-    url: 'https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=400',
+    url: '/static/img/20231020_142059_optimized.jpg',
     title: 'London 2023',
     width: '40%',
     link: 'london',
   },
   {
-    url: 'https://images.unsplash.com/photo-1453747063559-36695c8771bd?auto=format&fit=crop&w=400',
+    url: '/static/img/20231014_143134_optimized.jpg',
     title: 'Kumia',
     width: '30%',
     link: 'kumia',
