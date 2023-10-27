@@ -34,11 +34,25 @@ a:hover {
   border-radius: 25px;
 }
 
-#carouselFirst, .postimg {
+#carouselFirst, .postimgright {
   max-height: 300px;
   display: block;
   object-fit: contain;
-  float: right;
   margin: 10px;
+  float: right;
   width: 50%;
+}
+
+.postimgcenter {
+  max-height: 300px;
+  display: block;
+  object-fit: contain;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.carousel-item > h5, .carousel-item > p {
+  text-align: center;
 }

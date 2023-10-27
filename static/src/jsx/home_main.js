@@ -76,7 +76,7 @@ const images = [
     url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
     title: 'Road Trip Across America',
     width: '40%',
-    link: 'coming_soon',
+    link: '',
   },
   {
     url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
