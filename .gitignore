@@ -131,7 +131,10 @@ dmypy.json
 # Repo stuff
 node_modules
 bower_components
-src/app/static/js/
+static/src/js/
+static/src/offline/*
+!static/src/offline/template.html
+!static/src/offline/error.html
 *.swp
 logs/
 e2e/cypress/support
