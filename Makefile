@@ -27,12 +27,12 @@ up: # Start Main App
 
 install-front: # Install dependencies for front-end
 	# TODO: fix mui imports :/
-	cd src && npm install --legacy-peer-deps
+	cd static && npm install --legacy-peer-deps
 
 build-front: # Build jsx into js
 	# cd src && ./node_modules/browserify/bin/cmd.js app/static/jsx/*.js --standalone nlp > app/static/js/bundle.js
-	mkdir -p src/app/static/js
-	cd src && ./node_modules/gulp/bin/gulp.js
+	mkdir -p static/src/js
+	cd static && ./node_modules/gulp/bin/gulp.js
 
 build-static: # Convert python structures to javascript
 	./static.sh
