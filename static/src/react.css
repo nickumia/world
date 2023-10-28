@@ -35,7 +35,7 @@ a:hover {
 }
 
 #carouselFirst, .postimgright {
-  max-height: 300px;
+  height: 300px;
   display: block;
   object-fit: contain;
   margin: 10px;
