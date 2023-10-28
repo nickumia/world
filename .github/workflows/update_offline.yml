@@ -3,6 +3,9 @@ name: Offline Update
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   update-s3:
