@@ -8,6 +8,7 @@ from app.nlp.model_pages import \
     openings_parry, openings_lalita, openings_nick
 from app.kumia.resume import publications, experiences, educations
 from app.travel.posts import london
+from app.general import privacy
 
 # Processing page
 if sys.argv[1] == 'processing':
@@ -36,3 +37,7 @@ if sys.argv[1] == 'kumia':
 # London page
 if sys.argv[1] == 'london':
     print("post=" + flask.json.dumps(json.dumps(london)))
+
+# Privacy page
+if sys.argv[1] == 'privacy':
+    print("post=" + flask.json.dumps(json.dumps(privacy)))
