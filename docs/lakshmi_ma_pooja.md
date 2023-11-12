@@ -84,15 +84,15 @@ For the arrival of the good forces and departure desstructive forces. Iring the 
 
 The Goddesses of the sacred rivers are invoked and invited by the devotee into the water in the panchapatra (vessel made with Five materials) which will be offered during puja
 
-> Gange cha yamune chaiva godavari Sarasvati
+> Gange cha yamune chaiva godavari Sarasvati  
 > Narmade sindhu Kaveri jalesmin Sannidhim Kuru
 
 The sacred rivers Ganga, Yamina, Godavari, Sarasvati, Narmada, Sindhu Kaveri May your holiness be present in this water.
 
 ## I. Atma Puja (Worship Divine within)
 
-> Deho devalayah proktah jivo devassanatanah
-> Tyaje-dajanna-nirmalayam So'ham brävena pujavè(t)
+> Deho devalayah proktah jivo devassanatanah  
+> Tyaje-dajanna-nirmalayam So'ham brävena pujavè(t)  
 
 The body is the temple. The jiva is the eternal temple deity of this to the wilted flowers that symbolize May ignorance and worship the Divine Knowing the Divine is not separate from me.
 
@@ -101,7 +101,7 @@ The body is the temple. The jiva is the eternal temple deity of this to the wilt
 
 The Guru, by whose grace, the puja can take place is invoked by the devotee
 
-> Gurur-brahma gurur-vishnu gurur-devo mahesvarah
+> Gurur-brahma gurur-vishnu gurur-devo mahesvarah  
 > Gurur-saksat param brahma tasmai sri guruve namah
 
 The Guru is Brahma, the Guru is Vishnu, the Guru is Mahesvara, The Guru is ultimate Reality my obeisances to the Garu
