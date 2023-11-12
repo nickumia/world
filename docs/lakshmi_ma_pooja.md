@@ -1,6 +1,6 @@
 # How to Perform Lakshmi Maata Puja
 
-## A. Achamaniyani (Purification)
+## A. Achamaniyam (Purification)
 
 (imperishable) (without limits) (salutations)
 
@@ -34,10 +34,10 @@ Inhale through the left nostril (and Mentally chant)
 
 > Om bhuh  
 > Om bhuvah  
-> Om suvah  
+> Om suvaha  
 > Om mahah  
-> Om janah  
-> Om tapah  
+> Om janaha  
+> Om tapaha  
 > Om satyam  
 
 Invocation to the physical plane, the plane of Life-breath the plane of the Divine mind, the plane of all-pervading Consciousness, the plane of all-creating Consciousness, the. plane of Divine light, the plane of truth-consciousness.
@@ -78,7 +78,7 @@ O mother Earth, upholder of the worlds. Vishnu holds you May you hold me O Mothe
 ## G. Ghanta Palja (worship of the Bell)
 
 > Agama-artham tu devānam gamana artham Tu rakshasam  
-> ghantta-ravam Karomya aadau devată ahvana- lanchanam
+> ghantta-ravam Karomya aadau devată ahvana-lanchanam
 
 For the arrival of the good forces and departure desstructive forces. Iring the bell, marking the Invocation of auspiciousness that comes with the Devine manifestation.
 
@@ -230,6 +230,7 @@ into fire 5 times repeating the Gayatri mantra:
 
 Mix the guggul, rice, sugar, black till together in a thaali. Add Havan Samagri. Pick up and offer a little at a time for each of the following mantras:
 
+TODO
 > Om Shri Ganeshaayay Namaha Swaha  
 > Om Namo Bhagwatay Vaasudevayay Swaha  
 > Om Shri Nau Graha Devaayai Swaha  
