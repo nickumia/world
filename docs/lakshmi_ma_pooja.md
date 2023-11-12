@@ -59,7 +59,6 @@ Salutations to the Divine Consciousness, who is all-pervading ever bright, divin
 
 ## E. Sankalpa (Intention: good thoughts)
 
-TODO
 > Mamo patta samasta durita Kshaya dvara  
 > Sri parameshvara prityartham devapujam Karishye
 
@@ -69,9 +68,8 @@ Remove all negative thoughts words, and actions that I have accrued over lifetin
 
 The devotee invokes Mother Earth as she is ultimately the Being on which people live and sit. 
 
-TODO
 > Om prthvi tvaya dhrtā lokā devi tvam vishnunā dhrta  
-> Tvam ca dharaya mām devi pavitram Kuru Ca-āsanam
+> Tvam ca dharaya mām devi pavitram Kuru Cha-āsanam
 
 O mother Earth, upholder of the worlds. Vishnu holds you May you hold me O Mother Earth, purify my seat.
 
@@ -93,9 +91,8 @@ The sacred rivers Ganga, Yamina, Godavari, Sarasvati, Narmada, Sindhu Kaveri May
 
 ## I. Atma Puja (Worship Divine within)
 
-TODO
 > Deho devalayah proktah jivo devassanatanah
-> Tyajedajannanirmalayam So'ham brävena pujavet
+> Tyaje-dajanna-nirmalayam So'ham brävena pujavè(t)
 
 The body is the temple. The jiva is the eternal temple deity of this to the wilted flowers that symbolize May ignorance and worship the Divine Knowing the Divine is not separate from me.
 
@@ -230,7 +227,6 @@ into fire 5 times repeating the Gayatri mantra:
 
 Mix the guggul, rice, sugar, black till together in a thaali. Add Havan Samagri. Pick up and offer a little at a time for each of the following mantras:
 
-TODO
 > Om Shri Ganeshaayay Namaha Swaha  
 > Om Namo Bhagwatay Vaasudevayay Swaha  
 > Om Shri Nau Graha Devaayai Swaha  
