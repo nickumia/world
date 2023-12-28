@@ -15,6 +15,7 @@ declare -a content_pages=(
 [3]='kumia Kumia kumia'
 [4]='london London singlepost'
 [5]='privacy Privacy singlepost'
+[6]='new_york NewYork singlepost'
 )
 
 for page in "${simple_pages[@]}"
