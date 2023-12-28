@@ -7,5 +7,6 @@ aws s3 cp static/src/offline/natural s3://offline.kamutiv.com/natural --content-
 aws s3 cp static/src/offline/language s3://offline.kamutiv.com/language --content-type "text/html"
 aws s3 cp static/src/offline/processing s3://offline.kamutiv.com/processing --content-type "text/html"
 aws s3 cp static/src/offline/london s3://offline.kamutiv.com/london --content-type "text/html"
+aws s3 cp static/src/offline/new_york s3://offline.kamutiv.com/new_york --content-type "text/html"
 
 # aws s3 cp static/src/img/ s3://offline.kamutiv.com/static/img/ --recursive
