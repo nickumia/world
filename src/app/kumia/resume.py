@@ -114,10 +114,10 @@ experiences = [
      "date": "October 2023 - Present",
      "company": "RedShred",
      "details": """
-▪ Work with the team to use RedShred technologies to develop and support DevOps applications and infrastructures that interoperate with Government environments.
-▪ Contribute to new SBIR and/or BAA R&D technical proposal efforts and monitor and research the latest research in machine learning areas.
-▪ Provide hands-on professional experience building and deploying software solutions in production and research environments.
-▪ Technologies: GCP, Kubernetes, APISIX, Argo CD, Knative, Skaffold, Behave, RabbitMQ, Minio, Helm, Postgres, Justomize, RHEL, Poetry, Django, Github, RedShred
+▪ Work with the team to use RedShred technologies to develop and support DevOps applications and infrastructures that interoperate with Government environments.<br/>
+▪ Contribute to new SBIR and/or BAA R&D technical proposal efforts and monitor and research the latest research in machine learning areas.<br/>
+▪ Provide hands-on professional experience building and deploying software solutions in production and research environments.<br/>
+▪ Technologies: GCP, Kubernetes, APISIX, Argo CD, Knative, Skaffold, Behave, RabbitMQ, Minio, Helm, Postgres, Justomize, RHEL, Poetry, Django, Github, RedShred<br/>
 """,  # NOQA
      "link": "https://redshred.com/",
      },
