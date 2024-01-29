@@ -73,14 +73,14 @@ const images = [
     link: 'kumia',
   },
   {
-    url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
-    title: 'Road Trip Across America',
+    url: '/static/img/20231221_204447_optimized.jpg',
+    title: 'New York 2023',
     width: '40%',
-    link: '',
+    link: 'new_york',
   },
   {
     url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
-    title: 'TBD',
+    title: 'Road Trip Across America',
     width: '30%',
     link: '',
   },

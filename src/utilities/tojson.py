@@ -7,7 +7,7 @@ from app.nlp.model_pages import \
     asteroid_parry_json, asteroid_lalita_json, asteroid_nick_json, \
     openings_parry, openings_lalita, openings_nick
 from app.kumia.resume import publications, experiences, educations
-from app.travel.posts import london
+from app.travel.posts import london, new_york
 from app.general import privacy
 
 # Processing page
@@ -37,6 +37,10 @@ if sys.argv[1] == 'kumia':
 # London page
 if sys.argv[1] == 'london':
     print("post=" + flask.json.dumps(json.dumps(london)))
+
+# London page
+if sys.argv[1] == 'new_york':
+    print("post=" + flask.json.dumps(json.dumps(new_york)))
 
 # Privacy page
 if sys.argv[1] == 'privacy':
