@@ -85,7 +85,7 @@ const images = [
     link: 'https://www.youtube.com/@nickumia',
   },
   {
-    url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
+    url: '/static/img/road_trip_main.jpg',
     title: 'Road Trip Across America',
     width: '40%',
     link: 'spiritual_tech',
