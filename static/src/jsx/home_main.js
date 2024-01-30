@@ -79,16 +79,16 @@ const images = [
     link: 'new_york',
   },
   {
-    url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
-    title: 'Road Trip Across America',
-    width: '30%',
-    link: '',
+    url: '/static/img/vlogging.png',
+    title: 'Vlogging!',
+    width: '20%',
+    link: 'https://www.youtube.com/@nickumia',
   },
   {
-    url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
-    title: 'TBD 2',
-    width: '30%',
-    link: '',
+    url: '/static/img/road_trip_main.jpg',
+    title: 'Road Trip Across America',
+    width: '40%',
+    link: 'spiritual_tech',
   },
 ];
 
