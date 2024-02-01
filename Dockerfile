@@ -6,6 +6,9 @@ ARG debug=0
 ENV FLASK_APP=0.0.0.0
 WORKDIR /app
 
+# Packages
+RUN apt-get install git -y
+
 # Dependencies
 COPY requirements.txt dev-requirements.txt codecov.yml /app/
 COPY src/app/ /app/src/app/
