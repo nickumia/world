@@ -7,7 +7,7 @@ ENV FLASK_APP=0.0.0.0
 WORKDIR /app
 
 # Packages
-RUN apt update && apt-get install git libpq-dev -y
+RUN apt update && apt-get install git libpq-dev build-essentials -y
 
 # Dependencies
 COPY requirements.txt dev-requirements.txt codecov.yml /app/
