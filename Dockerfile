@@ -7,7 +7,7 @@ ENV FLASK_APP=0.0.0.0
 WORKDIR /app
 
 # Packages
-RUN apt-get install git -y
+RUN apt update && apt-get install git -y
 
 # Dependencies
 COPY requirements.txt dev-requirements.txt codecov.yml /app/
