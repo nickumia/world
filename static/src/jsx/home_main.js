@@ -73,22 +73,22 @@ const images = [
     link: 'kumia',
   },
   {
-    url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
+    url: '/static/img/20231221_204447_optimized.jpg',
+    title: 'New York 2023',
+    width: '40%',
+    link: 'new_york',
+  },
+  {
+    url: '/static/img/vlogging.png',
+    title: 'Vlogging!',
+    width: '20%',
+    link: 'https://www.youtube.com/@nickumia',
+  },
+  {
+    url: '/static/img/road_trip_main.jpg',
     title: 'Road Trip Across America',
     width: '40%',
-    link: '',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
-    title: 'TBD',
-    width: '30%',
-    link: '',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400',
-    title: 'TBD 2',
-    width: '30%',
-    link: '',
+    link: 'spiritual_tech',
   },
 ];
 
