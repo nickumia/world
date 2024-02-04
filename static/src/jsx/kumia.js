@@ -32,6 +32,7 @@ import IconButton from '@mui/material/IconButton';
 
 import Chip from '@mui/material/Chip';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
@@ -63,6 +64,9 @@ export default function Kumia({pubs, work, edu}) {
         <div style={{float: 'right'}}>
         <a href="https://github.com/nickumia/">
           <Chip icon={<GitHubIcon />} label="Github" variant="outlined" />
+        </a>&nbsp;
+        <a href="https://www.youtube.com/@nickumia">
+          <Chip icon={<YouTubeIcon />} label="Youtube" variant="outlined" />
         </a>&nbsp;
         <a href="https://agents.worldfinancialgroup.com/Nicholas-Kumia-92UJS">
           <Chip icon={<MonetizationOnIcon />} label="Financial Services" variant="outlined" />
