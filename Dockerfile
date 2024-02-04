@@ -7,7 +7,8 @@ ENV FLASK_APP=0.0.0.0
 WORKDIR /app
 
 # Packages
-RUN apt update && apt-get install git libpq-dev build-essential -y
+# libffi-dev for cffi
+RUN apt update && apt-get install git libpq-dev build-essential libffi-dev -y
 
 # Dependencies
 COPY requirements.txt dev-requirements.txt codecov.yml /app/
@@ -16,6 +17,9 @@ COPY static/src/ /app/src/app/static/
 COPY src/utilities/ /app/src/utilities/
 COPY src/*.py src/setup.cfg /app/src/
 COPY src/tests/* /app/src/tests/
+
+# For pyarrow
+RUN pip install cmake
 
 RUN pip install -r requirements.txt
 RUN if [ $debug -eq 1 ]; then pip install -r dev-requirements.txt; fi
