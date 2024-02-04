@@ -19,7 +19,7 @@ COPY src/*.py src/setup.cfg /app/src/
 COPY src/tests/* /app/src/tests/
 
 # For pyarrow
-RUN pip install cmake
+RUN pip install cmake cython
 
 RUN pip install -r requirements.txt
 RUN if [ $debug -eq 1 ]; then pip install -r dev-requirements.txt; fi
