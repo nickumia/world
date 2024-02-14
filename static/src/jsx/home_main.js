@@ -101,8 +101,7 @@ const images = [
     url: '/static/img/spiritual_background.jpg',
     title: 'Hinduism + Spiritual Resources',
     width: '50%',
-    link: '',
-    // link: 'spiritual',
+    link: 'spiritual',
   },
 ];
 
