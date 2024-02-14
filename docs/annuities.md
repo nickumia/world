@@ -27,5 +27,5 @@ The general steps are:
    - This is mostly completed through RegEd
 5. Call AMS to ensure your information is put into the Annuities National DB to be able to register with carriers
 6. Sign up/Register for carrier websites
-  - This gives you access to product material, illustration software, other sales resources.
+   - This gives you access to product material, illustration software, other sales resources.
 6. Use RightBridge to submit client applications
