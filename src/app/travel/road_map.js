@@ -1,5 +1,5 @@
 window.onload = function () {
-  var R = Raphael("road_map", 1000, 550),
+  var R = Raphael("road_map", 1000, 600 ),
     attr = {
     "fill": "#d3d3d3",
     "stroke": "#fff",
