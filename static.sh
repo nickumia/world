@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CUT_START='28'
-CUT_END='29'
+CUT_START='29'
+CUT_END='30'
 
 declare -a simple_pages=(
 [0]='index Home homemain'

@@ -46,6 +46,9 @@ if sys.argv[1] == 'new_york':
 # Spiritual Tech page
 if sys.argv[1] == 'spiritual_tech':
     print("post=" + flask.json.dumps(json.dumps(spiritual_tech)))
+    with open('/app/src/app/travel/road_map.js', 'r') as rm:
+        for lin in rm.readlines():
+            print(lin)
 
 # Spiritual page
 if sys.argv[1] == 'spiritual':
