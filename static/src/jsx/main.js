@@ -17,6 +17,7 @@ import Kumia from './kumia';
 import SyntaxApp from './syntax';
 import NLPMain from './nlp_main';
 import HomeMain from './home_main';
+import SpiritualTech from './spiritual_tech';
 
 import decrypt from "./encryption";
 
@@ -62,6 +63,7 @@ var pages = {
 	"#realm": function test1() {return <Realm domain={domain} asteroids={asteroids} />},
 	"#kumia": function test1() {return <Kumia pubs={pubs} work={work} edu={edu} />},
 	"#syntaxapp": function test1() {return <SyntaxApp details={details} />},
+	"#spiritualtech": function test1() {return <SpiritualTech />},
 	"#nlpmain": function test1() {return <NLPMain />},
 	"#homemain": function test1() {return <HomeMain />}
 }
