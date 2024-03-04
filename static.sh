@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CUT_START='28'
-CUT_END='29'
+CUT_START='29'
+CUT_END='30'
 
 declare -a simple_pages=(
 [0]='index Home homemain'
@@ -17,6 +17,7 @@ declare -a content_pages=(
 [5]='privacy Privacy singlepost'
 [6]='new_york NewYork singlepost'
 [7]='spiritual_tech SpiritualTech singlepost'
+[8]='spiritual Spiritual singlepost'
 )
 
 for page in "${simple_pages[@]}"
