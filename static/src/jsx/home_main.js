@@ -90,6 +90,19 @@ const images = [
     width: '40%',
     link: 'spiritual_tech',
   },
+  {
+    url: '/static/img/financial_background.jpg',
+    title: 'Financial Resources',
+    width: '50%',
+    link: '',
+    // link: 'financial',
+  },
+  {
+    url: '/static/img/spiritual_background.jpg',
+    title: 'Hinduism + Spiritual Resources',
+    width: '50%',
+    link: 'spiritual',
+  },
 ];
 
 export default function HomeMain() {
