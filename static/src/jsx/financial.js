@@ -72,7 +72,7 @@ export default function Financial() {
       orientation="horizontal"
       size="large"
       variant="contained"
-      style={{display: "flex", justifyContent: "center", paddingTop: "2%"}}
+      style={{display: "flex", justifyContent: "center", paddingTop: "2%", boxShadow: "none"}}
     >
       <Button onClick={handleAbove} color={above ? "primary" : "secondary"}>Living Above<br/>Your Means</Button>
       <Button onClick={handleAt} color={at ? "primary" : "secondary"}>Living At<br/>Your Means</Button>
