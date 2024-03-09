@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
 import cyan from "@material-ui/core/colors/cyan";
@@ -22,6 +23,14 @@ import ImageListItem from '@mui/material/ImageListItem';
 
 import json_parse from './json_parse';
 
+const useStyles = makeStyles((theme) => ({
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  }
+}));
 const itemData = [
   {
     img: "./financial_concepts.mmd.svg",
@@ -31,6 +40,7 @@ const itemData = [
 
 export default function Financial() {
 
+  const classes = useStyles();
   const [above, setAbove] = React.useState(true);
   const [at, setAt] = React.useState(true);
   const [below, setBelow] = React.useState(true);
