@@ -118,6 +118,14 @@ export default function Financial() {
       <Button onClick={handleInc} color={inc ? "primary" : "secondary"}>Income</Button>
     </ButtonGroup>
 
+    <Typography variant="p" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      {!above && !net && 'above|net'}
+      {!above && !inc && 'above|inc'}
+      {!at && !net && 'at|net'}
+      {!at && !inc && 'at|inc'}
+      {!below && !net && 'below|net'}
+      {!below && !inc && 'below|inc'}
+    </Typography>
     </React.Fragment>
   );
 }
