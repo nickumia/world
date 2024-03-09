@@ -31,6 +31,25 @@ const itemData = [
 
 export default function Financial() {
 
+  const [above, setAbove] = React.useState(true);
+  const [at, setAt] = React.useState(true);
+  const [below, setBelow] = React.useState(true);
+  const handleAbove = () => {
+    setAbove(false);
+    setAt(true);
+    setBelow(true);
+  };
+  const handleAt = () => {
+    setAbove(true);
+    setAt(false);
+    setBelow(true);
+  };
+  const handleBelow = () => {
+    setAbove(true);
+    setAt(true);
+    setBelow(false);
+  };
+
   return (
     <React.Fragment>
 
@@ -52,12 +71,12 @@ export default function Financial() {
       disabled={false}
       orientation="horizontal"
       size="large"
-      variant="outlined"
+      variant="contained"
       style={{display: "flex", justifyContent: "center", paddingTop: "2%"}}
     >
-      <Button>Living Above<br/>Your Means</Button>
-      <Button>Living At<br/>Your Means</Button>
-      <Button>Living Below<br/>your Means</Button>
+      <Button onClick={handleAbove} color={above ? "primary" : "secondary"}>Living Above<br/>Your Means</Button>
+      <Button onClick={handleAt} color={at ? "primary" : "secondary"}>Living At<br/>Your Means</Button>
+      <Button onClick={handleBelow} color={below ? "primary" : "secondary"}>Living Below<br/>your Means</Button>
     </ButtonGroup>
 
     <ButtonGroup
