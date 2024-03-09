@@ -12,3 +12,5 @@ aws s3 cp static/src/offline/spiritual_tech s3://offline.kamutiv.com/spiritual_t
 aws s3 cp static/src/offline/spiritual s3://offline.kamutiv.com/spiritual --content-type "text/html"
 
 # aws s3 cp static/src/img/ s3://offline.kamutiv.com/static/img/ --recursive
+# aws s3 cp static/src/js/raphael-min.js s3://offline.kamutiv.com/raphael-min.js
+# aws s3 cp static/src/js/us-map-svg.js s3://offline.kamutiv.com/us-map-svg.js
