@@ -73,7 +73,8 @@ export default function Financial() {
   return (
     <React.Fragment>
 
-      <ImageList sx={{ width: "100%", height: "100%" }} cols={1} rowHeight={'100%'}>
+      <ImageList sx={{ width: "100%", height: "100%" }} cols={1}
+        style={{width: "90%", marginLeft: "auto", marginRight: "auto"}}>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img
