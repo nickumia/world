@@ -86,26 +86,32 @@ export default function Financial() {
         ))}
       </ImageList>
 
+    <Typography variant="p" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      Select the option that describes the lifestyle of interest
+    </Typography>
     <ButtonGroup
       color="primary"
       disabled={false}
       orientation="horizontal"
       size="large"
       variant="contained"
-      style={{display: "flex", justifyContent: "center", paddingTop: "2%", boxShadow: "none"}}
+      style={{display: "flex", justifyContent: "center", boxShadow: "none"}}
     >
       <Button onClick={handleAbove} color={above ? "primary" : "secondary"}>Living Above<br/>Your Means</Button>
       <Button onClick={handleAt} color={at ? "primary" : "secondary"}>Living At<br/>Your Means</Button>
       <Button onClick={handleBelow} color={below ? "primary" : "secondary"}>Living Below<br/>your Means</Button>
     </ButtonGroup>
 
+    <Typography variant="p" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      Select the option that describes the financial view of interest
+    </Typography>
     <ButtonGroup
       color="primary"
       disabled={false}
       orientation="horizontal"
       size="large"
       variant="contained"
-      style={{display: "flex", justifyContent: "center", paddingTop: "2%", boxShadow: "none"}}
+      style={{display: "flex", justifyContent: "center", boxShadow: "none"}}
     >
       <Button onClick={handleNet} color={net ? "primary" : "secondary"}>Net Worth</Button>
       <Button onClick={handleInc} color={inc ? "primary" : "secondary"}>Income</Button>
