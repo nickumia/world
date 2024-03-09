@@ -44,6 +44,8 @@ export default function Financial() {
   const [above, setAbove] = React.useState(true);
   const [at, setAt] = React.useState(true);
   const [below, setBelow] = React.useState(true);
+  const [net, setNet] = React.useState(true);
+  const [inc, setInc] = React.useState(true);
   const handleAbove = () => {
     setAbove(false);
     setAt(true);
@@ -58,6 +60,14 @@ export default function Financial() {
     setAbove(true);
     setAt(true);
     setBelow(false);
+  };
+  const handleNet = () => {
+    setNet(false);
+    setInc(true);
+  };
+  const handleInc = () => {
+    setNet(true);
+    setInc(false);
   };
 
   return (
@@ -94,11 +104,11 @@ export default function Financial() {
       disabled={false}
       orientation="horizontal"
       size="large"
-      variant="outlined"
-      style={{display: "flex", justifyContent: "center", paddingTop: "2%"}}
+      variant="contained"
+      style={{display: "flex", justifyContent: "center", paddingTop: "2%", boxShadow: "none"}}
     >
-      <Button>Net Worth</Button>
-      <Button>Income</Button>
+      <Button onClick={handleNet} color={net ? "primary" : "secondary"}>Net Worth</Button>
+      <Button onClick={handleInc} color={inc ? "primary" : "secondary"}>Income</Button>
     </ButtonGroup>
 
     </React.Fragment>
