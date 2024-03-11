@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
-import cyan from "@material-ui/core/colors/cyan";
+import amber from "@material-ui/core/colors/amber";
 import orange from "@material-ui/core/colors/orange";
 
 import List from '@mui/material/List';
@@ -91,6 +91,13 @@ export default function Financial() {
         ))}
       </ImageList>
 
+		<Paper
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{px: 8, py: 4, ml: 4, mr: 4}}>
+    <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%"}}>
+      Understanding the <i><b>Net Worth</b></i> vs. <i><b>Income</b></i> Debate
+    </Typography>
+		<Paper
+			style={{backgroundColor: amber[100], marginTop: '10px'}} sx={{px: 8, py: 4, ml: 4, mr: 4}}>
     <Typography variant="p" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
       Select the option that describes the lifestyle of interest
     </Typography>
@@ -123,7 +130,7 @@ export default function Financial() {
     </ButtonGroup>
 
     <Typography variant="p" marked="center" align="center" component="p"
-      style={{paddingTop: "2%", width: "90%", marginLeft: "auto", marginRight: "auto"}}>
+      style={{paddingTop: "2%", marginLeft: "auto", marginRight: "auto"}}>
       {!above && !net && `
         If Nick lives above his means, his net worth will have a decreasing trend.
         It is hard to sustain any level of true net worth in this type of lifestyle.
@@ -166,7 +173,7 @@ export default function Financial() {
       `}
     </Typography>
     <Typography variant="p" marked="center" align="center" component="p"
-      style={{paddingTop: "2%", width: "90%", marginLeft: "auto", marginRight: "auto"}}><b>
+      style={{paddingTop: "2%", marginLeft: "auto", marginRight: "auto"}}><b>
       {!above && !net && `
         It's hard to manage living above your means while being in a Net Worth mindset.
       `}
@@ -186,6 +193,28 @@ export default function Financial() {
         Living below your means gives freedom from income.
       `}
     </b></Typography>
+    </Paper>
+      <Typography variant="p" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+        <i>Living above one's means</i> generally requires an <b>Income</b> mindset.
+        <br/>
+        <i>Living below one's means</i> generally allows for a <b>Net Worth</b> mindset.
+        <br/>
+        <i>Living above one's means</i> is more restrictive and demands more effort from a person.
+        <br/>
+        <i>Living below one's means</i> gives freedom from financial stress.
+        <br/><br/>
+        All of this doesn't mean that a person can't <i>live above their means</i> AND
+        have a <b>Net Worth</b> mindset.<br/>
+        It also doesn't mean that a person
+        can't <i>live below their means</i> AND have an <b>Income</b> mindset.
+        <br/><br/>
+        <i>Living above one's means</i> and having a <b>Net Worth</b> mindset
+        will result in an increasing <b>Income</b> as a byproduct.
+        <br/>
+        <i>Living below one's means</i> and having an <b>Income</b> mindset
+        will result in having a high <b>Net Worth</b> as a byproduct.
+      </Typography>
+    </Paper>
     </React.Fragment>
   );
 }
