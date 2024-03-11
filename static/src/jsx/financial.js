@@ -73,7 +73,7 @@ export default function Financial() {
   return (
     <React.Fragment>
 
-    <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%"}}>
+    <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%", paddingBottom: "2%"}}>
       Financial Literacy... Where to start?
     </Typography>
 
@@ -94,13 +94,13 @@ export default function Financial() {
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
-    <Typography variant="h5" marked="center" align="center" component="h2" style={{paddingTop: "2%"}}>
+    <Typography variant="h5" marked="center" align="center" component="h2">
       Understanding the <i><b>Net Worth</b></i> vs. <i><b>Income</b></i> Debate
     </Typography>
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[100], marginTop: '10px'}} sx={{py: 4}}>
-    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+    <Typography variant="body1" marked="center" align="center" component="p">
       Select a lifestyle
     </Typography>
     <ButtonGroup
