@@ -27,7 +27,30 @@ hr {
 		bottom: 0px;
 		padding-top: 10px;
 	}
+  .trailer-box {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+    width: 100%;
+  }
+  .mobilec {
+    padding-left: 64px;
+    padding-right: 64px;
+    margin-left: 32px;
+    margin-right: 32px;
+  }
 }
+
+@media (max-width: 799px) {
+  .mobilec {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
 
 a:hover {
   background: rgba(76, 175, 80, 0.3);
@@ -71,14 +94,4 @@ iframe {
 .trailer-box {
   margin-left: auto;
   margin-right: auto;
-}
-
-@media (min-width:800px) {
-  .trailer-box {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    float: left;
-    width: 100%;
-  }
 }

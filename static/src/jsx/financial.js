@@ -92,13 +92,15 @@ export default function Financial() {
       </ImageList>
 
 		<Paper
-			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{px: 8, py: 4, ml: 4, mr: 4}}>
+      className="mobilec"
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
     <Typography variant="h5" marked="center" align="center" component="h2" style={{paddingTop: "2%"}}>
       Understanding the <i><b>Net Worth</b></i> vs. <i><b>Income</b></i> Debate
     </Typography>
 		<Paper
-			style={{backgroundColor: amber[100], marginTop: '10px'}} sx={{px: 8, py: 4, ml: 4, mr: 4}}>
-    <Typography variant="p" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      className="mobilec"
+			style={{backgroundColor: amber[100], marginTop: '10px'}} sx={{py: 4}}>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
       Select the option that describes the lifestyle of interest
     </Typography>
     <ButtonGroup
@@ -114,7 +116,7 @@ export default function Financial() {
       <Button onClick={handleBelow} color={below ? "primary" : "secondary"}>Living Below<br/>your Means</Button>
     </ButtonGroup>
 
-    <Typography variant="p" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
       Select the option that describes the financial view of interest
     </Typography>
     <ButtonGroup
@@ -194,7 +196,7 @@ export default function Financial() {
       `}
     </b></Typography>
     </Paper>
-      <Typography variant="p" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
         <i>Living above one's means</i> generally requires an <b>Income</b> mindset.
         <br/>
         <i>Living below one's means</i> generally allows for a <b>Net Worth</b> mindset.
