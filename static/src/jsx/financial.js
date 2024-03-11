@@ -189,7 +189,7 @@ export default function Financial() {
         There is some flexibility in managing income in this scenario.
       `}
       {!below && !net && `
-        Living below your means is the only way of increasing <i>financial</i> Net Worth. (P.S. I added "financial" before Net Worth because we all technically have an infinite net worth in untapped potential.)
+        Living below your means is the only way of increasing financial Net Worth. (P.S. I added "financial" before Net Worth because we all technically have an infinite net worth in untapped potential.)
       `}
       {!below && !inc && `
         Living below your means gives freedom from income.
@@ -216,6 +216,18 @@ export default function Financial() {
         <i>Living below one's means</i> and having an <b>Income</b> mindset
         will result in having a high <b>Net Worth</b> as a byproduct.
       </Typography>
+      <hr/>
+      <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+        Understanding who you are and your habits are key to having control
+        of your finances.  In reality, we don't fit into just one of the
+        scenarios outlined above.  We go through different seasons of each one.
+        As a result, it's important to understand how to operate in each of them
+        in some capacity.  Being able to identify which one describes our
+        current situation will help to prioritize the financial decisions to
+        make.
+        <br/>
+      </Typography>
+
     </Paper>
     </React.Fragment>
   );
