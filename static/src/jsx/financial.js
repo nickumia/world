@@ -74,7 +74,7 @@ export default function Financial() {
     <React.Fragment>
 
     <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%"}}>
-      Understanding the <i><b>Net Worth</b></i> vs. <i><b>Income</b></i> Debate
+      Financial Literacy... Where to start?
     </Typography>
 
       <ImageList sx={{ width: "100%", height: "100%" }} cols={1}
@@ -93,7 +93,7 @@ export default function Financial() {
 
 		<Paper
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{px: 8, py: 4, ml: 4, mr: 4}}>
-    <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%"}}>
+    <Typography variant="h5" marked="center" align="center" component="h2" style={{paddingTop: "2%"}}>
       Understanding the <i><b>Net Worth</b></i> vs. <i><b>Income</b></i> Debate
     </Typography>
 		<Paper
