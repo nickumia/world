@@ -101,7 +101,7 @@ export default function Financial() {
       className="mobilec"
 			style={{backgroundColor: amber[100], marginTop: '10px'}} sx={{py: 4}}>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-      Select the option that describes the lifestyle of interest
+      Select a lifestyle
     </Typography>
     <ButtonGroup
       color="primary"
@@ -117,7 +117,7 @@ export default function Financial() {
     </ButtonGroup>
 
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-      Select the option that describes the financial view of interest
+      Select a Financial Mindset
     </Typography>
     <ButtonGroup
       color="primary"
