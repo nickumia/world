@@ -227,7 +227,32 @@ export default function Financial() {
         make.
         <br/>
       </Typography>
-
+    </Paper>
+		<Paper
+      className="mobilec"
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <Typography variant="h5" marked="center" align="center" component="h2">
+      Defining goals
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      A lot of financial advice tends to ask people to re-evaluate their entire
+      life.  Given how unique each person's life and priorities are, it's not
+      fair to give blanket advice for "common" situations.  Everyone should
+      definitely introspect on whether they are doing what they want to.  However,
+      if someone is looking to have a certain lifestyle, they should be able to
+      work towards it.  Depending on the gravity of a person's situation some
+      harsh sacrifices may help to more rapidly align their reality to their goals.
+      However, that should be a personal, and <b>most importantly</b> an INFORMED,
+      decision.<br/><br/>
+      These goals should generally be assessed with respect to these dimensions:
+      <ul>
+        <li>Knowledge</li>
+        <li>Energy</li>
+        <li>Time</li>
+        <li>People</li>
+        <li>Physical Manifestation</li>
+      </ul>
+    </Typography>
     </Paper>
     </React.Fragment>
   );
