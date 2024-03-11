@@ -158,7 +158,7 @@ export default function Financial() {
         generating his current level of income. Alternatively, he can shift asset
         classes to earn the same level of income through other means. He has the
         freedom to explore without needing to constantly be looking for more. If
-        Nick's net worth is high enough, it can used to generate income.
+        Nick's net worth is high enough, it can be used to generate income.
       `}
       {!below && !net && `
         If Nick lives below his means, his net worth will have an increasing trend.
@@ -189,7 +189,7 @@ export default function Financial() {
         There is some flexibility in managing income in this scenario.
       `}
       {!below && !net && `
-        Living below your means is the only way of increasing financial Net Worth. (P.S. I added "financial" before Net Worth because we all technically have an infinite net worth in untapped potential.)
+        Living below your means is the only way of increasing <i>financial</i> Net Worth. (P.S. I added "financial" before Net Worth because we all technically have an infinite net worth in untapped potential.)
       `}
       {!below && !inc && `
         Living below your means gives freedom from income.
