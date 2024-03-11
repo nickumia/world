@@ -21,6 +21,12 @@ import Button from "@mui/material/Button";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
+import SchoolIcon from '@mui/icons-material/School';
+import BatteryChargingFullIcon from '@mui/icons-material/BatteryChargingFull';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+
 import json_parse from './json_parse';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +43,9 @@ const itemData = [
     title: 'Financial Literacy',
   },
 ];
+const ListItem = styled('li')(({ theme }) => ({
+  margin: theme.spacing(0.5),
+}));
 
 export default function Financial() {
 
@@ -131,7 +140,7 @@ export default function Financial() {
       <Button onClick={handleInc} color={inc ? "primary" : "secondary"}>Income</Button>
     </ButtonGroup>
 
-    <Typography variant="p" marked="center" align="center" component="p"
+    <Typography variant="body1" marked="center" align="center" component="p"
       style={{paddingTop: "2%", marginLeft: "auto", marginRight: "auto"}}>
       {!above && !net && `
         If Nick lives above his means, his net worth will have a decreasing trend.
@@ -174,7 +183,7 @@ export default function Financial() {
         income to increase his net worth faster, he has that option as well.
       `}
     </Typography>
-    <Typography variant="p" marked="center" align="center" component="p"
+    <Typography variant="body1" marked="center" align="center" component="p"
       style={{paddingTop: "2%", marginLeft: "auto", marginRight: "auto"}}><b>
       {!above && !net && `
         It's hard to manage living above your means while being in a Net Worth mindset.
@@ -245,14 +254,24 @@ export default function Financial() {
       However, that should be a personal, and <b>most importantly</b> an INFORMED,
       decision.<br/><br/>
       These goals should generally be assessed with respect to these dimensions:
-      <ul>
-        <li>Knowledge</li>
-        <li>Energy</li>
-        <li>Time</li>
-        <li>People</li>
-        <li>Physical Manifestation</li>
-      </ul>
     </Typography>
+      <ul style={{listStyle: 'none', display: 'flex', justifyContent: 'center', p: 1}}>
+          <ListItem>
+            <Chip icon=<SchoolIcon /> label={"Knowledge"} />
+          </ListItem>
+          <ListItem>
+            <Chip icon=<BatteryChargingFullIcon /> label={"Energy"} />
+          </ListItem>
+          <ListItem>
+            <Chip icon=<AccessTimeFilledIcon /> label={"Time"} />
+          </ListItem>
+          <ListItem>
+            <Chip icon=<PeopleAltIcon /> label={"People"} />
+          </ListItem>
+          <ListItem>
+            <Chip icon=<ShoppingBagIcon /> label={"Physical Manifestation"} />
+          </ListItem>
+        </ul>
     </Paper>
     </React.Fragment>
   );
