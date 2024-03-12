@@ -79,7 +79,7 @@ export default function Financial() {
     setInc(false);
   };
   const stayTunedClick = () => {
-    alert('Stay Tuned for <a href="https://github.com/nickumia/nlp-web/issues/80">more information!</a>')
+    alert('Stay Tuned for more information: https://github.com/nickumia/nlp-web/issues/80')
   }
 
   return (
