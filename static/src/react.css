@@ -95,3 +95,16 @@ iframe {
   margin-left: auto;
   margin-right: auto;
 }
+
+.chip-button {
+  background-color: transparent;
+}
+
+.chip-chip:hover {
+  background-color: #240d00;
+  color: #fff;
+}
+
+.chip-svg {
+  color: #fff;
+}

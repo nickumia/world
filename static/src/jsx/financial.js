@@ -78,6 +78,9 @@ export default function Financial() {
     setNet(true);
     setInc(false);
   };
+  const stayTunedClick = () => {
+    alert('Stay Tuned for more information!');
+  }
 
   return (
     <React.Fragment>
@@ -233,7 +236,9 @@ export default function Financial() {
         As a result, it's important to understand how to operate in each of them
         in some capacity.  Being able to identify which one describes our
         current situation will help to prioritize the financial decisions to
-        make.
+        make.  Some months we'll have more income.  Some months we'll have more
+        expenses.  Being able to manage variations in the short-term will enable
+        us to be aligned with our goals in the long-term.
         <br/>
       </Typography>
     </Paper>
@@ -253,25 +258,30 @@ export default function Financial() {
       harsh sacrifices may help to more rapidly align their reality to their goals.
       However, that should be a personal, and <b>most importantly</b> an INFORMED,
       decision.<br/><br/>
+      Finding and/or building a financial circle that supports your goals,
+      activities and lifestyle are key in learning about finances and growing
+      with life.<br/><br/>
       These goals should generally be assessed with respect to these dimensions:
     </Typography>
-      <ul style={{listStyle: 'none', display: 'flex', justifyContent: 'center', p: 1}}>
-          <ListItem>
-            <Chip icon=<SchoolIcon /> label={"Knowledge"} />
-          </ListItem>
-          <ListItem>
-            <Chip icon=<BatteryChargingFullIcon /> label={"Energy"} />
-          </ListItem>
-          <ListItem>
-            <Chip icon=<AccessTimeFilledIcon /> label={"Time"} />
-          </ListItem>
-          <ListItem>
-            <Chip icon=<PeopleAltIcon /> label={"People"} />
-          </ListItem>
-          <ListItem>
-            <Chip icon=<ShoppingBagIcon /> label={"Physical Manifestation"} />
-          </ListItem>
-        </ul>
+    <ButtonGroup
+      color="primary"
+      disabled={false}
+      orientation="horizontal"
+      size="large"
+      variant="contained"
+      style={{display: "flex", justifyContent: "center", boxShadow: "none"}}
+    >
+      <Button className="chip-button" onClick={stayTunedClick}>
+        <Chip className="chip-chip" icon=<SchoolIcon className="chip-svg" /> label={"Knowledge"} /></Button>
+      <Button className="chip-button" onClick={stayTunedClick}>
+        <Chip className="chip-chip" icon=<BatteryChargingFullIcon className="chip-svg" /> label={"Energy"} /></Button>
+      <Button className="chip-button" onClick={stayTunedClick}>
+        <Chip className="chip-chip" icon=<AccessTimeFilledIcon className="chip-svg" /> label={"Time"} /></Button>
+      <Button className="chip-button" onClick={stayTunedClick}>
+        <Chip className="chip-chip" icon=<PeopleAltIcon className="chip-svg" /> label={"People"} /></Button>
+      <Button className="chip-button" onClick={stayTunedClick}>
+        <Chip className="chip-chip" icon=<ShoppingBagIcon className="chip-svg" /> label={"Physical Manifestation"} /></Button>
+    </ButtonGroup>
     </Paper>
     </React.Fragment>
   );
