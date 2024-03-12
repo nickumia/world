@@ -79,7 +79,7 @@ export default function Financial() {
     setInc(false);
   };
   const stayTunedClick = () => {
-    alert('Stay Tuned for more information!');
+    alert('Stay Tuned for <a href="https://github.com/nickumia/nlp-web/issues/80">more information!</a>')
   }
 
   return (
@@ -271,15 +271,15 @@ export default function Financial() {
       variant="contained"
       style={{display: "flex", justifyContent: "center", boxShadow: "none"}}
     >
-      <Button className="chip-button" onClick={stayTunedClick}>
+      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<SchoolIcon className="chip-svg" /> label={"Knowledge"} /></Button>
-      <Button className="chip-button" onClick={stayTunedClick}>
+      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<BatteryChargingFullIcon className="chip-svg" /> label={"Energy"} /></Button>
-      <Button className="chip-button" onClick={stayTunedClick}>
+      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<AccessTimeFilledIcon className="chip-svg" /> label={"Time"} /></Button>
-      <Button className="chip-button" onClick={stayTunedClick}>
+      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<PeopleAltIcon className="chip-svg" /> label={"People"} /></Button>
-      <Button className="chip-button" onClick={stayTunedClick}>
+      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<ShoppingBagIcon className="chip-svg" /> label={"Physical Manifestation"} /></Button>
     </ButtonGroup>
     </Paper>
