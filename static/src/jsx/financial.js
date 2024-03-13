@@ -282,6 +282,119 @@ export default function Financial() {
       <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<ShoppingBagIcon className="chip-svg" /> label={"Physical Manifestation"} /></Button>
     </ButtonGroup>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      Goals are defined mostly based on what a person find valuable.  An adventurous
+      person might favor opportunities to experience the world.  A homebody might
+      favor building and customizing their house.  A family-oriented person might
+      take on more expenses to be able to support the ones they love.  The intrinsic
+      quialites a person is born with and the beliefs and values that a person is 
+      nurtured with have a great effect on how a person manages their relationship
+      with money.
+    </Typography>
+    </Paper>
+		<Paper
+      className="mobilec"
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <Typography variant="h5" marked="center" align="center" component="h2">
+      What makes money valuable?
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      The value of money lies in what is important to us.  I'm in the minority
+      in saying that I think money is garbage and I hate the idea of how money
+      exists in the world today (as well as during most of the history of the
+      world).  The secret sauce of the universe.. Our connection to Bhagavan
+      (God).. Life.. Love.. Whatever is fundamental to all of these different views
+      is what I think is the only valuable thing that exists. <br/><br/>
+      Money is a tool.. a utility.. a technology that attempts to "standardize" value
+      to be something that we can exchange.  I agree that this ability is important.
+      It's just been poorly implemented and maliciously warped and abused. 😮‍💨
+      😅  Let me chill on the deep philosophy for now though haha..<br/><br/>
+      To draw on an idea that I heard from Trevor Noah,<br/><br/>
+      <i>money gives us access</i><br/><br/>
+      I'll re-define the way that he meant it.  Money gives us access to the
+      things that we value most.  Some of us value things that money doesn't
+      capture effectively and so, we don't need as much money.  The part that
+      makes this all more difficult is the "<i>standard of living</i>" that has
+      evolved in the world and the cost of achieving the ever increasing standard
+      of living.<br/><br/>
+      My advice to you... <b>figure out what you value and then understand how money
+      works for you to represent that value</b>.  I value people and energy.
+      Money is not particularly equipped to work for me.  I use money to help
+      people I can and I use it to free up my energy to be able to support the
+      the people I care about.  I have aspirations about things that would be
+      nice-to-have; but my primary focus is to become financially independent so
+      that I can free myself up to take care of my family and loved ones and to
+      work on projects to build the foundations of a people-first technological
+      future.<br/><br/>
+      Find your value.  Find what you value.  Work towards understanding money
+      as it relates to those things.
+    </Typography>
+    </Paper>
+		<Paper
+      className="mobilec"
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <Typography variant="h5" marked="center" align="center" component="h2">
+      Time vs. Energy
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      Another unpopular belief I have is that Energy is way more important than Time.
+      I'm not actually trying to argue one way or another.  Time resonates as a
+      core resource for many people.  All I will say is that time is a byproduct
+      of life.  Regardless of what happens, time will move forward.  Time cannot
+      be optimized.  It cannot be controlled or influenced in any meaningful way.
+      If technology evolves where time travel is possible and time becomes an
+      infinite resource...  Or if health advancements are made and we live healthier
+      longer, we'll have more of it.  If bio-tech advancements are made and we're
+      able to access more of our brain capacity or our physical capacity, the story
+      of time will surely be different ...<br/><br/>
+      My point lies in each of these sentences.  What do we have access to that
+      makes time valuable?  <i>Energy.</i><br/><br/>
+      With the right energy, motivation, inspiration ... willpower levels, we can
+      actually make the most of time.  If we work too hard, we'll burn out and
+      waste time.  If we laze around too much, we'll waste time.  The only limit
+      to energy is the limit that we think we have.  Energy takes on so many forms.
+      Physical.  Emotional.  Mental.  Electricity.  Solar.  Hydro, Wind, Nuclear.
+      Spiritual.  Internal.  External.  Potential.  Kinetic. ... <br/><br/>
+      By all means, use your time effectively. <br/><br/>
+      One of my favorite things to talk about on this topic is the issue of being
+      "paid for time" vs. "paid for energy".  Whether salaried or hourly, we are
+      compensated for our time at work.  But there is no direct correlation from <i>
+      time spent</i> to <i>results achieved</i>.  We've all been on teams where
+      we see the disparity between a highly-motivated person and the average or
+      below average person.  Both can have the same position, the same salary,
+      for all intents and purposes, the same compensation and they can and do
+      deliver different results.  Instead of a "minimum wage", I think people
+      would appreciate getting paid for the effort they give.  I <i>"think"</i> the
+      idea is if a person <i>"works harder"</i> and gives more energy per time
+      unit, they <i>"will"</i> be valued and <i>"promoted"</i>.  But the equation is
+      fundamentally broken.  Why would a person give more of something that they
+      are not being paid for? <br/><br/>
+      One caveat to the "paid for time" vs. "paid for energy" conversation is older
+      more repetitive, mechanic, robotic type jobs where it was about completing a
+      set limit of work a day (based on limitations of the human body).  Factory
+      work, assembly lines and such were prime  candidates.  I think people are
+      realizing that those jobs were just compensating for incomplete autonomous
+      robotic systems.  As technology continues to evolve, there are very few jobs
+      that can't be automated.  Mentally demanding jobs highlight the issue of time
+      vs. energy best.  A software engineer needs to debug software.  A doctor needing
+      to remember knowledge and information in high pressure environments.  Architects
+      creatively solving design challenges.  There are sooo many more.. but I'll
+      leave you with that for now. <br/><br/>
+      This is not to say that time is not important.  It's super important to
+      understand the effect that time has on things.  Just to be clear, life happens,
+      which has time as an attribute or an effect.  This attribute can be a great
+      reference to view other things.  Time doesn't directly influence anything.
+      It is still a byproduct.<br/><br/>
+      The most common thing to hear about is the <i>time-value of money</i>.  Money
+      today is worth more than money in the future.  This is not because time
+      creates value for money.  Psychologically, you can't use something that you
+      don't have right now.  To compensate for "lost" time in the past, people
+      expect money to have more value in the future.  If future money is worth
+      the same or less value in the future, it's seen as a loss.  There is
+      the world of accounting and finance math that was created to quantify this
+      subjective view.  But at the end of the day, the value that money has is
+      whatever someone else is willing to give you for it.
+    </Typography>
     </Paper>
     </React.Fragment>
   );
