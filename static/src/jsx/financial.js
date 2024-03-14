@@ -5,6 +5,8 @@ import Tooltip from '@mui/material/Tooltip';
 import amber from "@material-ui/core/colors/amber";
 import orange from "@material-ui/core/colors/orange";
 
+import Grid from '@mui/material/Grid';
+
 import List from '@mui/material/List';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
@@ -45,6 +47,14 @@ const itemData = [
 ];
 const ListItem = styled('li')(({ theme }) => ({
   margin: theme.spacing(0.5),
+}));
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
 }));
 
 export default function Financial() {
@@ -394,6 +404,120 @@ export default function Financial() {
       the world of accounting and finance math that was created to quantify this
       subjective view.  But at the end of the day, the value that money has is
       whatever someone else is willing to give you for it.
+    </Typography>
+    </Paper>
+		<Paper
+      className="mobilec"
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <Typography variant="h5" marked="center" align="center" component="h2">
+      Ups and Downs..  Positive and Negative.. Gains and Loss.. The Pendulum of Finance
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      All of finance is essentially classified in three ways:<br/>
+      (1) There's more money (a gain)<br/>
+      (2) There's less money (a loss)<br/>
+      (3) There's the same amount of money (neutral)<br/><br/>
+
+      Investment gains.. Savings interst.. Dividends.. Income.. Royalties..
+      Asset Appreciation.. Taxes.. are all conditions where there's MORE money
+      on your side.<br/><br/>
+      Investment losses.. Debt payments.. Expenses.. Loss of principal..
+      Asset Depreciation.. are all conditions where there's LESS money on your
+      side.<br/><br/>
+      Anything that's essentially free presents the case where there's the same
+      amount of money.. along with the case when there's a zero interest rate.<br/><br/>
+      Even in the simplest case, most people have soo many things that either go
+      up or down in financial value, it's hard to keep it all in perspective.
+      In the <i>Net Worth</i> mindset, assets and liabilities that either
+      appreciate or depreciate in value are usually cornerstones of tracking finances.
+      In the <i>Income</i> mindset, revenue and expenses that represent the inflow
+      or outflow of money are the comparable cornerstones of finances.<br/><br/>
+      The concept is simple, but the ways in which it manifests are innumerable.
+      It gets exceedingly complicated when there are multiple people involved,
+      such as a supply chain, or when time in involved, such as a series of
+      transactions or a history of owners.  When learning about a financial
+      concept or product, the simplest way to decompose it is into the aspects of
+      it that are related to gains, losses and neutral outcomes.<br/><br/>
+      Let's take a savings account as an example.  Money deposited into a savings
+      account earns interest, a gain.  The account charges fees, a loss.  The interest
+      earned is taxed, a loss.  The original principle is insured by the FDIC and
+      remains constant, a neutral component.  There's two other aspects, being
+      contributions and withdrawals, that effect the math.  While it is a bit
+      unconventional, contributions increase the value of the account and can be
+      viewed from the perspective of being a "gain".  Similarly, a withdrawal is a
+      decrease in value and can be viewed as a "loss".  It is NOT gain/loss in the
+      traditional sense, but these activiies have a positive (contribution) or
+      negative (withdrawal) effect on the total value.  Viewing it from this lens
+      helps to qualify the activities in general.
+      Tangentially related to the last statement, transfers are an example of
+      having the same amount of money, having a neutral or net-zero change.  There
+      is a change, but it doesn't effect the big picture.  Another term for this is
+      reallocation (i.e. moving money around).<br/><br/>
+      Having a clear picture of these three concepts provides a solid foundation for
+      learning more advanced financial concepts.
+    </Typography>
+    </Paper>
+		<Paper
+      className="mobilec"
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <Typography variant="h5" marked="center" align="center" component="h2">
+      Risk Management
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      At face value, Risk might sound a lot like Loss.  I'd like to present Loss
+      as a financial effect.  For all intents and purposes, a loss is almost entirely
+      tied to a monetary value.  Risk is the possibility of a loss.  But not just in
+      the financial aspect.  A risk puts the value that money represents at stake.
+      This is why understanding what value money has is so important.  In the most
+      general sense, risk is the potential loss of access to the things you value.
+    </Typography>
+    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{py: 4}}>
+      <Grid item xs={6}>
+        <Item>
+    <Typography variant="h6" marked="center" align="center" component="h3">
+    Inflation
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+
+    </Typography>
+        </Item>
+      </Grid>
+      <Grid item xs={6}>
+        <Item>
+    <Typography variant="h6" marked="center" align="center" component="h3">
+    Market
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+    </Typography>
+        </Item>
+      </Grid>
+      <Grid item xs={6}>
+        <Item>
+    <Typography variant="h6" marked="center" align="center" component="h3">
+    Tax
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+    </Typography>
+        </Item>
+      </Grid>
+      <Grid item xs={6}>
+        <Item>
+    <Typography variant="h6" marked="center" align="center" component="h3">
+    Health
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+    </Typography>
+        </Item>
+      </Grid>
+    </Grid>
+    </Paper>
+		<Paper
+      className="mobilec"
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <Typography variant="h5" marked="center" align="center" component="h2">
+      General Reflections
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
     </Typography>
     </Paper>
     </React.Fragment>
