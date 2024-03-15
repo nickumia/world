@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const itemData = [
   {
-    img: "./financial_concepts.mmd.svg",
+    img: "./financial_concepts.svg",
     title: 'Financial Literacy',
   },
 ];
@@ -297,7 +297,7 @@ export default function Financial() {
       person might favor opportunities to experience the world.  A homebody might
       favor building and customizing their house.  A family-oriented person might
       take on more expenses to be able to support the ones they love.  The intrinsic
-      quialites a person is born with and the beliefs and values that a person is 
+      quialites a person is born with and the beliefs and values that a person is
       nurtured with have a great effect on how a person manages their relationship
       with money.
     </Typography>
@@ -464,10 +464,11 @@ export default function Financial() {
       Risk Management
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-      At face value, Risk might sound a lot like Loss.  I'd like to present Loss
-      as a financial effect.  For all intents and purposes, a loss is almost entirely
-      tied to a monetary value.  Risk is the possibility of a loss.  But not just in
-      the financial aspect.  A risk puts the value that money represents at stake.
+      Risk is the possibility of a loss.  At face value, Risk might sound like only
+      a financial loss. For all intents and purposes, a loss is almost entirely
+      tied to a monetary value.  But risk is not just in the financial aspect.  A
+      risk puts the value that money represents at stake.  By understanding the true
+      value of money.. understanding your value of money.. risk can be better managed.
       This is why understanding what value money has is so important.  In the most
       general sense, risk is the potential loss of access to the things you value.
     </Typography>
@@ -478,7 +479,7 @@ export default function Financial() {
     Inflation
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-
+      Money buys less things in the future.
     </Typography>
         </Item>
       </Grid>
@@ -488,6 +489,7 @@ export default function Financial() {
     Market
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      Investments cause a loss of money.
     </Typography>
         </Item>
       </Grid>
@@ -497,6 +499,7 @@ export default function Financial() {
     Tax
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      Money will be taxed at an indeterminate rate.
     </Typography>
         </Item>
       </Grid>
@@ -506,18 +509,53 @@ export default function Financial() {
     Health
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      There isn't enough money to cover your entire life.
     </Typography>
         </Item>
       </Grid>
     </Grid>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      Everyone has a different risk tolerance.  Even risky people are conservative
+      or want to do everything in their power to protect the things they value.
+      Conservative people may be risky in ways they don't realize.  Life is defined
+      by changes.  Change is, by definition, risky because it can always go either
+      way.  Being able to handle unexpected changes is one way of looking at the
+      problem of risk.  What are you willing to lose and when?
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      There is no golden ticket for managing risk.  It's a very personal choice and
+      it's very dependent on the circumstances.  I'm both an adventurous and risky
+      person.  I love doing spontaneous things to make the most of moments.  Many
+      people judge me for my picky appetite which is not at all adventurous and is
+      not open to change.  This is only to highlight the ways in which a person's
+      risk tolerance may differ.  If I was truly adventurous, some might argue that
+      I should love to try new foods too.  As it relates to our discussion,
+      a person may take on more risk in stocks; but they really don't think the risk
+      of cryptocurrencies is worth it.  It's important to understand why certain
+      risks are acceptable and others are not.  This will help evaluate the
+      advantages and disadvantages of not taking on that risk.
+    </Typography>
     </Paper>
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
     <Typography variant="h5" marked="center" align="center" component="h2">
-      General Reflections
+      Where does this leave us?
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      Money is an extension of who a person is.  If someone doesn't know themselves,
+      it's hard to manage and use money effectively.  There's still a lot to learn;
+      but this at least acts as one of many filters and what needs to be learned and
+      to what extent it needs to be learned.  To remember some of the concepts
+      mentioned above, ask yourself these questions:<br/><br/>
+      What does money give me access to?  What do I want to do with it?<br/>
+      Can I use it when I need it for what I need it for?<br/>
+      Is it safe?  Will it be what I expect it to be when I use it?  Will it
+      lose value?<br/>
+      Can it grow so that I can free up mental and physical pressure?  Does it
+      need to grow?<br/>
+      Are there any taxes owed on the money?  Or will there be taxes imposed when
+      using it in the future?
     </Typography>
     </Paper>
     </React.Fragment>
