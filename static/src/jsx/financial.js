@@ -457,8 +457,8 @@ export default function Financial() {
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
       All of finance is essentially classified in three ways:<br/>
-      (1) There's more money (a gain)<br/>
-      (2) There's less money (a loss)<br/>
+      (1) There's a surplus of money (a gain)<br/>
+      (2) There's a deficit of money (a loss)<br/>
       (3) There's the same amount of money (neutral)<br/><br/>
 
       Investment gains.. Savings interst.. Dividends.. Income.. Royalties..
