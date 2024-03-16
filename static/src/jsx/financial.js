@@ -429,10 +429,10 @@ export default function Financial() {
       realizing that those jobs were just compensating for incomplete autonomous
       robotic systems.  As technology continues to evolve, there are very few jobs
       that can't be automated.  Mentally demanding jobs highlight the issue of time
-      vs. energy best.  A software engineer needs to debug software.  A doctor needing
-      to remember knowledge and information in high pressure environments.  Architects
-      creatively solving design challenges.  There are sooo many more.. but I'll
-      leave you with that for now. <br/><br/>
+      vs. energy best, e.g.  a software engineer needing to debug software...  a doctor
+      needing to remember knowledge and information in high pressure environments...
+      an architect creatively solving design challenges...  there are sooo many more..
+      but I'll leave you with that for now. <br/><br/>
       This is not to say that time is not important.  It's super important to
       understand the effect that time has on things.  Just to be clear, life happens,
       which has time as an attribute or an effect.  This attribute can be a great
