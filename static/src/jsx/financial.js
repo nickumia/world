@@ -310,7 +310,7 @@ export default function Financial() {
       Finding and/or building a financial circle that supports your goals,
       activities and lifestyle are key in learning about finances and growing
       with life.<br/><br/>
-      These goals should generally be assessed with respect to these dimensions:
+      These goals should generally be assessed with the following in mind:
     </Typography>
     <ButtonGroup
       color="primary"
