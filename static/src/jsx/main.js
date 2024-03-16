@@ -18,6 +18,7 @@ import SyntaxApp from './syntax';
 import NLPMain from './nlp_main';
 import HomeMain from './home_main';
 import SpiritualTech from './spiritual_tech';
+import Financial from './financial';
 
 import decrypt from "./encryption";
 
@@ -64,6 +65,7 @@ var pages = {
 	"#kumia": function test1() {return <Kumia pubs={pubs} work={work} edu={edu} />},
 	"#syntaxapp": function test1() {return <SyntaxApp details={details} />},
 	"#spiritualtech": function test1() {return <SpiritualTech />},
+	"#financial": function test1() {return <Financial />},
 	"#nlpmain": function test1() {return <NLPMain />},
 	"#homemain": function test1() {return <HomeMain />}
 }

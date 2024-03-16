@@ -10,7 +10,10 @@ aws s3 cp static/src/offline/london s3://offline.kamutiv.com/london --content-ty
 aws s3 cp static/src/offline/new_york s3://offline.kamutiv.com/new_york --content-type "text/html"
 aws s3 cp static/src/offline/spiritual_tech s3://offline.kamutiv.com/spiritual_tech --content-type "text/html"
 aws s3 cp static/src/offline/spiritual s3://offline.kamutiv.com/spiritual --content-type "text/html"
+aws s3 cp static/src/offline/financial s3://offline.kamutiv.com/financial --content-type "text/html"
 
 # aws s3 cp static/src/img/ s3://offline.kamutiv.com/static/img/ --recursive
+aws s3 cp mermaid/financial_concepts.svg s3://offline.kamutiv.com/static/img/financial_concepts.svg
+
 # aws s3 cp static/src/js/raphael-min.js s3://offline.kamutiv.com/raphael-min.js
 # aws s3 cp static/src/js/us-map-svg.js s3://offline.kamutiv.com/us-map-svg.js
