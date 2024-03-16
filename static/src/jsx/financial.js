@@ -131,7 +131,11 @@ export default function Financial() {
     <React.Fragment>
 
     <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%", paddingBottom: "2%"}}>
-      Financial Literacy... Where to start?
+      Redefining Financial Literacy
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p">
+      Written by: nickumia<br/>
+      March 15th, 2024
     </Typography>
 
       <ImageList sx={{ width: "100%", height: "100%" }} cols={1}
