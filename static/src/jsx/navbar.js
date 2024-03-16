@@ -53,8 +53,10 @@ export default function ButtonAppBar({title, menu, login}) {
       <AppBar>	
         <Toolbar color="primary">
           <Typography variant="h6" className={classes.title}>
+            <a href="/" style={{color: "white"}}>
 						{title}
             {title == 'Kamutiv Tech | Error' && '	\u{1F627}'}
+            </a>
           </Typography>
 					{menu.map(menu => (
 						<form action={menu.link} key={menu.key}>
