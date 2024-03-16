@@ -10,5 +10,6 @@ aws s3 cp static/src/offline/london s3://offline.kamutiv.com/london --content-ty
 aws s3 cp static/src/offline/new_york s3://offline.kamutiv.com/new_york --content-type "text/html"
 aws s3 cp static/src/offline/spiritual_tech s3://offline.kamutiv.com/spiritual_tech --content-type "text/html"
 aws s3 cp static/src/offline/spiritual s3://offline.kamutiv.com/spiritual --content-type "text/html"
+aws s3 cp static/src/offline/financial s3://offline.kamutiv.com/financial --content-type "text/html"
 
 # aws s3 cp static/src/img/ s3://offline.kamutiv.com/static/img/ --recursive
