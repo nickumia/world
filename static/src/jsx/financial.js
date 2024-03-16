@@ -84,6 +84,7 @@ export default function Financial() {
   const [below, setBelow] = React.useState(true);
   const [net, setNet] = React.useState(true);
   const [inc, setInc] = React.useState(true);
+  const [consider, setConsider] = React.useState("Click a button to learn more 😊");
   const handleAbove = () => {
     setAbove(false);
     setAt(true);
@@ -109,6 +110,21 @@ export default function Financial() {
   };
   const stayTunedClick = () => {
     alert('Stay Tuned for more information: https://github.com/nickumia/nlp-web/issues/80')
+  }
+  const knowledge = () => {
+    setConsider("How much learning is needed to achieve this goal?  Will this learning requirement align with my learning ability?")
+  }
+  const energy = () => {
+    setConsider("How much energy is required to achieve this goal?  Do I have that much energy and/or am I willing to spend the energy for this goal?")
+  }
+  const time = () => {
+    setConsider("How much time do I need to spend to achieve this goal?  How much time will I save after achieving this goal?")
+  }
+  const people = () => {
+    setConsider("What kind of people does this goal put me in contact with?  Am I spending time with people that make me more of who I want to be?  Will I be able to spend time with people that I care about?")
+  }
+  const physical = () => {
+    setConsider("What do I get out of achieving this goal?  What does it look like?  Is it what I want?")
   }
 
   return (
@@ -304,17 +320,21 @@ export default function Financial() {
       variant="contained"
       style={{display: "flex", justifyContent: "center", boxShadow: "none"}}
     >
-      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
+      <Button className="chip-button" onClick={knowledge} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<SchoolIcon className="chip-svg" /> label={"Knowledge"} /></Button>
-      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
+      <Button className="chip-button" onClick={energy} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<BatteryChargingFullIcon className="chip-svg" /> label={"Energy"} /></Button>
-      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
+      <Button className="chip-button" onClick={time} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<AccessTimeFilledIcon className="chip-svg" /> label={"Time"} /></Button>
-      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
+      <Button className="chip-button" onClick={people} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<PeopleAltIcon className="chip-svg" /> label={"People"} /></Button>
-      <Button className="chip-button" onClick={stayTunedClick} style={{backgroundColor: "transparent"}}>
+      <Button className="chip-button" onClick={physical} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<ShoppingBagIcon className="chip-svg" /> label={"Physical Manifestation"} /></Button>
     </ButtonGroup>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+    {consider}
+    </Typography>
+
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
       Goals are defined mostly based on what a person find valuable.  An adventurous
       person might favor opportunities to experience the world.  A homebody might
