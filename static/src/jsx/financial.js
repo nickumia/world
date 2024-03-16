@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
 import amber from "@material-ui/core/colors/amber";
@@ -31,13 +32,31 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 import json_parse from './json_parse';
 
+
+const buttonTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#388e3c',
+      light: '#81c784',
+      dark: '#13540c',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#81c784',
+      light: '#81c784',
+      dark: '#81c784',
+      contrastText: '#fff',
+    },
+  },
+});
+
 const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
   title: {
     flexGrow: 1
-  }
+  },
 }));
 const itemData = [
   {
@@ -125,6 +144,7 @@ export default function Financial() {
     <Typography variant="body1" marked="center" align="center" component="p">
       Select a lifestyle
     </Typography>
+    <ThemeProvider theme={buttonTheme}>
     <ButtonGroup
       color="primary"
       disabled={false}
@@ -137,10 +157,12 @@ export default function Financial() {
       <Button onClick={handleAt} color={at ? "primary" : "secondary"}>Living At<br/>Your Means</Button>
       <Button onClick={handleBelow} color={below ? "primary" : "secondary"}>Living Below<br/>your Means</Button>
     </ButtonGroup>
+    </ThemeProvider>
 
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
       Select a Financial Mindset
     </Typography>
+    <ThemeProvider theme={buttonTheme}>
     <ButtonGroup
       color="primary"
       disabled={false}
@@ -152,6 +174,7 @@ export default function Financial() {
       <Button onClick={handleNet} color={net ? "primary" : "secondary"}>Net Worth</Button>
       <Button onClick={handleInc} color={inc ? "primary" : "secondary"}>Income</Button>
     </ButtonGroup>
+    </ThemeProvider>
 
     <Typography variant="body1" marked="center" align="center" component="p"
       style={{paddingTop: "2%", marginLeft: "auto", marginRight: "auto"}}>
