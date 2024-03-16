@@ -318,7 +318,7 @@ export default function Financial() {
       orientation="horizontal"
       size="large"
       variant="contained"
-      style={{display: "flex", justifyContent: "center", boxShadow: "none"}}
+      style={{display: "flex", justifyContent: "center", boxShadow: "none", flexWrap: "wrap"}}
     >
       <Button className="chip-button" onClick={knowledge} style={{backgroundColor: "transparent"}}>
         <Chip className="chip-chip" icon=<SchoolIcon className="chip-svg" /> label={"Knowledge"} /></Button>
@@ -335,7 +335,7 @@ export default function Financial() {
     {consider}
     </Typography>
 
-    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "4%"}}>
       Goals are defined mostly based on what a person find valuable.  An adventurous
       person might favor opportunities to experience the world.  A homebody might
       favor building and customizing their house.  A family-oriented person might
