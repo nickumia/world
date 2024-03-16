@@ -389,11 +389,11 @@ export default function Financial() {
       To draw on an idea that I heard from Trevor Noah,<br/><br/>
       <i>money gives us access</i><br/><br/>
       I'll re-define the way that he meant it.  Money gives us access to the
-      things that we value most.  Some of us value things that money doesn't
-      capture effectively and so, we don't need as much money.  The part that
-      makes this all more difficult is the "<i>standard of living</i>" that has
-      evolved in the world and the cost of achieving the ever increasing standard
-      of living.<br/><br/>
+      things that we value most.  Some of us value things that aren't valued
+      effectively through money and so, we don't need as much money.  What
+      makes all of this more difficult is the way that the "<i>standard of living</i>"
+      has evolved in the world and the cost of achieving the ever increasing
+      standard of living.<br/><br/>
       My advice to you... <b>figure out what you value and then understand how money
       works for you to represent that value</b>.  I value people and energy.
       Money is not particularly equipped to work for me.  I use money to help
@@ -426,7 +426,7 @@ export default function Financial() {
       of time will surely be different ...<br/><br/>
       My point lies in each of these sentences.  What do we have access to that
       makes time valuable?  <i>Energy.</i><br/><br/>
-      With the right energy, motivation, inspiration ... willpower levels, we can
+      With the right energy, motivation, inspiration ... and willpower levels, we can
       actually make the most of time.  If we work too hard, we'll burn out and
       waste time.  If we laze around too much, we'll waste time.  The only limit
       to energy is the limit that we think we have.  Energy takes on so many forms.
