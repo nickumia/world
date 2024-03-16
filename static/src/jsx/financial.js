@@ -559,7 +559,7 @@ export default function Financial() {
     </Grid>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
       Everyone has a different risk tolerance.  Even risky people are conservative
-      or want to do everything in their power to protect the things they value.
+      (or want to do everything in their power) to protect the things they value.
       Conservative people may be risky in ways they don't realize.  Life is defined
       by changes.  Change is, by definition, risky because it can always go either
       way.  Being able to handle unexpected changes is one way of looking at the
@@ -588,7 +588,7 @@ export default function Financial() {
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
       Money is an extension of who a person is.  If someone doesn't know themselves,
       it's hard to manage and use money effectively.  There's still a lot to learn;
-      but this at least acts as one of many filters and what needs to be learned and
+      but this at least acts as one of many filters for what needs to be learned and
       to what extent it needs to be learned.  To remember some of the concepts
       mentioned above, ask yourself these questions:<br/><br/>
       What does money give me access to?  What do I want to do with it?<br/>
