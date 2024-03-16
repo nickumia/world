@@ -130,13 +130,33 @@ export default function Financial() {
   return (
     <React.Fragment>
 
-    <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%", paddingBottom: "2%"}}>
+    <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%", paddingBottom: "0.5%"}}>
       Redefining Financial Literacy
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p">
       Written by: nickumia<br/>
       March 15th, 2024
     </Typography>
+		<Paper
+      className="mobilec"
+			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <Typography variant="h5" marked="center" align="center" component="h2">
+      <b>Prelude</b>
+    </Typography>
+    <Typography variant="h6" marked="center" align="center" component="h3">
+      <i>What will you find in this post?</i>
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
+      There is sooo much to learn about how to understand and manage finances.
+      You will not find concepts or information about specific assets.  You will
+      not find catchy phrases about stocks, real estate, cryptocurrencies or anything
+      else like that.<br/><br/>
+      You WILL find a method for evaluating whether you should explore a new asset
+      class.  This method will help to frame how you can understand the asset and
+      what the asset will do for you.  The hope is that you will be able to explore
+      and learn in more deliberate way.
+    </Typography>
+    </Paper>
 
       <ImageList sx={{ width: "100%", height: "100%" }} cols={1}
         style={{width: "90%", marginLeft: "auto", marginRight: "auto"}}>
