@@ -14,3 +14,6 @@ aws s3 cp static/src/offline/financial s3://offline.kamutiv.com/financial --cont
 
 # aws s3 cp static/src/img/ s3://offline.kamutiv.com/static/img/ --recursive
 aws s3 cp mermaid/financial_concepts.svg s3://offline.kamutiv.com/static/img/financial_concepts.svg
+
+# aws s3 cp static/src/js/raphael-min.js s3://offline.kamutiv.com/raphael-min.js
+# aws s3 cp static/src/js/us-map-svg.js s3://offline.kamutiv.com/us-map-svg.js
