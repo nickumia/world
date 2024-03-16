@@ -475,7 +475,7 @@ export default function Financial() {
       appreciate or depreciate in value are usually cornerstones of tracking finances.
       In the <i>Income</i> mindset, revenue and expenses that represent the inflow
       or outflow of money are the comparable cornerstones of finances.<br/><br/>
-      The concept is simple, but the ways in which it manifests are innumerable.
+      The concept is simple, but the ways in which it manifests are almost innumerable.
       It gets exceedingly complicated when there are multiple people involved,
       such as a supply chain, or when time in involved, such as a series of
       transactions or a history of owners.  When learning about a financial
