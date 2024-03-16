@@ -479,8 +479,9 @@ export default function Financial() {
       It gets exceedingly complicated when there are multiple people involved,
       such as a supply chain, or when time in involved, such as a series of
       transactions or a history of owners.  When learning about a financial
-      concept or product, the simplest way to decompose it is into the aspects of
-      it that are related to gains, losses and neutral outcomes.<br/><br/>
+      concept or product, the simplest way to decompose it is by breaking it into
+      the aspects of it that are related to gains, losses and neutral outcomes.
+      <br/><br/>
       Let's take a savings account as an example.  Money deposited into a savings
       account earns interest, a gain.  The account charges fees, a loss.  The interest
       earned is taxed, a loss.  The original principle is insured by the FDIC and
