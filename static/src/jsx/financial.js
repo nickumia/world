@@ -513,7 +513,7 @@ export default function Financial() {
       risk puts the value that money represents at stake.  By understanding the true
       value of money.. understanding your value of money.. risk can be better managed.
       This is why understanding what value money has is so important.  In the most
-      general sense, risk is the potential loss of access to the things you value.
+      general sense, <b>risk is the potential loss of access to the things you value.</b>
     </Typography>
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{py: 4}}>
       <Grid item xs={6}>
@@ -522,7 +522,7 @@ export default function Financial() {
     Inflation
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-      Money buys less things in the future.
+      Money may have less purchasing power in the future.
     </Typography>
         </Item>
       </Grid>
@@ -532,7 +532,7 @@ export default function Financial() {
     Market
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-      Investments cause a loss of money.
+      Investments may cause a loss of money.
     </Typography>
         </Item>
       </Grid>
@@ -542,7 +542,7 @@ export default function Financial() {
     Tax
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-      Money will be taxed at an indeterminate rate.
+      Money may be taxed at an indeterminate rate in the future (more likely to be higher).
     </Typography>
         </Item>
       </Grid>
@@ -552,7 +552,7 @@ export default function Financial() {
     Health
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-      There isn't enough money to cover your entire life.
+      There may not be enough money to cover your entire life.
     </Typography>
         </Item>
       </Grid>
