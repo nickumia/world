@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const itemData = [
   {
-    img: "./financial_concepts.svg",
+    img: "/static/img/financial_concepts.svg",
     title: 'Financial Literacy',
   },
 ];

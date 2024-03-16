@@ -94,8 +94,7 @@ const images = [
     url: '/static/img/financial_background.jpg',
     title: 'Financial Resources',
     width: '50%',
-    link: '',
-    // link: 'financial',
+    link: 'financial',
   },
   {
     url: '/static/img/spiritual_background.jpg',
