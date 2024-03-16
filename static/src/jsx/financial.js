@@ -284,8 +284,8 @@ export default function Financial() {
         scenarios outlined above.  We go through different seasons of each one.
         As a result, it's important to understand how to operate in each of them
         in some capacity.  Being able to identify which one describes our
-        current situation will help to prioritize the financial decisions to
-        make.  Some months we'll have more income.  Some months we'll have more
+        current situation will help you make the best financial decisions.
+        Some months we'll have more income.  Some months we'll have more
         expenses.  Being able to manage variations in the short-term will enable
         us to be aligned with our goals in the long-term.
         <br/>
