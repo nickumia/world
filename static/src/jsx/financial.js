@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Tooltip from '@mui/material/Tooltip';
 import amber from "@material-ui/core/colors/amber";
 import orange from "@material-ui/core/colors/orange";
+import Link from '@mui/material/Link';
 
 import Grid from '@mui/material/Grid';
 
@@ -130,7 +131,7 @@ export default function Financial() {
   return (
     <React.Fragment>
 
-    <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%", paddingBottom: "0.5%"}}>
+    <Typography variant="h4" marked="center" align="center" component="h1" style={{paddingTop: "2%", paddingBottom: "0.5%", paddingLeft: "5%", paddingRight: "5%"}}>
       Redefining Financial Literacy
     </Typography>
     <Typography variant="body1" marked="center" align="center" component="p">
@@ -156,6 +157,30 @@ export default function Financial() {
       what the asset will do for you.  The hope is that you will be able to explore
       and learn in more deliberate way.
     </Typography>
+    <Typography variant="h6" marked="center" align="center" component="h3" style={{paddingTop: "2%"}}>
+      Shortcuts
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p">
+    <Link href="#netvinc">Understanding the Net Worth vs. Income Debate</Link>
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p">
+    <Link href="#goals">Defining goals</Link>
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p">
+    <Link href="#value">What makes money valuable?</Link>
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p">
+    <Link href="#timevenergy">Time vs. Energy</Link>
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p">
+    <Link href="#gainloss">Ups and Downs.. Positive and Negative.. Gains and Loss.. The Pendulum of Finance</Link>
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p">
+    <Link href="#risk">Risk Management</Link>
+    </Typography>
+    <Typography variant="body1" marked="center" align="center" component="p">
+    <Link href="#future">Where does this leave us?</Link>
+    </Typography>
     </Paper>
 
       <ImageList sx={{ width: "100%", height: "100%" }} cols={1}
@@ -175,6 +200,7 @@ export default function Financial() {
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <span id="netvinc" style={{paddingTop: "60px"}}></span>
     <Typography variant="h5" marked="center" align="center" component="h2">
       Understanding the <i><b>Net Worth</b></i> vs. <i><b>Income</b></i> Debate
     </Typography>
@@ -318,6 +344,7 @@ export default function Financial() {
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <span id="goals" style={{paddingTop: "60px"}}></span>
     <Typography variant="h5" marked="center" align="center" component="h2">
       Defining goals
     </Typography>
@@ -372,6 +399,7 @@ export default function Financial() {
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <span id="value" style={{paddingTop: "60px"}}></span>
     <Typography variant="h5" marked="center" align="center" component="h2">
       What makes money valuable?
     </Typography>
@@ -410,6 +438,7 @@ export default function Financial() {
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <span id="timevenergy" style={{paddingTop: "60px"}}></span>
     <Typography variant="h5" marked="center" align="center" component="h2">
       Time vs. Energy
     </Typography>
@@ -476,6 +505,7 @@ export default function Financial() {
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <span id="gainloss" style={{paddingTop: "60px"}}></span>
     <Typography variant="h5" marked="center" align="center" component="h2">
       Ups and Downs..  Positive and Negative.. Gains and Loss.. The Pendulum of Finance
     </Typography>
@@ -527,6 +557,7 @@ export default function Financial() {
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <span id="risk" style={{paddingTop: "60px"}}></span>
     <Typography variant="h5" marked="center" align="center" component="h2">
       Risk Management
     </Typography>
@@ -606,6 +637,7 @@ export default function Financial() {
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
+    <span id="future" style={{paddingTop: "60px"}}></span>
     <Typography variant="h5" marked="center" align="center" component="h2">
       Where does this leave us?
     </Typography>
