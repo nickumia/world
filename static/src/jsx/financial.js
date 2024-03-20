@@ -387,11 +387,11 @@ export default function Financial() {
     </Typography>
 
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "4%"}}>
-      Goals are defined mostly based on what a person find valuable.  An adventurous
+      Goals are defined mostly based on what a person finds valuable.  An adventurous
       person might favor opportunities to experience the world.  A homebody might
       favor building and customizing their house.  A family-oriented person might
       take on more expenses to be able to support the ones they love.  The intrinsic
-      quialites a person is born with and the beliefs and values that a person is
+      qualities a person is born with and the beliefs and values that a person is
       nurtured with have a great effect on how a person manages their relationship
       with money.
     </Typography>
