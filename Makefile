@@ -36,6 +36,10 @@ build-front: # Build jsx into js
 	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_concepts.mmd -o financial_concepts.svg
 	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_lifestyle.mmd -o financial_lifestyle.svg
 
+build-mermaid:
+	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_concepts.mmd -o financial_concepts.svg
+	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_lifestyle.mmd -o financial_lifestyle.svg
+
 build-static: # Convert python structures to javascript
 	./static.sh
 

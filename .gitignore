@@ -147,3 +147,4 @@ terraform.tfvars
 terraform.tfstate*
 .terraform*
 *env*
+*.png
