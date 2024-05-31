@@ -31,7 +31,7 @@ export default function SpiritualTech() {
 					Spiritual Tech: A Road Trip Across America 🛣️
 				</Typography>
 				<Typography variant="h6">
-          ETS August 2024
+          Starting August 2024
 				</Typography>
 			<Paper
 				style={{backgroundColor: brown[50]}} sx={{px: 8, py: 4}}>
