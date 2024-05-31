@@ -26,6 +26,6 @@ new_york = {
 
 spiritual_tech = {
     "title": "Spiritual Tech: A Road Trip Across America 🛣️",
-    "posted_time": "2024",
+    "posted_time": "Starting August 2024",
     "body": spiritual_tech_post
 }

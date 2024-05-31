@@ -138,7 +138,7 @@ export default function Financial() {
       Written by: nickumia<br/>
       March 15th, 2024
     </Typography>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/UNITN9AK1bk?si=sIiwEOB1KY1qnaC3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/UNITN9AK1bk?si=sIiwEOB1KY1qnaC3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style={{margin: 'auto', marginTop: '10px', marginBottom: '10px'}}></iframe>
 		<Paper
       className="mobilec"
 			style={{backgroundColor: amber[50], marginTop: '10px'}} sx={{py: 4}}>
