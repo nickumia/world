@@ -8,7 +8,7 @@ from app.nlp.model_pages import \
     openings_parry, openings_lalita, openings_nick
 from app.kumia.resume import publications, experiences, educations
 from app.kumia.posts import spiritual
-from app.travel.posts import london, new_york, spiritual_tech
+from app.travel.posts import london, new_york
 from app.general import privacy
 
 # Processing page
@@ -42,13 +42,6 @@ if sys.argv[1] == 'london':
 # New York page
 if sys.argv[1] == 'new_york':
     print("post=" + flask.json.dumps(json.dumps(new_york)))
-
-# Spiritual Tech page
-if sys.argv[1] == 'spiritual-tech':
-    print("post=" + flask.json.dumps(json.dumps(spiritual_tech)))
-    with open('/app/src/app/travel/road_map.js', 'r') as rm:
-        for lin in rm.readlines():
-            print(lin)
 
 # Spiritual page
 if sys.argv[1] == 'spiritual':
