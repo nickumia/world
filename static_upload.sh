@@ -8,7 +8,7 @@ aws s3 cp static/src/offline/language s3://offline.kamutiv.com/language --conten
 aws s3 cp static/src/offline/processing s3://offline.kamutiv.com/processing --content-type "text/html"
 aws s3 cp static/src/offline/london s3://offline.kamutiv.com/london --content-type "text/html"
 aws s3 cp static/src/offline/new_york s3://offline.kamutiv.com/new_york --content-type "text/html"
-aws s3 cp static/src/offline/spiritual_tech s3://offline.kamutiv.com/spiritual_tech --content-type "text/html"
+aws s3 cp static/src/offline/spiritual-tech s3://offline.kamutiv.com/spiritual-tech --content-type "text/html"
 aws s3 cp static/src/offline/spiritual s3://offline.kamutiv.com/spiritual --content-type "text/html"
 aws s3 cp static/src/offline/financial s3://offline.kamutiv.com/financial --content-type "text/html"
 

@@ -88,7 +88,7 @@ const images = [
     url: '/static/img/road_trip_main.jpg',
     title: 'Road Trip Across America',
     width: '40%',
-    link: 'spiritual_tech',
+    link: 'spiritual-tech',
   },
   {
     url: '/static/img/financial_background.jpg',
