@@ -37,7 +37,7 @@ export default function SpiritualTech() {
 			<Paper
 				style={{}} sx={{px: 8}}>
         <div style={{float: 'right', paddingTop: '8px'}}>
-        <a href="https://github.com/nickumia/">
+        <a href="https://github.com/nickumia/nlp-web/issues/131">
           <Chip icon={<GitHubIcon />} label="Github" variant="outlined" />
         </a>&nbsp;
         <a href="https://www.youtube.com/@nickumia">
