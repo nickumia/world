@@ -54,11 +54,16 @@ export default function SpiritualTech() {
 			</Paper>
     <br/>
 				<Typography variant="subtitle2">
-          This page will be home to the updates relating to my road trip across America, coined as Spiritual
-          Tech.  It's important to understand the meaning behind the naming.  I'm defining <i>spiritual</i> as
-          anything that is not physical and my goal is to use technology to connect these spiritual elements to
-          create a better tomorrow.  I can't do it alone and I wouldn't want to if I could.  As much freedom as
-          there is in doing stuff by yourself, it's way more fun to do it with great company.
+          This page will be home to the updates relating to my road trip across America, coined as SpiritualTech.
+          It's important to understand the meaning behind the naming.  I'm defining <i>spiritual</i> as the
+          underlying energy that connects us all and my goal is to use technology to connect us together more
+          effectively to create a better tomorrow.  There are other terms like, 'Energy-based Tech' or 'Value-based
+          Tech' but they don't carry a nice ring to it.  As next gen technology continues to advance in the fields
+          of brain interfaces, AI and Quantum, we're going to continue to learn more about what makes us up, what
+          makes the universe up and how everything is pieced together.  I can't do this journey alone and I
+          wouldn't want to if I could.  As much freedom as there is in doing stuff by yourself, it's way more fun
+          to do it with great company.  So join me, reach out, open the conversation in your circles.  Let's talk
+          and connect!
 				</Typography>
     <br/>
 				<Typography variant="subtitle2">
