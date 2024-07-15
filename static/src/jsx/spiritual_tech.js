@@ -161,31 +161,35 @@ export default function SpiritualTech() {
         </AccordionSummary>
         <AccordionDetails>
           SpiritualTech is about spreading Technology Literacy concepts that help
-          people use technology to augment the existing value in their lives.<br/>
+          people use technology to augment the existing value in their lives.  Check
+          out the
+          <Link href="https://youtube.com/playlist?list=PLOxF6dnRsrVentqaULadb6DZGxApiBiGR" underline="hover">
+            full playlist
+          </Link>.<br/><br/>
 
-          SpiritualTech is about understanding our
+          &nbsp;SpiritualTech is about understanding our&nbsp;
           <Link href="https://youtu.be/r9J861e02r0" underline="hover">
             identities
-          </Link>.
-          SpiritualTech is about overcoming our
+          </Link>.<br/>
+          &nbsp;SpiritualTech is about overcoming our&nbsp;
           <Link href="https://youtu.be/LPLgCaxoSeo" underline="hover">
             biases
-          </Link>.
-          SpiritualTech is about sharing knowledge, to thrive their failures and
-          get to
+          </Link>.<br/>
+          &nbsp;SpiritualTech is about sharing knowledge, to thrive their failures and
+          get to&nbsp;
           <Link href="https://youtu.be/hHhYBAkOP7Y" underline="hover">
             success
-          </Link>.
-          SpiritualTech is about connecting us as truth-seeking beings and connecting
-          our existences through
+          </Link>.<br/>
+          &nbsp;SpiritualTech is about connecting us as truth-seeking beings and connecting
+          our existences through&nbsp;
           <Link href="https://youtu.be/_jVBB0YQg0U" underline="hover">
             consciousness
-          </Link>.
-          SpiritualTech is about cultivating a mindset where we can be a well-organized
-          society with a stronger learning ability.
+          </Link>.<br/>
+          &nbsp;SpiritualTech is about cultivating a mindset where we can be a well-organized
+          society with a stronger&nbsp;
           <Link href="https://youtu.be/KvDpS3oxvXk" underline="hover">
             learning ability
-          </Link>.
+          </Link>.<br/>
         </AccordionDetails>
       </Accordion>
       <Accordion style={{backgroundColor: "antiquewhite"}}>
@@ -199,11 +203,11 @@ export default function SpiritualTech() {
           While consciousness is a core concept of SpiritualTech,
           the main idea is about finding our own value and connecting
           with others to share that value, using technology as a
-          medium.
+          medium.<br/><br/>
 
           It's not about creating technology that is conscious
           And being conscious of technology is only important while we
-          use technology to create better lives.
+          use technology to create better lives.<br/><br/>
 
           The truth behind SpiritualTech is in the connection with
           ourselves and with others.  A connection to real life,
