@@ -178,7 +178,7 @@ export default function SpiritualTech() {
         <AccordionDetails>
           SpiritualTech is about spreading Technology Literacy concepts that help
           people use technology to augment the existing value in their lives.  Check
-          out the
+          out the&nbsp;
           <Link href="https://youtube.com/playlist?list=PLOxF6dnRsrVentqaULadb6DZGxApiBiGR" underline="hover">
             full playlist
           </Link>.<br/><br/>
