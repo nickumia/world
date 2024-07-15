@@ -18,6 +18,11 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 import json_parse from './json_parse';
 
@@ -142,6 +147,47 @@ export default function SpiritualTech() {
 </div>
 
 <br style={{clear: "both"}}/>
+		<Typography variant="h4">
+      FAQs
+		</Typography>
+    <div>
+      <Accordion style={{backgroundColor: "antiquewhite"}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          If SpiritualTech is all about consciousness, why not call it ConsciousTech?
+        </AccordionSummary>
+        <AccordionDetails>
+          While consciousness is a core concept of SpiritualTech,
+          the main idea is about finding our own value and connecting
+          with others to share that value, using technology as a
+          medium.
+
+          It's not about creating technology that is conscious
+          And being conscious of technology is only important while we
+          use technology to create better lives.
+
+          The truth behind SpiritualTech is in the connection with
+          ourselves and with others.  A connection to real life,
+          not just focusing on technology.
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2-content"
+          id="panel2-header"
+        >
+          Accordion 2
+        </AccordionSummary>
+        <AccordionDetails>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </AccordionDetails>
+      </Accordion>
+    </div>
 			</Paper>
 
     </React.Fragment>
