@@ -50,11 +50,11 @@ lint: # Lint python code
 	docker run --rm -v "$(shell pwd)":/app nlp-web:debug bash -c "cd /app/src/ && flake8 . --count --show-source --statistics"
 
 test: # Test Flask Backend
-	docker compose -f $(COMPOSE_FILE) -f docker compose.test.yml run --rm nlp \
+	docker compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm nlp \
 		bash -c "coverage run -m pytest --disable-pytest-warnings && \
 			coverage report --omit=\"src/tests/*\",\"app/auth/*\""
 
 test-cov: # Test Flask Backend
-	docker compose -f $(COMPOSE_FILE) -f docker compose.test.yml run --rm -v $(shell pwd):/app nlp \
+	docker compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm -v $(shell pwd):/app nlp \
 		bash -c "coverage run -m pytest --disable-pytest-warnings && \
 			coverage xml --omit=\"src/tests/*\",\"app/auth/*\""
