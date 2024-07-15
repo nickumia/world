@@ -12,6 +12,9 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -40,24 +43,37 @@ export default function SpiritualTech() {
 				<Typography variant="h6">
           Starting August 2024
 				</Typography>
-			<Paper
-				style={{}} sx={{px: 8}}>
-        <div style={{float: 'right', paddingTop: '8px'}}>
-        <a href="https://github.com/nickumia/nlp-web/issues/131">
-          <Chip icon={<GitHubIcon />} label="Github" variant="outlined" />
-        </a>&nbsp;
-        <a href="https://www.youtube.com/@nickumia">
-          <Chip icon={<YouTubeIcon />} label="Youtube" variant="outlined" />
-        </a>&nbsp;
-        <a href="https://www.linkedin.com/in/nicholas-kumia/">
-          <Chip icon={<LinkedInIcon />} label="LinkedIn" variant="outlined" />
-        </a>&nbsp;
-        <a href="https://www.instagram.com/nickumia/">
-          <Chip icon={<InstagramIcon />} label="Instagram" variant="outlined" />
-        </a>&nbsp;
-        </div>
-    <br/><br/><br/><br/><br/><br/>
-			</Paper>
+    <br/>
+   <Grid container spacing={2} sx={{px: 8}}>
+    <Grid item xs={12} md={3}>
+        <Link href="https://github.com/nickumia/nlp-web/issues/131" underline="hover">
+          <Button variant="contained" startIcon={<GitHubIcon />} style={{width: '100%', height: '100%', backgroundColor: 'black'}} sx={{py:2}}>
+            Github
+          </Button>
+        </Link>
+    </Grid>
+    <Grid item xs={12} md={3}>
+        <Link href="https://www.youtube.com/@nickumia" underline="hover">
+          <Button variant="contained" startIcon={<YouTubeIcon />} style={{width: '100%', height: '100%', backgroundColor: 'red'}} sx={{py:2}}>
+            YouTube
+          </Button>
+        </Link>
+    </Grid>
+    <Grid item xs={12} md={3}>
+        <Link href="https://www.linkedin.com/in/nicholas-kumia/" underline="hover">
+          <Button variant="contained" startIcon={<LinkedInIcon />} style={{width: '100%', height: '100%', backgroundColor: '#0077B5'}} sx={{py:2}}>
+            LinkedIn
+          </Button>
+        </Link>
+    </Grid>
+    <Grid item xs={12} md={3}>
+        <Link href="https://www.instagram.com/nickumia/" underline="hover">
+          <Button variant="contained" startIcon={<InstagramIcon />} style={{width: '100%', height: '100%', backgroundImage: 'linear-gradient(-135deg, rgb(20, 0, 200), rgb(185, 0, 180), rgb(245, 0, 0))'}} sx={{py:2}}>
+            Instagram
+          </Button>
+        </Link>
+    </Grid>
+  </Grid>
     <br/>
 				<Typography variant="subtitle2">
           This page will be home to the updates relating to my road trip across America, coined as SpiritualTech.
