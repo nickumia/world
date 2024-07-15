@@ -18,11 +18,11 @@ build-local:
 	pip3 install -r requirements.txt
 
 clean: # Tear down Main App
-	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml down -v --remove-orphan
+	docker compose -f $(COMPOSE_FILE) -f docker-compose.test.yml down -v --remove-orphan
 	rm -rf testtest
 
 up: # Start Main App
-	docker-compose -f $(COMPOSE_FILE) up -d
+	docker compose -f $(COMPOSE_FILE) up -d
 	
 
 install-front: # Install dependencies for front-end
@@ -44,17 +44,17 @@ build-static: # Convert python structures to javascript
 	./static.sh
 
 test-front: # Test frontend UI
-	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml up --abort-on-container-exit cypress
+	docker compose -f $(COMPOSE_FILE) -f docker-compose.test.yml up --abort-on-container-exit cypress
 
 lint: # Lint python code
 	docker run --rm -v "$(shell pwd)":/app nlp-web:debug bash -c "cd /app/src/ && flake8 . --count --show-source --statistics"
 
 test: # Test Flask Backend
-	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm nlp \
+	docker compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm nlp \
 		bash -c "coverage run -m pytest --disable-pytest-warnings && \
 			coverage report --omit=\"src/tests/*\",\"app/auth/*\""
 
 test-cov: # Test Flask Backend
-	docker-compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm -v $(shell pwd):/app nlp \
+	docker compose -f $(COMPOSE_FILE) -f docker-compose.test.yml run --rm -v $(shell pwd):/app nlp \
 		bash -c "coverage run -m pytest --disable-pytest-warnings && \
 			coverage xml --omit=\"src/tests/*\",\"app/auth/*\""
