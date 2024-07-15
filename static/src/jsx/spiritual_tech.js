@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -154,8 +155,43 @@ export default function SpiritualTech() {
       <Accordion style={{backgroundColor: "antiquewhite"}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1-content"
           id="panel1-header"
+        >
+          What is SpiritualTech?  What does it mean?
+        </AccordionSummary>
+        <AccordionDetails>
+          SpiritualTech is about spreading Technology Literacy concepts that help
+          people use technology to augment the existing value in their lives.<br/>
+
+          SpiritualTech is about understanding our
+          <Link href="https://youtu.be/r9J861e02r0" underline="hover">
+            identities
+          </Link>.
+          SpiritualTech is about overcoming our
+          <Link href="https://youtu.be/LPLgCaxoSeo" underline="hover">
+            biases
+          </Link>.
+          SpiritualTech is about sharing knowledge, to thrive their failures and
+          get to
+          <Link href="https://youtu.be/hHhYBAkOP7Y" underline="hover">
+            success
+          </Link>.
+          SpiritualTech is about connecting us as truth-seeking beings and connecting
+          our existences through
+          <Link href="https://youtu.be/_jVBB0YQg0U" underline="hover">
+            consciousness
+          </Link>.
+          SpiritualTech is about cultivating a mindset where we can be a well-organized
+          society with a stronger learning ability.
+          <Link href="https://youtu.be/KvDpS3oxvXk" underline="hover">
+            learning ability
+          </Link>.
+        </AccordionDetails>
+      </Accordion>
+      <Accordion style={{backgroundColor: "antiquewhite"}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          id="panel2-header"
         >
           If SpiritualTech is all about consciousness, why not call it ConsciousTech?
         </AccordionSummary>
@@ -172,19 +208,6 @@ export default function SpiritualTech() {
           The truth behind SpiritualTech is in the connection with
           ourselves and with others.  A connection to real life,
           not just focusing on technology.
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          Accordion 2
-        </AccordionSummary>
-        <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
         </AccordionDetails>
       </Accordion>
     </div>
