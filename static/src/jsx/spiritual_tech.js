@@ -205,8 +205,8 @@ export default function SpiritualTech() {
           with others to share that value, using technology as a
           medium.<br/><br/>
 
-          It's not about creating technology that is conscious
-          And being conscious of technology is only important while we
+          It's not about creating technology that is conscious.
+          Being conscious of technology is only important while we
           use technology to create better lives.<br/><br/>
 
           The truth behind SpiritualTech is in the connection with
