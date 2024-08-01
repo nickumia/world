@@ -135,13 +135,14 @@ export default function SpiritualTech() {
     <br/>
 
 				<Typography variant="subtitle2">
-          The first map highlights the points of interest that will define the trip.  It ranges from state
-          capitals to amusement parks (specifically rollercoaster) to nature pockets (state parks, geographical
+          There are two maps that outline (1) the points of interest that will define the trip and (2) the
+          rough path that I'll take across America.  The points of interest range from state capitals to
+          amusement parks (specifically rollercoaster) to nature pockets (state parks, geographical
           wonders and more) to major tourism spots to historical landmarks (specifically technological ones) to
           spiritual centers and more.  The map is subject to updates (both before the start and during the trip).
-				</Typography>
-    <br/>
-    <Typography variant="subtitle2">
+          It seems like the path is pretty robust, but it is also subject to change as weather, cultural
+          interactions or other events highlight important considerations that affect maneuverability or safety.
+        <br/>
           Feel free to add the map to your favorite map viewer.  It can be exported as KML/KMZ or directly
           imported into google maps.  Sorry Apple users 😣 I don't have a direct solution for you.
 				</Typography>
@@ -149,17 +150,6 @@ export default function SpiritualTech() {
 
 <div class="trailer-box">
   <iframe class="trailer" src="https://www.google.com/maps/d/u/0/embed?mid=1oWfaNPsgA3cwiXu2pXvIBZT81r2FEnQ&ehbc=2E312F"></iframe>
-</div>
-    <br/>
-
-				<Typography variant="subtitle2">
-          The second map is a rough outline of the path that I'll take across America.  It seems like it is
-          pretty robust, but it is also subject to change as weather, cultural interactions or other events highlight
-          important considerations that affect maneuverability or safety.
-				</Typography>
-    <br/>
-
-<div class="trailer-box">
   <iframe class="trailer" src="https://www.google.com/maps/d/u/0/embed?mid=1qRUtINRkfm8DJ-hUngADUpqztMpWRF0&ehbc=2E312F"></iframe>
 </div>
 
