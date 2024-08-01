@@ -46,7 +46,7 @@ export default function SpiritualTech() {
     <br/>
    <Grid container spacing={2} sx={{px: 8}}>
     <Grid item xs={12} md={3}>
-        <Link href="https://github.com/nickumia/nlp-web/issues/131" underline="hover">
+        <Link href="https://github.com/nickumia/world/issues/131" underline="hover">
           <Button variant="contained" startIcon={<GitHubIcon />} style={{width: '100%', height: '100%', backgroundColor: 'black'}} sx={{py:2}}>
             Github
           </Button>

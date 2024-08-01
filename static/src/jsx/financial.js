@@ -110,7 +110,7 @@ export default function Financial() {
     setInc(false);
   };
   const stayTunedClick = () => {
-    alert('Stay Tuned for more information: https://github.com/nickumia/nlp-web/issues/80')
+    alert('Stay Tuned for more information: https://github.com/nickumia/world/issues/80')
   }
   const knowledge = () => {
     setConsider("How much learning is needed to achieve this goal?  Will this learning requirement align with my learning ability?")
