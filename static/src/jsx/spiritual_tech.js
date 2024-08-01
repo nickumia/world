@@ -49,7 +49,8 @@ export default function SpiritualTech() {
 					SpiritualTech: A Road Trip Across America 🛣️
 				</Typography>
 				<Typography variant="h6">
-          Starting August 2024
+          Start Date: August 11th, 2024
+          End Date: TBD 2025
 				</Typography>
     <br/>
    <Grid container spacing={2} sx={{px: 8}}>
