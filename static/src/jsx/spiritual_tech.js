@@ -485,6 +485,23 @@ export default function SpiritualTech() {
           not just focusing on technology.
         </AccordionDetails>
       </Accordion>
+      <Accordion style={{backgroundColor: "antiquewhite"}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          id="panel2-header"
+        >
+          Why not include Alaska?  It's drive-able!
+        </AccordionSummary>
+        <AccordionDetails>
+          While it would be super cool to drive to Alaska, it is a 36
+          hour one-way detour, adding up to 72 hours total, not counting
+          the time spent in the state.  I don't feel up for that in my
+          current condition.  But I will consider it depending on how
+          the trip goes in general.
+          <img src="/static/img/alaska_detour.jpg" loading="lazy"
+            style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto', display: 'inherit'}}/>
+        </AccordionDetails>
+      </Accordion>
     </div>
 			</Paper>
 
