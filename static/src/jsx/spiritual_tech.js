@@ -520,6 +520,27 @@ export default function SpiritualTech() {
             style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto', display: 'inherit'}}/>
         </AccordionDetails>
       </Accordion>
+      <Accordion style={{backgroundColor: "antiquewhite"}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          id="panel2-header"
+        >
+          How can I find you?!
+        </AccordionSummary>
+        <AccordionDetails>
+          Look for my car!! <br/>
+          <img src="/static/img/phoenix1.jpg" loading="lazy"
+            style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
+          <img src="/static/img/phoenix2.jpg" loading="lazy"
+            style={{maxWidth: '45%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
+          <img src="/static/img/dragon1.jpg" loading="lazy"
+            style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
+          <img src="/static/img/dragon2.jpg" loading="lazy"
+            style={{maxWidth: '45%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
+          <img src="/static/img/phoenix3.jpg" loading="lazy"
+            style={{maxWidth: '70%', textAlign: 'center', padding: 'inherit', margin: 'auto', display: 'inherit'}}/>
+        </AccordionDetails>
+      </Accordion>
     </div>
 			</Paper>
 
