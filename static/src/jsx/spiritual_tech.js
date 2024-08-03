@@ -157,7 +157,9 @@ export default function SpiritualTech() {
           spiritual centers and more.  The map is subject to updates (both before the start and during the trip).
           It seems like the path is pretty robust, but it is also subject to change as weather, cultural
           interactions or other events highlight important considerations that affect maneuverability or safety.
+				</Typography>
         <br/>
+				<Typography variant="subtitle2">
           Feel free to add the map to your favorite map viewer.  It can be exported as KML/KMZ or directly
           imported into google maps.  Sorry Apple users 😣 I don't have a direct solution for you.
 				</Typography>
@@ -462,7 +464,7 @@ export default function SpiritualTech() {
           <Link href="https://youtu.be/LPLgCaxoSeo" underline="hover">
             biases
           </Link>.<br/>
-          &nbsp;SpiritualTech is about sharing knowledge, to thrive their failures and
+          &nbsp;SpiritualTech is about sharing knowledge, to thrive through failures and
           get to&nbsp;
           <Link href="https://youtu.be/hHhYBAkOP7Y" underline="hover">
             success
