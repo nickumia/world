@@ -181,255 +181,270 @@ export default function SpiritualTech() {
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 2 | Aug 18 - Aug 24</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Alabama | Montgomery, Huntsville, McMullen</TimelineContent>
+        <TimelineContent>Florida + Alabama | Panama City Beach, Dothan</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 3 | Aug 25 - Aug 31</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Louisiana | Baton Rouge, New Orleans</TimelineContent>
+        <TimelineContent>Alabama + Louisiana | Montgomery, Mobile, New Orleans</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 4 | Sep 01 - Sep 07</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Mississippi | Jackson, TBD</TimelineContent>
+        <TimelineContent>Louisiana | Baton Rouge, Shreveport</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 5 | Sep 08 - Sep 14</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Arkansas | Little Rock, Fort Smith</TimelineContent>
+        <TimelineContent>Louisiana + Mississippi | Shreveport + Jackson</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 6 | Sep 15 - Sep 21</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Oklahoma | Oklahoma City, Tulsa</TimelineContent>
+        <TimelineContent>Arkansas | Little Rock, Fort Smith</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 7 | Sep 22 - Sep 28</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Texas | Austin, Dallas, Houston, San Antonio</TimelineContent>
+        <TimelineContent>Oklahoma | Oklahoma City, Tulsa</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 8 | Sep 29 - Oct 05</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New Mexico | Santa Fe, Albuquerque</TimelineContent>
+        <TimelineContent>Texas | Dallas, Houston</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 9 | Oct 06 - Oct 12</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Colorado | Denver, Mount Evans</TimelineContent>
+        <TimelineContent>Texas | San Antonio, Austin</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 10 | Oct 13 - Oct 19</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Wyoming | Cheyenne</TimelineContent>
+        <TimelineContent>Texas | Sonora, Marfa, El Paso</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 11 | Oct 20 - Oct 26</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Utah | Salt Lake City, Horseshoe Canyon</TimelineContent>
+        <TimelineContent>New Mexico | Riudoso, Santa Fe, Albuquerque</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 12 | Oct 27 - Nov 02</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Arizona | Phoenix, Tucson, Sedona</TimelineContent>
+        <TimelineContent>Colorado | Denver, Mount Evans</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 13 | Nov 03 - Nov 09</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Nevada/California | San Diego, Los Angeles, San Jose, San Francisco, Redwood, Las Vegas, Death Valley</TimelineContent>
+        <TimelineContent>Wyoming | Cheyenne</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 14 | Nov 10 - Nov 16</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Nevada/California</TimelineContent>
+        <TimelineContent>Utah | Salt Lake City, Horseshoe Canyon</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 15 | Nov 17 - Nov 23</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>California Extra</TimelineContent>
+        <TimelineContent>Arizona | Phoenix, Tucson, Sedona</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 16 | Nov 24 - Nov 30</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Oregon | Salem, Portland</TimelineContent>
+        <TimelineContent>Nevada/California | San Diego, Los Angeles, San Jose, San Francisco, Redwood, Las Vegas, Death Valley</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 17 | Dec 01 - Dec 07</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Washington | Olympia, Seattle</TimelineContent>
+        <TimelineContent>Nevada/California</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 18 | Dec 08 - Dec 14</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Idaho | Boise, Meridian</TimelineContent>
+        <TimelineContent>California Extra</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 19 | Dec 15 - Dec 21</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Montana | Helena, Billings, Yellowstone</TimelineContent>
+        <TimelineContent>Oregon | Salem, Portland</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 20 | Dec 22 - Dec 28</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Montana/Wyoming | Yellowstone, Miles City</TimelineContent>
+        <TimelineContent>Washington | Olympia, Seattle</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 21 | Dec 29 - Jan 04</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>North Dakota | Bismarck, Fargo, Medora</TimelineContent>
+        <TimelineContent>Idaho | Boise, Meridian</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 22 | Jan 05 - Jan 11</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>South Dakota | Pierre, Mount Rushmore, Sioux Falls</TimelineContent>
+        <TimelineContent>Montana | Helena, Billings, Yellowstone</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 23 | Jan 12 - Jan 18</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Nebraska | Lincoln, Omaha</TimelineContent>
+        <TimelineContent>Montana/Wyoming | Yellowstone, Miles City</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 24 | Jan 19 - Jan 25</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Kansas | Topeka, Wichita</TimelineContent>
+        <TimelineContent>North Dakota | Bismarck, Fargo, Medora</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 25 | Jan 26 - Feb 01</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Missouri | Kansas City, Jefferson City</TimelineContent>
+        <TimelineContent>South Dakota | Pierre, Mount Rushmore, Sioux Falls</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 26 | Feb 02 - Feb 08</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Tennessee | Memphis, Nashville, Knoxville</TimelineContent>
+        <TimelineContent>Nebraska | Lincoln, Omaha</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 27 | Feb 09 - Feb 15</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Kentucky | Frankfort, Louisville</TimelineContent>
+        <TimelineContent>Kansas | Topeka, Wichita</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 28 | Feb 16 - Feb 22</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Indiana | Indianapolis, Fort Wayne</TimelineContent>
+        <TimelineContent>Missouri | Kansas City, Jefferson City</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 29 | Feb 23 - Mar 01</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Illinois | Springfield</TimelineContent>
+        <TimelineContent>Tennessee | Memphis, Nashville, Knoxville</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 30 | Mar 02 - Mar 08</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Iowa | Cedar Rapids, Des Moines</TimelineContent>
+        <TimelineContent>Kentucky | Frankfort, Louisville</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 31 | Mar 09 - Mar 15</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Minnesota | Minneapolis, TBD</TimelineContent>
+        <TimelineContent>Indiana | Indianapolis, Fort Wayne</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 32 | Mar 16 - Mar 22</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Wisconsin | Madison, Milwaukee, Chicago</TimelineContent>
+        <TimelineContent>Illinois | Springfield</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 33 | Mar 23 - Mar 29</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Michigan | Lansing, Detroit</TimelineContent>
+        <TimelineContent>Iowa | Cedar Rapids, Des Moines</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 34 | Mar 30 - Apr 05</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Ohio | Cleveland, Columbus, Cincinnati</TimelineContent>
+        <TimelineContent>Minnesota | Minneapolis, TBD</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 35 | Apr 06 - Apr 12</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>West Virginia | Huntington, Charleston, OctoberSky, Moundsville</TimelineContent>
+        <TimelineContent>Wisconsin | Madison, Milwaukee, Chicago</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 36 | Apr 13 - Apr 19</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Pennsylvania | Pittsburgh, Harrisburg</TimelineContent>
+        <TimelineContent>Michigan | Lansing, Detroit</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 37 | Apr 20 - Apr 26</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New York | Buffalo, Rochester, Syracuse, Albany</TimelineContent>
+        <TimelineContent>Ohio | Cleveland, Columbus, Cincinnati</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 38 | Apr 27 - May 03</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Vermont | Stratton Mountain, Montpelier</TimelineContent>
+        <TimelineContent>West Virginia | Huntington, Charleston, OctoberSky, Moundsville</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 39 | May 04 - May 10</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Maine | Augusta, Portland</TimelineContent>
+        <TimelineContent>Pennsylvania | Pittsburgh, Harrisburg</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 40 | May 11 - May 17</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New Hampshire | Concord, Manchester</TimelineContent>
+        <TimelineContent>New York | Buffalo, Rochester, Syracuse, Albany</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 41 | May 18 - May 24</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Massachusetts | Boston, Worcester</TimelineContent>
+        <TimelineContent>Vermont | Stratton Mountain, Montpelier</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 42 | May 25 - May 31</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Rhode Island | Providence, TBD</TimelineContent>
+        <TimelineContent>Maine | Augusta, Portland</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 43 | Jun 01 - Jun 07</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Connecticutt | Hartford, New Haven</TimelineContent>
+        <TimelineContent>New Hampshire | Concord, Manchester</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 44 | Jun 08 - Jun 14</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New York | Long Island, Manahattan</TimelineContent>
+        <TimelineContent>Massachusetts | Boston, Worcester</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 45 | Jun 15 - Jun 21</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New Jersey | Edison, Trenton, Philadelphia</TimelineContent>
+        <TimelineContent>Rhode Island | Providence, TBD</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 46 | Jun 22 - Jun 28</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Delaware | Wilmington, Dover</TimelineContent>
+        <TimelineContent>Connecticutt | Hartford, New Haven</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 47 | Jun 29 - Jul 05</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Maryland | Baltimore, Annapolis, Redshred, Lanham</TimelineContent>
+        <TimelineContent>New York | Long Island, Manahattan</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 48 | Jul 06 - Jul 12</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Virginia | Doswell, Richmond, Virginia Beach</TimelineContent>
+        <TimelineContent>New Jersey | Edison, Trenton, Philadelphia</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 49 | Jul 13 - Jul 19</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>North Carolina | Raleigh, Charlotte, Lake Lure</TimelineContent>
+        <TimelineContent>Delaware | Wilmington, Dover</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 50 | Jul 20 - Jul 26</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>South Carolina | Columbia, Charleston</TimelineContent>
+        <TimelineContent>Maryland | Baltimore, Annapolis, Redshred, Lanham</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 51 | Jul 27 - Aug 02</TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Georgia | Savannah, Atlanta</TimelineContent>
+        <TimelineContent>Virginia | Doswell, Richmond, Virginia Beach</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary"> Week 52 | Aug 03 - </TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>North Carolina | Raleigh, Charlotte, Lake Lure</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 53 | Aug 03 - </TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>South Carolina | Columbia, Charleston</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 54 | Aug 03 - </TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Georgia | Savannah, Atlanta</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 55 | Aug 03 - </TimelineOppositeContent>
         <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
         <TimelineContent>Florida | TBD ... Home</TimelineContent>
       </TimelineItem>
