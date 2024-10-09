@@ -27,6 +27,14 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+
 
 import json_parse from './json_parse';
 
@@ -41,12 +49,13 @@ export default function SpiritualTech() {
 					SpiritualTech: A Road Trip Across America 🛣️
 				</Typography>
 				<Typography variant="h6">
-          Starting August 2024
+          Start Date: August 11th, 2024
+          End Date: TBD 2025
 				</Typography>
     <br/>
    <Grid container spacing={2} sx={{px: 8}}>
     <Grid item xs={12} md={3}>
-        <Link href="https://github.com/nickumia/nlp-web/issues/131" underline="hover">
+        <Link href="https://github.com/nickumia/world/issues/131" underline="hover">
           <Button variant="contained" startIcon={<GitHubIcon />} style={{width: '100%', height: '100%', backgroundColor: 'black'}} sx={{py:2}}>
             Github
           </Button>
@@ -117,6 +126,9 @@ export default function SpiritualTech() {
           as such, I will be integrating into communities to learn and grow with them.
 				</Typography>
     <br/>
+		<Typography variant="h4">
+			Trailers
+		</Typography>
 				<Typography variant="subtitle2">
           Check out the trailers for my trip to get a feel for what it'll be like.  If you like it,
           please reach out and let's make some great stuff happen together!
@@ -134,14 +146,20 @@ export default function SpiritualTech() {
 </div>
     <br/>
 
+		<Typography variant="h4">
+			Maps
+   	</Typography>
 				<Typography variant="subtitle2">
-          The first map highlights the points of interest that will define the trip.  It ranges from state
-          capitals to amusement parks (specifically rollercoaster) to nature pockets (state parks, geographical
+          There are two maps that outline (1) the points of interest that will define the trip and (2) the
+          rough path that I'll take across America.  The points of interest range from state capitals to
+          amusement parks (specifically rollercoaster) to nature pockets (state parks, geographical
           wonders and more) to major tourism spots to historical landmarks (specifically technological ones) to
           spiritual centers and more.  The map is subject to updates (both before the start and during the trip).
+          It seems like the path is pretty robust, but it is also subject to change as weather, cultural
+          interactions or other events highlight important considerations that affect maneuverability or safety.
 				</Typography>
-    <br/>
-    <Typography variant="subtitle2">
+        <br/>
+				<Typography variant="subtitle2">
           Feel free to add the map to your favorite map viewer.  It can be exported as KML/KMZ or directly
           imported into google maps.  Sorry Apple users 😣 I don't have a direct solution for you.
 				</Typography>
@@ -149,19 +167,289 @@ export default function SpiritualTech() {
 
 <div class="trailer-box">
   <iframe class="trailer" src="https://www.google.com/maps/d/u/0/embed?mid=1oWfaNPsgA3cwiXu2pXvIBZT81r2FEnQ&ehbc=2E312F"></iframe>
-</div>
-    <br/>
-
-				<Typography variant="subtitle2">
-          The second map is a rough outline of the path that I'll take across America.  It seems like it is
-          pretty robust, but it is also subject to change as weather, cultural interactions or other events highlight
-          important considerations that affect maneuverability or safety.
-				</Typography>
-    <br/>
-
-<div class="trailer-box">
   <iframe class="trailer" src="https://www.google.com/maps/d/u/0/embed?mid=1qRUtINRkfm8DJ-hUngADUpqztMpWRF0&ehbc=2E312F"></iframe>
 </div>
+		<Typography variant="h4">
+			Timeline
+   	</Typography>
+    <Timeline position="right">
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 1 | Aug 11 - Aug 17</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Florida | Orlando, Tallahassee</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 2 | Aug 18 - Aug 24</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Florida + Alabama | Panama City Beach, Dothan</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 3 | Aug 25 - Aug 31</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Alabama + Louisiana | Montgomery, Mobile, New Orleans</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 4 | Sep 01 - Sep 07</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Louisiana | Baton Rouge, Shreveport</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 5 | Sep 08 - Sep 14</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Louisiana + Mississippi | Shreveport + Jackson</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 6 | Sep 15 - Sep 21</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Arkansas | Little Rock, Fort Smith</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 7 | Sep 22 - Sep 28</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Oklahoma | Oklahoma City, Tulsa</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 8 | Sep 29 - Oct 05</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Texas | Dallas, Houston</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 9 | Oct 06 - Oct 12</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Texas | San Antonio, Austin</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 10 | Oct 13 - Oct 19</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Texas | Sonora, Marfa, El Paso</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 11 | Oct 20 - Oct 26</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>New Mexico | Riudoso, Santa Fe, Albuquerque</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 12 | Oct 27 - Nov 02</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Colorado | Denver, Mount Evans</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 13 | Nov 03 - Nov 09</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Wyoming | Cheyenne</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 14 | Nov 10 - Nov 16</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Utah | Salt Lake City, Horseshoe Canyon</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 15 | Nov 17 - Nov 23</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Arizona | Phoenix, Tucson, Sedona</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 16 | Nov 24 - Nov 30</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Nevada/California | San Diego, Los Angeles, San Jose, San Francisco, Redwood, Las Vegas, Death Valley</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 17 | Dec 01 - Dec 07</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Nevada/California</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 18 | Dec 08 - Dec 14</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>California Extra</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 19 | Dec 15 - Dec 21</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Oregon | Salem, Portland</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 20 | Dec 22 - Dec 28</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Washington | Olympia, Seattle</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 21 | Dec 29 - Jan 04</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Idaho | Boise, Meridian</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 22 | Jan 05 - Jan 11</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Montana | Helena, Billings, Yellowstone</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 23 | Jan 12 - Jan 18</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Montana/Wyoming | Yellowstone, Miles City</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 24 | Jan 19 - Jan 25</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>North Dakota | Bismarck, Fargo, Medora</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 25 | Jan 26 - Feb 01</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>South Dakota | Pierre, Mount Rushmore, Sioux Falls</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 26 | Feb 02 - Feb 08</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Nebraska | Lincoln, Omaha</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 27 | Feb 09 - Feb 15</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Kansas | Topeka, Wichita</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 28 | Feb 16 - Feb 22</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Missouri | Kansas City, Jefferson City</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 29 | Feb 23 - Mar 01</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Tennessee | Memphis, Nashville, Knoxville</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 30 | Mar 02 - Mar 08</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Kentucky | Frankfort, Louisville</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 31 | Mar 09 - Mar 15</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Indiana | Indianapolis, Fort Wayne</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 32 | Mar 16 - Mar 22</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Illinois | Springfield</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 33 | Mar 23 - Mar 29</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Iowa | Cedar Rapids, Des Moines</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 34 | Mar 30 - Apr 05</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Minnesota | Minneapolis, TBD</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 35 | Apr 06 - Apr 12</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Wisconsin | Madison, Milwaukee, Chicago</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 36 | Apr 13 - Apr 19</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Michigan | Lansing, Detroit</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 37 | Apr 20 - Apr 26</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Ohio | Cleveland, Columbus, Cincinnati</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 38 | Apr 27 - May 03</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>West Virginia | Huntington, Charleston, OctoberSky, Moundsville</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 39 | May 04 - May 10</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Pennsylvania | Pittsburgh, Harrisburg</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 40 | May 11 - May 17</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>New York | Buffalo, Rochester, Syracuse, Albany</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 41 | May 18 - May 24</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Vermont | Stratton Mountain, Montpelier</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 42 | May 25 - May 31</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Maine | Augusta, Portland</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 43 | Jun 01 - Jun 07</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>New Hampshire | Concord, Manchester</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 44 | Jun 08 - Jun 14</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Massachusetts | Boston, Worcester</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 45 | Jun 15 - Jun 21</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Rhode Island | Providence, TBD</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 46 | Jun 22 - Jun 28</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Connecticutt | Hartford, New Haven</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 47 | Jun 29 - Jul 05</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>New York | Long Island, Manahattan</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 48 | Jul 06 - Jul 12</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>New Jersey | Edison, Trenton, Philadelphia</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 49 | Jul 13 - Jul 19</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Delaware | Wilmington, Dover</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 50 | Jul 20 - Jul 26</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Maryland | Baltimore, Annapolis, Redshred, Lanham</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 51 | Jul 27 - Aug 02</TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Virginia | Doswell, Richmond, Virginia Beach</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 52 | Aug 03 - </TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>North Carolina | Raleigh, Charlotte, Lake Lure</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 53 | Aug 03 - </TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>South Carolina | Columbia, Charleston</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 54 | Aug 03 - </TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Georgia | Savannah, Atlanta</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent color="text.secondary"> Week 55 | Aug 03 - </TimelineOppositeContent>
+        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+        <TimelineContent>Florida | TBD ... Home</TimelineContent>
+      </TimelineItem>
+    </Timeline>
+    <br/>
 
 <br style={{clear: "both"}}/>
 		<Typography variant="h4">
@@ -191,7 +479,7 @@ export default function SpiritualTech() {
           <Link href="https://youtu.be/LPLgCaxoSeo" underline="hover">
             biases
           </Link>.<br/>
-          &nbsp;SpiritualTech is about sharing knowledge, to thrive their failures and
+          &nbsp;SpiritualTech is about sharing knowledge, to thrive through failures and
           get to&nbsp;
           <Link href="https://youtu.be/hHhYBAkOP7Y" underline="hover">
             success
@@ -228,6 +516,44 @@ export default function SpiritualTech() {
           The truth behind SpiritualTech is in the connection with
           ourselves and with others.  A connection to real life,
           not just focusing on technology.
+        </AccordionDetails>
+      </Accordion>
+      <Accordion style={{backgroundColor: "antiquewhite"}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          id="panel2-header"
+        >
+          Why not include Alaska?  It's drive-able!
+        </AccordionSummary>
+        <AccordionDetails>
+          While it would be super cool to drive to Alaska, it is a 36
+          hour one-way detour, adding up to 72 hours total, not counting
+          the time spent in the state.  I don't feel up for that in my
+          current condition.  But I will consider it depending on how
+          the trip goes in general.
+          <img src="/static/img/alaska_detour.jpg" loading="lazy"
+            style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto', display: 'inherit'}}/>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion style={{backgroundColor: "antiquewhite"}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          id="panel2-header"
+        >
+          How can I find you?!
+        </AccordionSummary>
+        <AccordionDetails>
+          Look for my car!! <br/>
+          <img src="/static/img/phoenix1.jpg" loading="lazy"
+            style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
+          <img src="/static/img/phoenix2.jpg" loading="lazy"
+            style={{maxWidth: '45%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
+          <img src="/static/img/dragon1.jpg" loading="lazy"
+            style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
+          <img src="/static/img/dragon2.jpg" loading="lazy"
+            style={{maxWidth: '45%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
+          <img src="/static/img/phoenix3.jpg" loading="lazy"
+            style={{maxWidth: '70%', textAlign: 'center', padding: 'inherit', margin: 'auto', display: 'inherit'}}/>
         </AccordionDetails>
       </Accordion>
     </div>
