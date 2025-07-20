@@ -242,7 +242,7 @@ class TravelAnimator:
         travel_mode = timestamp_info.get('travel_mode', '')
 
         # Create timestamp HTML with HTML entity emojis for better compatibility
-        timestamp_html = """
+        timestamp_html = f"""
         <div style="
             position: fixed;
             bottom: 20px;
