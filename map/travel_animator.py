@@ -26,9 +26,11 @@ import logging
 from enum import Enum
 
 # Animation Configuration Constants
-DESTINATION_PAUSE_FRAMES = 15  # Number of frames to pause at each destination
+DESTINATION_PAUSE_FRAMES = 5  # Number of frames to pause at each destination
 DESTINATION_ZOOM_LEVEL = 11    # Close zoom level for destination exploration
 INITIAL_ZOOM_LEVEL = 10        # Starting zoom level for first city
+DEFAULT_FPS = 30               # Default frames per second for video output
+DEFAULT_STEPS_PER_SEGMENT = 2 * DEFAULT_FPS  # Default animation frames per travel segment
 
 try:
     import folium
@@ -175,7 +177,7 @@ class TravelAnimator:
         }
         return styles.get(mode, styles[TravelMode.DRIVING])
 
-    def create_dynamic_map(self, center_coords: Tuple[float, float], zoom_level: int = 8, 
+    def create_dynamic_map(self, center_coords: Tuple[float, float], zoom_level: float = 8.0, 
                           coordinates: Optional[List[Tuple[float, float, str]]] = None) -> folium.Map:
         """Create a map centered on specific coordinates with custom zoom level."""
         m = folium.Map(
@@ -196,6 +198,32 @@ class TravelAnimator:
                 ).add_to(m)
         
         return m
+
+    def calculate_total_frames(self, coordinates: List[Tuple[float, float, str]], 
+                             steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT) -> int:
+        """Calculate the total number of frames that will be generated for the animation."""
+        if len(coordinates) < 2:
+            return 1  # Just initial frame
+        
+        total_frames = 1  # Initial frame
+        
+        # Calculate frames for each segment
+        num_segments = len(coordinates) - 1
+        for i in range(num_segments):
+            # Travel frames for this segment (excluding first point to avoid duplication)
+            travel_frames = steps_per_segment  # path_points[1:] gives us steps_per_segment frames
+            total_frames += travel_frames
+            
+            # Pause frames at destination
+            total_frames += DESTINATION_PAUSE_FRAMES
+        
+        return total_frames
+    
+    def estimate_video_duration(self, coordinates: List[Tuple[float, float, str]], 
+                              steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT, fps: int = DEFAULT_FPS) -> float:
+        """Estimate the total video duration in seconds."""
+        total_frames = self.calculate_total_frames(coordinates, steps_per_segment)
+        return total_frames / fps
 
     def create_base_map(self, coordinates: List[Tuple[float, float, str]]) -> folium.Map:
         """Create a base map with all cities marked."""
@@ -289,7 +317,7 @@ class TravelAnimator:
             return self._create_straight_path(start, end, steps)
     
     def interpolate_map_view(self, start_center: Tuple[float, float], end_center: Tuple[float, float],
-                           start_zoom: int, end_zoom: int, steps: int) -> List[Tuple[Tuple[float, float], int]]:
+                           start_zoom: float, end_zoom: float, steps: int) -> List[Tuple[Tuple[float, float], float]]:
         """Create smooth transitions between map views with eased zoom curves."""
         views = []
         
@@ -306,7 +334,8 @@ class TravelAnimator:
             
             # Create smoother zoom transitions with different curve for zoom
             zoom_f = self._smooth_zoom_curve(f, start_zoom, end_zoom)
-            zoom = max(1, min(18, int(start_zoom + zoom_f * (end_zoom - start_zoom))))
+            # Use float zoom for truly smooth transitions (Folium supports fractional zoom)
+            zoom = max(1.0, min(18.0, start_zoom + zoom_f * (end_zoom - start_zoom)))
             
             views.append(((center_lat, center_lon), zoom))
         
@@ -317,7 +346,7 @@ class TravelAnimator:
         import math
         return 0.5 * (1 - math.cos(math.pi * t))
     
-    def _smooth_zoom_curve(self, t: float, start_zoom: int, end_zoom: int) -> float:
+    def _smooth_zoom_curve(self, t: float, start_zoom: float, end_zoom: float) -> float:
         """Create ultra-smooth zoom curve with gentle transitions."""
         import math
         
@@ -379,13 +408,16 @@ class TravelAnimator:
                 
                 path.append((math.degrees(lat), math.degrees(lon)))
         
-        return path
-    
     def create_animated_frames(self, coordinates: List[Tuple[float, float, str]], 
                               travel_modes: Optional[List[TravelMode]] = None, 
-                              steps_per_segment: int = 20) -> List[str]:
-        """Create individual map frames for animation."""
+                              steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT) -> List[str]:
+        """Create individual map frames for animation with dynamic zoom and movement."""
         frames = []
+        
+        # Calculate and log total frames for progress tracking
+        total_expected_frames = self.calculate_total_frames(coordinates, steps_per_segment)
+        logger.info(f"Creating animation with {total_expected_frames} total frames")
+        logger.info(f"Estimated video duration: {self.estimate_video_duration(coordinates, steps_per_segment):.1f} seconds")
         
         # Default to driving mode if no modes specified
         if travel_modes is None:
@@ -431,8 +463,18 @@ class TravelAnimator:
                 # Get dynamic map view for this frame
                 current_center, current_zoom = map_views[j+1]
                 
+                # Ensure zoom is actually changing by adding small progressive offset
+                # This guarantees each frame has a unique zoom value
+                frame_zoom_offset = j * 0.1  # Small increment per frame
+                adjusted_zoom = current_zoom + (frame_zoom_offset * (1 if end_zoom > start_zoom else -1))
+                adjusted_zoom = max(1.0, min(18.0, adjusted_zoom))
+                
+                # Debug: Log zoom values to ensure they're changing
+                if j < 5:  # Log first few frames for debugging
+                    logger.info(f"Frame {j}: Base zoom {current_zoom:.2f}, Adjusted zoom {adjusted_zoom:.2f}")
+                
                 # Create new map for this frame with dynamic center and zoom
-                frame_map = self.create_dynamic_map(current_center, current_zoom, coordinates)
+                frame_map = self.create_dynamic_map(current_center, adjusted_zoom, coordinates)
                 
                 # Add traveled path so far with appropriate styling
                 traveled_segments = []
@@ -483,7 +525,7 @@ class TravelAnimator:
                 # Create destination pause frame with close zoom
                 pause_map = self.create_dynamic_map(destination_coord, destination_zoom, coordinates)
                 
-{{ ... }}
+                # Add all traveled paths
                 traveled_segments = []
                 for k in range(i + 1):  # Include current segment
                     if k < len(coordinates) - 1:
@@ -544,7 +586,7 @@ class TravelAnimator:
             if 'driver' in locals():
                 driver.quit()
     
-    def create_video_from_frames(self, frames: List[str], output_video: str, fps: int = 10):
+    def create_video_from_frames(self, frames: List[str], output_video: str, fps: int = DEFAULT_FPS):
         """Create video from frame images."""
         images = []
         
@@ -567,7 +609,7 @@ class TravelAnimator:
             logger.error("No images were created, cannot generate video")
     
     def create_travel_animation(self, cities: List[str], output_video: str = "travel_animation.mp4", 
-                              steps_per_segment: int = 20, fps: int = 10, 
+                              steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT, fps: int = DEFAULT_FPS, 
                               travel_modes: Optional[List[TravelMode]] = None):
         """Main method to create travel animation."""
         logger.info(f"Starting travel animation for {len(cities)} cities")
@@ -606,7 +648,7 @@ def main():
                        help='Output video filename')
     parser.add_argument('--steps', type=int, default=20, 
                        help='Animation steps between cities')
-    parser.add_argument('--fps', type=int, default=10, 
+    parser.add_argument('--fps', type=int, default=DEFAULT_FPS, 
                        help='Frames per second for output video')
     parser.add_argument('--output-dir', default='output', 
                        help='Directory for temporary files')
