@@ -94,6 +94,22 @@ class TravelAnimator:
         self.chrome_options.add_argument("--disable-dev-shm-usage")
         self.chrome_options.add_argument("--window-size=1920,1080")
 
+        # Initialize driver (will be created when needed)
+        self.driver = None
+
+    def _ensure_driver(self):
+        """Ensure Chrome driver is initialized."""
+        if self.driver is None:
+            from selenium import webdriver
+            self.driver = webdriver.Chrome(options=self.chrome_options)
+            self.driver.set_window_size(1920, 1080)
+
+    def cleanup(self):
+        """Clean up resources."""
+        if self.driver:
+            self.driver.quit()
+            self.driver = None
+
     def geocode_city(self, city: str) -> Tuple[float, float]:
         """Get coordinates for a city using geocoding."""
         if city in self.coordinates_cache:
@@ -652,6 +668,7 @@ class TravelAnimator:
         if os.path.exists(png_file):
             return
 
+        self._ensure_driver()
         try:
             self.driver.get(f"file://{os.path.abspath(html_file)}")
             time.sleep(0.5)  # Brief pause for rendering
@@ -661,24 +678,18 @@ class TravelAnimator:
 
     def html_to_image(self, html_file: str, output_image: str, width: int = 1920, height: int = 1080):
         """Convert HTML map to image using Selenium."""
+        self._ensure_driver()
         try:
-            driver = webdriver.Chrome(options=self.chrome_options)
-            driver.set_window_size(width, height)
-
             # Load the HTML file
-            driver.get(f"file://{os.path.abspath(html_file)}")
+            self.driver.get(f"file://{os.path.abspath(html_file)}")
 
             # Wait for map to load
             time.sleep(2)
 
             # Take screenshot
-            driver.save_screenshot(output_image)
-            driver.quit()
-
+            self.driver.save_screenshot(output_image)
         except Exception as e:
             logger.error(f"Error converting HTML to image: {e}")
-            if 'driver' in locals():
-                driver.quit()
 
     def create_video_from_frames(self, frames: List[str], output_video: str, fps: int = DEFAULT_FPS):
         """Create video from frame images."""
@@ -776,6 +787,9 @@ def main():
     except Exception as e:
         logger.error(f"Error creating animation: {e}")
         return 1
+
+    finally:
+        animator.cleanup()
 
     return 0
 
