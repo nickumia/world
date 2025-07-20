@@ -30,17 +30,18 @@ from enum import Enum
 DEFAULT_STEPS_PER_SEGMENT = 30  # Number of frames per travel segment
 DEFAULT_FPS = 30  # Frames per second for output video
 DESTINATION_PAUSE_FRAMES = 5  # Number of frames to pause at each destination
-INITIAL_ZOOM_LEVEL = 11  # Initial zoom level for maps
+INITIAL_ZOOM_LEVEL = 8  # Initial zoom level for maps
+DESTINATION_ZOOM_LEVEL = 8    # Close zoom level for destination exploration
 
 # Display configuration
-MAP_WIDTH = 3840
-MAP_HEIGHT = 2160
-MAP_ZOOM_LEVEL = 7  # Zoom level to show all of North America
+MAP_WIDTH = 1920
+MAP_HEIGHT = 1080
+MAP_ZOOM_LEVEL = 4  # Zoom level to show all of North America
 MAP_CENTER = (39.8283, -98.5795)  # Geographic center of the contiguous US
 
 # Chrome driver configuration
-CHROME_WINDOW_WIDTH = 3840
-CHROME_WINDOW_HEIGHT = 2160
+CHROME_WINDOW_WIDTH = 1920
+CHROME_WINDOW_HEIGHT = 1080
 CHROME_OPTIONS = [
     "--headless",
     "--no-sandbox",
@@ -50,10 +51,9 @@ CHROME_OPTIONS = [
 ]
 
 # Animation Configuration Constants
-DESTINATION_ZOOM_LEVEL = 7    # Close zoom level for destination exploration
+
 DEFAULT_STEPS_PER_SEGMENT = 10  # Default animation frames per travel segment
 DEPARTURE_ZOOM_OUT_FRAMES = 8  # Number of frames for smooth zoom-out when leaving destination
-FRAME_ZOOM_INCREMENT = 1/DEFAULT_STEPS_PER_SEGMENT     # Progressive zoom increment per frame for smooth transitions
 
 try:
     import folium
@@ -857,7 +857,8 @@ class TravelAnimator:
 
     def create_travel_animation(self, cities: List[str], output_video: str = "travel_animation.mp4",
                               steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT, fps: int = DEFAULT_FPS,
-                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None, use_gpu: bool = True):
+                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None, 
+                              use_gpu: bool = True):
         """Main method to create travel animation."""
         logger.info(f"Starting travel animation for {len(cities)} cities")
 
