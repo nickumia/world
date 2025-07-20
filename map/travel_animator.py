@@ -31,6 +31,8 @@ DESTINATION_ZOOM_LEVEL = 11    # Close zoom level for destination exploration
 INITIAL_ZOOM_LEVEL = 10        # Starting zoom level for first city
 DEFAULT_FPS = 30               # Default frames per second for video output
 DEFAULT_STEPS_PER_SEGMENT = 2 * DEFAULT_FPS  # Default animation frames per travel segment
+DEPARTURE_ZOOM_OUT_FRAMES = 8  # Number of frames for smooth zoom-out when leaving destination
+FRAME_ZOOM_INCREMENT = 0.5     # Progressive zoom increment per frame for smooth transitions
 
 try:
     import folium
@@ -465,7 +467,7 @@ class TravelAnimator:
                 
                 # Ensure zoom is actually changing by adding small progressive offset
                 # This guarantees each frame has a unique zoom value
-                frame_zoom_offset = j * 0.1  # Small increment per frame
+                frame_zoom_offset = j * FRAME_ZOOM_INCREMENT  # Progressive increment per frame
                 adjusted_zoom = current_zoom + (frame_zoom_offset * (1 if end_zoom > start_zoom else -1))
                 adjusted_zoom = max(1.0, min(18.0, adjusted_zoom))
                 
@@ -562,6 +564,65 @@ class TravelAnimator:
                 pause_map.save(pause_frame_file)
                 frames.append(pause_frame_file)
                 frame_count += 1
+            
+            # Add smooth zoom-out transition frames when leaving destination (except for last destination)
+            if i < len(coordinates) - 2:  # Not the last segment
+                next_start_zoom = self.calculate_zoom_level(end_coord, 
+                                                          (coordinates[i+2][0], coordinates[i+2][1]),
+                                                          travel_modes[i+1] if i+1 < len(travel_modes) else TravelMode.DRIVING)
+                
+                # Create smooth zoom-out from destination zoom to next segment's starting zoom
+                departure_zoom_views = self.interpolate_map_view(
+                    destination_coord, destination_coord,  # Stay centered on destination
+                    destination_zoom, next_start_zoom,     # Zoom from close to appropriate level
+                    DEPARTURE_ZOOM_OUT_FRAMES
+                )
+                
+                for departure_frame in range(DEPARTURE_ZOOM_OUT_FRAMES):
+                    departure_center, departure_zoom = departure_zoom_views[departure_frame]
+                    
+                    # Create departure zoom-out frame
+                    departure_map = self.create_dynamic_map(departure_center, departure_zoom, coordinates)
+                    
+                    # Add all traveled paths (same as pause frames)
+                    traveled_segments = []
+                    for k in range(i + 1):  # Include current segment
+                        if k < len(coordinates) - 1:
+                            segment_mode = travel_modes[k]
+                            segment_style = self.get_travel_mode_style(segment_mode)
+                            segment_path = self.interpolate_path(
+                                (coordinates[k][0], coordinates[k][1]),
+                                (coordinates[k+1][0], coordinates[k+1][1]),
+                                steps_per_segment,
+                                segment_mode
+                            )
+                            traveled_segments.append((segment_path, segment_style))
+                    
+                    # Add polylines for all traveled segments
+                    for segment_path, segment_style in traveled_segments:
+                        if len(segment_path) > 1:
+                            folium.PolyLine(
+                                segment_path,
+                                color=segment_style['color'],
+                                weight=segment_style['weight'],
+                                opacity=segment_style['opacity'],
+                                dash_array=segment_style['dash_array']
+                            ).add_to(departure_map)
+                    
+                    # Add destination marker (fading out as we zoom out)
+                    marker_opacity = 1.0 - (departure_frame / DEPARTURE_ZOOM_OUT_FRAMES)  # Fade out
+                    if marker_opacity > 0.1:  # Keep visible until almost gone
+                        folium.Marker(
+                            destination_coord,
+                            icon=folium.Icon(color='orange', icon='plane-departure', prefix='fa'),
+                            popup=f"Departing: {coordinates[i+1][2]}"
+                        ).add_to(departure_map)
+                    
+                    # Save departure frame
+                    departure_frame_file = os.path.join(self.output_dir, f"frame_{frame_count:03d}.html")
+                    departure_map.save(departure_frame_file)
+                    frames.append(departure_frame_file)
+                    frame_count += 1
         
         return frames
     
