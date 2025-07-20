@@ -550,6 +550,115 @@ class TravelAnimator:
 
         return frames
 
+    def create_video_from_images(self, image_files: List[str], output_video: str, fps: int = DEFAULT_FPS, use_gpu: bool = True):
+        """Create video from image files with optional GPU acceleration."""
+        if not image_files:
+            logger.error("No images provided for video creation")
+            return
+
+        try:
+            if use_gpu:
+                self._create_video_gpu_accelerated(image_files, output_video, fps)
+            else:
+                self._create_video_cpu_fallback(image_files, output_video, fps)
+        except Exception as e:
+            logger.warning(f"GPU video creation failed: {e}, falling back to CPU")
+            self._create_video_cpu_fallback(image_files, output_video, fps)
+
+    def _create_video_gpu_accelerated(self, image_files: List[str], output_video: str, fps: int):
+        """Create video using GPU-accelerated FFmpeg encoding."""
+        import subprocess
+        import tempfile
+        import os
+
+        logger.info(f"Creating GPU-accelerated video: {output_video}")
+
+        # Create temporary file list for FFmpeg
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
+            for img_file in image_files:
+                # Convert to PNG if needed and write to file list
+                png_file = img_file.replace('.html', '.png')
+                if not os.path.exists(png_file):
+                    self._convert_html_to_png(img_file, png_file)
+                f.write(f"file '{os.path.abspath(png_file)}'\n")
+                f.write(f"duration {1/fps}\n")
+            file_list_path = f.name
+
+        try:
+            # Try different GPU encoders in order of preference
+            gpu_encoders = [
+                # NVIDIA GPU (NVENC)
+                ['-f', 'concat', '-safe', '0', '-i', file_list_path,
+                 '-c:v', 'h264_nvenc', '-preset', 'fast', '-crf', '23',
+                 '-pix_fmt', 'yuv420p', '-r', str(fps), output_video],
+
+                # AMD GPU (AMF)
+                ['-f', 'concat', '-safe', '0', '-i', file_list_path,
+                 '-c:v', 'h264_amf', '-preset', 'fast', '-crf', '23',
+                 '-pix_fmt', 'yuv420p', '-r', str(fps), output_video],
+
+                # Intel GPU (QuickSync)
+                ['-f', 'concat', '-safe', '0', '-i', file_list_path,
+                 '-c:v', 'h264_qsv', '-preset', 'fast', '-crf', '23',
+                 '-pix_fmt', 'yuv420p', '-r', str(fps), output_video],
+            ]
+
+            success = False
+            for encoder_cmd in gpu_encoders:
+                try:
+                    cmd = ['ffmpeg', '-y'] + encoder_cmd
+                    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+                    logger.info(f"GPU encoding successful with {encoder_cmd[6]}")
+                    success = True
+                    break
+                except subprocess.CalledProcessError as e:
+                    logger.debug(f"GPU encoder {encoder_cmd[6]} failed: {e}")
+                    continue
+
+            if not success:
+                raise Exception("All GPU encoders failed")
+
+        finally:
+            # Clean up temporary file
+            try:
+                os.unlink(file_list_path)
+            except:
+                pass
+
+    def _create_video_cpu_fallback(self, image_files: List[str], output_video: str, fps: int):
+        """Fallback to CPU-based video creation using imageio."""
+        logger.info(f"Creating video using CPU: {output_video}")
+
+        # Convert HTML files to images first
+        png_files = []
+        for img_file in image_files:
+            png_file = img_file.replace('.html', '.png')
+            if not os.path.exists(png_file):
+                self._convert_html_to_png(img_file, png_file)
+            png_files.append(png_file)
+
+        # Create video using imageio (original method)
+        import imageio
+        with imageio.get_writer(output_video, fps=fps, codec='libx264', quality=8) as writer:
+            for png_file in png_files:
+                if os.path.exists(png_file):
+                    image = imageio.imread(png_file)
+                    writer.append_data(image)
+
+        logger.info(f"Video created successfully: {output_video}")
+
+    def _convert_html_to_png(self, html_file: str, png_file: str):
+        """Convert HTML file to PNG using Selenium (existing method)."""
+        if os.path.exists(png_file):
+            return
+
+        try:
+            self.driver.get(f"file://{os.path.abspath(html_file)}")
+            time.sleep(0.5)  # Brief pause for rendering
+            self.driver.save_screenshot(png_file)
+        except Exception as e:
+            logger.error(f"Error converting {html_file} to PNG: {e}")
+
     def html_to_image(self, html_file: str, output_image: str, width: int = 1920, height: int = 1080):
         """Convert HTML map to image using Selenium."""
         try:
@@ -612,7 +721,7 @@ class TravelAnimator:
 
         # Create video
         logger.info("Generating video...")
-        self.create_video_from_frames(frames, output_video, fps)
+        self.create_video_from_images(frames, output_video, fps)
 
         # Cleanup HTML files
         logger.info("Cleaning up temporary files...")
