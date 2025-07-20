@@ -237,7 +237,17 @@ class TravelAnimator:
 
     def _add_timestamp_overlay(self, map_obj: folium.Map, timestamp_info: dict):
         """Add timestamp overlay to the map."""
+        # Format date as YYYY/MM/DD
         date_str = timestamp_info.get('date', '')
+        if date_str:
+            try:
+                # Parse the date from MM/DD/YYYY format
+                date_obj = datetime.strptime(date_str, '%m/%d/%Y')
+                # Format as YYYY/MM/DD
+                date_str = date_obj.strftime('%Y/%m/%d')
+            except (ValueError, TypeError):
+                # If parsing fails, use the original string
+                pass
         location_str = timestamp_info.get('location', '')
         travel_mode = timestamp_info.get('travel_mode', '')
 
@@ -259,11 +269,11 @@ class TravelAnimator:
             box-shadow: 0 2px 6px rgba(0,0,0,0.3);
             border: 2px solid #4CAF50;
         ">
-            <div style="margin-bottom: 5px; color: #4CAF50; font-size: 12px;">
+            <div style="margin-bottom: 5px; color: #4CAF50; font-size: 16px;">
                 DATE:     {date_str}
             </div>
             <div style="margin-bottom: 3px; font-size: 16px;">
-                LOCATION: {location_str}
+                LOC:      {location_str}
             </div>
             <div style="color: #FFD700; font-size: 12px;">
                 MODE:     {travel_mode}
