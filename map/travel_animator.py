@@ -25,6 +25,11 @@ from typing import List, Tuple, Dict, Any, Optional
 import logging
 from enum import Enum
 
+# Animation Configuration Constants
+DESTINATION_PAUSE_FRAMES = 15  # Number of frames to pause at each destination
+DESTINATION_ZOOM_LEVEL = 11    # Close zoom level for destination exploration
+INITIAL_ZOOM_LEVEL = 10        # Starting zoom level for first city
+
 try:
     import folium
     import geopy
@@ -191,68 +196,6 @@ class TravelAnimator:
                 ).add_to(m)
         
         return m
-    
-    def calculate_zoom_level(self, current_pos: Tuple[float, float], next_pos: Optional[Tuple[float, float]] = None, 
-                           mode: TravelMode = TravelMode.DRIVING) -> int:
-        """Calculate appropriate zoom level based on travel mode and distance."""
-        if next_pos is None:
-            # Static zoom for single point
-            return 10
-        
-        # Calculate distance between points
-        import math
-        lat1, lon1 = math.radians(current_pos[0]), math.radians(current_pos[1])
-        lat2, lon2 = math.radians(next_pos[0]), math.radians(next_pos[1])
-        
-        # Haversine formula for distance
-        dlat = lat2 - lat1
-        dlon = lon2 - lon1
-        a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
-        c = 2 * math.asin(math.sqrt(a))
-        distance_km = 6371 * c  # Earth's radius in km
-        
-        # Adjust zoom based on distance and travel mode
-        if mode == TravelMode.FLYING:
-            # Flying - zoom out more for long distances
-            if distance_km > 2000:
-                return 4  # Continental view
-            elif distance_km > 1000:
-                return 5  # Multi-state view
-            elif distance_km > 500:
-                return 6  # Regional view
-            else:
-                return 7  # State view
-        else:
-            # Ground transportation - closer zoom
-            if distance_km > 1000:
-                return 5  # Multi-state view
-            elif distance_km > 500:
-                return 6  # Regional view
-            elif distance_km > 200:
-                return 7  # State view
-            elif distance_km > 50:
-                return 8  # City region view
-            else:
-                return 10  # City view
-    
-    def interpolate_map_view(self, start_center: Tuple[float, float], end_center: Tuple[float, float],
-                           start_zoom: int, end_zoom: int, steps: int) -> List[Tuple[Tuple[float, float], int]]:
-        """Create smooth transitions between map views."""
-        views = []
-        
-        for i in range(steps + 1):
-            f = i / steps
-            
-            # Interpolate center coordinates
-            center_lat = start_center[0] + f * (end_center[0] - start_center[0])
-            center_lon = start_center[1] + f * (end_center[1] - start_center[1])
-            
-            # Interpolate zoom level
-            zoom = int(start_zoom + f * (end_zoom - start_zoom))
-            
-            views.append(((center_lat, center_lon), zoom))
-        
-        return views
 
     def create_base_map(self, coordinates: List[Tuple[float, float, str]]) -> folium.Map:
         """Create a base map with all cities marked."""
@@ -284,6 +227,57 @@ class TravelAnimator:
         
         return m
     
+    def calculate_zoom_level(self, current_pos: Tuple[float, float], next_pos: Optional[Tuple[float, float]] = None, 
+                           mode: TravelMode = TravelMode.DRIVING) -> int:
+        """Calculate appropriate zoom level based on travel mode and distance with smooth scaling."""
+        if next_pos is None:
+            # Static zoom for single point
+            return 10
+        
+        # Calculate distance between points
+        import math
+        lat1, lon1 = math.radians(current_pos[0]), math.radians(current_pos[1])
+        lat2, lon2 = math.radians(next_pos[0]), math.radians(next_pos[1])
+        
+        # Haversine formula for distance
+        dlat = lat2 - lat1
+        dlon = lon2 - lon1
+        a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
+        c = 2 * math.asin(math.sqrt(a))
+        distance_km = 6371 * c  # Earth's radius in km
+        
+        # Use logarithmic scaling for smoother zoom transitions
+        if mode == TravelMode.FLYING:
+            # Flying - more dramatic zoom out for long distances
+            if distance_km < 50:
+                return 9
+            elif distance_km < 200:
+                return 8
+            elif distance_km < 500:
+                return 7
+            elif distance_km < 1000:
+                return 6
+            elif distance_km < 2000:
+                return 5
+            else:
+                return 4  # Continental view
+        else:
+            # Ground transportation - gradual zoom scaling
+            if distance_km < 25:
+                return 11  # Very close city view
+            elif distance_km < 50:
+                return 10  # City view
+            elif distance_km < 100:
+                return 9   # City region view
+            elif distance_km < 200:
+                return 8   # Regional view
+            elif distance_km < 500:
+                return 7   # State view
+            elif distance_km < 1000:
+                return 6   # Multi-state view
+            else:
+                return 5   # Wide regional view
+    
     def interpolate_path(self, start: Tuple[float, float], end: Tuple[float, float], 
                         steps: int = 20, mode: TravelMode = TravelMode.DRIVING) -> List[Tuple[float, float]]:
         """Create interpolated points between two coordinates based on travel mode."""
@@ -293,6 +287,54 @@ class TravelAnimator:
         else:
             # For ground transportation, use straight line interpolation
             return self._create_straight_path(start, end, steps)
+    
+    def interpolate_map_view(self, start_center: Tuple[float, float], end_center: Tuple[float, float],
+                           start_zoom: int, end_zoom: int, steps: int) -> List[Tuple[Tuple[float, float], int]]:
+        """Create smooth transitions between map views with eased zoom curves."""
+        views = []
+        
+        for i in range(steps + 1):
+            f = i / steps
+            
+            # Apply easing function for smoother transitions
+            # Use ease-in-out curve for more natural movement
+            eased_f = self._ease_in_out(f)
+            
+            # Interpolate center coordinates with easing
+            center_lat = start_center[0] + eased_f * (end_center[0] - start_center[0])
+            center_lon = start_center[1] + eased_f * (end_center[1] - start_center[1])
+            
+            # Create smoother zoom transitions with different curve for zoom
+            zoom_f = self._smooth_zoom_curve(f, start_zoom, end_zoom)
+            zoom = max(1, min(18, int(start_zoom + zoom_f * (end_zoom - start_zoom))))
+            
+            views.append(((center_lat, center_lon), zoom))
+        
+        return views
+    
+    def _ease_in_out(self, t: float) -> float:
+        """Smooth ease-in-out curve for natural movement."""
+        import math
+        return 0.5 * (1 - math.cos(math.pi * t))
+    
+    def _smooth_zoom_curve(self, t: float, start_zoom: int, end_zoom: int) -> float:
+        """Create ultra-smooth zoom curve with gentle transitions."""
+        import math
+        
+        zoom_diff = abs(end_zoom - start_zoom)
+        
+        # Use smoother curves for all zoom differences
+        if zoom_diff <= 1:
+            # Very gentle easing for minimal zoom changes
+            return 0.5 * (1 - math.cos(math.pi * t * 0.8))
+        elif zoom_diff <= 3:
+            # Gentle S-curve for moderate zoom changes
+            return self._ease_in_out(t) * 0.9
+        else:
+            # Ultra-smooth curve for large zoom changes
+            # Use cubic bezier-like curve for very smooth transitions
+            t_smooth = t * t * (3.0 - 2.0 * t)  # Smoothstep function
+            return self._ease_in_out(t_smooth) * 0.95
     
     def _create_straight_path(self, start: Tuple[float, float], end: Tuple[float, float], steps: int) -> List[Tuple[float, float]]:
         """Create straight line path between two points."""
@@ -342,7 +384,7 @@ class TravelAnimator:
     def create_animated_frames(self, coordinates: List[Tuple[float, float, str]], 
                               travel_modes: Optional[List[TravelMode]] = None, 
                               steps_per_segment: int = 20) -> List[str]:
-        """Create individual map frames for animation with dynamic zoom and movement."""
+        """Create individual map frames for animation."""
         frames = []
         
         # Default to driving mode if no modes specified
@@ -352,15 +394,12 @@ class TravelAnimator:
             logger.warning(f"Travel modes length ({len(travel_modes)}) doesn't match segments ({len(coordinates) - 1}). Using driving mode for missing segments.")
             travel_modes.extend([TravelMode.DRIVING] * (len(coordinates) - 1 - len(travel_modes)))
         
-        # Create initial frame with close zoom on first city
-        initial_zoom = 10  # Close zoom for starting city
-        initial_map = self.create_dynamic_map(
-            (coordinates[0][0], coordinates[0][1]), 
-            initial_zoom, 
-            coordinates
-        )
+        # Create base map
+        base_map = self.create_base_map(coordinates)
+        
+        # Save initial frame
         initial_frame = os.path.join(self.output_dir, "frame_000.html")
-        initial_map.save(initial_frame)
+        base_map.save(initial_frame)
         frames.append(initial_frame)
         
         frame_count = 1
@@ -371,18 +410,22 @@ class TravelAnimator:
             end_coord = (coordinates[i+1][0], coordinates[i+1][1])
             current_mode = travel_modes[i]
             
-            # Calculate zoom levels for this segment
+            # Calculate zoom levels for this segment with smoother transitions
             start_zoom = self.calculate_zoom_level(start_coord, end_coord, current_mode)
-            end_zoom = 10  # Close zoom when arriving at destination
+            # Determine end zoom based on next segment or default to close view
+            if i < len(coordinates) - 2:  # Not the last segment
+                next_coord = (coordinates[i+2][0], coordinates[i+2][1])
+                next_mode = travel_modes[i+1] if i+1 < len(travel_modes) else TravelMode.DRIVING
+                end_zoom = self.calculate_zoom_level(end_coord, next_coord, next_mode)
+            else:
+                end_zoom = 10  # Close zoom for final destination
+            mode_style = self.get_travel_mode_style(current_mode)
             
             # Get interpolated path based on travel mode
             path_points = self.interpolate_path(start_coord, end_coord, steps_per_segment, current_mode)
             
             # Get smooth map view transitions
             map_views = self.interpolate_map_view(start_coord, end_coord, start_zoom, end_zoom, steps_per_segment)
-            
-            # Get style for current travel mode
-            mode_style = self.get_travel_mode_style(current_mode)
             
             for j, point in enumerate(path_points[1:]):  # Skip first point as it's the same as previous end
                 # Get dynamic map view for this frame
@@ -429,6 +472,53 @@ class TravelAnimator:
                 frame_file = os.path.join(self.output_dir, f"frame_{frame_count:03d}.html")
                 frame_map.save(frame_file)
                 frames.append(frame_file)
+                frame_count += 1
+            
+            # Add pause frames at destination for cinematic effect
+            pause_frames = DESTINATION_PAUSE_FRAMES  # Number of frames to pause at each destination
+            destination_coord = end_coord
+            destination_zoom = DESTINATION_ZOOM_LEVEL  # Close zoom for destination exploration
+            
+            for pause_frame in range(pause_frames):
+                # Create destination pause frame with close zoom
+                pause_map = self.create_dynamic_map(destination_coord, destination_zoom, coordinates)
+                
+{{ ... }}
+                traveled_segments = []
+                for k in range(i + 1):  # Include current segment
+                    if k < len(coordinates) - 1:
+                        segment_mode = travel_modes[k]
+                        segment_style = self.get_travel_mode_style(segment_mode)
+                        segment_path = self.interpolate_path(
+                            (coordinates[k][0], coordinates[k][1]),
+                            (coordinates[k+1][0], coordinates[k+1][1]),
+                            steps_per_segment,
+                            segment_mode
+                        )
+                        traveled_segments.append((segment_path, segment_style))
+                
+                # Add polylines for all traveled segments
+                for segment_path, segment_style in traveled_segments:
+                    if len(segment_path) > 1:
+                        folium.PolyLine(
+                            segment_path,
+                            color=segment_style['color'],
+                            weight=segment_style['weight'],
+                            opacity=segment_style['opacity'],
+                            dash_array=segment_style['dash_array']
+                        ).add_to(pause_map)
+                
+                # Add destination marker with special highlighting
+                folium.Marker(
+                    destination_coord,
+                    icon=folium.Icon(color='red', icon='star', prefix='fa'),
+                    popup=f"Exploring: {coordinates[i+1][2]}"
+                ).add_to(pause_map)
+                
+                # Save pause frame
+                pause_frame_file = os.path.join(self.output_dir, f"frame_{frame_count:03d}.html")
+                pause_map.save(pause_frame_file)
+                frames.append(pause_frame_file)
                 frame_count += 1
         
         return frames
