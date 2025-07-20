@@ -50,7 +50,7 @@ export default function SpiritualTech() {
 				</Typography>
 				<Typography variant="h6">
           Start Date: August 11th, 2024
-          End Date: TBD 2025
+          End Date: July 7th, 2025
 				</Typography>
     <br/>
    <Grid container spacing={2} sx={{px: 8}}>
@@ -85,7 +85,7 @@ export default function SpiritualTech() {
   </Grid>
     <br/>
 				<Typography variant="subtitle2">
-          This page will be home to the updates relating to my road trip across America, coined as SpiritualTech.
+          This page is home to the updates relating to my road trip across America, coined as SpiritualTech.
           It's important to understand the meaning behind the naming.  I'm defining <i>spiritual</i> as the
           underlying energy that connects us all and my goal is to use technology to connect us together more
           effectively to create a better tomorrow.  There are other terms like, 'Energy-based Tech' or 'Value-based
