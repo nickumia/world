@@ -197,7 +197,7 @@ class TravelAnimator:
 
     def create_dynamic_map(self, center_coords: Tuple[float, float], zoom_level: float = INITIAL_ZOOM_LEVEL,
                           coordinates: Optional[List[Tuple[float, float, str]]] = None,
-                          reached_index: int = -1) -> folium.Map:
+                          reached_index: int = -1, timestamp_info: Optional[dict] = None) -> folium.Map:
         """Create a map centered on specific coordinates with custom zoom level."""
         m = folium.Map(
             location=[center_coords[0], center_coords[1]],
@@ -229,7 +229,50 @@ class TravelAnimator:
                         icon=folium.Icon(color=color, icon=icon)
                     ).add_to(m)
 
+        # Add timestamp overlay if provided
+        if timestamp_info:
+            self._add_timestamp_overlay(m, timestamp_info)
+
         return m
+
+    def _add_timestamp_overlay(self, map_obj: folium.Map, timestamp_info: dict):
+        """Add timestamp overlay to the map."""
+        date_str = timestamp_info.get('date', '')
+        location_str = timestamp_info.get('location', '')
+        travel_mode = timestamp_info.get('travel_mode', '')
+
+        # Create timestamp HTML with HTML entity emojis for better compatibility
+        timestamp_html = """
+        <div style="
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji';
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 1000;
+            max-width: 300px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border: 2px solid #4CAF50;
+        ">
+            <div style="margin-bottom: 5px; color: #4CAF50; font-size: 12px;">
+                DATE:     {date_str}
+            </div>
+            <div style="margin-bottom: 3px; font-size: 16px;">
+                LOCATION: {location_str}
+            </div>
+            <div style="color: #FFD700; font-size: 12px;">
+                MODE:     {travel_mode}
+            </div>
+        </div>
+        """
+
+        # Add the timestamp overlay to the map
+        map_obj.get_root().html.add_child(folium.Element(timestamp_html))
 
     def calculate_total_frames(self, coordinates: List[Tuple[float, float, str]],
                              steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT) -> int:
@@ -403,7 +446,8 @@ class TravelAnimator:
 
     def create_animated_frames(self, coordinates: List[Tuple[float, float, str]],
                               travel_modes: Optional[List[TravelMode]] = None,
-                              steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT) -> List[str]:
+                              steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT,
+                              dates: Optional[List[dict]] = None) -> List[str]:
         """Create individual map frames for animation with dynamic zoom and movement."""
         frames = []
 
@@ -456,8 +500,20 @@ class TravelAnimator:
                 # Get dynamic map view for this frame
                 current_center, current_zoom = map_views[j+1]
 
+                # Create timestamp info for this frame
+                timestamp_info = None
+                if dates and i < len(dates):
+                    current_date = dates[i]
+                    timestamp_info = {
+                        'date': current_date.get('start_date', ''),
+                        'location': coordinates[i][2],  # City name
+                        'travel_mode': current_mode.value.title()
+                    }
+                else:
+                    logger.warning(f"Frame {frame_count}: No timestamp data available (dates={dates is not None}, i={i}, len(dates)={len(dates) if dates else 'N/A'})")
+
                 # Create new map for this frame with dynamic center and zoom
-                frame_map = self.create_dynamic_map(current_center, current_zoom, coordinates, reached_index=i)
+                frame_map = self.create_dynamic_map(current_center, current_zoom, coordinates, reached_index=i, timestamp_info=timestamp_info)
 
                 # Add traveled path so far with appropriate styling
                 traveled_segments = []
@@ -509,8 +565,18 @@ class TravelAnimator:
             mode_style = self.get_travel_mode_style(current_mode)
 
             for pause_frame in range(pause_frames):
+                # Create timestamp info for pause frame
+                pause_timestamp_info = None
+                if dates and i+1 < len(dates):
+                    destination_date = dates[i+1]
+                    pause_timestamp_info = {
+                        'date': destination_date.get('start_date', ''),
+                        'location': coordinates[i+1][2],  # Destination city name
+                        'travel_mode': 'Arrived'
+                    }
+
                 # Create destination pause frame with close zoom
-                pause_map = self.create_dynamic_map(destination_coord, destination_zoom, coordinates, reached_index=i+1)
+                pause_map = self.create_dynamic_map(destination_coord, destination_zoom, coordinates, reached_index=i+1, timestamp_info=pause_timestamp_info)
 
                 # Add all traveled paths
                 traveled_segments = []
@@ -715,7 +781,7 @@ class TravelAnimator:
 
     def create_travel_animation(self, cities: List[str], output_video: str = "travel_animation.mp4",
                               steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT, fps: int = DEFAULT_FPS,
-                              travel_modes: Optional[List[TravelMode]] = None):
+                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None):
         """Main method to create travel animation."""
         logger.info(f"Starting travel animation for {len(cities)} cities")
 
@@ -728,7 +794,7 @@ class TravelAnimator:
 
         # Create animated frames
         logger.info("Creating animation frames...")
-        frames = self.create_animated_frames(coordinates, travel_modes, steps_per_segment)
+        frames = self.create_animated_frames(coordinates, travel_modes, steps_per_segment, dates)
 
         # Create video
         logger.info("Generating video...")
