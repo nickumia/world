@@ -317,15 +317,17 @@ class TravelAnimator:
             raise ValueError("No valid coordinates provided")
 
         # Calculate map center
-        lats = [coord[0] for coord in coordinates]
-        lons = [coord[1] for coord in coordinates]
-        center_lat = sum(lats) / len(lats)
-        center_lon = sum(lons) / len(lons)
+        # lats = [coord[0] for coord in coordinates]
+        # lons = [coord[1] for coord in coordinates]
+        # center_lat = sum(lats) / len(lats)
+        # center_lon = sum(lons) / len(lons)
+        self.usa_center = (39.8283, -98.5795)  # Geographic center of the contiguous US
+        self.usa_zoom = 11  # Zoom level to show all of North America
 
         # Create map
         m = folium.Map(
-            location=[center_lat, center_lon],
-            zoom_start=INITIAL_ZOOM_LEVEL,
+            location=self.usa_center,
+            zoom_start=self.usa_zoom,
             tiles='OpenStreetMap'
         )
 
@@ -640,6 +642,50 @@ class TravelAnimator:
                 pause_map.save(pause_frame_file)
                 frames.append(pause_frame_file)
                 frame_count += 1
+
+        # Create outro sequence - zoom out to show all of America
+        logger.info("Creating outro sequence...")
+        end_center = coordinates[-1][:2]  # End at last coordinate
+        end_zoom = self.calculate_zoom_level(coordinates[-1][:2], None,
+                                          travel_modes[-1] if travel_modes else TravelMode.DRIVING)
+
+        # Create smooth zoom out to show all of America
+        outro_frames = 30  # Number of frames for intro/outro
+        for i in range(outro_frames):
+            # Ease in interpolation (starts slow, ends fast)
+            t = i / (outro_frames - 1)
+            t = t ** 2  # Ease in quadratic
+
+            # Interpolate center and zoom
+            current_center = (
+                end_center[0] + (self.usa_center[0] - end_center[0]) * t,
+                end_center[1] + (self.usa_center[1] - end_center[1]) * t
+            )
+            current_zoom = end_zoom + (self.usa_zoom - end_zoom) * t
+
+            # Create frame with all markers visible
+            frame_map = self.create_dynamic_map(
+                current_center,
+                current_zoom,
+                coordinates,
+                reached_index=len(coordinates) - 1  # Show all markers during outro
+            )
+
+            # Add timestamp info for the final destination
+            timestamp_info = None
+            if dates and len(dates) > 0:
+                final_date = dates[-1]
+                timestamp_info = {
+                    'date': final_date.get('end_date', final_date.get('start_date', '')),
+                    'location': coordinates[-1][2],  # Final city name
+                    'travel_mode': 'Journey Complete'
+                }
+                self._add_timestamp_overlay(frame_map, timestamp_info)
+
+            # Save frame
+            frame_file = os.path.join(self.output_dir, f"outro_frame_{i:04d}.html")
+            frame_map.save(frame_file)
+            frames.append(frame_file)
 
         return frames
 
