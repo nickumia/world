@@ -857,7 +857,7 @@ class TravelAnimator:
 
     def create_travel_animation(self, cities: List[str], output_video: str = "travel_animation.mp4",
                               steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT, fps: int = DEFAULT_FPS,
-                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None):
+                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None, use_gpu: bool = False):
         """Main method to create travel animation."""
         logger.info(f"Starting travel animation for {len(cities)} cities")
 
@@ -874,7 +874,7 @@ class TravelAnimator:
 
         # Create video
         logger.info("Generating video...")
-        self.create_video_from_images(frames, output_video, fps)
+        self.create_video_from_images(frames, output_video, fps, use_gpu)
 
         # Cleanup HTML files
         logger.info("Cleaning up temporary files...")
@@ -902,6 +902,8 @@ def main():
     parser.add_argument('--travel-modes', nargs='*',
                        choices=['driving', 'flying', 'walking', 'cycling', 'train', 'boat'],
                        help='Travel modes for each segment (e.g., driving flying driving)')
+    parser.add_argument('--use-gpu', action='store_true', default=True,
+                        help='Use GPU for rendering')
 
     args = parser.parse_args()
 
@@ -922,7 +924,8 @@ def main():
             output_video=args.output,
             steps_per_segment=args.steps,
             fps=args.fps,
-            travel_modes=travel_modes
+            travel_modes=travel_modes,
+            use_gpu=args.use_gpu
         )
         print(f"Animation created successfully: {args.output}")
 
