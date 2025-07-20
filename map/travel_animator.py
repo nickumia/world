@@ -104,6 +104,7 @@ class TravelAnimator:
         self.output_dir = output_dir
         self.geolocator = Nominatim(user_agent="travel_animator")
         self.coordinates_cache = {}
+        self.use_gpu = True
 
         # Create output directory
         os.makedirs(output_dir, exist_ok=True)
@@ -708,14 +709,14 @@ class TravelAnimator:
 
         return frames
 
-    def create_video_from_images(self, image_files: List[str], output_video: str, fps: int = DEFAULT_FPS, use_gpu: bool = True):
+    def create_video_from_images(self, image_files: List[str], output_video: str, fps: int = DEFAULT_FPS):
         """Create video from image files with optional GPU acceleration."""
         if not image_files:
             logger.error("No images provided for video creation")
             return
 
         try:
-            if use_gpu:
+            if self.use_gpu:
                 self._create_video_gpu_accelerated(image_files, output_video, fps)
             else:
                 self._create_video_cpu_fallback(image_files, output_video, fps)
@@ -857,8 +858,7 @@ class TravelAnimator:
 
     def create_travel_animation(self, cities: List[str], output_video: str = "travel_animation.mp4",
                               steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT, fps: int = DEFAULT_FPS,
-                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None, 
-                              use_gpu: bool = True):
+                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None):
         """Main method to create travel animation."""
         logger.info(f"Starting travel animation for {len(cities)} cities")
 
@@ -875,7 +875,7 @@ class TravelAnimator:
 
         # Create video
         logger.info("Generating video...")
-        self.create_video_from_images(frames, output_video, fps, use_gpu)
+        self.create_video_from_images(frames, output_video, fps, self.use_gpu)
 
         # Cleanup HTML files
         logger.info("Cleaning up temporary files...")
@@ -920,13 +920,13 @@ def main():
 
     try:
         # Create animation
+        animator.use_gpu = args.use_gpu
         animator.create_travel_animation(
             cities=args.cities,
             output_video=args.output,
             steps_per_segment=args.steps,
             fps=args.fps,
-            travel_modes=travel_modes,
-            use_gpu=args.use_gpu
+            travel_modes=travel_modes
         )
         print(f"Animation created successfully: {args.output}")
 
