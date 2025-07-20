@@ -30,12 +30,12 @@ from enum import Enum
 DEFAULT_STEPS_PER_SEGMENT = 30  # Number of frames per travel segment
 DEFAULT_FPS = 30  # Frames per second for output video
 DESTINATION_PAUSE_FRAMES = 5  # Number of frames to pause at each destination
-INITIAL_ZOOM_LEVEL = 7  # Initial zoom level for maps
+INITIAL_ZOOM_LEVEL = 11  # Initial zoom level for maps
 
 # Display configuration
 MAP_WIDTH = 3840
 MAP_HEIGHT = 2160
-MAP_ZOOM_LEVEL = 4  # Zoom level to show all of North America
+MAP_ZOOM_LEVEL = 7  # Zoom level to show all of North America
 MAP_CENTER = (39.8283, -98.5795)  # Geographic center of the contiguous US
 
 # Chrome driver configuration
