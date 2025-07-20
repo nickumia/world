@@ -7,6 +7,8 @@ animated videos from your travel itinerary.
 """
 
 from travel_animator import TravelAnimator, TravelMode
+import csv
+import os
 
 def create_florida_trip_animation():
     """Example: Create animation for Florida trip with driving."""
@@ -67,120 +69,99 @@ def create_southeast_tour_animation():
         travel_modes=travel_modes
     )
 
-def create_full_usa_tour_animation():
-    """Example: Create animation for full USA tour based on your timeline."""
-    # Based on your spiritual_tech.js timeline
-    cities = [
-        "Orlando, FL",
-        "Tallahassee, FL", 
-        "Panama City Beach, FL",
-        "Dothan, AL",
-        "Montgomery, AL",
-        "Mobile, AL", 
-        "Baton Rouge, LA",
-        "Shreveport, LA",
-        "Jackson, MS",
-        "Little Rock, AR",
-        "Fort Smith, AR",
-        "Tulsa, OK",
-        "Oklahoma City, OK",
-        "Dallas, TX",
-        "Houston, TX",
-        "San Antonio, TX",
-        "Austin, TX",
-        "El Paso, TX",
-        "Albuquerque, NM",
-        "Santa Fe, NM",
-        "Denver, CO",
-        "Colorado Springs, CO",
-        "Cheyenne, WY",
-        "Salt Lake City, UT",
-        "Phoenix, AZ",
-        "San Diego, CA",
-        "Los Angeles, CA",
-        "San Francisco, CA",
-        "Las Vegas, NV",
-        "Portland, OR",
-        "Seattle, WA",
-        "Boise, ID",
-        "Helena, MT",
-        "Bismarck, ND",
-        "Pierre, SD",
-        "Minneapolis, MN",
-        "Madison, WI",
-        "Chicago, IL",
-        "Detroit, MI",
-        "Columbus, OH",
-        "Pittsburgh, PA",
-        "Buffalo, NY",
-        "Boston, MA",
-        "Hartford, CT",
-        "New York, NY",
-        "Philadelphia, PA",
-        "Washington, DC",
-        "Richmond, VA",
-        "Raleigh, NC",
-        "Columbia, SC",
-        "Atlanta, GA",
-        "Jacksonville, FL"
-    ]
+def load_stops_from_csv(csv_file="stops.csv"):
+    """Load cities and travel modes from CSV file."""
+    cities = []
+    travel_modes = []
     
-    # Mixed travel modes for cross-country journey
-    # Mostly driving with strategic flights for long distances
-    travel_modes = [
-        # Florida to West Coast - mostly driving
-        TravelMode.DRIVING,   # Orlando to Tallahassee
-        TravelMode.DRIVING,   # Tallahassee to Panama City Beach
-        TravelMode.DRIVING,   # Panama City Beach to Dothan
-        TravelMode.DRIVING,   # Dothan to Montgomery
-        TravelMode.DRIVING,   # Montgomery to Mobile
-        TravelMode.DRIVING,   # Mobile to Baton Rouge
-        TravelMode.DRIVING,   # Baton Rouge to Shreveport
-        TravelMode.DRIVING,   # Shreveport to Jackson
-        TravelMode.DRIVING,   # Jackson to Little Rock
-        TravelMode.DRIVING,   # Little Rock to Fort Smith
-        TravelMode.DRIVING,   # Fort Smith to Tulsa
-        TravelMode.DRIVING,   # Tulsa to Oklahoma City
-        TravelMode.DRIVING,   # Oklahoma City to Dallas
-        TravelMode.DRIVING,   # Dallas to Houston
-        TravelMode.DRIVING,   # Houston to San Antonio
-        TravelMode.DRIVING,   # San Antonio to Austin
-        TravelMode.DRIVING,   # Austin to El Paso
-        TravelMode.DRIVING,   # El Paso to Albuquerque
-        TravelMode.DRIVING,   # Albuquerque to Santa Fe
-        TravelMode.DRIVING,   # Santa Fe to Denver
-        TravelMode.DRIVING,   # Denver to Colorado Springs
-        TravelMode.DRIVING,   # Colorado Springs to Cheyenne
-        TravelMode.DRIVING,   # Cheyenne to Salt Lake City
-        TravelMode.DRIVING,   # Salt Lake City to Phoenix
-        TravelMode.DRIVING,   # Phoenix to San Diego
-        TravelMode.DRIVING,   # San Diego to Los Angeles
-        TravelMode.DRIVING,   # Los Angeles to San Francisco
-        TravelMode.FLYING,    # San Francisco to Las Vegas (skip desert drive)
-        TravelMode.DRIVING,   # Las Vegas to Portland
-        TravelMode.DRIVING,   # Portland to Seattle
-        TravelMode.FLYING,    # Seattle to Boise (mountain crossing)
-        TravelMode.DRIVING,   # Boise to Helena
-        TravelMode.DRIVING,   # Helena to Bismarck
-        TravelMode.DRIVING,   # Bismarck to Pierre
-        TravelMode.DRIVING,   # Pierre to Minneapolis
-        TravelMode.DRIVING,   # Minneapolis to Madison
-        TravelMode.DRIVING,   # Madison to Chicago
-        TravelMode.DRIVING,   # Chicago to Detroit
-        TravelMode.DRIVING,   # Detroit to Columbus
-        TravelMode.DRIVING,   # Columbus to Pittsburgh
-        TravelMode.DRIVING,   # Pittsburgh to Buffalo
-        TravelMode.DRIVING,   # Buffalo to Boston
-        TravelMode.DRIVING,   # Boston to Hartford
-        TravelMode.TRAIN,     # Hartford to New York (scenic train ride)
-        TravelMode.TRAIN,     # New York to Philadelphia (Amtrak corridor)
-        TravelMode.DRIVING,   # Philadelphia to Washington DC
-        TravelMode.DRIVING,   # Washington DC to Richmond
-        TravelMode.DRIVING,   # Richmond to Raleigh
-        TravelMode.DRIVING,   # Raleigh to Columbia
-        TravelMode.DRIVING,   # Columbia to Atlanta
-        TravelMode.FLYING     # Atlanta to Jacksonville (final flight home)
-    ]
+    if not os.path.exists(csv_file):
+        print(f"Warning: {csv_file} not found. Using default data.")
+        return None, None
+    
+    try:
+        with open(csv_file, 'r', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            rows = list(reader)
+            
+            # Filter out rows with missing location data
+            valid_rows = [row for row in rows if row['Location'].strip() and row['State'].strip()]
+            
+            # Build cities list
+            for row in valid_rows:
+                location = row['Location'].strip()
+                state = row['State'].strip()
+                
+                # Skip international locations for now
+                if state in ['Vietnam', 'JP']:  # Skip Vietnam and Japan
+                    continue
+                    
+                # Format city name
+                if '/' in location:
+                    # Take the first city if multiple are listed
+                    location = location.split('/')[0]
+                
+                city_name = f"{location}, {state}"
+                cities.append(city_name)
+            
+            # Build travel modes list (one less than cities since it's between cities)
+            for i in range(len(valid_rows) - 1):
+                current_row = valid_rows[i]
+                next_row = valid_rows[i + 1]
+                
+                # Skip international segments
+                if current_row['State'] in ['Vietnam', 'JP'] or next_row['State'] in ['Vietnam', 'JP']:
+                    continue
+                
+                travel_type = current_row.get('Travel Type', 'Driving').strip().lower()
+                
+                # Map CSV travel types to TravelMode enum
+                if travel_type == 'flying':
+                    travel_modes.append(TravelMode.FLYING)
+                elif travel_type == 'train':
+                    travel_modes.append(TravelMode.TRAIN)
+                elif travel_type == 'boat':
+                    travel_modes.append(TravelMode.BOAT)
+                elif travel_type == 'cycling':
+                    travel_modes.append(TravelMode.CYCLING)
+                elif travel_type == 'walking':
+                    travel_modes.append(TravelMode.WALKING)
+                else:  # Default to driving
+                    travel_modes.append(TravelMode.DRIVING)
+            
+            print(f"Loaded {len(cities)} cities and {len(travel_modes)} travel segments from {csv_file}")
+            return cities, travel_modes
+            
+    except Exception as e:
+        print(f"Error reading {csv_file}: {e}")
+        return None, None
+
+def create_full_usa_tour_animation():
+    """Example: Create animation for full USA tour loaded from stops.csv."""
+    # Load cities and travel modes from CSV
+    cities, travel_modes = load_stops_from_csv()
+    
+    if cities is None or travel_modes is None:
+        print("Failed to load data from CSV. Using fallback data.")
+        # Fallback to a simple route if CSV loading fails
+        cities = [
+            "Fort Lauderdale, FL",
+            "Orlando, FL",
+            "Tallahassee, FL",
+            "Mobile, AL",
+            "New Orleans, LA",
+            "Houston, TX",
+            "Denver, CO",
+            "Las Vegas, NV",
+            "Los Angeles, CA",
+            "San Francisco, CA",
+            "Seattle, WA",
+            "Chicago, IL",
+            "New York, NY",
+            "Washington, DC",
+            "Atlanta, GA",
+            "Jacksonville, FL"
+        ]
+        travel_modes = [TravelMode.DRIVING] * (len(cities) - 1)
     
     animator = TravelAnimator(output_dir="usa_tour_output")
     animator.create_travel_animation(

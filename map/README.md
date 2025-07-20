@@ -16,29 +16,11 @@ This tool creates animated videos showing travel routes between cities on a map.
 
 You'll need Python 3.7+ and Chrome/Chromium browser installed for screenshot generation.
 
-### Install Dependencies
+### Docker Setup
 
 ```bash
 cd map
-pip install -r requirements.txt
-```
-
-### Chrome Driver Setup
-
-The script uses Selenium with Chrome for generating screenshots. Make sure you have:
-1. Chrome or Chromium browser installed
-2. ChromeDriver installed and in your PATH
-
-On Ubuntu/WSL:
-```bash
-# Install Chrome
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-sudo apt update
-sudo apt install google-chrome-stable
-
-# Install ChromeDriver
-sudo apt install chromium-chromedriver
+docker build -t travel-animator .
 ```
 
 ## Usage
@@ -46,7 +28,7 @@ sudo apt install chromium-chromedriver
 ### Command Line Interface
 
 ```bash
-python travel_animator.py --cities "Orlando,FL" "Tallahassee,FL" "Mobile,AL" --output my_trip.mp4
+docker run -ti --rm -v $(pwd)/map:/app travel-animator python example_usage.py
 ```
 
 #### Options:
