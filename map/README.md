@@ -28,7 +28,7 @@ docker build -t travel-animator .
 ### Command Line Interface
 
 ```bash
-docker run -ti --rm -v $(pwd)/map:/app travel-animator python example_usage.py
+docker run -ti --rm -v $(pwd):/app travel-animator python example_usage.py
 ```
 
 #### Options:

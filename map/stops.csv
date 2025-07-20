@@ -18,17 +18,21 @@ Start Date,End Date,Location,State,Travel Type
 9/25/2024,9/28/2024,OKC,OK,Driving
 9/28/2024,10/1/2024,Dallas,TX,Driving
 10/1/2024,10/5/2024,Houston,TX,Driving
+10/5/2024,10/5/2024,Galveston,TX,Driving
+10/5/2024,10/5/2024,Houston,TX,Driving
 10/5/2024,10/8/2024,San Antonio,TX,Driving
 10/8/2024,10/12/2024,Austin,TX,Driving
 10/12/2024,10/13/2024,Sonora,TX,Driving
 10/13/2024,10/15/2024,Alpine,TX,Driving
 10/15/2024,10/17/2024,El Paso,TX,Driving
 10/17/2024,10/20/2024,Ruidoso,NM,Driving
-10/20/2024,10/22/2024,Alburquerque,NM,Driving
+10/20/2024,10/22/2024,Albuquerque,NM,Driving
 10/22/2024,10/24/2024,Santa Fe,NM,Driving
 10/24/2024,10/26/2024,Trinidad,CO,Driving
 10/26/2024,10/29/2024,Colorado Springs,CO,Driving
 10/29/2024,11/2/2024,Denver,CO,Driving
+10/29/2024,11/2/2024,Boulder,CO,Driving
+11/2/2024,11/2/2024,Denver,CO,Driving
 11/2/2024,11/5/2024,Cheyenne,WY,Driving
 11/5/2024,11/7/2024,Saratoga,WY,Driving
 11/7/2024,11/8/2024,Rock Springs,WY,Driving
@@ -44,7 +48,7 @@ Start Date,End Date,Location,State,Travel Type
 12/8/2024,12/9/2024,Los Angeles,CA,Flying
 12/9/2024,12/13/2024,Fort Lauderdale,FL,Flying
 12/13/2024,12/13/2024,Los Angeles,CA,Driving
-12/13/2024,12/14/2024,Arroyo,CA,Driving
+12/13/2024,12/14/2024,Arroyo Grande,CA,Driving
 12/19/2024,12/22/2024,Santa Cruz,CA,Driving
 12/14/2024,12/17/2024,San Francisco,CA,Driving
 12/17/2024,12/19/2024,Sacramento,CA,Driving
@@ -60,7 +64,8 @@ Start Date,End Date,Location,State,Travel Type
 1/6/2025,1/9/2025,Boise,ID,Driving
 1/9/2025,1/11/2025,Pocatello,ID,Driving
 1/10/2025,1/10/2025,Salt Lake City,UT,Driving
-1/11/2025,1/14/2025,Yellowstone,MT,Driving
+1/11/2025,1/11/2025,Pocatello,ID,Driving
+1/11/2025,1/14/2025,West Yellowstone,MT,Driving
 1/14/2025,1/18/2025,Helena,MT,Driving
 1/18/2025,1/20/2025,Billings,MT,Driving
 1/20/2025,1/21/2025,Miles City,MT,Driving
@@ -82,7 +87,7 @@ Start Date,End Date,Location,State,Travel Type
 2/18/2025,2/20/2025,Lincoln,NE,Driving
 2/20/2025,2/22/2025,Topeka,KS,Driving
 2/22/2025,2/24/2025,Riverside,MO,Driving
-2/24/2025,2/25/2025,Jefferson City,IL,Driving
+2/24/2025,2/25/2025,Jefferson City,MO,Driving
 2/25/2025,2/27/2025,Springfield,IL,Driving
 2/27/2025,2/28/2025,St Louis,MO,Driving
 2/28/2025,3/1/2025,Paducah,KY,Driving
@@ -95,14 +100,13 @@ Start Date,End Date,Location,State,Travel Type
 3/12/2025,3/14/2025,Atlanta,GA,Driving
 3/14/2025,3/16/2025,Helen,GA,Driving
 3/16/2025,3/17/2025,Bristol,VA,Driving
-3/17/2025,3/18/2025,Richlands,VA,Driving
-3/18/2025,3/18/2025,Coalwood,WV,Driving
+3/17/2025,3/18/2025,Coalwood,WV,Driving
 3/18/2025,3/18/2025,Princeton,WV,Driving
 3/18/2025,3/20/2025,Charleston,WV,Driving
 3/20/2025,3/21/2025,Morgantown,WV,Driving
+3/22/2025,3/21/2025,Hershey,PA,Driving
 3/21/2025,3/25/2025,Long Island,NY,Driving
-3/25/2025,3/26/2025,Greentown,PA,Driving
-3/26/2025,3/27/2025,Scranton,PA,Driving
+3/25/2025,3/27/2025,Scranton,PA,Driving
 3/27/2025,3/29/2025,State College,PA,Driving
 3/29/2025,3/31/2025,Pittsburgh,PA,Driving
 3/31/2025,4/1/2025,Belmont,OH,Driving
@@ -118,7 +122,7 @@ Start Date,End Date,Location,State,Travel Type
 4/15/2025,4/16/2025,Detroit,MI,Driving
 4/16/2025,4/17/2025,Sandusky,OH,Driving
 4/17/2025,4/18/2025,Cleveland,OH,Driving
-4/18/2025,4/19/2025,Springfield,PA,Driving
+4/18/2025,4/19/2025,Erie,PA,Driving
 4/19/2025,4/21/2025,Buffalo,NY,Driving
 4/21/2025,4/23/2025,Rochester,NY,Driving
 4/23/2025,4/24/2025,Syracuse,NY,Flying
