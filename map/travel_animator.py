@@ -36,7 +36,7 @@ DESTINATION_ZOOM_LEVEL = 8    # Close zoom level for destination exploration
 # Display configuration
 MAP_WIDTH = 1920
 MAP_HEIGHT = 1080
-MAP_ZOOM_LEVEL = 4  # Zoom level to show all of North America
+MAP_ZOOM_LEVEL = 6  # Zoom level to show all of North America
 MAP_CENTER = (39.8283, -98.5795)  # Geographic center of the contiguous US
 
 # Chrome driver configuration
