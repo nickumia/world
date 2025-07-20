@@ -27,8 +27,8 @@ from enum import Enum
 
 # Animation Configuration Constants
 DESTINATION_PAUSE_FRAMES = 5  # Number of frames to pause at each destination
-DESTINATION_ZOOM_LEVEL = 11    # Close zoom level for destination exploration
-INITIAL_ZOOM_LEVEL = 10        # Starting zoom level for first city
+DESTINATION_ZOOM_LEVEL = 8    # Close zoom level for destination exploration
+INITIAL_ZOOM_LEVEL = 8        # Starting zoom level for first city
 DEFAULT_FPS = 10               # Default frames per second for video output
 DEFAULT_STEPS_PER_SEGMENT = 10  # Default animation frames per travel segment
 DEPARTURE_ZOOM_OUT_FRAMES = 8  # Number of frames for smooth zoom-out when leaving destination
@@ -179,7 +179,7 @@ class TravelAnimator:
         }
         return styles.get(mode, styles[TravelMode.DRIVING])
 
-    def create_dynamic_map(self, center_coords: Tuple[float, float], zoom_level: float = 8.0,
+    def create_dynamic_map(self, center_coords: Tuple[float, float], zoom_level: float = INITIAL_ZOOM_LEVEL,
                           coordinates: Optional[List[Tuple[float, float, str]]] = None) -> folium.Map:
         """Create a map centered on specific coordinates with custom zoom level."""
         m = folium.Map(
@@ -241,7 +241,7 @@ class TravelAnimator:
         # Create map
         m = folium.Map(
             location=[center_lat, center_lon],
-            zoom_start=5,
+            zoom_start=INITIAL_ZOOM_LEVEL,
             tiles='OpenStreetMap'
         )
 
@@ -260,53 +260,7 @@ class TravelAnimator:
     def calculate_zoom_level(self, current_pos: Tuple[float, float], next_pos: Optional[Tuple[float, float]] = None,
                            mode: TravelMode = TravelMode.DRIVING) -> int:
         """Calculate appropriate zoom level based on travel mode and distance with smooth scaling."""
-        if next_pos is None:
-            # Static zoom for single point
-            return 10
-
-        # Calculate distance between points
-        import math
-        lat1, lon1 = math.radians(current_pos[0]), math.radians(current_pos[1])
-        lat2, lon2 = math.radians(next_pos[0]), math.radians(next_pos[1])
-
-        # Haversine formula for distance
-        dlat = lat2 - lat1
-        dlon = lon2 - lon1
-        a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
-        c = 2 * math.asin(math.sqrt(a))
-        distance_km = 6371 * c  # Earth's radius in km
-
-        # Use logarithmic scaling for smoother zoom transitions
-        if mode == TravelMode.FLYING:
-            # Flying - more consistent zoom range for smoother transitions
-            if distance_km < 50:
-                return 9   # Close regional view
-            elif distance_km < 200:
-                return 8   # Regional view
-            elif distance_km < 500:
-                return 8   # Regional view
-            elif distance_km < 1000:
-                return 7   # State view
-            elif distance_km < 2000:
-                return 7   # State view
-            else:
-                return 6   # Multi-state view (not too wide)
-        else:
-            # Ground transportation - constrained zoom range for consistency
-            if distance_km < 25:
-                return 9   # Close regional view (not too close)
-            elif distance_km < 50:
-                return 9   # Close regional view
-            elif distance_km < 100:
-                return 8   # Regional view
-            elif distance_km < 200:
-                return 8   # Regional view
-            elif distance_km < 500:
-                return 7   # State view
-            elif distance_km < 1000:
-                return 7   # State view
-            else:
-                return 6   # Multi-state view (not too wide)
+        return INITIAL_ZOOM_LEVEL
 
     def interpolate_path(self, start: Tuple[float, float], end: Tuple[float, float],
                         steps: int = DEFAULT_STEPS_PER_SEGMENT, mode: TravelMode = TravelMode.DRIVING) -> List[Tuple[float, float]]:
@@ -334,10 +288,7 @@ class TravelAnimator:
             center_lat = start_center[0] + eased_f * (end_center[0] - start_center[0])
             center_lon = start_center[1] + eased_f * (end_center[1] - start_center[1])
 
-            # Create smoother zoom transitions with different curve for zoom
-            zoom_f = self._smooth_zoom_curve(f, start_zoom, end_zoom)
-            # Use float zoom for truly smooth transitions (Folium supports fractional zoom)
-            zoom = max(1.0, min(18.0, start_zoom + zoom_f * (end_zoom - start_zoom)))
+            zoom = INITIAL_ZOOM_LEVEL
 
             views.append(((center_lat, center_lon), zoom))
 
@@ -347,25 +298,6 @@ class TravelAnimator:
         """Smooth ease-in-out curve for natural movement."""
         import math
         return 0.4 * (1 - math.cos(math.pi * t))
-
-    def _smooth_zoom_curve(self, t: float, start_zoom: float, end_zoom: float) -> float:
-        """Create ultra-smooth zoom curve with gentle transitions."""
-        import math
-
-        zoom_diff = abs(end_zoom - start_zoom)
-
-        # Use smoother curves for all zoom differences
-        if zoom_diff <= 1:
-            # Very gentle easing for minimal zoom changes
-            return 0.5 * (1 - math.cos(math.pi * t * 0.8))
-        elif zoom_diff <= 3:
-            # Gentle S-curve for moderate zoom changes
-            return self._ease_in_out(t) * 0.9
-        else:
-            # Ultra-smooth curve for large zoom changes
-            # Use cubic bezier-like curve for very smooth transitions
-            t_smooth = t * t * (3.0 - 2.0 * t)  # Smoothstep function
-            return self._ease_in_out(t_smooth) * 0.95
 
     def _create_straight_path(self, start: Tuple[float, float], end: Tuple[float, float], steps: int) -> List[Tuple[float, float]]:
         """Create straight line path between two points."""
@@ -452,7 +384,7 @@ class TravelAnimator:
                 next_mode = travel_modes[i+1] if i+1 < len(travel_modes) else TravelMode.DRIVING
                 end_zoom = self.calculate_zoom_level(end_coord, next_coord, next_mode)
             else:
-                end_zoom = 10  # Close zoom for final destination
+                end_zoom = DESTINATION_ZOOM_LEVEL  # Close zoom for final destination
             mode_style = self.get_travel_mode_style(current_mode)
 
             # Get interpolated path based on travel mode
@@ -465,18 +397,8 @@ class TravelAnimator:
                 # Get dynamic map view for this frame
                 current_center, current_zoom = map_views[j+1]
 
-                # Ensure zoom is actually changing by adding small progressive offset
-                # This guarantees each frame has a unique zoom value
-                frame_zoom_offset = j * FRAME_ZOOM_INCREMENT  # Progressive increment per frame
-                adjusted_zoom = current_zoom + (frame_zoom_offset * (1 if end_zoom > start_zoom else -1))
-                adjusted_zoom = max(1.0, min(18.0, adjusted_zoom))
-
-                # Debug: Log zoom values to ensure they're changing
-                if j < 5:  # Log first few frames for debugging
-                    logger.info(f"Frame {j}: Base zoom {current_zoom:.2f}, Adjusted zoom {adjusted_zoom:.2f}")
-
                 # Create new map for this frame with dynamic center and zoom
-                frame_map = self.create_dynamic_map(current_center, adjusted_zoom, coordinates)
+                frame_map = self.create_dynamic_map(current_center, current_zoom, coordinates)
 
                 # Add traveled path so far with appropriate styling
                 traveled_segments = []
