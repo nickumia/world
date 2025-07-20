@@ -571,10 +571,13 @@ class TravelAnimator:
                                                           (coordinates[i+2][0], coordinates[i+2][1]),
                                                           travel_modes[i+1] if i+1 < len(travel_modes) else TravelMode.DRIVING)
                 
-                # Create smooth zoom-out from destination zoom to next segment's starting zoom
+                # Get next destination coordinates for panning
+                next_destination_coord = (coordinates[i+2][0], coordinates[i+2][1])
+                
+                # Create smooth zoom-out AND pan toward next destination
                 departure_zoom_views = self.interpolate_map_view(
-                    destination_coord, destination_coord,  # Stay centered on destination
-                    destination_zoom, next_start_zoom,     # Zoom from close to appropriate level
+                    destination_coord, next_destination_coord,  # Pan from current to next destination
+                    destination_zoom, next_start_zoom,          # Zoom from close to appropriate level
                     DEPARTURE_ZOOM_OUT_FRAMES
                 )
                 
