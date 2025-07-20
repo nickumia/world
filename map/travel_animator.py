@@ -279,11 +279,16 @@ class TravelAnimator:
     def interpolate_path(self, start: Tuple[float, float], end: Tuple[float, float],
                         steps: int = DEFAULT_STEPS_PER_SEGMENT, mode: TravelMode = TravelMode.DRIVING) -> List[Tuple[float, float]]:
         """Create interpolated points between two coordinates based on travel mode."""
-        if mode == TravelMode.FLYING:
-            # For flying, create a curved path (great circle approximation)
-            return self._create_curved_path(start, end, steps)
-        else:
-            # For ground transportation, use straight line interpolation
+        try:
+            if mode == TravelMode.FLYING:
+                # For flying, create a curved path (great circle approximation)
+                return self._create_curved_path(start, end, steps)
+            else:
+                # For ground transportation, use straight line interpolation
+                return self._create_straight_path(start, end, steps)
+        except Exception as e:
+            logger.warning(f"Error in path interpolation from {start} to {end}: {e}")
+            # Fallback to straight line path
             return self._create_straight_path(start, end, steps)
 
     def interpolate_map_view(self, start_center: Tuple[float, float], end_center: Tuple[float, float],
@@ -315,6 +320,9 @@ class TravelAnimator:
 
     def _create_straight_path(self, start: Tuple[float, float], end: Tuple[float, float], steps: int) -> List[Tuple[float, float]]:
         """Create straight line path between two points."""
+        if steps <= 0:
+            return [start, end]
+
         lat_step = (end[0] - start[0]) / steps
         lon_step = (end[1] - start[1]) / steps
 
@@ -330,23 +338,38 @@ class TravelAnimator:
         """Create curved path for flying routes (great circle approximation)."""
         import math
 
-        lat1, lon1 = math.radians(start[0]), math.radians(start[1])
-        lat2, lon2 = math.radians(end[0]), math.radians(end[1])
+        if steps <= 0:
+            return [start, end]
 
-        path = []
-        for i in range(steps + 1):
-            f = i / steps
+        # Check if points are too close (use straight line)
+        if abs(start[0] - end[0]) < 0.001 and abs(start[1] - end[1]) < 0.001:
+            return self._create_straight_path(start, end, steps)
 
-            # Great circle interpolation
-            a = math.sin((1-f) * math.acos(math.sin(lat1)*math.sin(lat2) +
-                                          math.cos(lat1)*math.cos(lat2)*math.cos(lon2-lon1))) / math.sin(math.acos(math.sin(lat1)*math.sin(lat2) + math.cos(lat1)*math.cos(lat2)*math.cos(lon2-lon1)))
-            b = math.sin(f * math.acos(math.sin(lat1)*math.sin(lat2) +
-                                      math.cos(lat1)*math.cos(lat2)*math.cos(lon2-lon1))) / math.sin(math.acos(math.sin(lat1)*math.sin(lat2) + math.cos(lat1)*math.cos(lat2)*math.cos(lon2-lon1)))
+        try:
+            lat1, lon1 = math.radians(start[0]), math.radians(start[1])
+            lat2, lon2 = math.radians(end[0]), math.radians(end[1])
 
-            if math.acos(math.sin(lat1)*math.sin(lat2) + math.cos(lat1)*math.cos(lat2)*math.cos(lon2-lon1)) == 0:
-                # Points are the same or antipodal
-                path.append((start[0] + f * (end[0] - start[0]), start[1] + f * (end[1] - start[1])))
-            else:
+            # Calculate angular distance
+            cos_d = math.sin(lat1) * math.sin(lat2) + math.cos(lat1) * math.cos(lat2) * math.cos(lon2 - lon1)
+
+            # Clamp to valid range to avoid math domain errors
+            cos_d = max(-1.0, min(1.0, cos_d))
+            d = math.acos(cos_d)
+
+            # If distance is very small or zero, use straight line
+            if d < 1e-6:
+                return self._create_straight_path(start, end, steps)
+
+            path = []
+            sin_d = math.sin(d)
+
+            for i in range(steps + 1):
+                f = i / steps
+
+                # Spherical interpolation
+                a = math.sin((1 - f) * d) / sin_d
+                b = math.sin(f * d) / sin_d
+
                 x = a * math.cos(lat1) * math.cos(lon1) + b * math.cos(lat2) * math.cos(lon2)
                 y = a * math.cos(lat1) * math.sin(lon1) + b * math.cos(lat2) * math.sin(lon2)
                 z = a * math.sin(lat1) + b * math.sin(lat2)
@@ -355,6 +378,12 @@ class TravelAnimator:
                 lon = math.atan2(y, x)
 
                 path.append((math.degrees(lat), math.degrees(lon)))
+
+            return path
+
+        except Exception as e:
+            logger.warning(f"Error in curved path calculation: {e}, falling back to straight line")
+            return self._create_straight_path(start, end, steps)
 
     def create_animated_frames(self, coordinates: List[Tuple[float, float, str]],
                               travel_modes: Optional[List[TravelMode]] = None,

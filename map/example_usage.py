@@ -91,10 +91,6 @@ def load_stops_from_csv(csv_file="stops.csv"):
                 location = row['Location'].strip()
                 state = row['State'].strip()
                 
-                # Skip international locations for now
-                if state in ['Vietnam', 'JP']:  # Skip Vietnam and Japan
-                    continue
-                    
                 # Format city name
                 if '/' in location:
                     # Take the first city if multiple are listed
@@ -107,10 +103,6 @@ def load_stops_from_csv(csv_file="stops.csv"):
             for i in range(len(valid_rows) - 1):
                 current_row = valid_rows[i]
                 next_row = valid_rows[i + 1]
-                
-                # Skip international segments
-                if current_row['State'] in ['Vietnam', 'JP'] or next_row['State'] in ['Vietnam', 'JP']:
-                    continue
                 
                 travel_type = current_row.get('Travel Type', 'Driving').strip().lower()
                 
