@@ -6,9 +6,9 @@ Start Date,End Date,Location,State,Travel Type
 8/20/2024,8/24/2024,Dothan,AL,Driving
 8/24/2024,8/27/2024,Montgomery,AL,Driving
 8/27/2024,8/30/2024,Mobile,AL,Driving
-8/30/2024,8/30/2024,New Orleans,LA,Driving
+8/30/2024,8/30/2024,New Orleans,LA,Flying
 8/30/2024,9/2/2024,Long Island,NY,Flying
-9/2/2024,9/2/2024,New Orleans,LA,Flying
+9/2/2024,9/2/2024,New Orleans,LA,Driving
 9/2/2024,9/6/2024,Baton Rouge,LA,Driving
 9/6/2024,9/9/2024,Shreveport,LA,Driving
 9/9/2024,9/13/2024,Jackson,MS,Driving
@@ -41,9 +41,9 @@ Start Date,End Date,Location,State,Travel Type
 11/24/2024,11/27/2024,San Diego,CA,Driving
 11/27/2024,12/3/2024,Los Angeles,CA,Driving
 12/3/2024,12/8/2024,Las Vegas,NV,Driving
-12/8/2024,12/9/2024,Los Angeles,CA,Driving
+12/8/2024,12/9/2024,Los Angeles,CA,Flying
 12/9/2024,12/13/2024,Fort Lauderdale,FL,Flying
-12/13/2024,12/13/2024,Los Angeles,CA,Flying
+12/13/2024,12/13/2024,Los Angeles,CA,Driving
 12/13/2024,12/14/2024,Arroyo,CA,Driving
 12/19/2024,12/22/2024,Santa Cruz,CA,Driving
 12/14/2024,12/17/2024,San Francisco,CA,Driving
@@ -53,9 +53,9 @@ Start Date,End Date,Location,State,Travel Type
 12/25/2024,12/27/2024,Salem,OR,Driving
 12/27/2024,12/29/2024,Portland,OR,Driving
 12/29/2024,12/31/2024,Olympia,WA,Driving
-12/31/2024,12/31/2025,Seattle,WA,Driving
+12/31/2024,12/31/2025,Seattle,WA,Flying
 12/31/2024,1/4/2025,Juneau,AK,Flying
-1/4/2025,1/4/2025,Seattle,WA,Flying
+1/4/2025,1/4/2025,Seattle,WA,Driving
 1/4/2025,1/6/2025,Richland,WA,Driving
 1/6/2025,1/9/2025,Boise,ID,Driving
 1/9/2025,1/11/2025,Pocatello,ID,Driving
@@ -68,10 +68,10 @@ Start Date,End Date,Location,State,Travel Type
 1/23/2025,1/25/2025,Bismarck,ND,Driving
 1/25/2025,1/27/2025,Sturgis,SD,Driving
 1/27/2025,1/28/2025,Pierre,SD,Driving
-1/28/2025,1/29/2025,Minneapolis,MN,Driving
+1/28/2025,1/29/2025,Minneapolis,MN,Flying
 1/29/2025,1/30/2025,Long Island,NY,Flying
 1/30/2025,2/1/2025,Fort Lauderdale,FL,Flying
-2/1/2025,2/4/2025,Minneapolis,MN,Flying
+2/1/2025,2/4/2025,Minneapolis,MN,Driving
 2/4/2025,2/5/2025,Eau Claire,WI,Driving
 2/5/2025,2/7/2025,Madison,WI,Driving
 2/7/2025,2/9/2025,Milwaukee,WI,Driving
@@ -109,9 +109,9 @@ Start Date,End Date,Location,State,Travel Type
 4/1/2025,4/3/2025,Columbus,OH,Driving
 4/3/2025,4/4/2025,Monroe Township,OH,Driving
 4/4/2025,4/6/2025,Fort Wright,KY,Driving
-4/6/2025,4/6/2025,Cincinnati,OH,Driving
+4/6/2025,4/6/2025,Cincinnati,OH,Flying
 4/6/2025,4/10/2025,Fort Lauderdale,FL,Flying
-4/10/2025,4/10/2025,Cincinnati,OH,Flying
+4/10/2025,4/10/2025,Cincinnati,OH,Driving
 4/10/2025,4/12/2025,Indianapolis,IN,Driving
 4/12/2025,4/13/2025,Auburn,IN,Driving
 4/13/2025,4/15/2025,Lansing,MI,Driving
@@ -121,9 +121,13 @@ Start Date,End Date,Location,State,Travel Type
 4/18/2025,4/19/2025,Springfield,PA,Driving
 4/19/2025,4/21/2025,Buffalo,NY,Driving
 4/21/2025,4/23/2025,Rochester,NY,Driving
-4/23/2025,4/24/2025,Syracuse,NY,Driving
+4/23/2025,4/24/2025,Syracuse,NY,Flying
 4/24/2025,4/24/2025,Denver,CO,Flying
 4/24/2025,4/24/2025,Tokyo,JP,Flying
+4/24/2025,5/8/2025,Ho Chi Minh City,Vietnam,Flying
+4/24/2025,5/8/2025,Da Nang,Vietnam,Flying
+4/24/2025,5/8/2025,Hanoi,Vietnam,Flying
+4/24/2025,5/8/2025,Phu Quoc,Vietnam,Flying
 4/24/2025,5/8/2025,Ho Chi Minh City,Vietnam,Flying
 5/8/2025,5/8/2025,Tokyo,JP,Flying
 5/8/2025,5/8/2025,Chicago,IL,Flying
