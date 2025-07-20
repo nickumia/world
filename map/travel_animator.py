@@ -32,7 +32,7 @@ INITIAL_ZOOM_LEVEL = 10        # Starting zoom level for first city
 DEFAULT_FPS = 30               # Default frames per second for video output
 DEFAULT_STEPS_PER_SEGMENT = 2 * DEFAULT_FPS  # Default animation frames per travel segment
 DEPARTURE_ZOOM_OUT_FRAMES = 8  # Number of frames for smooth zoom-out when leaving destination
-FRAME_ZOOM_INCREMENT = 0.5     # Progressive zoom increment per frame for smooth transitions
+FRAME_ZOOM_INCREMENT = 1/DEFAULT_STEPS_PER_SEGMENT     # Progressive zoom increment per frame for smooth transitions
 
 try:
     import folium
