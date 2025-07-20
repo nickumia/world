@@ -857,7 +857,7 @@ class TravelAnimator:
 
     def create_travel_animation(self, cities: List[str], output_video: str = "travel_animation.mp4",
                               steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT, fps: int = DEFAULT_FPS,
-                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None, use_gpu: bool = False):
+                              travel_modes: Optional[List[TravelMode]] = None, dates: Optional[List[dict]] = None, use_gpu: bool = True):
         """Main method to create travel animation."""
         logger.info(f"Starting travel animation for {len(cities)} cities")
 
