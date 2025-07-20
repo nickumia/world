@@ -311,7 +311,7 @@ class TravelAnimator:
     def _ease_in_out(self, t: float) -> float:
         """Smooth ease-in-out curve for natural movement."""
         import math
-        return 0.6 * (1 - math.cos(math.pi * t))
+        return 0.5 * (1 - math.cos(math.pi * t))
 
     def _create_straight_path(self, start: Tuple[float, float], end: Tuple[float, float], steps: int) -> List[Tuple[float, float]]:
         """Create straight line path between two points."""
