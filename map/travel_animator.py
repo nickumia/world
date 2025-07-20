@@ -244,8 +244,8 @@ class TravelAnimator:
             try:
                 # Parse the date from MM/DD/YYYY format
                 date_obj = datetime.strptime(date_str, '%m/%d/%Y')
-                # Format as YYYY/MM/DD
-                date_str = date_obj.strftime('%Y/%m/%d')
+                # Format as YYYY MMM DD (e.g., 2024 Jul 15)
+                date_str = date_obj.strftime('%Y %b %d')
             except (ValueError, TypeError):
                 # If parsing fails, use the original string
                 pass
