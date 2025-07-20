@@ -27,8 +27,8 @@ from enum import Enum
 
 # Animation Configuration Constants
 DESTINATION_PAUSE_FRAMES = 5  # Number of frames to pause at each destination
-DESTINATION_ZOOM_LEVEL = 8    # Close zoom level for destination exploration
-INITIAL_ZOOM_LEVEL = 8        # Starting zoom level for first city
+DESTINATION_ZOOM_LEVEL = 7    # Close zoom level for destination exploration
+INITIAL_ZOOM_LEVEL = 7        # Starting zoom level for first city
 DEFAULT_FPS = 10               # Default frames per second for video output
 DEFAULT_STEPS_PER_SEGMENT = 10  # Default animation frames per travel segment
 DEPARTURE_ZOOM_OUT_FRAMES = 8  # Number of frames for smooth zoom-out when leaving destination
@@ -180,7 +180,8 @@ class TravelAnimator:
         return styles.get(mode, styles[TravelMode.DRIVING])
 
     def create_dynamic_map(self, center_coords: Tuple[float, float], zoom_level: float = INITIAL_ZOOM_LEVEL,
-                          coordinates: Optional[List[Tuple[float, float, str]]] = None) -> folium.Map:
+                          coordinates: Optional[List[Tuple[float, float, str]]] = None,
+                          reached_index: int = -1) -> folium.Map:
         """Create a map centered on specific coordinates with custom zoom level."""
         m = folium.Map(
             location=[center_coords[0], center_coords[1]],
@@ -188,16 +189,29 @@ class TravelAnimator:
             tiles='OpenStreetMap'
         )
 
-        # Add all city markers if coordinates provided
-        if coordinates:
+        # Add only markers for destinations reached so far
+        if coordinates and reached_index >= 0:
             for i, (lat, lon, city) in enumerate(coordinates):
-                color = 'red' if i == 0 else 'blue' if i == len(coordinates) - 1 else 'green'
-                folium.Marker(
-                    [lat, lon],
-                    popup=f"{city} (Stop {i+1})",
-                    tooltip=city,
-                    icon=folium.Icon(color=color, icon='info-sign')
-                ).add_to(m)
+                if i <= reached_index:  # Only show markers for reached destinations
+                    if i == 0:
+                        color = 'red'  # Starting point
+                        icon = 'play'
+                    elif i == reached_index and i == len(coordinates) - 1:
+                        color = 'blue'  # Final destination (reached)
+                        icon = 'stop'
+                    elif i == reached_index:
+                        color = 'orange'  # Current destination
+                        icon = 'star'
+                    else:
+                        color = 'green'  # Previously visited
+                        icon = 'check'
+
+                    folium.Marker(
+                        [lat, lon],
+                        popup=f"{city} (Stop {i+1})",
+                        tooltip=city,
+                        icon=folium.Icon(color=color, icon=icon)
+                    ).add_to(m)
 
         return m
 
@@ -297,7 +311,7 @@ class TravelAnimator:
     def _ease_in_out(self, t: float) -> float:
         """Smooth ease-in-out curve for natural movement."""
         import math
-        return 0.4 * (1 - math.cos(math.pi * t))
+        return 0.6 * (1 - math.cos(math.pi * t))
 
     def _create_straight_path(self, start: Tuple[float, float], end: Tuple[float, float], steps: int) -> List[Tuple[float, float]]:
         """Create straight line path between two points."""
@@ -398,7 +412,7 @@ class TravelAnimator:
                 current_center, current_zoom = map_views[j+1]
 
                 # Create new map for this frame with dynamic center and zoom
-                frame_map = self.create_dynamic_map(current_center, current_zoom, coordinates)
+                frame_map = self.create_dynamic_map(current_center, current_zoom, coordinates, reached_index=i)
 
                 # Add traveled path so far with appropriate styling
                 traveled_segments = []
@@ -451,7 +465,7 @@ class TravelAnimator:
 
             for pause_frame in range(pause_frames):
                 # Create destination pause frame with close zoom
-                pause_map = self.create_dynamic_map(destination_coord, destination_zoom, coordinates)
+                pause_map = self.create_dynamic_map(destination_coord, destination_zoom, coordinates, reached_index=i+1)
 
                 # Add all traveled paths
                 traveled_segments = []
