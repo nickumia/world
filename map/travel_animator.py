@@ -875,7 +875,7 @@ class TravelAnimator:
 
         # Create video
         logger.info("Generating video...")
-        self.create_video_from_images(frames, output_video, fps, self.use_gpu)
+        self.create_video_from_images(frames, output_video, fps)
 
         # Cleanup HTML files
         logger.info("Cleaning up temporary files...")
