@@ -1,9 +1,10 @@
 Start Date,End Date,Location,State,Travel Type
+8/11/2024,8/11/2024,Fort Lauderdale,FL,Driving
 8/11/2024,8/14/2024,Orlando,FL,Driving
-8/14/2024,8/17/2024,Tallahasee,FL,Driving
+8/14/2024,8/17/2024,Tallahassee,FL,Driving
 8/17/2024,8/20/2024,Panama City,FL,Driving
 8/20/2024,8/24/2024,Dothan,AL,Driving
-8/24/2024,8/27/2024,Montgomergy,AL,Driving
+8/24/2024,8/27/2024,Montgomery,AL,Driving
 8/27/2024,8/30/2024,Mobile,AL,Driving
 8/30/2024,8/30/2024,New Orleans,LA,Driving
 8/30/2024,9/2/2024,Long Island,NY,Flying
@@ -15,137 +16,147 @@ Start Date,End Date,Location,State,Travel Type
 9/16/2024,9/22/2024,Fort Smith,AR,Driving
 9/22/2024,9/25/2024,Tulsa,OK,Driving
 9/25/2024,9/28/2024,OKC,OK,Driving
-9/28/2024,10/1/2024,Arlinton/Dallas,TX,Driving
-10/1/2024,10/5/2024,Richmond/Houston,TX,Driving
-10/5/2024,10/8/2024,San Antonio,TX
-10/8/2024,10/12/2024,Pflugerville/Austin,TX
-10/12/2024,10/13/2024,Sonora,TX
-10/13/2024,10/15/2024,Alpine,TX
-10/15/2024,10/17/2024,El Paso,TX
-10/17/2024,10/20/2024,Ruidoso,NM
-10/20/2024,10/22/2024,Alburquerque,NM
-10/22/2024,10/24/2024,Santa Fe,NM
-10/24/2024,10/26/2024,Trinidad,CO
-10/26/2024,10/29/2024,Colorado Springs,CO
-10/29/2024,11/2/2024,Denver,CO
-11/2/2024,11/5/2024,Cheyenne,WY
-11/5/2024,11/7/2024,Saratoga,WY
-11/7/2024,11/8/2024,Rock Springs,WY
-11/8/2024,11/12/2024,SLC,UT
-11/12/2024,11/14/2024,Moab,UT
-11/14/2024,11/16/2024,Cedar City,UT
-11/16/2024,11/20/2024,Flagstaff,AZ
-11/20/2024,11/23/2024,Phoenix,AZ
-11/23/2024,11/24/2024,Yuma,AZ
-11/24/2024,11/27/2024,San Diego,CA
-11/27/2024,12/3/2024,El Monte/LA,CA
-12/3/2024,12/8/2024,Las Vegas,NV
-12/8/2024,12/9/2024,LA,CA
-12/9/2024,12/13/2024,SF,FL
-12/13/2024,12/14/2024,Arroyo,CA
-12/19/2024,12/22/2024,Santa Cruz,CA
-12/14/2024,12/17/2024,San Francisco,CA
-12/17/2024,12/19/2024,Sacramento,CA
-12/22/2024,12/24/2024,Shasta/Redding,CA
-12/24/2024,12/25/2024,Roseburg,OR
-12/25/2024,12/27/2024,Eugene/Salem,OR
-12/27/2024,12/29/2024,Portland,OR
-12/29/2024,12/31/2024,Lacey/Olympia,WA
-12/31/2024,1/4/2025,Juneau,AK
-1/4/2025,1/6/2025,Richland/Tricity,WA
-1/6/2025,1/9/2025,Boise,ID
-1/9/2025,1/11/2025,Pocatello,ID
-1/11/2025,1/14/2025,Yellowstone,MT
-1/14/2025,1/17/2025,Helena,MT
-1/17/2025,1/18/2025,Helena,MT
-1/18/2025,1/20/2025,Billings,MT
-1/20/2025,1/21/2025,Miles City,MT
-1/21/2025,1/23/2025,Dickinson,ND
-1/23/2025,1/25/2025,Bismarck,ND
-1/25/2025,1/27/2025,Sturgis,SD
-1/27/2025,1/28/2025,Pierre,SD
-1/28/2025,1/29/2025,Minneapolis,MN
-1/29/2025,1/30/2025,Long Island,NY
-1/30/2025,2/1/2025,SF,FL
-2/1/2025,2/4/2025,Minneapolis,MN
-2/4/2025,2/5/2025,Eau Claire,WI
-2/5/2025,2/7/2025,Madison,WI
-2/7/2025,2/9/2025,Milwaukee,WI
-2/9/2025,2/12/2025,Chicago,IL
-2/12/2025,2/13/2025,Moline,IL
-2/13/2025,2/16/2025,Urbandale/Des Moines,IA
-2/16/2025,2/18/2025,Council Bluffs,IA
-2/18/2025,2/20/2025,Lincoln,NE
-2/20/2025,2/22/2025,Topeka,KS
-2/22/2025,2/24/2025,Riverside,MO
-2/24/2025,2/25/2025,Jefferson City,IL
-2/25/2025,2/27/2025,Springfield,IL
-2/27/2025,2/28/2025,St Loius,MO
-2/28/2025,3/1/2025,Paducah,KY
-3/1/2025,3/2/2025,Nashville,TN
-3/2/2025,3/4/2025,Nashville,TN
-3/4/2025,3/5/2025,Bowling Green,KY
-3/5/2025,3/6/2025,Elizabethtown,KY
-3/6/2025,3/7/2025,Loiusville,KY
-3/7/2025,3/8/2025,Loiusville,KY
-3/8/2025,3/9/2025,Corbin,KY
-3/9/2025,3/12/2025,Chattanooga,TN
-3/12/2025,3/14/2025,College Park/Atlanta,GA
-3/14/2025,3/16/2025,Helen,GA
-3/16/2025,3/17/2025,Bristol,VA
-3/17/2025,3/18/2025,Richlands/Claypool,VA
-3/18/2025,3/20/2025,Princeton/Charleston,WV
-3/20/2025,3/21/2025,Morgantown,WV
-3/21/2025,3/25/2025,Long Island,NY
-3/25/2025,3/26/2025,Greentown,PA
-3/26/2025,3/27/2025,Scranton,PA
-3/27/2025,3/29/2025,State College,PA
-3/29/2025,3/31/2025,Pittsburgh,PA
-3/31/2025,4/1/2025,Belmont,OH
-4/1/2025,4/3/2025,Columbus,OH
-4/3/2025,4/4/2025,Monroe/Liberty Township,OH
-4/4/2025,4/6/2025,Fort Wright,KY
-4/6/2025,4/10/2025,SF,FL
-4/10/2025,4/12/2025,Indianapolis,IN
-4/12/2025,4/13/2025,Auburn,IN
-4/13/2025,4/15/2025,Lansing,MI
-4/15/2025,4/16/2025,Detroit,MI
-4/16/2025,4/17/2025,Sandusky/Vermillion,OH
-4/17/2025,4/18/2025,Cleveland/Lakewood,OH
-4/18/2025,4/19/2025,Springfield,PA
-4/19/2025,4/21/2025,Buffalo,NY
-4/21/2025,4/23/2025,Rochester,NY
-4/23/2025,4/24/2025,Syracuse,NY
-4/24/2025,5/8/2025,,Vietnam
-5/8/2025,5/9/2025,Fort Drum,NY
-5/9/2025,5/11/2025,Lake Placid,NY
-5/11/2025,5/13/2025,Montpelier,VT
-5/13/2025,5/15/2025,Gorham,NH
-5/15/2025,5/16/2025,Augusta,ME
-5/16/2025,5/17/2025,Seabrook,NH
-5/17/2025,5/19/2025,Boston,MA
-5/19/2025,5/21/2025,Smithfield/Providence,RI
-5/21/2025,5/22/2025,Hartford,CT
-5/22/2025,5/23/2025,Bethel/Danbury,CT
-5/23/2025,5/31/2025,Long Island,NY
-5/31/2025,6/2/2025,Edison/Piscataway,NJ
-6/2/2025,6/3/2025,Morrisville,PA
-6/3/2025,6/5/2025,King of Prussia,PA
-6/5/2025,6/6/2025,Newark,DE
-6/6/2025,6/7/2025,Smyrna,DE
-6/7/2025,6/9/2025,Rehoboth Beach,DE
-6/9/2025,6/13/2025,Baltimore,MD
-6/13/2025,6/14/2025,Scaggsville,MD
-6/14/2025,6/20/2025,Washington,DC
-6/20/2025,6/22/2025,Lessburg,VA
-6/22/2025,6/24/2025,Richmond,VA
-6/24/2025,6/25/2025,Oxford,NC
-6/25/2025,6/27/2025,Raleigh,NC
-6/27/2025,6/28/2025,Seagrove,NC
-6/28/2025,6/29/2025,Charlotte,NC
-6/29/2025,7/1/2025,Columbia,SC
-7/1/2025,7/2/2025,Yemassee,SC
-7/2/2025,7/4/2025,Savannah,GA
-7/4/2025,7/5/2025,Yulee,FL
-7/5/2025,7/6/2025,Jacksonville,FL
-7/6/2025,7/7/2025,Home,FL
+9/28/2024,10/1/2024,Dallas,TX,Driving
+10/1/2024,10/5/2024,Houston,TX,Driving
+10/5/2024,10/8/2024,San Antonio,TX,Driving
+10/8/2024,10/12/2024,Austin,TX,Driving
+10/12/2024,10/13/2024,Sonora,TX,Driving
+10/13/2024,10/15/2024,Alpine,TX,Driving
+10/15/2024,10/17/2024,El Paso,TX,Driving
+10/17/2024,10/20/2024,Ruidoso,NM,Driving
+10/20/2024,10/22/2024,Alburquerque,NM,Driving
+10/22/2024,10/24/2024,Santa Fe,NM,Driving
+10/24/2024,10/26/2024,Trinidad,CO,Driving
+10/26/2024,10/29/2024,Colorado Springs,CO,Driving
+10/29/2024,11/2/2024,Denver,CO,Driving
+11/2/2024,11/5/2024,Cheyenne,WY,Driving
+11/5/2024,11/7/2024,Saratoga,WY,Driving
+11/7/2024,11/8/2024,Rock Springs,WY,Driving
+11/8/2024,11/12/2024,SLC,UT,Driving
+11/12/2024,11/14/2024,Moab,UT,Driving
+11/14/2024,11/16/2024,Cedar City,UT,Driving
+11/16/2024,11/20/2024,Flagstaff,AZ,Driving
+11/20/2024,11/23/2024,Phoenix,AZ,Driving
+11/23/2024,11/24/2024,Yuma,AZ,Driving
+11/24/2024,11/27/2024,San Diego,CA,Driving
+11/27/2024,12/3/2024,Los Angeles,CA,Driving
+12/3/2024,12/8/2024,Las Vegas,NV,Driving
+12/8/2024,12/9/2024,Los Angeles,CA,Driving
+12/9/2024,12/13/2024,Fort Lauderdale,FL,Flying
+12/13/2024,12/13/2024,Los Angeles,CA,Flying
+12/13/2024,12/14/2024,Arroyo,CA,Driving
+12/19/2024,12/22/2024,Santa Cruz,CA,Driving
+12/14/2024,12/17/2024,San Francisco,CA,Driving
+12/17/2024,12/19/2024,Sacramento,CA,Driving
+12/22/2024,12/24/2024,Shasta/Redding,CA,Driving
+12/24/2024,12/25/2024,Roseburg,OR,Driving
+12/25/2024,12/27/2024,Salem,OR,Driving
+12/27/2024,12/29/2024,Portland,OR,Driving
+12/29/2024,12/31/2024,Olympia,WA,Driving
+12/31/2024,12/31/2025,Seattle,WA,Driving
+12/31/2024,1/4/2025,Juneau,AK,Flying
+1/4/2025,1/4/2025,Seattle,WA,Flying
+1/4/2025,1/6/2025,Richland,WA,Driving
+1/6/2025,1/9/2025,Boise,ID,Driving
+1/9/2025,1/11/2025,Pocatello,ID,Driving
+1/10/2025,1/10/2025,Salt Lake City,UT,Driving
+1/11/2025,1/14/2025,Yellowstone,MT,Driving
+1/14/2025,1/18/2025,Helena,MT,Driving
+1/18/2025,1/20/2025,Billings,MT,Driving
+1/20/2025,1/21/2025,Miles City,MT,Driving
+1/21/2025,1/23/2025,Dickinson,ND,Driving
+1/23/2025,1/25/2025,Bismarck,ND,Driving
+1/25/2025,1/27/2025,Sturgis,SD,Driving
+1/27/2025,1/28/2025,Pierre,SD,Driving
+1/28/2025,1/29/2025,Minneapolis,MN,Driving
+1/29/2025,1/30/2025,Long Island,NY,Flying
+1/30/2025,2/1/2025,Fort Lauderdale,FL,Flying
+2/1/2025,2/4/2025,Minneapolis,MN,Flying
+2/4/2025,2/5/2025,Eau Claire,WI,Driving
+2/5/2025,2/7/2025,Madison,WI,Driving
+2/7/2025,2/9/2025,Milwaukee,WI,Driving
+2/9/2025,2/12/2025,Chicago,IL,Driving
+2/12/2025,2/13/2025,Moline,IL,Driving
+2/13/2025,2/16/2025,Des Moines,IA,Driving
+2/16/2025,2/18/2025,Omaha,NE,Driving
+2/18/2025,2/20/2025,Lincoln,NE,Driving
+2/20/2025,2/22/2025,Topeka,KS,Driving
+2/22/2025,2/24/2025,Riverside,MO,Driving
+2/24/2025,2/25/2025,Jefferson City,IL,Driving
+2/25/2025,2/27/2025,Springfield,IL,Driving
+2/27/2025,2/28/2025,St Louis,MO,Driving
+2/28/2025,3/1/2025,Paducah,KY,Driving
+3/1/2025,3/4/2025,Nashville,TN,Driving
+3/4/2025,3/5/2025,Bowling Green,KY,Driving
+3/5/2025,3/6/2025,Elizabethtown,KY,Driving
+3/6/2025,3/8/2025,Louisville,KY,Driving
+3/8/2025,3/9/2025,Corbin,KY,Driving
+3/9/2025,3/12/2025,Chattanooga,TN,Driving
+3/12/2025,3/14/2025,Atlanta,GA,Driving
+3/14/2025,3/16/2025,Helen,GA,Driving
+3/16/2025,3/17/2025,Bristol,VA,Driving
+3/17/2025,3/18/2025,Richlands,VA,Driving
+3/18/2025,3/18/2025,Coalwood,WV,Driving
+3/18/2025,3/18/2025,Princeton,WV,Driving
+3/18/2025,3/20/2025,Charleston,WV,Driving
+3/20/2025,3/21/2025,Morgantown,WV,Driving
+3/21/2025,3/25/2025,Long Island,NY,Driving
+3/25/2025,3/26/2025,Greentown,PA,Driving
+3/26/2025,3/27/2025,Scranton,PA,Driving
+3/27/2025,3/29/2025,State College,PA,Driving
+3/29/2025,3/31/2025,Pittsburgh,PA,Driving
+3/31/2025,4/1/2025,Belmont,OH,Driving
+4/1/2025,4/3/2025,Columbus,OH,Driving
+4/3/2025,4/4/2025,Monroe Township,OH,Driving
+4/4/2025,4/6/2025,Fort Wright,KY,Driving
+4/6/2025,4/6/2025,Cincinnati,OH,Driving
+4/6/2025,4/10/2025,Fort Lauderdale,FL,Flying
+4/10/2025,4/10/2025,Cincinnati,OH,Flying
+4/10/2025,4/12/2025,Indianapolis,IN,Driving
+4/12/2025,4/13/2025,Auburn,IN,Driving
+4/13/2025,4/15/2025,Lansing,MI,Driving
+4/15/2025,4/16/2025,Detroit,MI,Driving
+4/16/2025,4/17/2025,Sandusky,OH,Driving
+4/17/2025,4/18/2025,Cleveland,OH,Driving
+4/18/2025,4/19/2025,Springfield,PA,Driving
+4/19/2025,4/21/2025,Buffalo,NY,Driving
+4/21/2025,4/23/2025,Rochester,NY,Driving
+4/23/2025,4/24/2025,Syracuse,NY,Driving
+4/24/2025,4/24/2025,Denver,CO,Flying
+4/24/2025,4/24/2025,Tokyo,JP,Flying
+4/24/2025,5/8/2025,Ho Chi Minh City,Vietnam,Flying
+5/8/2025,5/8/2025,Tokyo,JP,Flying
+5/8/2025,5/8/2025,Chicago,IL,Flying
+5/8/2025,5/8/2025,Syracuse,NY,Driving
+5/8/2025,5/9/2025,Fort Drum,NY,Driving
+5/9/2025,5/11/2025,Lake Placid,NY,Driving
+5/11/2025,5/13/2025,Montpelier,VT,Driving
+5/13/2025,5/15/2025,Gorham,NH,Driving
+5/15/2025,5/16/2025,Augusta,ME,Driving
+5/16/2025,5/17/2025,Seabrook,NH,Driving
+5/17/2025,5/19/2025,Boston,MA,Driving
+5/19/2025,5/21/2025,Smithfield/Providence,RI,Driving
+5/21/2025,5/22/2025,Hartford,CT,Driving
+5/22/2025,5/23/2025,Danbury,CT,Driving
+5/23/2025,5/31/2025,Long Island,NY,Driving
+5/31/2025,6/2/2025,Edison,NJ,Driving
+6/2/2025,6/3/2025,Morrisville,PA,Driving
+6/3/2025,6/5/2025,King of Prussia,PA,Driving
+6/5/2025,6/6/2025,Newark,DE,Driving
+6/6/2025,6/7/2025,Smyrna,DE,Driving
+6/7/2025,6/9/2025,Rehoboth Beach,DE,Driving
+6/9/2025,6/13/2025,Baltimore,MD,Driving
+6/13/2025,6/14/2025,Scaggsville,MD,Driving
+6/14/2025,6/20/2025,Washington,DC,Driving
+6/20/2025,6/22/2025,Leesburg,VA,Driving
+6/22/2025,6/24/2025,Richmond,VA,Driving
+6/24/2025,6/25/2025,Oxford,NC,Driving
+6/25/2025,6/27/2025,Raleigh,NC,Driving
+6/27/2025,6/28/2025,Seagrove,NC,Driving
+6/28/2025,6/29/2025,Charlotte,NC,Driving
+6/29/2025,7/1/2025,Columbia,SC,Driving
+7/1/2025,7/2/2025,Yemassee,SC,Driving
+7/2/2025,7/4/2025,Savannah,GA,Driving
+7/4/2025,7/5/2025,Yulee,FL,Driving
+7/5/2025,7/6/2025,Jacksonville,FL,Driving
+7/6/2025,7/7/2025,Fort Lauderdale,FL,Driving
