@@ -148,3 +148,6 @@ terraform.tfstate*
 .terraform*
 *env*
 *.png
+
+**/*output/
+*.mp4
