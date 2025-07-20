@@ -26,11 +26,31 @@ import logging
 from datetime import datetime
 from enum import Enum
 
+# Default values for animation
+DEFAULT_STEPS_PER_SEGMENT = 30  # Number of frames per travel segment
+DEFAULT_FPS = 30  # Frames per second for output video
+DESTINATION_PAUSE_FRAMES = 15  # Number of frames to pause at each destination
+INITIAL_ZOOM_LEVEL = 6  # Initial zoom level for maps
+
+# Display configuration
+MAP_WIDTH = 3840
+MAP_HEIGHT = 2160
+MAP_ZOOM_LEVEL = 4  # Zoom level to show all of North America
+MAP_CENTER = (39.8283, -98.5795)  # Geographic center of the contiguous US
+
+# Chrome driver configuration
+CHROME_WINDOW_WIDTH = 3840
+CHROME_WINDOW_HEIGHT = 2160
+CHROME_OPTIONS = [
+    "--headless",
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    f"--window-size={MAP_WIDTH},{MAP_HEIGHT}",
+    "--force-device-scale-factor=2"  # High DPI scaling
+]
+
 # Animation Configuration Constants
-DESTINATION_PAUSE_FRAMES = 5  # Number of frames to pause at each destination
 DESTINATION_ZOOM_LEVEL = 7    # Close zoom level for destination exploration
-INITIAL_ZOOM_LEVEL = 7        # Starting zoom level for first city
-DEFAULT_FPS = 10               # Default frames per second for video output
 DEFAULT_STEPS_PER_SEGMENT = 10  # Default animation frames per travel segment
 DEPARTURE_ZOOM_OUT_FRAMES = 8  # Number of frames for smooth zoom-out when leaving destination
 FRAME_ZOOM_INCREMENT = 1/DEFAULT_STEPS_PER_SEGMENT     # Progressive zoom increment per frame for smooth transitions
@@ -88,12 +108,10 @@ class TravelAnimator:
         # Create output directory
         os.makedirs(output_dir, exist_ok=True)
 
-        # Setup Chrome driver options for headless operation
+        # Setup Chrome driver options from global config
         self.chrome_options = Options()
-        self.chrome_options.add_argument("--headless")
-        self.chrome_options.add_argument("--no-sandbox")
-        self.chrome_options.add_argument("--disable-dev-shm-usage")
-        self.chrome_options.add_argument("--window-size=1920,1080")
+        for option in CHROME_OPTIONS:
+            self.chrome_options.add_argument(option)
 
         # Initialize driver (will be created when needed)
         self.driver = None
@@ -103,7 +121,7 @@ class TravelAnimator:
         if self.driver is None:
             from selenium import webdriver
             self.driver = webdriver.Chrome(options=self.chrome_options)
-            self.driver.set_window_size(1920, 1080)
+            self.driver.set_window_size(CHROME_WINDOW_WIDTH, CHROME_WINDOW_HEIGHT)
 
     def cleanup(self):
         """Clean up resources."""
@@ -321,13 +339,14 @@ class TravelAnimator:
         # lons = [coord[1] for coord in coordinates]
         # center_lat = sum(lats) / len(lats)
         # center_lon = sum(lons) / len(lons)
-        self.usa_center = (39.8283, -98.5795)  # Geographic center of the contiguous US
-        self.usa_zoom = 11  # Zoom level to show all of North America
+        # Use global map settings
+        self.usa_center = MAP_CENTER
+        self.usa_zoom = MAP_ZOOM_LEVEL
 
         # Create map
         m = folium.Map(
-            location=self.usa_center,
-            zoom_start=self.usa_zoom,
+            location=MAP_CENTER,
+            zoom_start=MAP_ZOOM_LEVEL,
             tiles='OpenStreetMap'
         )
 
@@ -799,8 +818,8 @@ class TravelAnimator:
         except Exception as e:
             logger.error(f"Error converting {html_file} to PNG: {e}")
 
-    def html_to_image(self, html_file: str, output_image: str, width: int = 1920, height: int = 1080):
-        """Convert HTML map to image using Selenium."""
+    def html_to_image(self, html_file: str, output_image: str, width: int = MAP_WIDTH, height: int = MAP_HEIGHT):
+        """Convert HTML map to image using Selenium with high resolution."""
         self._ensure_driver()
         try:
             # Load the HTML file
