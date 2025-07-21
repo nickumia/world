@@ -120,6 +120,7 @@ class TravelAnimator:
         self.coordinates_cache = {}
         self.weather_cache = {}  # Cache for weather data
         self.use_gpu = True
+        self.current_temp = None  # Track current temperature for animation
 
         # Create output directory
         os.makedirs(output_dir, exist_ok=True)
@@ -353,7 +354,14 @@ class TravelAnimator:
         return weather_icons.get(weather_code, '🌡️')
 
     def _create_thermometer_html(self, temperature: float) -> str:
-        """Create HTML/CSS for the thermometer visualization."""
+        """Create HTML/CSS for the thermometer visualization.
+
+        Args:
+            temperature: Current temperature to display
+        """
+        if temperature is None:
+            return ""
+
         # Calculate temperature range (-20°C to 40°C)
         temp_min = -20
         temp_max = 40
@@ -415,7 +423,18 @@ class TravelAnimator:
         """
 
     def _add_timestamp_overlay(self, map_obj: folium.Map, timestamp_info: dict):
-        """Add timestamp overlay to the map."""
+        """Add timestamp overlay to the map with weather information.
+
+        Args:
+            map_obj: The folium map object
+            timestamp_info: Dictionary containing timestamp information including:
+                - date: Date string in MM/DD/YYYY format
+                - location: Current location name
+                - travel_mode: Current travel mode
+                - coords: Tuple of (lat, lon) for weather lookup
+                - current_temp: Current temperature (for animation)
+                - target_temp: Target temperature (for animation)
+        """
         # Format date as YYYY/MM/DD
         date_str = timestamp_info.get('date', '')
         if date_str:
@@ -435,17 +454,31 @@ class TravelAnimator:
 
         # Get weather data if coordinates are available
         weather_info = ''
+        current_temp = timestamp_info.get('current_temp')
+        target_temp = timestamp_info.get('target_temp')
+
         if 'coords' in timestamp_info and date_str:
             lat, lon = timestamp_info['coords']
             weather_data = self._get_weather_data(lat, lon, date_str)
 
             if weather_data:
                 weather_icon = self._get_weather_icon(weather_data.weather_code)
-                thermometer = self._create_thermometer_html(weather_data.temperature)
+
+                # Update current temperature if not set or if we're at a destination
+                if current_temp is None or timestamp_info.get('is_destination', False):
+                    current_temp = weather_data.temperature
+                    self.current_temp = current_temp
+
+                # Use the current temperature for display (which is already interpolated if needed)
+                display_temp = current_temp
+
+                # Create thermometer with the current temperature
+                thermometer = self._create_thermometer_html(display_temp)
+
                 weather_info = f"""
                 <div style="display: flex; align-items: center; margin-top: 5px;">
                     <span style="font-size: 20px; margin-right: 5px;">{weather_icon}</span>
-                    <span style="font-size: 16px;">{int(round(weather_data.temperature))}°C</span>
+                    <span style="font-size: 16px;">{int(round(display_temp))}°C</span>
                     {thermometer}
                 </div>
                 """
@@ -682,12 +715,32 @@ class TravelAnimator:
             logger.warning(f"Error in curved path calculation: {e}, falling back to straight line")
             return self._create_straight_path(start, end, steps)
 
+    def _interpolate_temperature(self, start_temp: float, end_temp: float, progress: float) -> float:
+        """Interpolate temperature between two values based on progress (0-1)."""
+        return start_temp + (end_temp - start_temp) * progress
+
+    def _get_temperature_for_location(self, lat: float, lon: float, date_str: str) -> Optional[float]:
+        """Get temperature for a specific location and date."""
+        weather_data = self._get_weather_data(lat, lon, date_str)
+        return weather_data.temperature if weather_data else None
+
     def create_animated_frames(self, coordinates: List[Tuple[float, float, str]],
                               travel_modes: Optional[List[TravelMode]] = None,
                               steps_per_segment: int = DEFAULT_STEPS_PER_SEGMENT,
                               dates: Optional[List[dict]] = None) -> List[str]:
-        """Create individual map frames for animation with dynamic zoom and movement."""
+        """Create individual map frames for animation with dynamic zoom and movement.
+
+        Args:
+            coordinates: List of (lat, lon, city_name) tuples
+            travel_modes: List of travel modes for each segment
+            steps_per_segment: Number of frames per travel segment
+            dates: List of date information for each location
+
+        Returns:
+            List of file paths to the generated frame images
+        """
         frames = []
+        self.current_temp = None  # Reset current temperature at start
 
         # Calculate and log total frames for progress tracking
         total_expected_frames = self.calculate_total_frames(coordinates, steps_per_segment)
@@ -738,15 +791,48 @@ class TravelAnimator:
                 # Get dynamic map view for this frame
                 current_center, current_zoom = map_views[j+1]
 
-                # Create timestamp info for this frame
+                # Create timestamp info for this frame with temperature interpolation
                 timestamp_info = None
                 if dates and i < len(dates):
                     current_date = dates[i]
+                    current_coords = (coordinates[i][0], coordinates[i][1])
+                    next_coords = (coordinates[i+1][0], coordinates[i+1][1]) if i+1 < len(coordinates) else None
+
+                    # Get temperatures for current and next location
+                    current_temp = self._get_temperature_for_location(
+                        current_coords[0], current_coords[1],
+                        current_date.get('start_date', '')
+                    )
+
+                    # If we have a next location, get its temperature for interpolation
+                    target_temp = None
+                    interpolated_temp = current_temp
+
+                    if next_coords and i+1 < len(dates):
+                        next_date = dates[i+1]
+                        target_temp = self._get_temperature_for_location(
+                            next_coords[0], next_coords[1],
+                            next_date.get('start_date', '')
+                        )
+
+                        if target_temp is not None and current_temp is not None:
+                            # Calculate progress for temperature interpolation (0 to 1)
+                            progress = (j + 1) / len(path_points)
+                            # Calculate the interpolated temperature
+                            interpolated_temp = self._interpolate_temperature(
+                                current_temp,
+                                target_temp,
+                                progress
+                            )
+
                     timestamp_info = {
                         'date': current_date.get('start_date', ''),
-                        'location': coordinates[i][2],  # City name
+                        'location': f"{coordinates[i][2]} → {coordinates[i+1][2]}" if i+1 < len(coordinates) else coordinates[i][2],
                         'travel_mode': current_mode.value.title(),
-                        'coords': (coordinates[i][0], coordinates[i][1])  # Add coordinates for weather lookup
+                        'coords': current_coords,
+                        'current_temp': interpolated_temp,  # Use interpolated temperature
+                        'target_temp': target_temp,
+                        'is_destination': False
                     }
                 else:
                     logger.warning(f"Frame {frame_count}: No timestamp data available (dates={dates is not None}, i={i}, len(dates)={len(dates) if dates else 'N/A'})")
@@ -804,15 +890,25 @@ class TravelAnimator:
             mode_style = self.get_travel_mode_style(current_mode)
 
             for pause_frame in range(pause_frames):
-                # Create timestamp info for pause frame
+                # Create timestamp info for pause frame at destination
                 pause_timestamp_info = None
                 if dates and i+1 < len(dates):
                     destination_date = dates[i+1]
+                    dest_coords = (coordinates[i+1][0], coordinates[i+1][1])
+
+                    # Get temperature for destination
+                    dest_temp = self._get_temperature_for_location(
+                        dest_coords[0], dest_coords[1],
+                        destination_date.get('start_date', '')
+                    )
+
                     pause_timestamp_info = {
                         'date': destination_date.get('start_date', ''),
                         'location': coordinates[i+1][2],  # Destination city name
                         'travel_mode': 'Exploring',
-                        'coords': (coordinates[i+1][0], coordinates[i+1][1])  # Add coordinates for weather lookup
+                        'coords': dest_coords,
+                        'current_temp': dest_temp,
+                        'is_destination': True  # Flag to update current_temp
                     }
 
                 # Create destination pause frame with close zoom
