@@ -605,7 +605,7 @@ class TravelAnimator:
                     pause_timestamp_info = {
                         'date': destination_date.get('start_date', ''),
                         'location': coordinates[i+1][2],  # Destination city name
-                        'travel_mode': 'Arrived'
+                        'travel_mode': 'Exploring'
                     }
 
                 # Create destination pause frame with close zoom
