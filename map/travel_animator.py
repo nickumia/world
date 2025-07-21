@@ -23,8 +23,11 @@ import os
 import time
 from typing import List, Tuple, Dict, Any, Optional
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from enum import Enum
+import json
+from typing import Optional, Dict, Tuple
+from dataclasses import dataclass
 
 # Default values for animation
 DEFAULT_STEPS_PER_SEGMENT = 30  # Number of frames per travel segment
@@ -103,12 +106,19 @@ class TravelSegment:
         self.start_coords = None
         self.end_coords = None
 
+@dataclass
+class WeatherData:
+    temperature: float  # in Celsius
+    weather_code: int  # WMO weather code
+    time: str  # ISO format time string
+
 class TravelAnimator:
     def __init__(self, output_dir: str = "output"):
         """Initialize the Travel Animator."""
         self.output_dir = output_dir
         self.geolocator = Nominatim(user_agent="travel_animator")
         self.coordinates_cache = {}
+        self.weather_cache = {}  # Cache for weather data
         self.use_gpu = True
 
         # Create output directory
@@ -260,6 +270,150 @@ class TravelAnimator:
 
         return m
 
+    def _get_weather_data(self, lat: float, lon: float, date_str: str) -> Optional[WeatherData]:
+        """Fetch weather data for a specific location and date."""
+        cache_key = f"{lat}_{lon}_{date_str}"
+
+        # Check cache first
+        if cache_key in self.weather_cache:
+            return self.weather_cache[cache_key]
+
+        try:
+            # Parse the date
+            date_obj = datetime.strptime(date_str, '%m/%d/%Y')
+            start_date = date_obj.strftime('%Y-%m-%d')
+            end_date = (date_obj + timedelta(days=1)).strftime('%Y-%m-%d')
+
+            # Use Open-Meteo API for historical weather data
+            url = (
+                f"https://archive-api.open-meteo.com/v1/archive?"
+                f"latitude={lat}&longitude={lon}&"
+                f"start_date={start_date}&end_date={end_date}&"
+                "hourly=temperature_2m,weathercode&"
+                "temperature_unit=celsius&timezone=auto"
+            )
+
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+
+            # Get the temperature and weather code for the middle of the day (12 PM)
+            if 'hourly' in data and 'temperature_2m' in data['hourly']:
+                # Try to get data for 12 PM, fall back to first available
+                time_index = min(12, len(data['hourly']['time']) - 1)  # 12 PM or last available
+
+                weather_data = WeatherData(
+                    temperature=float(data['hourly']['temperature_2m'][time_index]),
+                    weather_code=int(data['hourly']['weathercode'][time_index]),
+                    time=data['hourly']['time'][time_index]
+                )
+
+                # Cache the result
+                self.weather_cache[cache_key] = weather_data
+                return weather_data
+
+        except Exception as e:
+            logger.warning(f"Could not fetch weather data: {e}")
+
+        return None
+
+    def _get_weather_icon(self, weather_code: int) -> str:
+        """Get a weather icon based on WMO weather code."""
+        # Map WMO weather codes to emojis
+        weather_icons = {
+            0: '☀️',   # Clear sky
+            1: '🌤️',   # Mainly clear
+            2: '⛅',   # Partly cloudy
+            3: '☁️',   # Overcast
+            45: '🌫️',  # Fog
+            48: '🌫️',  # Depositing rime fog
+            51: '🌧️',  # Light drizzle
+            53: '🌧️',  # Moderate drizzle
+            55: '🌧️',  # Dense drizzle
+            56: '🌧️',  # Light freezing drizzle
+            57: '🌧️',  # Dense freezing drizzle
+            61: '🌧️',  # Slight rain
+            63: '🌧️',  # Moderate rain
+            65: '🌧️',  # Heavy rain
+            66: '🌨️',  # Light freezing rain
+            67: '🌨️',  # Heavy freezing rain
+            71: '❄️',  # Slight snow fall
+            73: '❄️',  # Moderate snow fall
+            75: '❄️',  # Heavy snow fall
+            77: '❄️',  # Snow grains
+            80: '🌧️',  # Slight rain showers
+            81: '🌧️',  # Moderate rain showers
+            82: '🌧️',  # Violent rain showers
+            85: '🌨️',  # Slight snow showers
+            86: '🌨️',  # Heavy snow showers
+            95: '⛈️',  # Thunderstorm
+            96: '⛈️',  # Thunderstorm with slight hail
+            99: '⛈️',  # Thunderstorm with heavy hail
+        }
+        return weather_icons.get(weather_code, '🌡️')
+
+    def _create_thermometer_html(self, temperature: float) -> str:
+        """Create HTML/CSS for the thermometer visualization."""
+        # Calculate temperature range (-20°C to 40°C)
+        temp_min = -20
+        temp_max = 40
+
+        # Clamp temperature to range
+        clamped_temp = max(temp_min, min(temp_max, temperature))
+
+        # Calculate percentage (0-100%)
+        percentage = ((clamped_temp - temp_min) / (temp_max - temp_min)) * 100
+
+        # Determine color based on temperature
+        if temperature < 0:
+            color = '#6495ED'  # Cold blue
+        elif temperature < 10:
+            color = '#87CEEB'  # Sky blue
+        elif temperature < 20:
+            color = '#98FB98'  # Light green
+        elif temperature < 30:
+            color = '#FFD700'  # Gold
+        else:
+            color = '#FF6347'  # Tomato red
+
+        return f"""
+        <div style="
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 100px;
+            background: #eee;
+            border-radius: 15px;
+            border: 2px solid #666;
+            overflow: hidden;
+            vertical-align: middle;
+            margin-left: 10px;
+        ">
+            <div style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: {percentage}%;
+                background: {color};
+                transition: height 0.5s ease-in-out, background 0.5s ease-in-out;
+            "></div>
+            <div style="
+                position: absolute;
+                bottom: {percentage}%;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                font-weight: bold;
+                font-size: 12px;
+                color: #333;
+                text-shadow: 0 0 2px white;
+            ">
+                {int(round(temperature))}°
+            </div>
+        </div>
+        """
+
     def _add_timestamp_overlay(self, map_obj: folium.Map, timestamp_info: dict):
         """Add timestamp overlay to the map."""
         # Format date as YYYY/MM/DD
@@ -269,15 +423,59 @@ class TravelAnimator:
                 # Parse the date from MM/DD/YYYY format
                 date_obj = datetime.strptime(date_str, '%m/%d/%Y')
                 # Format as YYYY MMM DD (e.g., 2024 Jul 15)
-                date_str = date_obj.strftime('%Y %b %d')
+                formatted_date = date_obj.strftime('%Y %b %d')
             except (ValueError, TypeError):
                 # If parsing fails, use the original string
-                pass
+                formatted_date = date_str
+        else:
+            formatted_date = 'N/A'
+
         location_str = timestamp_info.get('location', '')
         travel_mode = timestamp_info.get('travel_mode', '')
 
-        # Create timestamp HTML with HTML entity emojis for better compatibility
-        timestamp_html = f"""
+        # Get weather data if coordinates are available
+        weather_info = ''
+        if 'coords' in timestamp_info and date_str:
+            lat, lon = timestamp_info['coords']
+            weather_data = self._get_weather_data(lat, lon, date_str)
+
+            if weather_data:
+                weather_icon = self._get_weather_icon(weather_data.weather_code)
+                thermometer = self._create_thermometer_html(weather_data.temperature)
+                weather_info = f"""
+                <div style="display: flex; align-items: center; margin-top: 5px;">
+                    <span style="font-size: 20px; margin-right: 5px;">{weather_icon}</span>
+                    <span style="font-size: 16px;">{int(round(weather_data.temperature))}°C</span>
+                    {thermometer}
+                </div>
+                """
+
+        # Create timestamp HTML with weather information (thermometer above the box)
+        timestamp_html = ""
+
+        # Add thermometer above the box if weather data is available
+        if weather_info:
+            timestamp_html += f"""
+            <div style="
+                position: fixed;
+                bottom: 160px;  # Position above the timestamp box
+                left: 20px;
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: 1px solid #4CAF50;
+            ">
+                <span style="font-size: 24px; margin-right: 8px;">{weather_icon}</span>
+                <span style="font-size: 18px; margin-right: 10px;">{int(round(weather_data.temperature))}°C</span>
+                {thermometer}
+            </div>
+            """
+
+        # Add the main timestamp box
+        timestamp_html += f"""
         <div style="
             position: fixed;
             bottom: 20px;
@@ -290,18 +488,20 @@ class TravelAnimator:
             font-weight: bold;
             font-size: 14px;
             z-index: 1000;
-            max-width: 300px;
+            max-width: 350px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.3);
             border: 2px solid #4CAF50;
         ">
-            <div style="margin-bottom: 5px; color: #4CAF50; font-size: 16px;">
-                DATE:     {date_str}
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <div style="color: #4CAF50; font-size: 16px;">
+                    DATE: {formatted_date}
+                </div>
+                <div style="color: #FFD700; font-size: 14px;">
+                    {travel_mode.upper()}
+                </div>
             </div>
             <div style="margin-bottom: 3px; font-size: 16px;">
-                LOC:      {location_str}
-            </div>
-            <div style="color: #FFD700; font-size: 12px;">
-                MODE:     {travel_mode}
+                LOC: {location_str}
             </div>
         </div>
         """
@@ -545,7 +745,8 @@ class TravelAnimator:
                     timestamp_info = {
                         'date': current_date.get('start_date', ''),
                         'location': coordinates[i][2],  # City name
-                        'travel_mode': current_mode.value.title()
+                        'travel_mode': current_mode.value.title(),
+                        'coords': (coordinates[i][0], coordinates[i][1])  # Add coordinates for weather lookup
                     }
                 else:
                     logger.warning(f"Frame {frame_count}: No timestamp data available (dates={dates is not None}, i={i}, len(dates)={len(dates) if dates else 'N/A'})")
@@ -610,7 +811,8 @@ class TravelAnimator:
                     pause_timestamp_info = {
                         'date': destination_date.get('start_date', ''),
                         'location': coordinates[i+1][2],  # Destination city name
-                        'travel_mode': 'Exploring'
+                        'travel_mode': 'Exploring',
+                        'coords': (coordinates[i+1][0], coordinates[i+1][1])  # Add coordinates for weather lookup
                     }
 
                 # Create destination pause frame with close zoom
