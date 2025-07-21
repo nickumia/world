@@ -493,9 +493,9 @@ class TravelAnimator:
                         flex-direction: column;
                         align-items: center;
                         margin-right: 10px;
-                        background-color: rgba(0, 0, 0, 0.6);
+                        background-color: rgba(0, 0, 0, 0);
                         padding: 8px;
-                        border-radius: 5px;
+                        border: none;
                     ">
                         {thermometer}
                     </div>"""
