@@ -466,7 +466,7 @@ class TravelAnimator:
             self._last_location = location_str
 
         # Use the last known location if current is empty
-        display_location = location_str if location_str else self._last_location
+        display_location = self._last_location
 
         # Get weather data if coordinates are available
         current_temp = timestamp_info.get('current_temp')
