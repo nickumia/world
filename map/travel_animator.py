@@ -453,9 +453,11 @@ class TravelAnimator:
         travel_mode = timestamp_info.get('travel_mode', '')
 
         # Get weather data if coordinates are available
-        weather_info = ''
         current_temp = timestamp_info.get('current_temp')
         target_temp = timestamp_info.get('target_temp')
+
+        # Create timestamp HTML with weather information
+        timestamp_html = ""
 
         if 'coords' in timestamp_info and date_str:
             lat, lon = timestamp_info['coords']
@@ -475,68 +477,47 @@ class TravelAnimator:
                 # Create thermometer with the current temperature
                 thermometer = self._create_thermometer_html(display_temp)
 
-                weather_info = f"""
-                <div style="display: flex; align-items: center; margin-top: 5px;">
-                    <span style="font-size: 20px; margin-right: 5px;">{weather_icon}</span>
-                    <span style="font-size: 16px;">{int(round(display_temp))}°C</span>
-                    {thermometer}
+                # Add the main timestamp box with thermometer on the left
+                timestamp_html += f"""
+                <div style="
+                    position: fixed;
+                    bottom: 20px;
+                    left: 20px;
+                    display: flex;
+                    align-items: flex-end;
+                    z-index: 1000;
+                ">
+                    <!-- Thermometer on the left -->
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin-right: 10px;
+                        background-color: rgba(0, 0, 0, 0.6);
+                        padding: 8px;
+                        border-radius: 5px;
+                    ">
+                        {thermometer}
+                    </div>"""
+
+            timestamp_html += """<!-- Timestamp box -->
+                <div style="
+                    background-color: rgba(0, 0, 0, 0.8);
+                    color: #fff;
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    border-left: 4px solid #4CAF50;
+                    max-width: 300px;
+                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                ">
+                    <div style="color: #4CAF50; font-weight: bold; margin-bottom: 3px;">DATE: {formatted_date}</div>
+                    <div style="margin-bottom: 3px;">LOC: {location_str}</div>
+                    <div style="color: #FFD700;">MODE: {travel_mode.upper()}</div>
                 </div>
-                """
-
-        # Create timestamp HTML with weather information (thermometer above the box)
-        timestamp_html = ""
-
-        # Add thermometer above the box if weather data is available
-        if weather_info:
-            timestamp_html += f"""
-            <div style="
-                position: fixed;
-                bottom: 160px;  # Position above the timestamp box
-                left: 20px;
-                z-index: 1000;
-                display: flex;
-                align-items: center;
-                background-color: rgba(0, 0, 0, 0);
-                padding: 5px 10px;
-                border: none;
-            ">
-                <span style="font-size: 24px; margin-right: 8px;">{weather_icon}</span>
-                <span style="font-size: 18px; margin-right: 10px;">{int(round(weather_data.temperature))}°C</span>
-                {thermometer}
             </div>
             """
-
-        # Add the main timestamp box
-        timestamp_html += f"""
-        <div style="
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji';
-            font-weight: bold;
-            font-size: 14px;
-            z-index: 1000;
-            max-width: 350px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            border: 2px solid #4CAF50;
-        ">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                <div style="color: #4CAF50; font-size: 16px;">
-                    DATE: {formatted_date}
-                </div>
-                <div style="color: #FFD700; font-size: 14px;">
-                    {travel_mode.upper()}
-                </div>
-            </div>
-            <div style="margin-bottom: 3px; font-size: 16px;">
-                LOC: {location_str}
-            </div>
-        </div>
-        """
 
         # Add the timestamp overlay to the map
         map_obj.get_root().html.add_child(folium.Element(timestamp_html))
