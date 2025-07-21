@@ -485,6 +485,8 @@ class TravelAnimator:
                     left: 20px;
                     display: flex;
                     align-items: flex-end;
+                    background-color: rgba(0, 0, 0, 0);
+                    border: none;
                     z-index: 1000;
                 ">
                     <!-- Thermometer on the left -->
@@ -500,21 +502,21 @@ class TravelAnimator:
                         {thermometer}
                     </div>"""
 
-            timestamp_html += """<!-- Timestamp box -->
+            timestamp_html += f"""<!-- Timestamp box -->
                 <div style="
                     background-color: rgba(0, 0, 0, 0.8);
                     color: #fff;
                     padding: 10px 15px;
                     border-radius: 5px;
                     font-family: Arial, sans-serif;
-                    font-size: 14px;
+                    font-size: 16px;
                     border-left: 4px solid #4CAF50;
                     max-width: 300px;
                     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
                 ">
-                    <div style="color: #4CAF50; font-weight: bold; margin-bottom: 3px;">DATE: {formatted_date}</div>
-                    <div style="margin-bottom: 3px;">LOC: {location_str}</div>
-                    <div style="color: #FFD700;">MODE: {travel_mode.upper()}</div>
+                    <div style="color: #4CAF50; font-weight: bold; margin-bottom: 3px;"><b>DATE: {formatted_date}</b></div>
+                    <div style="margin-bottom: 3px;"><b>LOC: {location_str}</b></div>
+                    <div style="color: #FFD700; font-size: 12px;">MODE: {travel_mode.upper()}</div>
                 </div>
             </div>
             """
