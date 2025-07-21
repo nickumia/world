@@ -421,7 +421,6 @@ class TravelAnimator:
                 color: #333;
                 text-shadow: 0 0 2px white;
             ">
-                {int(round(temperature))}°
             </div>
         </div>
         """
@@ -457,16 +456,9 @@ class TravelAnimator:
         location_str = timestamp_info.get('location', '')
         travel_mode = timestamp_info.get('travel_mode', '')
 
-        # Track the last valid location
-        if not hasattr(self, '_last_location'):
-            self._last_location = location_str
-
-        # Only update the last location if we're at a destination or have a valid location
-        if timestamp_info.get('is_destination', False) or location_str:
-            self._last_location = location_str
-
-        # Use the last known location if current is empty
-        display_location = self._last_location
+        # Clean location string by splitting on right arrow and taking first part
+        if location_str and '→' in location_str:
+            location_str = location_str.split('→', 1)[0].strip()
 
         # Get weather data if coordinates are available
         current_temp = timestamp_info.get('current_temp')
@@ -509,16 +501,17 @@ class TravelAnimator:
                     <div style="
                         display: flex;
                         flex-direction: column;
-                        justify-content: flex-end;
+                        align-items: center;
+                        justify-content: space-between;
                         height: 100%;
                         margin-right: 10px;
                         padding: 0;
                         background-color: rgba(0, 0, 0, 0);
                         border: none;
                     ">
-                        <div style="color: black; font-size: 12px; text-align: center; margin-top: 5px;">HOT</div>
+                        <div style="color: #FF6347; font-size: 11px; font-weight: bold; width: 100%; text-align: center;">HOT</div>
                         {thermometer}
-                        <div style="color: black; font-size: 12px; text-align: center; margin-top: 5px;">COLD</div>
+                        <div style="color: #6495ED; font-size: 11px; font-weight: bold; width: 100%; text-align: center; margin-top: 5px;">COLD</div>
                     </div>"""
 
             timestamp_html += f"""<!-- Timestamp box -->
@@ -534,7 +527,7 @@ class TravelAnimator:
                     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
                 ">
                     <div style="color: #4CAF50; font-weight: bold; margin-bottom: 3px;"><b>DATE: {formatted_date}</b></div>
-                    <div style="margin-bottom: 3px;"><b>LOC: {display_location}</b></div>
+                    <div style="margin-bottom: 3px;"><b>LOC: {location_str}</b></div>
                     <div style="margin-bottom: 3px; font-size: 14px;">
                         <span style="color: white;">{int(round(display_temp))}°C</span>
                         <span style="color: #ccc; margin: 0 5px;">/</span>
