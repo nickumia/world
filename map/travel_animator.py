@@ -493,10 +493,11 @@ class TravelAnimator:
                     <div style="
                         display: flex;
                         flex-direction: column;
-                        align-items: center;
+                        justify-content: flex-end;
+                        height: 100%;
                         margin-right: 10px;
+                        padding: 0;
                         background-color: rgba(0, 0, 0, 0);
-                        padding: 8px;
                         border: none;
                     ">
                         {thermometer}
