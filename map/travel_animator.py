@@ -453,8 +453,20 @@ class TravelAnimator:
         else:
             formatted_date = 'N/A'
 
+        # Get location and travel mode, defaulting to empty strings
         location_str = timestamp_info.get('location', '')
         travel_mode = timestamp_info.get('travel_mode', '')
+
+        # Track the last valid location
+        if not hasattr(self, '_last_location'):
+            self._last_location = location_str
+
+        # Only update the last location if we're at a destination or have a valid location
+        if timestamp_info.get('is_destination', False) or location_str:
+            self._last_location = location_str
+
+        # Use the last known location if current is empty
+        display_location = location_str if location_str else self._last_location
 
         # Get weather data if coordinates are available
         current_temp = timestamp_info.get('current_temp')
@@ -521,7 +533,7 @@ class TravelAnimator:
                     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
                 ">
                     <div style="color: #4CAF50; font-weight: bold; margin-bottom: 3px;"><b>DATE: {formatted_date}</b></div>
-                    <div style="margin-bottom: 3px;"><b>LOC: {location_str}</b></div>
+                    <div style="margin-bottom: 3px;"><b>LOC: {display_location}</b></div>
                     <div style="margin-bottom: 3px; font-size: 14px;">
                         <span style="color: white;">{int(round(display_temp))}°C</span>
                         <span style="color: #ccc; margin: 0 5px;">/</span>
