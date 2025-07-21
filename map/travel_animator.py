@@ -318,8 +318,12 @@ class TravelAnimator:
 
         return None
 
+    def _celsius_to_fahrenheit(self, celsius: float) -> float:
+        """Convert Celsius to Fahrenheit."""
+        return (celsius * 9/5) + 32
+
     def _get_weather_icon(self, weather_code: int) -> str:
-        """Get a weather icon based on WMO weather code."""
+        """Get weather icon based on WMO weather code."""
         # Map WMO weather codes to emojis
         weather_icons = {
             0: '☀️',   # Clear sky
@@ -501,6 +505,7 @@ class TravelAnimator:
                         border: none;
                     ">
                         {thermometer}
+                        {f'<div style="color: white; font-size: 12px; text-align: center; margin-top: 5px;">{int(round(self._celsius_to_fahrenheit(display_temp)))}°F</div>' if display_temp is not None else ''}
                     </div>"""
 
             timestamp_html += f"""<!-- Timestamp box -->
@@ -517,6 +522,11 @@ class TravelAnimator:
                 ">
                     <div style="color: #4CAF50; font-weight: bold; margin-bottom: 3px;"><b>DATE: {formatted_date}</b></div>
                     <div style="margin-bottom: 3px;"><b>LOC: {location_str}</b></div>
+                    <div style="margin-bottom: 3px; font-size: 14px;">
+                        <span style="color: white;">{int(round(display_temp))}°C</span>
+                        <span style="color: #ccc; margin: 0 5px;">/</span>
+                        <span style="color: #FFD700;">{int(round(self._celsius_to_fahrenheit(display_temp)))}°F</span>
+                    </div>
                     <div style="color: #FFD700; font-size: 12px;">MODE: {travel_mode.upper()}</div>
                 </div>
             </div>
