@@ -688,7 +688,7 @@ class TravelAnimator:
                 current_center,
                 current_zoom,
                 coordinates,
-                reached_index=len(coordinates) - 1  # Show all markers during outro
+                reached_index=len(coordinates)  # Show all markers during outro
             )
 
             # Add all travel segments to the map
