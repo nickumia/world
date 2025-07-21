@@ -516,8 +516,9 @@ class TravelAnimator:
                         background-color: rgba(0, 0, 0, 0);
                         border: none;
                     ">
+                        <div style="color: black; font-size: 12px; text-align: center; margin-top: 5px;">HOT</div>
                         {thermometer}
-                        {f'<div style="color: black; font-size: 12px; text-align: center; margin-top: 5px;">{int(round(self._celsius_to_fahrenheit(display_temp)))}°F</div>' if display_temp is not None else ''}
+                        <div style="color: black; font-size: 12px; text-align: center; margin-top: 5px;">COLD</div>
                     </div>"""
 
             timestamp_html += f"""<!-- Timestamp box -->
