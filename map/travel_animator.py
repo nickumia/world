@@ -30,8 +30,13 @@ from enum import Enum
 DEFAULT_STEPS_PER_SEGMENT = 30  # Number of frames per travel segment
 DEFAULT_FPS = 30  # Frames per second for output video
 DESTINATION_PAUSE_FRAMES = 5  # Number of frames to pause at each destination
+# Normal zoom level for maps
 INITIAL_ZOOM_LEVEL = 8  # Initial zoom level for maps
 DESTINATION_ZOOM_LEVEL = 8    # Close zoom level for destination exploration
+# Wide zoom level for overview
+INITIAL_ZOOM_LEVEL = 5  # Initial zoom level for maps
+DESTINATION_ZOOM_LEVEL = 5    # Close zoom level for destination exploration
+
 
 # Display configuration
 MAP_WIDTH = 1920
