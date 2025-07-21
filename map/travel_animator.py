@@ -683,13 +683,32 @@ class TravelAnimator:
             )
             current_zoom = end_zoom + (self.usa_zoom - end_zoom) * t
 
-            # Create frame with all markers visible
+            # Create frame with all markers and paths visible
             frame_map = self.create_dynamic_map(
                 current_center,
                 current_zoom,
                 coordinates,
                 reached_index=len(coordinates) - 1  # Show all markers during outro
             )
+
+            # Add all travel segments to the map
+            if travel_modes:
+                for k in range(len(coordinates) - 1):
+                    segment_style = self.get_travel_mode_style(travel_modes[k] if k < len(travel_modes) else TravelMode.DRIVING)
+                    segment_path = self.interpolate_path(
+                        (coordinates[k][0], coordinates[k][1]),
+                        (coordinates[k+1][0], coordinates[k+1][1]),
+                        steps=10,  # Fewer steps for the line since we're zoomed out
+                        mode=travel_modes[k] if k < len(travel_modes) else TravelMode.DRIVING
+                    )
+                    if len(segment_path) > 1:
+                        folium.PolyLine(
+                            segment_path,
+                            color=segment_style['color'],
+                            weight=segment_style['weight'],
+                            opacity=segment_style['opacity'],
+                            dash_array=segment_style['dash_array']
+                        ).add_to(frame_map)
 
             # Add timestamp info for the final destination
             timestamp_info = None
