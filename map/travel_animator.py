@@ -517,7 +517,7 @@ class TravelAnimator:
                         border: none;
                     ">
                         {thermometer}
-                        {f'<div style="color: white; font-size: 12px; text-align: center; margin-top: 5px;">{int(round(self._celsius_to_fahrenheit(display_temp)))}°F</div>' if display_temp is not None else ''}
+                        {f'<div style="color: black; font-size: 12px; text-align: center; margin-top: 5px;">{int(round(self._celsius_to_fahrenheit(display_temp)))}°F</div>' if display_temp is not None else ''}
                     </div>"""
 
             timestamp_html += f"""<!-- Timestamp box -->
