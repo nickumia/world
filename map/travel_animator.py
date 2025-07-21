@@ -496,10 +496,9 @@ class TravelAnimator:
                 z-index: 1000;
                 display: flex;
                 align-items: center;
-                background-color: rgba(0, 0, 0, 0.7);
+                background-color: rgba(0, 0, 0, 0);
                 padding: 5px 10px;
-                border-radius: 5px;
-                border: 1px solid #4CAF50;
+                border: none;
             ">
                 <span style="font-size: 24px; margin-right: 8px;">{weather_icon}</span>
                 <span style="font-size: 18px; margin-right: 10px;">{int(round(weather_data.temperature))}°C</span>
