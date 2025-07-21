@@ -34,8 +34,8 @@ DESTINATION_PAUSE_FRAMES = 5  # Number of frames to pause at each destination
 INITIAL_ZOOM_LEVEL = 8  # Initial zoom level for maps
 DESTINATION_ZOOM_LEVEL = 8    # Close zoom level for destination exploration
 # Wide zoom level for overview
-INITIAL_ZOOM_LEVEL = 5  # Initial zoom level for maps
-DESTINATION_ZOOM_LEVEL = 5    # Close zoom level for destination exploration
+# INITIAL_ZOOM_LEVEL = 5  # Initial zoom level for maps
+# DESTINATION_ZOOM_LEVEL = 5    # Close zoom level for destination exploration
 
 
 # Display configuration
