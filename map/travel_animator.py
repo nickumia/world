@@ -319,7 +319,7 @@ class TravelAnimator:
         return None
 
     def _get_elevation(self, lat: float, lon: float) -> Optional[float]:
-        """Fetch elevation data for given coordinates using Open-Elevation API.
+        """Fetch elevation data for given coordinates using Open-Meteo API.
 
         Args:
             lat: Latitude of the location
@@ -329,12 +329,12 @@ class TravelAnimator:
             Elevation in meters, or None if the request fails
         """
         try:
-            url = f"https://api.open-elevation.com/api/v1/lookup?locations={lat},{lon}"
+            url = f"https://api.open-meteo.com/v1/elevation?latitude={lat}&longitude={lon}"
             response = requests.get(url, timeout=10)
             if response.status_code == 200:
                 data = response.json()
-                if data.get('results') and len(data['results']) > 0:
-                    return data['results'][0]['elevation']
+                if data.get('elevation') and len(data['elevation']) > 0:
+                    return float(data['elevation'][0])
         except Exception as e:
             logger.warning(f"Failed to fetch elevation data: {e}")
         return None
@@ -810,7 +810,7 @@ class TravelAnimator:
         for i in range(len(coordinates) - 1):
             start_coord = (coordinates[i][0], coordinates[i][1])
             end_coord = (coordinates[i+1][0], coordinates[i+1][1])
-            current_mode = travel_modes[i]
+            current_mode = travel_modes[i] if i < len(travel_modes) else TravelMode.DRIVING
 
             # Calculate zoom levels for this segment with smoother transitions
             start_zoom = self.calculate_zoom_level(start_coord, end_coord, current_mode)
