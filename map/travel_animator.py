@@ -318,6 +318,27 @@ class TravelAnimator:
 
         return None
 
+    def _get_elevation(self, lat: float, lon: float) -> Optional[float]:
+        """Fetch elevation data for given coordinates using Open-Elevation API.
+
+        Args:
+            lat: Latitude of the location
+            lon: Longitude of the location
+
+        Returns:
+            Elevation in meters, or None if the request fails
+        """
+        try:
+            url = f"https://api.open-elevation.com/api/v1/lookup?locations={lat},{lon}"
+            response = requests.get(url, timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                if data.get('results') and len(data['results']) > 0:
+                    return data['results'][0]['elevation']
+        except Exception as e:
+            logger.warning(f"Failed to fetch elevation data: {e}")
+        return None
+
     def _celsius_to_fahrenheit(self, celsius: float) -> float:
         """Convert Celsius to Fahrenheit."""
         return (celsius * 9/5) + 32
@@ -426,7 +447,7 @@ class TravelAnimator:
         """
 
     def _add_timestamp_overlay(self, map_obj: folium.Map, timestamp_info: dict):
-        """Add timestamp overlay to the map with weather information.
+        """Add timestamp overlay to the map with weather and elevation information.
 
         Args:
             map_obj: The folium map object
@@ -434,7 +455,7 @@ class TravelAnimator:
                 - date: Date string in MM/DD/YYYY format
                 - location: Current location name
                 - travel_mode: Current travel mode
-                - coords: Tuple of (lat, lon) for weather lookup
+                - coords: Tuple of (lat, lon) for weather and elevation lookup
                 - current_temp: Current temperature (for animation)
                 - target_temp: Target temperature (for animation)
         """
@@ -460,9 +481,15 @@ class TravelAnimator:
         if location_str and '→' in location_str:
             location_str = location_str.split('→', 1)[0].strip()
 
-        # Get weather data if coordinates are available
+        # Get weather and elevation data if coordinates are available
         current_temp = timestamp_info.get('current_temp')
         target_temp = timestamp_info.get('target_temp')
+
+        # Get elevation data (use pre-calculated interpolated elevation if available)
+        elevation = timestamp_info.get('current_elev')
+        if elevation is None and 'coords' in timestamp_info:
+            lat, lon = timestamp_info['coords']
+            elevation = self._get_elevation(lat, lon)
 
         # Create timestamp HTML with weather information
         timestamp_html = ""
@@ -533,7 +560,8 @@ class TravelAnimator:
                         <span style="color: #ccc; margin: 0 5px;">/</span>
                         <span style="color: #FFD700;">{int(round(self._celsius_to_fahrenheit(display_temp)))}°F</span>
                     </div>
-                    <div style="color: #FFD700; font-size: 12px;">MODE: {travel_mode.upper()}</div>
+                    <div style="color: #FFD700; font-size: 12px; margin-bottom: 3px;">MODE: {travel_mode.upper()}</div>
+                {f'<div style="color: #9b59b6; font-size: 12px;">ELEVATION: {int(round(elevation))}m ({int(round(elevation * 3.28084))}ft)</div>' if elevation is not None else ''}
                 </div>
             </div>
             """
@@ -718,6 +746,21 @@ class TravelAnimator:
         """Interpolate temperature between two values based on progress (0-1)."""
         return start_temp + (end_temp - start_temp) * progress
 
+    def _interpolate_elevation(self, start_elev: float, end_elev: float, progress: float) -> float:
+        """Interpolate elevation between two values based on progress (0-1).
+
+        Args:
+            start_elev: Starting elevation in meters
+            end_elev: Target elevation in meters
+            progress: Interpolation progress (0 to 1)
+
+        Returns:
+            Interpolated elevation in meters
+        """
+        if start_elev is None or end_elev is None:
+            return start_elev if start_elev is not None else end_elev
+        return start_elev + (end_elev - start_elev) * progress
+
     def _get_temperature_for_location(self, lat: float, lon: float, date_str: str) -> Optional[float]:
         """Get temperature for a specific location and date."""
         weather_data = self._get_weather_data(lat, lon, date_str)
@@ -790,22 +833,25 @@ class TravelAnimator:
                 # Get dynamic map view for this frame
                 current_center, current_zoom = map_views[j+1]
 
-                # Create timestamp info for this frame with temperature interpolation
+                # Get timestamp info for this frame with temperature and elevation interpolation
                 timestamp_info = None
                 if dates and i < len(dates):
                     current_date = dates[i]
                     current_coords = (coordinates[i][0], coordinates[i][1])
                     next_coords = (coordinates[i+1][0], coordinates[i+1][1]) if i+1 < len(coordinates) else None
 
-                    # Get temperatures for current and next location
+                    # Get temperatures and elevations for current and next location
                     current_temp = self._get_temperature_for_location(
                         current_coords[0], current_coords[1],
                         current_date.get('start_date', '')
                     )
+                    current_elev = self._get_elevation(current_coords[0], current_coords[1])
 
-                    # If we have a next location, get its temperature for interpolation
+                    # If we have a next location, get its data for interpolation
                     target_temp = None
+                    target_elev = None
                     interpolated_temp = current_temp
+                    interpolated_elev = current_elev
 
                     if next_coords and i+1 < len(dates):
                         next_date = dates[i+1]
@@ -813,25 +859,33 @@ class TravelAnimator:
                             next_coords[0], next_coords[1],
                             next_date.get('start_date', '')
                         )
+                        target_elev = self._get_elevation(next_coords[0], next_coords[1])
 
-                        if target_temp is not None and current_temp is not None:
-                            # Calculate progress for temperature interpolation (0 to 1)
-                            progress = (j + 1) / len(path_points)
-                            # Calculate the interpolated temperature
+                        # Calculate progress for interpolation (0 to 1)
+                        progress = (j + 1) / len(path_points)
+
+                        # Calculate interpolated temperature if we have both temps
+                        if current_temp is not None and target_temp is not None:
                             interpolated_temp = self._interpolate_temperature(
-                                current_temp,
-                                target_temp,
-                                progress
+                                current_temp, target_temp, progress
+                            )
+
+                        # Calculate interpolated elevation if we have both elevations
+                        if current_elev is not None and target_elev is not None:
+                            interpolated_elev = self._interpolate_elevation(
+                                current_elev, target_elev, progress
                             )
 
                     timestamp_info = {
                         'date': current_date.get('start_date', ''),
-                        'location': f"{coordinates[i][2]} → {coordinates[i+1][2]}" if i+1 < len(coordinates) else coordinates[i][2],
-                        'travel_mode': current_mode.value.title(),
-                        'coords': current_coords,
+                        'location': f"{coordinates[i][2]} → {coordinates[i+1][2]}",
+                        'travel_mode': current_mode.value,
+                        'coords': (point[0], point[1]),
                         'current_temp': interpolated_temp,  # Use interpolated temperature
                         'target_temp': target_temp,
-                        'is_destination': False
+                        'current_elev': interpolated_elev,  # Use interpolated elevation
+                        'target_elev': target_elev,
+                        'is_destination': j == len(path_points) - 2  # Last point in segment
                     }
                 else:
                     logger.warning(f"Frame {frame_count}: No timestamp data available (dates={dates is not None}, i={i}, len(dates)={len(dates) if dates else 'N/A'})")
