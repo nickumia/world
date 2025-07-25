@@ -541,30 +541,30 @@ class TravelAnimator:
                         <div style="color: #6495ED; font-size: 11px; font-weight: bold; width: 100%; text-align: center; margin-top: 5px;">COLD</div>
                     </div>"""
 
-            timestamp_html += f"""<!-- Timestamp box -->
-                <div style="
-                    background-color: rgba(0, 0, 0, 0.8);
-                    color: #fff;
-                    padding: 10px 15px;
-                    border-radius: 5px;
-                    font-family: Arial, sans-serif;
-                    font-size: 16px;
-                    border-left: 4px solid #4CAF50;
-                    max-width: 300px;
-                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-                ">
-                    <div style="color: #4CAF50; font-weight: bold; margin-bottom: 3px;"><b>DATE: {formatted_date}</b></div>
-                    <div style="margin-bottom: 3px;"><b>LOC: {location_str}</b></div>
-                    <div style="margin-bottom: 3px; font-size: 14px;">
-                        <span style="color: white;">{int(round(display_temp))}°C</span>
-                        <span style="color: #ccc; margin: 0 5px;">/</span>
-                        <span style="color: #FFD700;">{int(round(self._celsius_to_fahrenheit(display_temp)))}°F</span>
+                timestamp_html += f"""<!-- Timestamp box -->
+                    <div style="
+                        background-color: rgba(0, 0, 0, 0.8);
+                        color: #fff;
+                        padding: 10px 15px;
+                        border-radius: 5px;
+                        font-family: Arial, sans-serif;
+                        font-size: 16px;
+                        border-left: 4px solid #4CAF50;
+                        max-width: 300px;
+                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                    ">
+                        <div style="color: #4CAF50; font-weight: bold; margin-bottom: 3px;"><b>DATE: {formatted_date}</b></div>
+                        <div style="margin-bottom: 3px;"><b>LOC: {location_str}</b></div>
+                        <div style="margin-bottom: 3px; font-size: 14px;">
+                            <span style="color: white;">{int(round(display_temp))}°C</span>
+                            <span style="color: #ccc; margin: 0 5px;">/</span>
+                            <span style="color: #FFD700;">{int(round(self._celsius_to_fahrenheit(display_temp)))}°F</span>
+                        </div>
+                        <div style="color: #FFD700; font-size: 12px; margin-bottom: 3px;">MODE: {travel_mode.upper()}</div>
+                    {f'<div style="color: #9b59b6; font-size: 12px;">ELEVATION: {int(round(elevation))}m ({int(round(elevation * 3.28084))}ft)</div>' if elevation is not None else ''}
                     </div>
-                    <div style="color: #FFD700; font-size: 12px; margin-bottom: 3px;">MODE: {travel_mode.upper()}</div>
-                {f'<div style="color: #9b59b6; font-size: 12px;">ELEVATION: {int(round(elevation))}m ({int(round(elevation * 3.28084))}ft)</div>' if elevation is not None else ''}
                 </div>
-            </div>
-            """
+                """
 
         # Add the timestamp overlay to the map
         map_obj.get_root().html.add_child(folium.Element(timestamp_html))
