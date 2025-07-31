@@ -84,6 +84,9 @@ export default function SpiritualTech() {
     </Grid>
   </Grid>
     <br/>
+    <div class="trailer-box">
+    <iframe class="trailer" src="https://www.youtube.com/embed/zAJibmxOIUo?si=u3A9q1YOdh_qgIao" title="330 Days Across America: Where the Map Took Me | SpiritualTech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
 				<Typography variant="subtitle2">
           This page is home to the updates relating to my road trip across America, coined as SpiritualTech.
           It's important to understand the meaning behind the naming.  I'm defining <i>spiritual</i> as the
@@ -140,9 +143,9 @@ export default function SpiritualTech() {
 				</Typography>
     <br/>
 <div class="trailer-box">
-  <iframe class="trailer" src="https://www.youtube.com/embed/3krSS343lbk?si=4I9YkglByd4xWM0V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  <iframe class="trailer" src="https://www.youtube.com/embed/KShYdxNg-M0?si=X9dmRb2UMP8MELEw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  <iframe class="trailer" src="https://www.youtube.com/embed/ENl2E1Zihds?si=vBwomldhVnK4CI6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe class="trailer" src="https://www.youtube.com/embed/3krSS343lbk?si=4I9YkglByd4xWM0V" title="SpiritualTech | Rose | Adventure Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe class="trailer" src="https://www.youtube.com/embed/KShYdxNg-M0?si=X9dmRb2UMP8MELEw" title="SpiritualTech | Rose | Self Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe class="trailer" src="https://www.youtube.com/embed/ENl2E1Zihds?si=vBwomldhVnK4CI6A" title="SpiritualTech | Rose | Horizon Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
     <br/>
 
