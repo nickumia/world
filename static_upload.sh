@@ -1,5 +1,6 @@
 aws s3 cp static/src/offline/bundle.js s3://offline.kamutiv.com/bundle.js
 aws s3 cp static/src/react.css s3://offline.kamutiv.com/react.css
+aws s3 cp static/src/offline/index s3://offline.kamutiv.com/index.html --content-type "text/html"
 # Upload all files from static/src/offline with HTML content type
 find static/src/offline -type f -not -name "*.*" -print0 | while IFS= read -r -d $'\0' file; do
     # Get just the filename without path
