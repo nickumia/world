@@ -6,6 +6,8 @@ CUT_END='30'
 declare -a simple_pages=(
 [0]='index Home homemain'
 [1]='nlp NLP nlpmain'
+[2]='spiritual-tech SpiritualTech spiritualtech'
+[3]='financial Financial financial'
 )
 
 declare -a content_pages=(
@@ -16,10 +18,8 @@ declare -a content_pages=(
 [4]='london London singlepost'
 [5]='privacy Privacy singlepost'
 [6]='new_york NewYork singlepost'
-[7]='spiritual-tech SpiritualTech spiritualtech'
-[8]='spiritual Spiritual singlepost'
-[9]='financial Financial financial'
-[9]='d20141228 A_Beginning_20141228 singlepost'
+[7]='spiritual Spiritual singlepost'
+[8]='d20141228 A_Beginning_20141228 singlepost'
 )
 
 for page in "${simple_pages[@]}"
