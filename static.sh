@@ -20,6 +20,12 @@ declare -a content_pages=(
 [6]='2023_new_york NewYork singlepost'
 [7]='spiritual Spiritual singlepost'
 [8]='d20141228 A_Beginning_20141228 singlepost'
+[9]='consciousness Consciousness singlepost'
+[10]='identification Identification singlepost'
+[11]='introduction_legacy Introduction_Legacy singlepost'
+[12]='languages Languages singlepost'
+[13]='senses Senses singlepost'
+[14]='universalization Universalization singlepost'
 )
 
 for page in "${simple_pages[@]}"

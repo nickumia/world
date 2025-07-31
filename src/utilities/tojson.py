@@ -48,9 +48,9 @@ def get_page_data(page_name):
     if page_name in PAGE_DATA:
         return PAGE_DATA[page_name]
 
-    # Try importing from common module locations
+    # Try importing from known module locations
     module_paths = [
-        'app.posts',
+        'app.nlp.posts',
         'app.travel.posts',
         'app.kumia.posts'
     ]
