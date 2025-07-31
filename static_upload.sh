@@ -11,6 +11,7 @@ aws s3 cp static/src/offline/new_york s3://offline.kamutiv.com/new_york --conten
 aws s3 cp static/src/offline/spiritual-tech s3://offline.kamutiv.com/spiritual-tech --content-type "text/html"
 aws s3 cp static/src/offline/spiritual s3://offline.kamutiv.com/spiritual --content-type "text/html"
 aws s3 cp static/src/offline/financial s3://offline.kamutiv.com/financial --content-type "text/html"
+aws s3 cp static/src/offline/d20141228 s3://offline.kamutiv.com/d20141228 --content-type "text/html"
 
 # aws s3 cp static/src/img/ s3://offline.kamutiv.com/static/img/ --recursive
 aws s3 cp mermaid/financial_concepts.svg s3://offline.kamutiv.com/static/img/financial_concepts.svg

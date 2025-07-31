@@ -19,6 +19,7 @@ declare -a content_pages=(
 [7]='spiritual-tech SpiritualTech spiritualtech'
 [8]='spiritual Spiritual singlepost'
 [9]='financial Financial financial'
+[9]='d20141228 A_Beginning_20141228 singlepost'
 )
 
 for page in "${simple_pages[@]}"
