@@ -1,17 +1,12 @@
 aws s3 cp static/src/offline/bundle.js s3://offline.kamutiv.com/bundle.js
 aws s3 cp static/src/react.css s3://offline.kamutiv.com/react.css
-aws s3 cp static/src/offline/index s3://offline.kamutiv.com/index --content-type "text/html"
-aws s3 cp static/src/offline/kumia s3://offline.kamutiv.com/kumia --content-type "text/html"
-aws s3 cp static/src/offline/nlp s3://offline.kamutiv.com/nlp --content-type "text/html"
-aws s3 cp static/src/offline/natural s3://offline.kamutiv.com/natural --content-type "text/html"
-aws s3 cp static/src/offline/language s3://offline.kamutiv.com/language --content-type "text/html"
-aws s3 cp static/src/offline/processing s3://offline.kamutiv.com/processing --content-type "text/html"
-aws s3 cp static/src/offline/london s3://offline.kamutiv.com/london --content-type "text/html"
-aws s3 cp static/src/offline/new_york s3://offline.kamutiv.com/new_york --content-type "text/html"
-aws s3 cp static/src/offline/spiritual-tech s3://offline.kamutiv.com/spiritual-tech --content-type "text/html"
-aws s3 cp static/src/offline/spiritual s3://offline.kamutiv.com/spiritual --content-type "text/html"
-aws s3 cp static/src/offline/financial s3://offline.kamutiv.com/financial --content-type "text/html"
-aws s3 cp static/src/offline/d20141228 s3://offline.kamutiv.com/d20141228 --content-type "text/html"
+# Upload all files from static/src/offline with HTML content type
+find static/src/offline -type f -not -name "*.*" -print0 | while IFS= read -r -d $'\0' file; do
+    # Get just the filename without path
+    filename=$(basename "$file")
+    # Upload with HTML content type
+    aws s3 cp "$file" "s3://offline.kamutiv.com/${filename}" --content-type "text/html"
+done
 
 # aws s3 cp static/src/img/ s3://offline.kamutiv.com/static/img/ --recursive
 aws s3 cp mermaid/financial_concepts.svg s3://offline.kamutiv.com/static/img/financial_concepts.svg
