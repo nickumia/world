@@ -15,9 +15,9 @@ declare -a content_pages=(
 [1]='language Language realm'
 [2]='natural Natural realm'
 [3]='kumia Kumia kumia'
-[4]='london London singlepost'
+[4]='2023_london London singlepost'
 [5]='privacy Privacy singlepost'
-[6]='new_york NewYork singlepost'
+[6]='2023_new_york NewYork singlepost'
 [7]='spiritual Spiritual singlepost'
 [8]='d20141228 A_Beginning_20141228 singlepost'
 )

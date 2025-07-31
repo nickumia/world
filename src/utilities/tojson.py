@@ -9,8 +9,6 @@ from app.nlp.model_pages import (
     openings_parry, openings_lalita, openings_nick
 )
 from app.kumia.resume import publications, experiences, educations
-from app.kumia.posts import spiritual, d20141228
-from app.travel.posts import london, new_york
 from app.general import privacy
 
 # Page configurations mapping to their respective data
