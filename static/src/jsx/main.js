@@ -67,7 +67,7 @@ var pages = {
 	"#spiritualtech": function test1() {return <SpiritualTech />},
 	"#financial": function test1() {return <Financial />},
 	"#nlpmain": function test1() {return <NLPMain />},
-	"#homemain": function test1() {return <HomeMain />}
+	"#homemain": function test1() {return <HomeMain allPages={allPages} />}
 }
 
 for (let page in pages) {

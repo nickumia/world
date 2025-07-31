@@ -11,30 +11,96 @@ declare -a simple_pages=(
 )
 
 declare -a content_pages=(
-[0]='processing Processing realm'
-[1]='language Language realm'
-[2]='natural Natural realm'
-[3]='kumia Kumia kumia'
-[4]='2023_london London singlepost'
-[5]='privacy Privacy singlepost'
-[6]='2023_new_york NewYork singlepost'
-[7]='spiritual Spiritual singlepost'
-[8]='d20141228 A_Beginning_20141228 singlepost'
-[9]='consciousness Consciousness singlepost'
-[10]='identification Identification singlepost'
-[11]='introduction_legacy Introduction_Legacy singlepost'
-[12]='languages Languages singlepost'
-[13]='senses Senses singlepost'
-[14]='universalization Universalization singlepost'
+# [0]='d20141228 A_Beginning_20141228 singlepost'
+[1]='introduction_legacy Introduction_Legacy singlepost'
+[2]='senses Senses singlepost'
+[3]='identification Identification singlepost'
+[4]='universalization Universalization singlepost'
+[5]='languages Languages singlepost'
+[6]='consciousness Consciousness singlepost'
+[7]='processing Processing realm'
+[8]='language Language realm'
+[9]='natural Natural realm'
+[10]='kumia Kumia kumia'
+[11]='spiritual Spiritual singlepost'
+[12]='2023_london London singlepost'
+[13]='2023_new_york NewYork singlepost'
+[14]='privacy Privacy singlepost'
 )
 
 for page in "${simple_pages[@]}"
 do
   read -ra page_parts <<< "$page"
-  # Build page
-  cp static/src/offline/template.html static/src/offline/${page_parts[0]}
-  sed -i "s/TITLE_PLACEHOLDER/Kamutiv Tech | ${page_parts[1]}/g" static/src/offline/${page_parts[0]}
-  sed -i "s/MAIN_CONTENT_PLACEHOLDER/${page_parts[2]}/g" static/src/offline/${page_parts[0]}
+    # Special handling for home page to pass pages data
+  if [ "${page_parts[0]}" = "index" ]; then
+    # Generate a JSON array of pages from content_pages, pulling names from _meta.py files
+    pages_json='['
+    first=true
+    for content_page in "${content_pages[@]}"; do
+      read -ra parts <<< "$content_page"
+      page_id="${parts[0]}"
+
+      # Default name (from content_pages array)
+      name="${parts[1]//_/ }"
+
+      # Initialize date as empty
+      posted_date=""
+
+      # Try to find and extract data from _meta.py file
+      meta_file=$(find src/app -name "${page_id}_meta.py" -type f | head -1)
+      if [ -f "$meta_file" ]; then
+        # Extract title from _meta.py (handles both single and double quotes)
+        title=$(grep -E "^title\s*=" "$meta_file" | head -1 | sed -E "s/^title\s*=\s*['\"]([^'\"]+)['\"].*/\1/")
+        if [ -n "$title" ]; then
+          name="$title"
+        fi
+
+        # Extract posted_time if available
+        date_line=$(grep -E "^posted_time\s*=" "$meta_file" | head -1)
+        if [ -n "$date_line" ]; then
+          # Extract the date value, handling different date formats
+          posted_date=$(echo "$date_line" | sed -E "s/^posted_time\s*=\s*['\"]([^'\"]+)['\"].*/\1/")
+        fi
+      fi
+
+      if [ "$first" = false ]; then
+        pages_json+=","
+      fi
+
+      # Escape special characters for JSON
+      name_escaped=$(echo "$name" | sed 's/"/\\"/g')
+      date_escaped=$(echo "$posted_date" | sed 's/"/\\"/g')
+
+      # Include date in the page data if available
+      if [ -n "$posted_date" ]; then
+        pages_json+="{\"id\":\"$page_id\",\"name\":\"$name_escaped\",\"date\":\"$date_escaped\"}"
+      else
+        pages_json+="{\"id\":\"$page_id\",\"name\":\"$name_escaped\"}"
+      fi
+      first=false
+    done
+    pages_json+="]"
+
+    # Create a temporary file with the template and inject the pages data
+    cp static/src/offline/template.html static/src/offline/temp
+    # Update placeholders in the temp file
+    sed -i "s/TITLE_PLACEHOLDER/Kamutiv Tech | ${page_parts[1]}/g" static/src/offline/temp
+    sed -i "s/MAIN_CONTENT_PLACEHOLDER/${page_parts[2]}/g" static/src/offline/temp
+
+    # Use the same content insertion logic as other content pages
+    # The JSON is already properly escaped, just wrap it in quotes
+    cat <(sed -n "1,${CUT_START}p" static/src/offline/temp) \
+        <(echo -n 'allPages='; echo -n "'$pages_json';") \
+        <(sed -n "${CUT_END},1000p" static/src/offline/temp) > static/src/offline/${page_parts[0]}
+
+    # Clean up
+    rm -f static/src/offline/temp
+  else
+    # Standard page build for other simple pages
+    cp static/src/offline/template.html static/src/offline/${page_parts[0]}
+    sed -i "s/TITLE_PLACEHOLDER/Kamutiv Tech | ${page_parts[1]}/g" static/src/offline/${page_parts[0]}
+    sed -i "s/MAIN_CONTENT_PLACEHOLDER/${page_parts[2]}/g" static/src/offline/${page_parts[0]}
+  fi
   echo "Done with...${page_parts[0]}"
 done
 
