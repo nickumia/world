@@ -22,8 +22,8 @@ type JsonNote struct {
 
 func main() {
 	// Define input and output paths
-	notesDir := "/home/kamutiv/world/notes"
-	outputFile := "/home/kamutiv/world/notes_export.csv"
+	notesDir := "/home/kamutiv/world/utils/notes"
+	outputFile := "/home/kamutiv/world/utils/notes_export.csv"
 
 	// Get all note files
 	files, err := ioutil.ReadDir(notesDir)

@@ -17,8 +17,8 @@ type Note struct {
 
 func main() {
 	// Define input and output paths
-	notesDir := "/home/kamutiv/world/notes"
-	outputFile := "/home/kamutiv/world/combined_notes.html"
+	notesDir := "/home/kamutiv/world/utils/notes"
+	outputFile := "/home/kamutiv/world/utils/combined_notes.html"
 
 	// Get all note files
 	files, err := ioutil.ReadDir(notesDir)

@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	notesDir := "/home/kamutiv/world/notes"
+	notesDir := "/home/kamutiv/world/utils/notes"
 	
 	files, err := filepath.Glob(filepath.Join(notesDir, "*.html"))
 	if err != nil {
