@@ -1,10 +1,6 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-
+import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
+import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 
 import LoginIcon from '@mui/icons-material/Login';
@@ -18,22 +14,21 @@ import BlurOnIcon from '@mui/icons-material/BlurOn';
 import CoPresent from '@mui/icons-material/CoPresent';
 
 
-// react.school/material-ui
-
-const useStyles = makeStyles((theme) => ({
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  },
-  offset: theme.mixins.toolbar
+// Styled components using MUI v5 styled API
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  justifyContent: 'space-between',
 }));
 
+const TitleLink = styled('a')({
+  color: 'white',
+  textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'none',
+  },
+});
 
-export default function ButtonAppBar({title, menu, login}) {
-	// Adapted from https://react.school/material-ui/appbar/
-  const classes = useStyles();
+export default function ButtonAppBar({ title, menu, login }) {
+  // Adapted from https://react.school/material-ui/appbar/
 	const icons = {
 		"Login": <LoginIcon />,
 		"Logout": <LogoutIcon />,
@@ -50,24 +45,24 @@ export default function ButtonAppBar({title, menu, login}) {
 
   return (
     <React.Fragment>
-      <AppBar>	
-        <Toolbar color="primary">
-          <Typography variant="h6" className={classes.title}>
-            <a href="/" style={{color: "white"}}>
-						{title}
-            {title == 'Kamutiv Tech | Error' && '	\u{1F627}'}
-            </a>
+      <AppBar position="static">
+        <StyledToolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <TitleLink href="/">
+              {title}
+              {title === 'Kamutiv Tech | Error' && ' \u{1F627}'}
+            </TitleLink>
           </Typography>
-					{menu.map(menu => (
-						<form action={menu.link} key={menu.key}>
-							<Tooltip title={menu.name}>
-			          <IconButton color="inherit" type="submit">
-  			          {icons[menu.name]}
-    			      </IconButton>
-							</Tooltip>
-						</form>
-					))}
-        </Toolbar>
+          {menu.map((item) => (
+            <form action={item.link} key={item.key}>
+              <Tooltip title={item.name}>
+                <IconButton color="inherit" type="submit" size="large">
+                  {icons[item.name]}
+                </IconButton>
+              </Tooltip>
+            </form>
+          ))}
+        </StyledToolbar>
       </AppBar>
     </React.Fragment>
   );
