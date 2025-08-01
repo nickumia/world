@@ -151,3 +151,4 @@ terraform.tfstate*
 
 **/*output/
 *.mp4
+**/notes
