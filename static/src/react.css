@@ -109,3 +109,15 @@ iframe {
 .chip-svg {
   color: #fff;
 }
+
+.note {
+  margin-bottom: 2em;
+  padding: 15px;
+  border-left: 4px solid #4CAF50;
+  background-color: #f9f9f9;
+}
+.timestamp {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+}
