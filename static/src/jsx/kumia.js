@@ -119,14 +119,6 @@ export default function Kumia({ pubs, work, edu }) {
                   secondary={
                     <React.Fragment>
                       <Typography
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                        sx={{ display: 'block', mb: 0.5 }}
-                      >
-                        {pub.authors}
-                      </Typography>
-                      <Typography
                         variant="body2"
                         color="text.secondary"
                         sx={{ 
