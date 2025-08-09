@@ -172,9 +172,11 @@ export default function HomeMain({ allPages }) {
         sx={{ 
           display: 'flex', 
           flexWrap: 'wrap',
-          gap: 0.5,
+          gap: 0,
+          borderRadius: 0,
           '& > *': {
-            flexGrow: 1,
+            flex: '0 0 auto',
+            borderRadius: 0,
           },
         }}
       >
@@ -187,7 +189,8 @@ export default function HomeMain({ allPages }) {
             sx={{
               width: { xs: '100%', md: image.width },
               height: { xs: 200, md: '40vh' },
-              minWidth: { xs: '100%', md: '30%' },
+              flex: '0 0 auto',
+              maxWidth: '100%',
             }}
           >
             <Box
