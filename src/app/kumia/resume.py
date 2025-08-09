@@ -1,6 +1,26 @@
 # Resume content
 
 publications = [
+    {"title": "[TRACEE] Traceable and Reliable AI for Computing Energy Efficiency",
+     "key": 13,
+     "image": "/static/img/dod.png",
+     "place": "SBIR Phase I Proposal | Cantonsville, MD",
+     "date": "Written: Feb 2024 | PoP: Jul 2024 - Jul 2025",
+     "link": "https://www.sbir.gov/awards/211122",
+     "support": """
+     Original Proposal Writer.  Assisted in execution of Phase I.
+     """,  # NOQA
+     },
+    {"title": "[ABDREAM] ABDR Essential Archive for Maintenance",
+     "key": 12,
+     "image": "/static/img/dod.png",
+     "place": "SBIR Phase I Proposal | Cantonsville, MD",
+     "date": "PoP: Jan 2024 - Mar 2025",
+     "link": "https://www.sbir.gov/awards/211280",
+     "support": """
+     Principal Technical Engineer.  Videos of work available on request from Redshred.
+     """,  # NOQA
+     },
     {"title": "Data.gov Projects Mashup",
      "key": 11,
      "image": "/static/img/datagov.svg",
