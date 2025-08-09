@@ -3,6 +3,7 @@ import {
   Paper, 
   Typography, 
   Box, 
+  Button,
   BottomNavigation, 
   BottomNavigationAction,
   Accordion, 
@@ -74,199 +75,139 @@ export default function Kumia({ pubs, work, edu }) {
   const displayContent = (content) => {
     if (content === 'pubs') {
       return (
-        <List sx={{ width: '100%', bgcolor: 'background.paper', borderRadius: 2, overflow: 'hidden' }}>
+        <>
           {pubs_list.map((pub, index) => (
-            <ListItemButton 
-              key={index} 
-              alignItems="flex-start" 
-              component="a" 
-              href={pub.link} 
-              target="_blank"
-              sx={{
-                '&:hover': {
-                  backgroundColor: (theme) => theme.palette.action.hover,
-                },
-                borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
-                '&:last-child': {
-                  borderBottom: 'none',
-                },
-                py: 2,
-              }}
-            >
-              <ListItemAvatar>
-                <Avatar 
-                  alt={pub.title} 
-                  src={pub.image} 
-                  variant="rounded" 
-                  sx={{ 
-                    width: 56, 
-                    height: 56, 
-                    mr: 2,
-                    boxShadow: 1,
-                  }} 
-                />
-              </ListItemAvatar>
-              <ListItemText
-                primary={
-                  <Typography 
-                    variant="subtitle1" 
-                    component="div"
+            <Accordion key={index} sx={{ mb: 1, boxShadow: 1, '&:before': { display: 'none' } }}>
+              <AccordionSummary 
+                expandIcon={<ExpandMoreIcon />}
+                sx={{
+                  '& .MuiAccordionSummary-content': {
+                    alignItems: 'center',
+                  },
+                  '&:hover': {
+                    backgroundColor: (theme) => theme.palette.action.hover,
+                  },
+                }}
+              >
+                <ListItemAvatar>
+                  <Avatar 
+                    alt={pub.title} 
+                    src={pub.image} 
+                    variant="rounded" 
                     sx={{ 
-                      fontWeight: 500,
-                      mb: 0.5,
-                      lineHeight: 1.3
-                    }}
-                  >
-                    {pub.title}
-                  </Typography>
-                }
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                      sx={{ display: 'block', mb: 0.5 }}
-                    >
-                      {pub.authors}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
+                      width: 56, 
+                      height: 56, 
+                      mr: 2,
+                      boxShadow: 1,
+                    }} 
+                  />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={
+                    <Typography 
+                      variant="subtitle1" 
+                      component="div"
                       sx={{ 
-                        fontStyle: 'italic',
-                        display: 'block',
-                        lineHeight: 1.4
+                        fontWeight: 500,
+                        mb: 0.5,
+                        lineHeight: 1.3
                       }}
                     >
-                      {pub.journal}
+                      {pub.title}
                     </Typography>
-                  </React.Fragment>
-                }
-                sx={{ m: 0 }}
-              />
-            </ListItemButton>
+                  }
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                        sx={{ display: 'block', mb: 0.5 }}
+                      >
+                        {pub.authors}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ 
+                          fontStyle: 'italic',
+                          display: 'block',
+                          lineHeight: 1.4
+                        }}
+                      >
+                        {pub.date + " | " + pub.place}
+                      </Typography>
+                    </React.Fragment>
+                  }
+                  sx={{ m: 0 }}
+                />
+              </AccordionSummary>
+              <AccordionDetails sx={{ bgcolor: 'background.paper' }}>
+                <Box sx={{ width: '100%', p: 2 }}>
+                  <Typography 
+                    variant="body2" 
+                    component="div"
+                    dangerouslySetInnerHTML={{__html: pub.support || 'No additional information available.'}}
+                    align="center"
+                  />
+                  {pub.link && (
+                    <Button 
+                      href={pub.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      color="primary"
+                      size="small"
+                      sx={{ mt: 2 }}
+                    >
+                      View Publication
+                    </Button>
+                  )}
+                </Box>
+              </AccordionDetails>
+            </Accordion>
           ))}
-        </List>
+        </>
       );
     } else if (content === 'work') {
       return (
-        <List sx={{ width: '100%', bgcolor: 'background.paper', borderRadius: 2, overflow: 'hidden' }}>
+        <>
           {exps_list.map((exp, index) => (
-            <ListItemButton 
-              key={index} 
-              alignItems="flex-start"
-              sx={{
-                '&:hover': {
-                  backgroundColor: (theme) => theme.palette.action.hover,
-                },
-                borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
-                '&:last-child': {
-                  borderBottom: 'none',
-                },
-                py: 2,
-              }}
-            >
-              <Box sx={{ width: '100%' }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
-                  <Typography component="div" variant="subtitle1" color="text.primary" sx={{ fontWeight: 500 }}>
+            <Accordion key={index} sx={{ mb: 1, boxShadow: 1, '&:before': { display: 'none' } }}>
+              <AccordionSummary 
+                expandIcon={<ExpandMoreIcon />}
+                sx={{
+                  '&:hover': {
+                    backgroundColor: (theme) => theme.palette.action.hover,
+                  },
+                }}
+              >
+                <Box sx={{ width: '100%' }}>
+                    <Typography component="div" variant="subtitle1" color="text.primary" sx={{ fontWeight: 500 }}>
+                    {exp.link && <a href={exp.link}>{exp.company}</a>}
+                    </Typography>
+                    <Typography component="div" variant="body2" color="text.secondary">
+                      {exp.date}
+                    </Typography>
+                </Box>
+              </AccordionSummary>
+              <AccordionDetails sx={{ bgcolor: 'background.paper' }}>
+                <Box sx={{ width: '100%', p: 2 }}>
+                  <Typography component="div" variant="body1" color="text.secondary" sx={{ mb: 1, fontWeight: 500 }}>
                     {exp.role}
                   </Typography>
-                  <Typography component="div" variant="body2" color="text.secondary">
-                    {exp.duration}
-                  </Typography>
-                </Box>
-                <Typography component="div" variant="body1" color="text.secondary" sx={{ mb: 1.5, fontWeight: 500 }}>
-                  {exp.company}
-                </Typography>
-                <Typography component="div" variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                  {exp.description}
-                </Typography>
-                {exp.skills && (
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
-                    {exp.skills.map((skill, i) => (
-                      <Chip 
-                        key={i} 
-                        label={skill} 
-                        size="small" 
-                        variant="outlined"
-                        sx={{
-                          fontSize: '0.7rem',
-                          height: 24,
-                          '& .MuiChip-label': {
-                            px: 1,
-                          },
-                        }}
-                      />
-                    ))}
-                  </Box>
-                )}
-              </Box>
-            </ListItemButton>
-          ))}
-        </List>
-      );
-    } else if (content === 'edu') {
-      return (
-        <List sx={{ width: '100%', bgcolor: 'background.paper', borderRadius: 2, overflow: 'hidden' }}>
-          {edus_list.map((edu, index) => (
-            <ListItemButton 
-              key={index} 
-              alignItems="flex-start"
-              sx={{
-                '&:hover': {
-                  backgroundColor: (theme) => theme.palette.action.hover,
-                },
-                borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
-                '&:last-child': {
-                  borderBottom: 'none',
-                },
-                py: 2,
-              }}
-            >
-              <ListItemAvatar>
-                <Avatar 
-                  alt={edu.institution} 
-                  src={edu.image} 
-                  variant="rounded"
-                  sx={{ 
-                    width: 56, 
-                    height: 56, 
-                    mr: 2,
-                    boxShadow: 1,
-                  }}
-                />
-              </ListItemAvatar>
-              <Box sx={{ width: '100%' }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 0.5 }}>
-                  <Typography component="div" variant="subtitle1" color="text.primary" sx={{ fontWeight: 500 }}>
-                    {edu.degree}
-                  </Typography>
-                  <Typography component="div" variant="body2" color="text.secondary">
-                    {edu.duration}
-                  </Typography>
-                </Box>
-                <Typography component="div" variant="body1" color="text.secondary" sx={{ mb: 1, fontWeight: 500 }}>
-                  {edu.institution}
-                </Typography>
-                {edu.gpa && (
-                  <Typography component="div" variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
-                    GPA: {edu.gpa}
-                  </Typography>
-                )}
-                <Typography component="div" variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                  {edu.description}
-                </Typography>
-                {edu.courses && (
-                  <Box sx={{ mt: 2 }}>
-                    <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
-                      Relevant Courses:
-                    </Typography>
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                      {edu.courses.map((course, i) => (
+                  <Typography 
+                    component="div" 
+                    variant="body2" 
+                    color="text.secondary" 
+                    sx={{ lineHeight: 1.6, mb: 2 }}
+                    dangerouslySetInnerHTML={{__html: exp.details}}
+                  />
+                  {exp.skills && (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
+                      {exp.skills.map((skill, i) => (
                         <Chip 
                           key={i} 
-                          label={course} 
+                          label={skill} 
                           size="small" 
                           variant="outlined"
                           sx={{
@@ -279,12 +220,81 @@ export default function Kumia({ pubs, work, edu }) {
                         />
                       ))}
                     </Box>
-                  </Box>
-                )}
-              </Box>
-            </ListItemButton>
+                  )}
+                </Box>
+              </AccordionDetails>
+            </Accordion>
           ))}
-        </List>
+        </>
+      );
+    } else if (content === 'edu') {
+      return (
+        <>
+          {edus_list.map((edu, index) => (
+            <Card key={index} sx={{ mb: 2, display: 'flex', boxShadow: 1, '&:last-child': { mb: 0 } }}>
+              <CardMedia 
+                component="img" 
+                sx={{ 
+                  width: 151, 
+                  height: 151, 
+                  objectFit: 'contain',
+                  p: 2,
+                  bgcolor: 'background.paper'
+                }}
+                image={edu.image} 
+                alt={edu.image.split('/')[-1]}
+              />
+              <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <CardHeader 
+                  title={edu.institution} 
+                  subheader={edu.duration}
+                  titleTypographyProps={{ variant: 'h6' }}
+                  sx={{ 
+                    pb: 1, 
+                    '& .MuiCardHeader-subheader': {
+                      color: 'text.secondary'
+                    }
+                  }}
+                />
+                <CardContent sx={{ pt: 1, pb: '16px !important' }}>
+                  <Tooltip
+                    title={
+                      <React.Fragment>
+                        <Typography variant="body1" component="div" dangerouslySetInnerHTML={{__html: edu.tooltip || 'No description available'}} />
+                        
+                      </React.Fragment>
+                    }
+                    arrow
+                    placement="top"
+                    componentsProps={{
+                      tooltip: {
+                        sx: {
+                          maxWidth: 400,
+                          bgcolor: 'background.paper',
+                          color: 'text.primary',
+                          border: '1px solid',
+                          borderColor: 'divider',
+                          boxShadow: 3,
+                          p: 2,
+                        },
+                      },
+                    }}
+                  >
+                    <Typography variant="body1" component="div">
+                      {edu.link ? (
+                        <a href={edu.link} style={{ color: 'inherit', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                          {edu.degree}
+                        </a>
+                      ) : (
+                        <span>{edu.degree}</span>
+                      )}
+                    </Typography>
+                  </Tooltip>
+                </CardContent>
+              </Box>
+            </Card>
+          ))}
+        </>
       );
     }
   }
@@ -308,7 +318,7 @@ export default function Kumia({ pubs, work, edu }) {
       {/* Left Column - Profile */}
       <Box 
         sx={{ 
-          width: { xs: '100%', md: '350px' },
+          width: { xs: '100%', md: '35%' },
           flexShrink: 0,
           position: 'relative',
           mb: { xs: 3, md: 0 }
