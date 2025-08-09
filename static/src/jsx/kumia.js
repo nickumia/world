@@ -246,8 +246,8 @@ export default function Kumia({ pubs, work, edu }) {
               />
               <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <CardHeader 
-                  title={edu.institution} 
-                  subheader={edu.duration}
+                  title={edu.school}
+                  subheader={edu.date}
                   titleTypographyProps={{ variant: 'h6' }}
                   sx={{ 
                     pb: 1, 
