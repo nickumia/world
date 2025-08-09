@@ -1,29 +1,47 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-
+import React from 'react';
+import { Typography, Box, Container, Divider } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import json_parse from './json_parse';
 
+const PostTitle = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(1),
+  fontWeight: 700,
+  color: theme.palette.primary.main,
+}));
 
-export default function PostDisplay({post}) {
+const PostDate = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(3),
+  color: theme.palette.text.secondary,
+}));
 
-  var post_dict = json_parse(post);
+export default function PostDisplay({ post }) {
+  const post_dict = json_parse(post);
 
   return (
-    <React.Fragment>
-      <div className="wrapper row3">
+    <div className="wrapper row3">
         <main className="hoc container clear">
-          <Typography variant="h3">
-            {post_dict.title}
-          </Typography>
-          <Typography variant="h6">
-            {post_dict.posted_time}
-          </Typography>
-          <hr/>
-          <div className="content" dangerouslySetInnerHTML={{__html: post_dict.body}}></div>
-          <hr/>
-        </main>
-      </div>
-
-    </React.Fragment>
+        <PostTitle variant="h3" component="h1">
+          {post_dict.title}
+        </PostTitle>
+        <PostDate variant="subtitle1" color="textSecondary">
+          {post_dict.posted_time}
+        </PostDate>
+        <Divider sx={{ mb: 4 }} />
+        <Box
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: post_dict.body }}
+          sx={{
+            '& a': {
+              color: 'primary.main',
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            },
+          }}
+        />
+        <Divider sx={{ mt: 4 }} />
+      </main>
+    </div>
   );
 }

@@ -40,7 +40,9 @@ for html_file in glob.glob(os.path.join(filepath, '*.html')):
     meta_file = os.path.join(filepath, f"{base_name}_meta.py")
     if os.path.exists(meta_file):
         try:
-            spec = importlib.util.spec_from_file_location(f"{base_name}_meta", meta_file)
+            spec = importlib.util.spec_from_file_location(
+                f"{base_name}_meta", meta_file
+            )
             meta_module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(meta_module)
 

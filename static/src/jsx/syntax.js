@@ -1,44 +1,69 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Box from '@mui/material/Box';
-import Grid from '@material-ui/core/Grid';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormLabel from '@mui/material/FormLabel';
-import Button from '@mui/material/Button';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-
-import Skeleton from '@mui/material/Skeleton';
-import cyan from "@material-ui/core/colors/cyan";
+import React from 'react';
+import { 
+  Typography, 
+  Box, 
+  Grid, 
+  Card, 
+  CardActions, 
+  CardContent,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Button,
+  TextareaAutosize,
+  Skeleton,
+  useTheme,
+  styled 
+} from '@mui/material';
+import { cyan } from '@mui/material/colors';
 
 import json_parse from './json_parse';
 
 
-export default function SyntaxApp({details}) {
+// Styled components
+const StyledCard = styled(Card)(({ theme }) => ({
+  margin: theme.spacing(2, 0),
+  maxWidth: 1200,
+  marginLeft: 'auto',
+  marginRight: 'auto',
+}));
 
-  var page_details = json_parse(details);
-	var opening_array = page_details.opening.split('\n');
-	var start_array = page_details.definition.start.split('\n');
-	var end_array = page_details.definition.end.split('\n');
-	const typo_style = {
-		whiteSpace: 'pre-wrap',
-		marginBottom: '10px',
-		marginLeft: '30px',
-		marginRight: '30px'
-	}
+const StyledTextarea = styled(TextareaAutosize)(({ theme }) => ({
+  width: '100%',
+  padding: theme.spacing(2),
+  borderRadius: theme.shape.borderRadius,
+  border: `1px solid ${theme.palette.divider}`,
+  fontFamily: 'monospace',
+  minHeight: 200,
+  margin: theme.spacing(2, 0),
+}));
+
+const OutputArea = styled('pre')(({ theme }) => ({
+  whiteSpace: 'pre-wrap',
+  backgroundColor: theme.palette.grey[100],
+  padding: theme.spacing(2),
+  borderRadius: theme.shape.borderRadius,
+  minHeight: 200,
+  overflowX: 'auto',
+  fontFamily: 'monospace',
+}));
+
+export default function SyntaxApp({ details }) {
+  const theme = useTheme();
+  const page_details = json_parse(details);
+  const opening_array = page_details.opening.split('\n');
+  const start_array = page_details.definition.start.split('\n');
+  const end_array = page_details.definition.end.split('\n');
 
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
-	const [out_value, setOutput] = React.useState('');
-	const [text, setInput] = React.useState(page_details.definition.end);
+  const [out_value, setOutput] = React.useState('');
+  const [text, setInput] = React.useState(page_details.definition.end);
   const [helperText, setHelperText] = React.useState('Fun Fact: This is all done with simple regular expressions!');
+  const [isLoading, setIsLoading] = React.useState(false);
 
 	const handleRadioChange = (event) => {
     setValue(event.target.value);

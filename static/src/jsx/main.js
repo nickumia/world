@@ -1,11 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Button from '@material-ui/core/Button';
-import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
-import brown from "@material-ui/core/colors/brown";
-import indigo from "@material-ui/core/colors/indigo";
-import blue from "@material-ui/core/colors/blue";
-import lightGreen from "@material-ui/core/colors/lightGreen";
+import { Button } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brown, indigo, blue, lightGreen } from '@mui/material/colors';
 
 import Navbar from './navbar';
 import RealmNavbar from './realmnav';
@@ -71,12 +68,14 @@ var pages = {
 }
 
 for (let page in pages) {
-	var pageElement = document.querySelector(page);
-	if (pageElement) {
-		createRoot(pageElement).render(
-			<MuiThemeProvider theme={theme}>
-						{pages[page].call()}
-			</MuiThemeProvider>
-		);
-	}
+  var pageElement = document.querySelector(page);
+  if (pageElement) {
+    createRoot(pageElement).render(
+      <React.StrictMode>
+        <ThemeProvider theme={theme}>
+          {pages[page].call()}
+        </ThemeProvider>
+      </React.StrictMode>
+    );
+  }
 }

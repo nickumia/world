@@ -1,17 +1,21 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import ButtonBase from '@mui/material/ButtonBase';
-import Container from '@mui/material/Container';
-import Typography from "@material-ui/core/Typography";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Link from '@mui/material/Link';
-import Divider from '@mui/material/Divider';
+import { 
+  styled,
+  Box,
+  ButtonBase,
+  Container,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Link,
+  Divider,
+  useTheme
+} from '@mui/material';
 
 import json_parse from './json_parse';
 
+// Styled components for the image gallery
 const ImageBackdrop = styled('div')(({ theme }) => ({
   position: 'absolute',
   left: 0,
@@ -20,14 +24,17 @@ const ImageBackdrop = styled('div')(({ theme }) => ({
   bottom: 0,
   background: '#000',
   opacity: 0.5,
-  transition: theme.transitions.create('opacity'),
+  transition: theme.transitions.create('opacity', {
+    duration: theme.transitions.duration.shortest,
+  }),
 }));
 
 const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
   display: 'block',
   padding: 0,
-  borderRadius: 0,
+  borderRadius: theme.shape.borderRadius,
+  overflow: 'hidden',
   height: '40vh',
   [theme.breakpoints.down('md')]: {
     width: '100% !important',
@@ -35,29 +42,36 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
   },
   '&:hover': {
     zIndex: 1,
+    '& .MuiImageBackdrop-root': {
+      opacity: 0.15,
+    },
+    '& .MuiImageMarked-root': {
+      opacity: 0,
+    },
+    '& .MuiTypography-root': {
+      border: '4px solid currentColor',
+    },
   },
-  '&:hover .imageBackdrop': {
-    opacity: 0.15,
+}));
+
+const ImageTitle = styled(Typography)(({ theme }) => ({
+  position: 'relative',
+  padding: theme.spacing(2, 4, 1.5),
+  color: theme.palette.common.white,
+  textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+  '&:hover': {
+    color: theme.palette.primary.light,
   },
-  '&:hover .imageMarked': {
-    opacity: 0,
-  },
-  '&:hover .imageTitle': {
-    border: '4px solid currentColor',
-  },
-  '& .imageTitle': {
-    position: 'relative',
-    padding: `${theme.spacing(2)} ${theme.spacing(4)} 14px`,
-  },
-  '& .imageMarked': {
-    height: 3,
-    width: 18,
-    background: theme.palette.common.white,
-    position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
-    transition: theme.transitions.create('opacity'),
-  },
+}));
+
+const ImageMarked = styled('span')(({ theme }) => ({
+  height: 3,
+  width: 18,
+  backgroundColor: theme.palette.common.white,
+  position: 'absolute',
+  bottom: -2,
+  left: 'calc(50% - 9px)',
+  transition: theme.transitions.create('opacity'),
 }));
 
 const images = [
@@ -117,9 +131,10 @@ const images = [
  * @param {Array} props.pages - Array of page objects with id and name
  * @returns {JSX.Element} The rendered component
  */
-export default function HomeMain({allPages}) {
-
-  var allPages_list = json_parse(allPages);
+// Main component for the home page
+export default function HomeMain({ allPages }) {
+  const theme = useTheme();
+  const allPages_list = json_parse(allPages);
 
   // Get IDs of featured pages
   const featuredPageIds = images.map(img =>
@@ -127,23 +142,56 @@ export default function HomeMain({allPages}) {
   );
 
   // Filter out featured pages from all pages
-  const nonFeaturedPages = allPages_list.filter(
-    page => !featuredPageIds.some(id => page.id === id || page.id.includes(id))
+  const nonFeaturedPages = React.useMemo(() => 
+    allPages_list.filter(
+      page => !featuredPageIds.some(id => page.id === id || page.id.includes(id))
+    ),
+    [allPages_list, featuredPageIds]
   );
 
   return (
-    <React.Fragment>
-      <Container component="section" sx={{ mt: 8, mb: 4 }}>
-        <Typography variant="h4" marked="center" align="center" component="h2">
-          Connecting People through Technology for a Better Tomorrow
-        </Typography>
-        <Box sx={{ mt: 4, display: 'flex', flexWrap: 'wrap' }}>
+    <Container component="main" sx={{ mt: { xs: 4, md: 8 }, mb: 6 }}>
+      <Typography 
+        variant="h4" 
+        align="center" 
+        component="h1"
+        sx={{
+          mb: 4,
+          fontWeight: 700,
+          color: 'primary.main',
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '1.75rem',
+          },
+        }}
+      >
+        Connecting People through Technology for a Better Tomorrow
+      </Typography>
+      
+      {/* Featured Images Grid */}
+      <Box 
+        sx={{ 
+          display: 'flex', 
+          flexWrap: 'wrap',
+          gap: 0,
+          borderRadius: 0,
+          '& > *': {
+            flex: '0 0 auto',
+            borderRadius: 0,
+          },
+        }}
+      >
         {images.map((image) => (
           <ImageIconButton
             key={image.title}
             href={image.link}
-            style={{
-              width: image.width,
+            target={image.link.startsWith('http') ? '_blank' : '_self'}
+            rel={image.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+            sx={{
+              width: { xs: '100%', md: image.width },
+              height: { xs: 200, md: '40vh' },
+              flex: '0 0 auto',
+              maxWidth: '100%',
+              borderRadius: 0,
             }}
           >
             <Box
@@ -154,11 +202,18 @@ export default function HomeMain({allPages}) {
                 top: 0,
                 bottom: 0,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center 40%',
+                backgroundPosition: 'center',
                 backgroundImage: `url(${image.url})`,
+                borderRadius: 0,
+                transition: theme.transitions.create('transform', {
+                  duration: theme.transitions.duration.complex,
+                }),
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
               }}
             />
-            <ImageBackdrop className="imageBackdrop" />
+            <ImageBackdrop className="MuiImageBackdrop-root" />
             <Box
               sx={{
                 position: 'absolute',
@@ -170,136 +225,137 @@ export default function HomeMain({allPages}) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: 'common.white',
+                borderRadius: 0,
               }}
             >
-              <Typography
-                component="h3"
-                variant="h6"
-                color="inherit"
-                className="imageTitle"
-              >
+              <ImageTitle variant="h6" component="h2">
                 {image.title}
-                <div className="imageMarked" />
-              </Typography>
+                <ImageMarked className="MuiImageMarked-root" />
+              </ImageTitle>
             </Box>
           </ImageIconButton>
         ))}
-        </Box>
+      </Box>
 
-        {nonFeaturedPages.length > 0 && (
-          <Box sx={{
-            mt: 8,
-            maxWidth: 1100,
+      {/* Non-Featured Pages Section */}
+      {nonFeaturedPages.length > 0 && (
+        <Box 
+          component="section"
+          sx={{
+            mt: 10,
+            maxWidth: 1200,
             mx: 'auto',
-            px: 2
-          }}>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              sx={{
-                mb: 4,
-                fontWeight: 500,
-                letterSpacing: '0.5px',
-                position: 'relative',
-                '&:after': {
-                  content: '""',
-                  display: 'block',
-                  width: 60,
-                  height: 3,
-                  bgcolor: 'primary.main',
-                  mx: 'auto',
-                  mt: 1,
-                  borderRadius: 2
-                }
-              }}
-            >
-              Explore More
-            </Typography>
-            <List
-              component="nav"
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: {
-                  xs: '1fr',
-                  sm: 'repeat(2, 1fr)',
-                  md: 'repeat(3, 1fr)'
+            px: { xs: 2, sm: 3 },
+          }}
+        >
+          <Typography
+            variant="h5"
+            align="center"
+            sx={{
+              mb: 6,
+              fontWeight: 600,
+              letterSpacing: '0.5px',
+              position: 'relative',
+              color: 'text.primary',
+              '&:after': {
+                content: '""',
+                display: 'block',
+                width: 60,
+                height: 4,
+                bgcolor: 'primary.main',
+                mx: 'auto',
+                mt: 2,
+                borderRadius: 2,
+                opacity: 0.8,
+              },
+            }}
+          >
+            Explore More
+          </Typography>
+          
+          <List
+            component="nav"
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: 'repeat(2, 1fr)',
+                md: 'repeat(3, 1fr)',
+                lg: 'repeat(4, 1fr)',
+              },
+              gap: 2,
+              '& .MuiListItem-root': {
+                transition: theme.transitions.create(['transform', 'box-shadow'], {
+                  duration: theme.transitions.duration.shorter,
+                }),
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 3,
                 },
-                gap: 2,
-                '& .MuiListItem-root': {
-                  transition: 'all 0.3s ease',
+              },
+            }}
+          >
+            {nonFeaturedPages.map((page) => (
+              <ListItem
+                key={page.id}
+                button
+                component="a"
+                href={`/${page.id}`}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  p: 2.5,
+                  bgcolor: 'background.paper',
+                  borderRadius: 2,
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  height: '100%',
+                  minHeight: 120,
                   '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: 1
-                  }
-                }
-              }}
-            >
-              {nonFeaturedPages.map((page) => (
-                <ListItem
-                  key={page.id}
-                  button
-                  component="a"
-                  href={`/${page.id}`}
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    p: 2,
                     bgcolor: 'background.paper',
-                    borderRadius: 2,
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    height: '100%',
-                    '&:hover': {
-                      bgcolor: 'background.paper',
-                      borderColor: 'primary.main',
-                      '& .MuiListItemText-primary': {
-                        color: 'primary.main',
-                      }
+                    borderColor: 'primary.light',
+                    '& .MuiListItemText-primary': {
+                      color: 'primary.main',
                     },
-                  }}
-                >
+                    '& .MuiListItemText-secondary': {
+                      color: 'primary.light',
+                    },
+                  },
+                }}
+              >
+                <Box sx={{ m: 0, width: '100%' }}>
                   <ListItemText
                     primary={page.name}
                     primaryTypographyProps={{
                       variant: 'subtitle1',
-                      fontWeight: 'medium',
+                      fontWeight: 500,
+                      component: 'h3',
                     }}
                     secondary={
-                      <>
-                        {page.date && (
-                          <Box component="span" sx={{
+                      page.date && (
+                        <Box 
+                          component="span" 
+                          sx={{
                             display: 'block',
                             fontSize: '0.75rem',
                             color: 'text.secondary',
                             fontStyle: 'italic',
-                            mb: 0.5
-                          }}>
-                            {page.date}
-                          </Box>
-                        )}
-                      </>
+                            mt: 0.5,
+                            transition: 'color 0.2s ease',
+                          }}
+                        >
+                          {page.date}
+                        </Box>
+                      )
                     }
-                    secondaryTypographyProps={{
-                      variant: 'body2',
-                      component: 'div',
-                      color: 'text.secondary',
-                      sx: {
-                        display: 'flex',
-                        alignItems: 'center',
-                        '&:hover': {
-                          color: 'primary.main',
-                        }
-                      }
-                    }}
                   />
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        )}
-      </Container>
-    </React.Fragment>
+                </Box>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      )}
+    </Container>
   );
 }

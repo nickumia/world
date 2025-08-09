@@ -1,6 +1,26 @@
 # Resume content
 
 publications = [
+    {"title": "[TRACEE] Traceable and Reliable AI for Computing Energy Efficiency",
+     "key": 13,
+     "image": "/static/img/dod.png",
+     "place": "SBIR Phase I Proposal | Cantonsville, MD (Remote)",
+     "date": "Written: Feb 2024 | PoP: Jul 2024 - Jul 2025",
+     "link": "https://www.sbir.gov/awards/211122",
+     "support": """
+     <p>Original Proposal Writer.  Assisted in execution of Phase I.</p>
+     """,  # NOQA
+     },
+    {"title": "[ABDREAM] ABDR Essential Archive for Maintenance",
+     "key": 12,
+     "image": "/static/img/dod.png",
+     "place": "SBIR Phase I | Cantonsville, MD (Remote)",
+     "date": "PoP: Jan 2024 - Mar 2025",
+     "link": "https://www.sbir.gov/awards/211280",
+     "support": """
+     <p>Principal Technical Engineer.  Videos of work available on request from Redshred.</p>
+     """,  # NOQA
+     },
     {"title": "Data.gov Projects Mashup",
      "key": 11,
      "image": "/static/img/datagov.svg",
@@ -8,11 +28,11 @@ publications = [
      "date": "2022-2023",
      "link": "https://github.com/GSA/data.gov/issues?page=2&q=is%3Aissue+is%3Aclosed+assignee%3Anickumia-reisys",  # NOQA
      "support": """
-     Jul 2023 <a href="https://github.com/GSA/data.gov/issues/4209">CKAN 2.10 Upgrade</a>
-     Feb 2023 <a href="https://github.com/GSA/data.gov/issues/4133">Design an "Organization Distribution" Metric</a>
-     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4068#issuecomment-1335510390">Keyword Analysis of Datasets on catalog.data.gov</a>
-     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4121">Optimizing Github Actions with Reusable Workflows</a>
-     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4089#issuecomment-1334782444">Review of Open Data Act</a>
+     <p>Jul 2023 <a href="https://github.com/GSA/data.gov/issues/4209">CKAN 2.10 Upgrade</a></p>
+     <p>Feb 2023 <a href="https://github.com/GSA/data.gov/issues/4133">Design an "Organization Distribution" Metric</a></p>
+     <p>Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4068#issuecomment-1335510390">Keyword Analysis of Datasets on catalog.data.gov</a></p>
+     <p>Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4121">Optimizing Github Actions with Reusable Workflows</a></p>
+     <p>Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4089#issuecomment-1334782444">Review of Open Data Act</a></p>
      """,  # NOQA
      },
     {"title": "Data.gov Re-Architect Solr Infrastructure",
@@ -112,14 +132,14 @@ experiences = [
     {"role": "DevOps Software Engineer",
      "key": 7,
      "date": "October 2023 - Present",
-     "company": "RedShred",
+     "company": "Redshred",
      "details": """
-▪ Work with the team to use RedShred technologies to develop and support DevOps applications and infrastructures that interoperate with Government environments.<br/>
+▪ Work with the team to use Redshred technologies to develop and support DevOps applications and infrastructures that interoperate with Government environments.<br/>
 ▪ Contribute to new SBIR and/or BAA R&D technical proposal efforts and monitor and research the latest research in machine learning areas.<br/>
 ▪ Provide hands-on professional experience building and deploying software solutions in production and research environments.<br/>
-▪ Technologies: GCP, Kubernetes, APISIX, Argo CD, Knative, Skaffold, Behave, RabbitMQ, Minio, Helm, Postgres, Justomize, RHEL, Poetry, Django, Github, RedShred<br/>
 """,  # NOQA
      "link": "https://redshred.com/",
+     "skills": ["GCP", "Kubernetes", "APISIX", "Argo CD", "Knative", "Skaffold", "Behave", "RabbitMQ", "Minio", "Helm", "Postgres", "Kustomize", "RHEL", "Poetry", "Django", "Github", "Redshred"]
      },
     {"role": "(Senior) DevOps Engineer",
      "key": 6,
@@ -127,12 +147,11 @@ experiences = [
      "company": "REI Systems",
      "details": """
 ▪ Support development, maintenance, operations, cybersecurity, new features of Data.gov<br/>
-▪ Utilized Github Issues, Zenhub, NewRelicfor issue/epic/error tracking<br/>
-▪ Technology Stack: AWS, Cloud.gov, Docker, Kubernetes (local, KiND, EKS), Docker-compose, Make, Terrraform, Brokerpaks, Python, Postgres, CKAN, Solr (solr-operator, solrcloud, standalone), React<br/>
-▪ Testing Frameworks: Pytest, Jest, Cypress<br/>
+▪ Utilized Github Issues, Zenhub, NewRelic for issue/epic/error tracking<br/>
 ▪ Issues closed and presented: <a href="https://github.com/GSA/datagov-deploy/issues?q=assignee%3Anickumia-reisys">Github</a>
 """,  # NOQA
      "link": "https://reisystems.com/",
+     "skills": ["AWS", "Cloud.gov", "Docker", "Kubernetes", "KiND", "EKS", "Docker-compose", "Make", "Terrraform", "Brokerpaks", "Python", "Postgres", "CKAN", "Solr", "Solrcloud", "Solr-operator", "React", "Pytest", "Jest", "Cypress"]
      },
     {"role": "Cybersecurity/Software Engineer",
      "key": 5,
@@ -143,9 +162,9 @@ experiences = [
 ▪ Cross-Combat Tactical Trainer Manned Module Infrastructure Modernization<br/>
 ▪ Primary Containerization Developer (RHEL6/7, Ada, Web, Docker, Kubernetes)</br>
 ▪ Researched DISA STIGs and verified that engineering design met cybersecurity requirements. <br/>
-▪ Bitbucket (Git), Confluence, Jira, Bamboo, Ant, Ivy, ActiveM
 """,  # NOQA
      "link": "https://avtsim.com/",
+     "skills": ["RHEL", "Ada", "Docker", "Kubernetes", "Bitbucket", "Confluence", "Jira", "Bamboo", "Ant", "Ivy", "ActiveM"]
      },
     {"role": "Computer Scientist | Lab Researcher | System Security Engineer | NLP Developer",  # NOQA
      "key": 4,
@@ -162,6 +181,7 @@ experiences = [
 ▪ NLP Architecture Design and problem-solution assessment
 """,  # NOQA
      "link": "https://www.navair.navy.mil/nawcad/",
+     "skills": ["ROS", "Python", "Ubuntu", "C++", "Arduino", "Git", "Bash", "PCAN", "Barrett Hand", "UR10", "Matlab", "RMF", "Splunk", "ElasticStack", "SCAP", "ACAS", "RMF", "Splunk", "ElasticStack"]
      },
     {"role": "Founder",
      "key": 3,
@@ -187,9 +207,9 @@ Cybersecurity | Artificial Intelligence | Data Analytics | Intelligent Systems/R
      "company": "NYU Poly",
      "details": """
 Performed extensive research concerning 3D Printing Technologies, eventually manufacturing a process to develop unique filament and 3D print said filament. Worked with manufacturing processes, including compression molding and 3D printing, as well as testing machines, such as Instron machines.<br/>
-Arduino, C++, MatLab, MakerBot, Open-source 3D Printers, TPU Filament, G-Code, Solidworks
 """,  # NOQA
      "link": "https://engineering.nyu.edu/",
+     "skills": ["Arduino", "C++", "MatLab", "MakerBot", "Open-source 3D Printers", "TPU Filament", "G-Code", "Solidworks"]
      },
     {"role": "Researcher",
      "key": 0,

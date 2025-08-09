@@ -1,10 +1,7 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Typography from "@material-ui/core/Typography";
-import Tooltip from '@mui/material/Tooltip';
-import amber from "@material-ui/core/colors/amber";
-import orange from "@material-ui/core/colors/orange";
+import { Typography, Tooltip } from '@mui/material';
+import { amber, orange } from '@mui/material/colors';
 import Link from '@mui/material/Link';
 
 import Grid from '@mui/material/Grid';
@@ -51,13 +48,18 @@ const buttonTheme = createTheme({
   },
 });
 
-const useStyles = makeStyles((theme) => ({
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  },
+// Styled components using MUI v5 styled API
+const StyledCard = styled(Card)(({ theme }) => ({
+  margin: theme.spacing(2),
+  maxWidth: 345,
+}));
+
+const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
+  margin: theme.spacing(2, 0),
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  margin: theme.spacing(2, 0),
 }));
 const itemData = [
   {
@@ -77,55 +79,75 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function Financial() {
+const FinancialCard = ({ title, description, icon: Icon, color = 'primary' }) => (
+  <StyledCard>
+    <CardActionArea>
+      <CardContent>
+        <Box display="flex" alignItems="center" mb={2}>
+          {Icon && <Icon color={color} sx={{ mr: 1 }} />}
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+        </Box>
+        <Typography variant="body2" color="text.secondary">
+          {description}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+  </StyledCard>
+);
 
-  const classes = useStyles();
+export default function Financial() {
   const [above, setAbove] = React.useState(true);
   const [at, setAt] = React.useState(true);
   const [below, setBelow] = React.useState(true);
   const [net, setNet] = React.useState(true);
   const [inc, setInc] = React.useState(true);
-  const [consider, setConsider] = React.useState("Click a button to learn more 😊");
+  const [consideration, setConsideration] = React.useState("Click a button to learn more 😊");
+  
   const handleAbove = () => {
     setAbove(false);
     setAt(true);
     setBelow(true);
   };
+  
   const handleAt = () => {
     setAbove(true);
     setAt(false);
     setBelow(true);
   };
+  
   const handleBelow = () => {
     setAbove(true);
     setAt(true);
     setBelow(false);
   };
+  
   const handleNet = () => {
     setNet(false);
     setInc(true);
   };
+  
   const handleInc = () => {
     setNet(true);
     setInc(false);
   };
-  const stayTunedClick = () => {
-    alert('Stay Tuned for more information: https://github.com/nickumia/world/issues/80')
-  }
+  
   const knowledge = () => {
-    setConsider("How much learning is needed to achieve this goal?  Will this learning requirement align with my learning ability?")
-  }
+    setConsideration("How much learning is needed to achieve this goal? Will this learning requirement align with my learning ability?");
+  };
+  
   const energy = () => {
-    setConsider("How much energy is required to achieve this goal?  Do I have that much energy and/or am I willing to spend the energy for this goal?")
+    setConsideration("How much energy is required to achieve this goal? Do I have that much energy and/or am I willing to spend the energy for this goal?");
   }
   const time = () => {
-    setConsider("How much time do I need to spend to achieve this goal?  How much time will I save after achieving this goal?")
+    setConsideration("How much time do I need to spend to achieve this goal? How much time will I save after achieving this goal?");
   }
   const people = () => {
-    setConsider("What kind of people does this goal put me in contact with?  Am I spending time with people that make me more of who I want to be?  Will I be able to spend time with people that I care about?")
+    setConsideration("What kind of people does this goal put me in contact with? Am I spending time with people that make me more of who I want to be? Will I be able to spend time with people that I care about?")
   }
   const physical = () => {
-    setConsider("What do I get out of achieving this goal?  What does it look like?  Is it what I want?")
+    setConsideration("What do I get out of achieving this goal? What does it look like? Is it what I want?")
   }
 
   return (
@@ -384,7 +406,7 @@ export default function Financial() {
         <Chip className="chip-chip" icon=<ShoppingBagIcon className="chip-svg" /> label={"Physical Manifestation"} /></Button>
     </ButtonGroup>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-    {consider}
+    {consideration}
     </Typography>
 
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "4%"}}>
