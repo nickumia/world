@@ -34,6 +34,11 @@ PAGE_DATA = {
         'edu': educations
     },
 
+    # Privacy Page
+    'privacy': {
+        'post': privacy
+    },
+
     # Blog/Post Pages (handled by dynamic import)
     # Example of custom configuration (if needed):
     # 'custom_page': {
@@ -41,6 +46,7 @@ PAGE_DATA = {
     #     'other_key': other_value
     # }
 }
+
 
 def get_page_data(page_name):
     """Get page data, trying predefined config first, then dynamic import."""
@@ -69,6 +75,7 @@ def get_page_data(page_name):
 
     return None
 
+
 # Get the page name from command line argument
 if len(sys.argv) != 2:
     print(f"Usage: {sys.argv[0]} <page_name>")
@@ -80,7 +87,8 @@ page_name = sys.argv[1]
 # Get the page data
 data = get_page_data(page_name)
 if data is None:
-    print(f"Error: Page '{page_name}' not found and could not be imported", file=sys.stderr)
+    print(f"Error: Page '{page_name}' not found and could not be imported",
+          file=sys.stderr)
     print("Predefined pages:", ", ".join(PAGE_DATA.keys()))
     sys.exit(1)
 
