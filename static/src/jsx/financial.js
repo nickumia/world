@@ -410,7 +410,7 @@ export default function Financial() {
         <Chip className="chip-chip" icon=<ShoppingBagIcon className="chip-svg" /> label={"Physical Manifestation"} /></Button>
     </ButtonGroup>
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "2%"}}>
-    {consider}
+    {consideration}
     </Typography>
 
     <Typography variant="body1" marked="center" align="center" component="p" style={{paddingTop: "4%"}}>
