@@ -816,10 +816,10 @@ export default function SpiritualTech() {
     </Timeline>
   <br/>
   <br style={{clear: "both"}}/>
-  <Typography variant="h4">
+  <Typography variant="h4" sx={{ mb: 2 }}>
     FAQs
   </Typography>
-  <Accordion sx={{ backgroundColor: 'antiquewhite', mb: 2 }}>
+  <Accordion sx={{ backgroundColor: 'antiquewhite', mb: 0 }}>
     <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel1-header">
       <Typography>What is SpiritualTech? What does it mean?</Typography>
     </AccordionSummary>
@@ -831,33 +831,54 @@ export default function SpiritualTech() {
         <Link href="https://youtube.com/playlist?list=PLOxF6dnRsrVentqaULadb6DZGxApiBiGR" underline="hover">
           full playlist
         </Link>.
+        <br/><br/>
+
+          &nbsp;SpiritualTech is about understanding our&nbsp;
+          <Link href="https://youtu.be/r9J861e02r0" underline="hover">
+            identities
+          </Link>.<br/>
+          &nbsp;SpiritualTech is about overcoming our&nbsp;
+          <Link href="https://youtu.be/LPLgCaxoSeo" underline="hover">
+            biases
+          </Link>.<br/>
+          &nbsp;SpiritualTech is about sharing knowledge, to thrive through failures and
+          get to&nbsp;
+          <Link href="https://youtu.be/hHhYBAkOP7Y" underline="hover">
+            success
+          </Link>.<br/>
+          &nbsp;SpiritualTech is about connecting us as truth-seeking beings and connecting
+          our existences through&nbsp;
+          <Link href="https://youtu.be/_jVBB0YQg0U" underline="hover">
+            consciousness
+          </Link>.<br/>
+          &nbsp;SpiritualTech is about cultivating a mindset where we can be a well-organized
+          society with a stronger&nbsp;
+          <Link href="https://youtu.be/KvDpS3oxvXk" underline="hover">
+            learning ability
+          </Link>.<br/>
       </Typography>
     </AccordionDetails>
   </Accordion>
-  <Accordion sx={{ backgroundColor: 'antiquewhite', mb: 2 }}>
+  <Accordion sx={{ backgroundColor: 'antiquewhite', mb: 0 }}>
     <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel2-header">
       <Typography>If SpiritualTech is all about consciousness, why not call it ConsciousTech?</Typography>
     </AccordionSummary>
     <AccordionDetails>
-      <Typography>
-        While consciousness is a core concept of SpiritualTech,
-        the main idea is about finding our own value and connecting
-        with others to share that value, using technology as a
-        medium.
-      </Typography>
-      <Typography>
-        It's not about creating technology that is conscious.
-        Being conscious of technology is only important while we
-        use technology to create better lives.
-      </Typography>
-      <Typography>
-        The truth behind SpiritualTech is in the connection with
-        ourselves and with others.  A connection to real life,
-        not just focusing on technology.
-      </Typography>
+      While consciousness is a core concept of SpiritualTech,
+      the main idea is about finding our own value and connecting
+      with others to share that value, using technology as a
+      medium.<br/><br/>
+
+      It's not about creating technology that is conscious.
+      Being conscious of technology is only important while we
+      use technology to create better lives.<br/><br/>
+
+      The truth behind SpiritualTech is in the connection with
+      ourselves and with others.  A connection to real life,
+      not just focusing on technology.
     </AccordionDetails>
   </Accordion>
-  <Accordion sx={{ backgroundColor: 'antiquewhite', mb: 2 }}>
+  <Accordion sx={{ backgroundColor: 'antiquewhite', mb: 0 }}>
     <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel3-header">
       <Typography>Why not include Alaska?  It's drive-able!</Typography>
     </AccordionSummary>
@@ -879,7 +900,7 @@ export default function SpiritualTech() {
         }}/>
     </AccordionDetails>
   </Accordion>
-  <Accordion sx={{ backgroundColor: 'antiquewhite', mb: 2 }}>
+  <Accordion sx={{ backgroundColor: 'antiquewhite', mb: 0 }}>
     <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel4-header">
       <Typography>How can I find you?!</Typography>
     </AccordionSummary>
@@ -911,117 +932,9 @@ export default function SpiritualTech() {
           margin: 'auto',
           display: 'inherit'
         }}/>
-
-          <br/><br/>
-
-          &nbsp;SpiritualTech is about understanding our&nbsp;
-          <Link href="https://youtu.be/r9J861e02r0" underline="hover">
-            identities
-          </Link>.<br/>
-          &nbsp;SpiritualTech is about overcoming our&nbsp;
-          <Link href="https://youtu.be/LPLgCaxoSeo" underline="hover">
-            biases
-          </Link>.<br/>
-          &nbsp;SpiritualTech is about sharing knowledge, to thrive through failures and
-          get to&nbsp;
-          <Link href="https://youtu.be/hHhYBAkOP7Y" underline="hover">
-            success
-          </Link>.<br/>
-          &nbsp;SpiritualTech is about connecting us as truth-seeking beings and connecting
-          our existences through&nbsp;
-          <Link href="https://youtu.be/_jVBB0YQg0U" underline="hover">
-            consciousness
-          </Link>.<br/>
-          &nbsp;SpiritualTech is about cultivating a mindset where we can be a well-organized
-          society with a stronger&nbsp;
-          <Link href="https://youtu.be/KvDpS3oxvXk" underline="hover">
-            learning ability
-          </Link>.<br/>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion sx={{ backgroundColor: 'antiquewhite' }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          id="panel2-header"
-        >
-          If SpiritualTech is all about consciousness, why not call it ConsciousTech?
-        </AccordionSummary>
-        <AccordionDetails>
-          While consciousness is a core concept of SpiritualTech,
-          the main idea is about finding our own value and connecting
-          with others to share that value, using technology as a
-          medium.<br/><br/>
-
-          It's not about creating technology that is conscious.
-          Being conscious of technology is only important while we
-          use technology to create better lives.<br/><br/>
-
-          The truth behind SpiritualTech is in the connection with
-          ourselves and with others.  A connection to real life,
-          not just focusing on technology.
-        </AccordionDetails>
-      </Accordion>
-      <Accordion sx={{ backgroundColor: 'antiquewhite' }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          id="panel2-header"
-        >
-          Why not include Alaska?  It's drive-able!
-        </AccordionSummary>
-        <AccordionDetails>
-          While it would be super cool to drive to Alaska, it is a 36
-          hour one-way detour, adding up to 72 hours total, not counting
-          the time spent in the state.  I don't feel up for that in my
-          current condition.  But I will consider it depending on how
-          the trip goes in general.
-          <img src="/static/img/alaska_detour.jpg" loading="lazy"
-            sx={{
-              maxWidth: '50%',
-              textAlign: 'center',
-              padding: 'inherit',
-              margin: 'auto',
-              display: 'inherit'
-            }}/>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion sx={{ backgroundColor: 'antiquewhite' }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          id="panel2-header"
-        >
-          How can I find you?!
-        </AccordionSummary>
-        <AccordionDetails>
-          Look for my car!! <br/>
-          <img src="/static/img/phoenix1.jpg" loading="lazy"
-            style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
-          <img src="/static/img/phoenix2.jpg" loading="lazy"
-            sx={{
-              maxWidth: '45%',
-              textAlign: 'center',
-              padding: 'inherit',
-              margin: 'auto'
-            }}/>
-          <img src="/static/img/dragon1.jpg" loading="lazy"
-            style={{maxWidth: '50%', textAlign: 'center', padding: 'inherit', margin: 'auto'}}/>
-          <img src="/static/img/dragon2.jpg" loading="lazy"
-            sx={{
-              maxWidth: '45%',
-              textAlign: 'center',
-              padding: 'inherit',
-              margin: 'auto'
-            }}/>
-          <img src="/static/img/phoenix3.jpg" loading="lazy"
-            sx={{
-              maxWidth: '70%',
-              textAlign: 'center',
-              padding: 'inherit',
-              margin: 'auto',
-              display: 'inherit'
-            }}/>
-        </AccordionDetails>
-      </Accordion>
-      </Paper>
-    </React.Fragment>
-  );
+    </AccordionDetails>
+  </Accordion>
+</Paper>
+</React.Fragment>
+);
 }
