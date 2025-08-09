@@ -452,368 +452,177 @@ export default function SpiritualTech() {
             <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
             <TimelineContent>Kentucky | Bowling Green, Elizabethtown, Louisville, Corbin</TimelineContent>
           </TimelineItem>
-
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> Side Quest A | Aug 30 - Sep 02</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Nephew's Christening</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 3 | Sep 02 - Sep 10</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Louisiana | Baton Rouge, Shreveport</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 4 | Sep 09 - Sep 13</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Mississippi | Jackson</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 5 | Sep 13 - Sep 22</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Arkansas | Little Rock, Fort Smith</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 6 | Sep 22 - Sep 28</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Oklahoma | Tulsa, Oklahoma City</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 7 | Sep 28 - Oct 17</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Texas | Dallas, Houston, San Antonio, Austin, Sonora, Alpine, El Paso</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 8 | Oct 17 - Oct 24</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New Mexico | Riudoso, Albuquerque, Santa Fe</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 9 | Oct 24 - Nov 02</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Colorado | Trinidad, Colorado Springs, Denver</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 10 | Nov 02 - Nov 08</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Wyoming | Cheyenne, Saratoga, Rock Springs</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 11 | Nov 08 - Nov 16</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Utah | Salt Lake City, Moab, Cedar City</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 12 | Nov 16 - Nov 24</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Arizona | Flagstaff, Phoenix, Yuma</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 13 | Nov 24 - Dec 03</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>California | San Diego, Los Angeles</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 14 | Dec 03 - Dec 09</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Nevada | Las Vegas</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> Side Quest B | Dec 09 - Dec 13</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Work/Holiday</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 13 | Dec 13 - Dec 24</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>California | Arroyo, Santa Cruz, San Francisco, Sacramento, Shasta</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 15 | Dec 24 - Dec 29</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Oregon | Roseburg, Salem, Portland</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 16 | Dec 29 - Dec 31</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Washington | Olympia, Seattle</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 17 | Dec 31 - Jan 04</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Alaska | Juneau</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 16 | Jan 04 - Jan 06</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Washington | Richland</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 18 | Jan 06 - Jan 11</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Idaho | Boise, Pocatello</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> Side Quest C | Jan 10</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Circle back to Friend in SLC</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 19 | Jan 11 - Jan 21</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Montana | Yellowstone, Helena, Billings, Miles City</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 20 | Jan 21 - Jan 25</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>North Dakota | Dickinson, Bismarck</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 21 | Jan 25 - Jan 28</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>South Dakota | Sturgis, Pierre</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 22 | Jan 28 - Jan 29</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Minnesota | Minneapolis</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> Side Quest D | Jan 29 - Feb 01</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Family Relocation</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 22 | Feb 01 - Feb 04</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Minnesota | Minneapolis</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 23 | Feb 04 - Feb 09</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Wisconsin | Eau Claire, Madison, Milwaukee</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 24 | Feb 09 - Feb 13</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Illinois | Chicago, Moline</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 25/26 | Feb 13 - Feb 18</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Iowa/Nebraska | Des Moines, Council Bluffs/Omaha</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 26 | Feb 18 - Feb 20</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Nebraska | Lincoln</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 27 | Feb 20 - Feb 22</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Kansas | Topeka</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 28 | Feb 22 - Feb 24</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Missouri | Kansas City</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 24 | Feb 24 - Feb 27</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Illinois | Jefferson City, Springfield</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 28 | Feb 27 - Feb 28</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Missouri | St. Louis</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 29 | Feb 28 - Mar 01</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Kentucky | Paducah</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 30 | Mar 01 - Mar 04</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Tennessee | Nashville</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 29 | Mar 04 - Mar 09</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Kentucky | Bowling Green, Elizabethtown, Louisville, Corbin</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 30 | Mar 09 - Mar 12</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Tennessee | Chattanooga</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 31 | Mar 12 - Mar 14</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Georgia | Atlanta</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> Side Quest E | Mar 14 - Mar 16</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Financial Literacy</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 32 | Mar 16 - Mar 18</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Virginia | Bristol, Richlands</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 33 | Mar 18 - Mar 21</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>West Virginia | Princeton, Charleston, Morgantown</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> Side Quest F | Mar 21 - Mar 25</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Nephew's 1st Birthday</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 34 | Mar 25 - Mar 31</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Pennsylvania | Greentown, Scranton, State College, Pittsburgh</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 35 | Mar 31 - Apr 06</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Ohio | Belmont, Columbus, Monroe, Cincinnati</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> Side Quest G | Apr 06 - Apr 10</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Family Pooja</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 36 | Apr 10 - Apr 13</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Indiana | Indianapolis, Auburn</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 37 | Apr 13 - Apr 16</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Michigan | Lansing, Detroit</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 35 | Apr 16 - Apr 18</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Ohio | Sandusky, Cleveland</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 34 | Apr 18 - Apr 19</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Pennsylvania | Springfield</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 38 | Apr 19 - Apr 24</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New York | Buffalo, Rochester, Syracuse</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> Side Quest H | Apr 24 - May 08</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Vietnam</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 38 | May 08 - May 11</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New York | Fort Drum, Lake Placid</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 39 | May 11 - May 13</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Vermont | Montpelier</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 40 | May 13 - May 15</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New Hampshire | Gorham</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 41 | May 15 - May 16</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Maine | Augusta</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 40 | May 16 - May 17</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New Hampshire | Seabrook</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 42 | May 17 - May 19</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Massachusetts | Boston</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 43 | May 19 - May 21</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Rhode Island | Providence</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 44 | May 21 - May 23</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Connecticut | Hartford, Danbury</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 38/Side Quest I | May 23 - May 31</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New York | Long Island</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 45 | May 31 - June 02</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>New Jersey | Edison</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 34 | June 02 - June 05</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Pennsylvania | Morrisville, King of Prussia</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 46 | June 05 - June 09</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Delaware | Newark, Smyrna, Rehoboth Beach</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 47 | June 09 - June 14</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Maryland | Baltimore, Scaggsville</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> US Capitol | June 14 - June 20</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Washington, DC</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 32 | June 20 - June 24</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Virginia | Leesburg, Richmond</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 48 | June 24 - June 29</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>North Carolina | Oxford, Raleigh, Seagrove, Charlotte</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 49 | June 29 - July 02</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>South Carolina | Columbia, Yemassee</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 31 | July 02 - July 04</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Georgia | Savannah</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent color="text.secondary"> State 1 | July 04 - July 07</TimelineOppositeContent>
-        <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
-        <TimelineContent>Florida | Jacksonville, Home</TimelineContent>
-      </TimelineItem>
-    </Timeline>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 30 | Mar 09 - Mar 12</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Tennessee | Chattanooga</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 31 | Mar 12 - Mar 14</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Georgia | Atlanta</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> Side Quest E | Mar 14 - Mar 16</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Financial Literacy</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 32 | Mar 16 - Mar 18</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Virginia | Bristol, Richlands</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 33 | Mar 18 - Mar 21</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>West Virginia | Princeton, Charleston, Morgantown</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> Side Quest F | Mar 21 - Mar 25</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Nephew's 1st Birthday</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 34 | Mar 25 - Mar 31</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Pennsylvania | Greentown, Scranton, State College, Pittsburgh</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 35 | Mar 31 - Apr 06</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Ohio | Belmont, Columbus, Monroe, Cincinnati</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> Side Quest G | Apr 06 - Apr 10</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Family Pooja</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 36 | Apr 10 - Apr 13</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Indiana | Indianapolis, Auburn</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 37 | Apr 13 - Apr 16</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Michigan | Lansing, Detroit</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 35 | Apr 16 - Apr 18</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Ohio | Sandusky, Cleveland</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 34 | Apr 18 - Apr 19</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Pennsylvania | Springfield</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 38 | Apr 19 - Apr 24</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>New York | Buffalo, Rochester, Syracuse</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> Side Quest H | Apr 24 - May 08</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Vietnam</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 38 | May 08 - May 11</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>New York | Fort Drum, Lake Placid</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 39 | May 11 - May 13</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Vermont | Montpelier</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 40 | May 13 - May 15</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>New Hampshire | Gorham</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 41 | May 15 - May 16</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Maine | Augusta</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 40 | May 16 - May 17</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>New Hampshire | Seabrook</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 42 | May 17 - May 19</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Massachusetts | Boston</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 43 | May 19 - May 21</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Rhode Island | Providence</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 44 | May 21 - May 23</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Connecticut | Hartford, Danbury</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 38/Side Quest I | May 23 - May 31</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>New York | Long Island</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 45 | May 31 - June 02</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>New Jersey | Edison</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 34 | June 02 - June 05</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Pennsylvania | Morrisville, King of Prussia</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 46 | June 05 - June 09</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Delaware | Newark, Smyrna, Rehoboth Beach</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 47 | June 09 - June 14</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Maryland | Baltimore, Scaggsville</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> US Capitol | June 14 - June 20</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Washington, DC</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 32 | June 20 - June 24</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Virginia | Leesburg, Richmond</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 48 | June 24 - June 29</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>North Carolina | Oxford, Raleigh, Seagrove, Charlotte</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 49 | June 29 - July 02</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>South Carolina | Columbia, Yemassee</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 31 | July 02 - July 04</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Georgia | Savannah</TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary"> State 1 | July 04 - July 07</TimelineOppositeContent>
+            <TimelineSeparator> <TimelineDot /> <TimelineConnector /> </TimelineSeparator>
+            <TimelineContent>Florida | Jacksonville, Home</TimelineContent>
+          </TimelineItem>
+        </Timeline>
   <br/>
   <br style={{clear: "both"}}/>
   <Typography variant="h4" sx={{ mb: 2 }}>

@@ -133,10 +133,6 @@ export default function Financial() {
     setInc(false);
   };
   
-  const stayTunedClick = () => {
-    window.open('https://github.com/nickumia/world/issues/80', '_blank');
-  };
-  
   const knowledge = () => {
     setConsideration("How much learning is needed to achieve this goal? Will this learning requirement align with my learning ability?");
   };
