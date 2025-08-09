@@ -191,6 +191,7 @@ export default function HomeMain({ allPages }) {
               height: { xs: 200, md: '40vh' },
               flex: '0 0 auto',
               maxWidth: '100%',
+              borderRadius: 0,
             }}
           >
             <Box
@@ -203,6 +204,7 @@ export default function HomeMain({ allPages }) {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundImage: `url(${image.url})`,
+                borderRadius: 0,
                 transition: theme.transitions.create('transform', {
                   duration: theme.transitions.duration.complex,
                 }),
@@ -223,6 +225,7 @@ export default function HomeMain({ allPages }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: 'common.white',
+                borderRadius: 0,
               }}
             >
               <ImageTitle variant="h6" component="h2">
