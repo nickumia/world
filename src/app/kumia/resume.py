@@ -4,21 +4,21 @@ publications = [
     {"title": "[TRACEE] Traceable and Reliable AI for Computing Energy Efficiency",
      "key": 13,
      "image": "/static/img/dod.png",
-     "place": "SBIR Phase I Proposal | Cantonsville, MD",
+     "place": "SBIR Phase I Proposal | Cantonsville, MD (Remote)",
      "date": "Written: Feb 2024 | PoP: Jul 2024 - Jul 2025",
      "link": "https://www.sbir.gov/awards/211122",
      "support": """
-     Original Proposal Writer.  Assisted in execution of Phase I.
+     <p>Original Proposal Writer.  Assisted in execution of Phase I.</p>
      """,  # NOQA
      },
     {"title": "[ABDREAM] ABDR Essential Archive for Maintenance",
      "key": 12,
      "image": "/static/img/dod.png",
-     "place": "SBIR Phase I Proposal | Cantonsville, MD",
+     "place": "SBIR Phase I | Cantonsville, MD (Remote)",
      "date": "PoP: Jan 2024 - Mar 2025",
      "link": "https://www.sbir.gov/awards/211280",
      "support": """
-     Principal Technical Engineer.  Videos of work available on request from Redshred.
+     <p>Principal Technical Engineer.  Videos of work available on request from Redshred.</p>
      """,  # NOQA
      },
     {"title": "Data.gov Projects Mashup",
@@ -28,11 +28,11 @@ publications = [
      "date": "2022-2023",
      "link": "https://github.com/GSA/data.gov/issues?page=2&q=is%3Aissue+is%3Aclosed+assignee%3Anickumia-reisys",  # NOQA
      "support": """
-     Jul 2023 <a href="https://github.com/GSA/data.gov/issues/4209">CKAN 2.10 Upgrade</a>
-     Feb 2023 <a href="https://github.com/GSA/data.gov/issues/4133">Design an "Organization Distribution" Metric</a>
-     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4068#issuecomment-1335510390">Keyword Analysis of Datasets on catalog.data.gov</a>
-     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4121">Optimizing Github Actions with Reusable Workflows</a>
-     Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4089#issuecomment-1334782444">Review of Open Data Act</a>
+     <p>Jul 2023 <a href="https://github.com/GSA/data.gov/issues/4209">CKAN 2.10 Upgrade</a></p>
+     <p>Feb 2023 <a href="https://github.com/GSA/data.gov/issues/4133">Design an "Organization Distribution" Metric</a></p>
+     <p>Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4068#issuecomment-1335510390">Keyword Analysis of Datasets on catalog.data.gov</a></p>
+     <p>Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4121">Optimizing Github Actions with Reusable Workflows</a></p>
+     <p>Dec 2022 <a href="https://github.com/GSA/data.gov/issues/4089#issuecomment-1334782444">Review of Open Data Act</a></p>
      """,  # NOQA
      },
     {"title": "Data.gov Re-Architect Solr Infrastructure",
@@ -132,9 +132,9 @@ experiences = [
     {"role": "DevOps Software Engineer",
      "key": 7,
      "date": "October 2023 - Present",
-     "company": "RedShred",
+     "company": "Redshred",
      "details": """
-▪ Work with the team to use RedShred technologies to develop and support DevOps applications and infrastructures that interoperate with Government environments.<br/>
+▪ Work with the team to use Redshred technologies to develop and support DevOps applications and infrastructures that interoperate with Government environments.<br/>
 ▪ Contribute to new SBIR and/or BAA R&D technical proposal efforts and monitor and research the latest research in machine learning areas.<br/>
 ▪ Provide hands-on professional experience building and deploying software solutions in production and research environments.<br/>
 """,  # NOQA

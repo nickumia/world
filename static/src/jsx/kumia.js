@@ -142,25 +142,43 @@ export default function Kumia({ pubs, work, edu }) {
                   sx={{ m: 0 }}
                 />
               </AccordionSummary>
-              <AccordionDetails sx={{ bgcolor: 'background.paper' }}>
+              <AccordionDetails sx={{ bgcolor: 'background.paper', p: 0 }}>
                 <Box sx={{ width: '100%', p: 2 }}>
-                  <Typography 
-                    variant="body2" 
+                  <Box 
                     component="div"
+                    sx={{
+                      fontSize: '0.875rem',
+                      lineHeight: 1.6,
+                      color: (theme) => theme.palette.text.secondary,
+                      mb: 2,
+                      '& p': {
+                        margin: '0 0 8px 0',
+                        '&:last-child': {
+                          marginBottom: 0
+                        }
+                      },
+                      '& a': {
+                        color: (theme) => theme.palette.primary.main,
+                        textDecoration: 'none',
+                        '&:hover': {
+                          textDecoration: 'underline'
+                        }
+                      }
+                    }}
                     dangerouslySetInnerHTML={{__html: pub.support || 'No additional information available.'}}
-                    align="center"
                   />
                   {pub.link && (
-                    <Button 
-                      href={pub.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      color="primary"
-                      size="small"
-                      sx={{ mt: 2 }}
-                    >
-                      View Publication
-                    </Button>
+                    <Box sx={{ textAlign: 'center', mt: 2 }}>
+                      <Button 
+                        href={pub.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        color="primary"
+                        size="small"
+                      >
+                        View Publication
+                      </Button>
+                    </Box>
                   )}
                 </Box>
               </AccordionDetails>
@@ -182,24 +200,40 @@ export default function Kumia({ pubs, work, edu }) {
                 }}
               >
                 <Box sx={{ width: '100%' }}>
-                    <Typography component="div" variant="subtitle1" color="text.primary" sx={{ fontWeight: 500 }}>
-                    {exp.link && <a href={exp.link}>{exp.company}</a>}
-                    </Typography>
-                    <Typography component="div" variant="body2" color="text.secondary">
-                      {exp.date}
-                    </Typography>
+                  <Box component="div" sx={{ fontWeight: 500, fontSize: '1rem', lineHeight: 1.5, color: (theme) => theme.palette.text.primary, mb: 0.5 }}>
+                    {exp.link ? <a href={exp.link} style={{ color: 'inherit', textDecoration: 'none' }}>{exp.company}</a> : exp.company}
+                  </Box>
+                  <Box component="div" sx={{ fontSize: '0.875rem', lineHeight: 1.43, color: (theme) => theme.palette.text.secondary }}>
+                    {exp.date}
+                  </Box>
                 </Box>
               </AccordionSummary>
-              <AccordionDetails sx={{ bgcolor: 'background.paper' }}>
+              <AccordionDetails sx={{ bgcolor: 'background.paper', p: 0 }}>
                 <Box sx={{ width: '100%', p: 2 }}>
-                  <Typography component="div" variant="body1" color="text.secondary" sx={{ mb: 1, fontWeight: 500 }}>
+                  <Box component="div" sx={{ 
+                    fontSize: '1rem',
+                    lineHeight: 1.5,
+                    color: (theme) => theme.palette.text.secondary,
+                    mb: 1,
+                    fontWeight: 500
+                  }}>
                     {exp.role}
-                  </Typography>
-                  <Typography 
-                    component="div" 
-                    variant="body2" 
-                    color="text.secondary" 
-                    sx={{ lineHeight: 1.6, mb: 2 }}
+                  </Box>
+                  <Box 
+                    component="div"
+                    sx={{ 
+                      fontSize: '0.875rem',
+                      lineHeight: 1.6, 
+                      color: (theme) => theme.palette.text.secondary,
+                      mb: 2,
+                      '& a': {
+                        color: (theme) => theme.palette.primary.main,
+                        textDecoration: 'none',
+                        '&:hover': {
+                          textDecoration: 'underline'
+                        }
+                      }
+                    }}
                     dangerouslySetInnerHTML={{__html: exp.details}}
                   />
                   {exp.skills && (
@@ -260,7 +294,7 @@ export default function Kumia({ pubs, work, edu }) {
                   <Tooltip
                     title={
                       <React.Fragment>
-                        <Typography variant="body1" component="div" dangerouslySetInnerHTML={{__html: edu.tooltip || 'No description available'}} />
+                        <Box variant="body1" component="div" dangerouslySetInnerHTML={{__html: edu.tooltip || 'No description available'}} />
                         
                       </React.Fragment>
                     }
@@ -280,7 +314,7 @@ export default function Kumia({ pubs, work, edu }) {
                       },
                     }}
                   >
-                    <Typography variant="body1" component="div">
+                    <Box variant="body1" component="div">
                       {edu.link ? (
                         <a href={edu.link} style={{ color: 'inherit', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                           {edu.degree}
@@ -288,7 +322,7 @@ export default function Kumia({ pubs, work, edu }) {
                       ) : (
                         <span>{edu.degree}</span>
                       )}
-                    </Typography>
+                    </Box>
                   </Tooltip>
                 </CardContent>
               </Box>
