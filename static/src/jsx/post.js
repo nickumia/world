@@ -3,25 +3,6 @@ import { Typography, Box, Container, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import json_parse from './json_parse';
 
-// Styled components
-const PostContainer = styled(Container)(({ theme }) => ({
-  padding: theme.spacing(4, 0),
-  '& .post-content': {
-    '& img': {
-      maxWidth: '100%',
-      height: 'auto',
-      margin: theme.spacing(2, 0),
-    },
-    '& h1, & h2, & h3, & h4, & h5, & h6': {
-      margin: theme.spacing(3, 0, 2),
-    },
-    '& p': {
-      margin: theme.spacing(2, 0),
-      lineHeight: 1.8,
-    },
-  },
-}));
-
 const PostTitle = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(1),
   fontWeight: 700,
@@ -37,8 +18,8 @@ export default function PostDisplay({ post }) {
   const post_dict = json_parse(post);
 
   return (
-    <PostContainer maxWidth="md">
-      <Box component="article">
+    <div className="wrapper row3">
+        <main className="hoc container clear">
         <PostTitle variant="h3" component="h1">
           {post_dict.title}
         </PostTitle>
@@ -60,7 +41,7 @@ export default function PostDisplay({ post }) {
           }}
         />
         <Divider sx={{ mt: 4 }} />
-      </Box>
-    </PostContainer>
+      </main>
+    </div>
   );
 }
