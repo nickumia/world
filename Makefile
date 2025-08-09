@@ -32,7 +32,7 @@ install-front: # Install dependencies for front-end
 build-front: # Build jsx into js
 	# cd src && ./node_modules/browserify/bin/cmd.js app/static/jsx/*.js --standalone nlp > app/static/js/bundle.js
 	mkdir -p static/src/js
-	cd static && NODE_ENV=production ./node_modules/gulp/bin/gulp.js build
+	cd static && ./node_modules/gulp/bin/gulp.js
 	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_concepts.mmd -o financial_concepts.svg
 	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_lifestyle.mmd -o financial_lifestyle.svg
 
