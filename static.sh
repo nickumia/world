@@ -12,6 +12,7 @@ declare -a simple_pages=(
 
 declare -a content_pages=(
 # [0]='d20141228 A_Beginning_20141228 singlepost'
+[0]='spiritualtech_being_wrong SpiritualTech_Being_Wrong singlepost'
 [1]='keep_notes Keep_Notes singlepost'
 [2]='consciousness Consciousness singlepost'
 [3]='languages Languages singlepost'
@@ -26,8 +27,7 @@ declare -a content_pages=(
 [12]='spiritual Spiritual singlepost'
 [13]='2023_london London singlepost'
 [14]='2023_new_york NewYork singlepost'
-[15]='spiritualtech_being_wrong SpiritualTech_Being_Wrong singlepost'
-[16]='privacy Privacy singlepost'
+[15]='privacy Privacy singlepost'
 )
 
 for page in "${simple_pages[@]}"
