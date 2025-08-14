@@ -1,3 +1,3 @@
 # Metadata for the SpiritualTech travel post
-title = "A Reflection on How Wrong I Was About the SpiritualTech Trip"
+title = "How Wrong I Was About the Road Trip"
 posted_time = "August 14, 2025"
