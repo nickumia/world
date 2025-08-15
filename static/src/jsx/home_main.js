@@ -144,7 +144,7 @@ export default function HomeMain({ allPages }) {
   // Filter out featured pages from all pages
   const nonFeaturedPages = React.useMemo(() => 
     allPages_list.filter(
-      page => !featuredPageIds.some(id => page.id === id || page.id.includes(id))
+      page => !featuredPageIds.some(id => page.id === id)
     ),
     [allPages_list, featuredPageIds]
   );
