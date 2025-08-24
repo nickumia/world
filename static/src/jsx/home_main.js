@@ -76,28 +76,28 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 const images = [
   {
-    url: '/static/img/20231018_180624_optimized.jpg',
-    title: 'NLP Research',
+    url: '/static/img/2025_vietnam.jpg',
+    title: 'Vietnam 2025',
     width: '30%',
-    link: 'nlp',
+    link: '2025_vietnam',
+  },
+  {
+    url: '/static/img/20231014_143134_optimized.jpg',
+    title: 'Kumia',
+    width: '40%',
+    link: 'kumia',
+  },
+  {
+    url: '/static/img/20231221_204447_optimized.jpg',
+    title: 'New York 2023',
+    width: '30%',
+    link: 'new_york',
   },
   {
     url: '/static/img/20231020_142059_optimized.jpg',
     title: 'London 2023',
     width: '40%',
     link: 'london',
-  },
-  {
-    url: '/static/img/20231014_143134_optimized.jpg',
-    title: 'Kumia',
-    width: '30%',
-    link: 'kumia',
-  },
-  {
-    url: '/static/img/20231221_204447_optimized.jpg',
-    title: 'New York 2023',
-    width: '40%',
-    link: 'new_york',
   },
   {
     url: '/static/img/vlogging.png',
@@ -107,7 +107,7 @@ const images = [
   },
   {
     url: '/static/img/road_trip_main.jpg',
-    title: 'Road Trip Across America',
+    title: 'US Road Trip 2024 - 2025',
     width: '40%',
     link: 'spiritual-tech',
   },
@@ -122,6 +122,12 @@ const images = [
     title: 'Hinduism + Spiritual Resources',
     width: '50%',
     link: 'spiritual',
+  },
+  {
+    url: '/static/img/20231018_180624_optimized.jpg',
+    title: 'NLP Research',
+    width: '30%',
+    link: 'nlp',
   },
 ];
 
