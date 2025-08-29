@@ -50,8 +50,7 @@ export default function SpiritualTech() {
           SpiritualTech: A Road Trip Across America 🛣️
         </Typography>
         <Typography variant="h6">
-          Start Date: August 11th, 2024
-          End Date: July 7th, 2025
+          August 11th, 2024 - July 7th, 2025
         </Typography>
         <br/>
         <Grid container spacing={2} sx={{px: 8}}>
@@ -132,6 +131,25 @@ export default function SpiritualTech() {
             allowFullScreen
           />
         </div>
+
+        {/* Road Trip Updates Section */}
+        <div style={{ margin: '20px 0', padding: '15px', border: '0px', textAlign: 'center' }}>
+          <ol style={{ paddingLeft: '20px', margin: '10px 0', textAlign: 'center' }}>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="/keep_notes" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Digital Notes taken during the trip</a>
+              <Typography variant="caption" display="block" color="textSecondary">July 31, 2025</Typography>
+            </li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="/spiritualtech_being_wrong" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Reframing the goal</a>
+              <Typography variant="caption" display="block" color="textSecondary">August 14, 2025</Typography>
+            </li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="/spiritualtech_one_year_later" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Day-by-day One year later</a>
+              <Typography variant="caption" display="block" color="textSecondary">August 29, 2025</Typography>
+            </li>
+          </ol>
+        </div>
+
         <Typography variant="subtitle2">
           This page is home to the updates relating to my road trip across America, coined as SpiritualTech.
           It's important to understand the meaning behind the naming.  I'm defining <i>spiritual</i> as the
