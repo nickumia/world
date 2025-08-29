@@ -16,11 +16,10 @@ filepath = os.path.dirname(os.path.realpath(__file__))
 # Dictionary to store all posts
 posts = {}
 
-# Process each HTML file in the directory
-for html_file in glob.glob(os.path.join(filepath, '*.html')):
+def process_html_file(html_file):
     # Skip files that end with _meta.html
     if html_file.endswith('_meta.html'):
-        continue
+        return
 
     # Get the base filename without extension
     base_name = os.path.splitext(os.path.basename(html_file))[0]
@@ -36,8 +35,8 @@ for html_file in glob.glob(os.path.join(filepath, '*.html')):
         'body': content
     }
 
-    # Try to load metadata from a corresponding _meta.py file
-    meta_file = os.path.join(filepath, f"{base_name}_meta.py")
+    # Try to load metadata from a corresponding _meta.py file in the same directory
+    meta_file = os.path.join(os.path.dirname(html_file), f"{base_name}_meta.py")
     if os.path.exists(meta_file):
         try:
             spec = importlib.util.spec_from_file_location(
@@ -56,3 +55,13 @@ for html_file in glob.glob(os.path.join(filepath, '*.html')):
     # Create a post variable with the base_name
     globals()[base_name] = metadata
     posts[base_name] = metadata
+
+# Process files in the current directory
+for html_file in glob.glob(os.path.join(filepath, '*.html')):
+    process_html_file(html_file)
+
+# Process files in the spiritualtech subdirectory
+spiritualtech_dir = os.path.join(filepath, 'spiritualtech')
+if os.path.exists(spiritualtech_dir):
+    for html_file in glob.glob(os.path.join(spiritualtech_dir, '*.html')):
+        process_html_file(html_file)

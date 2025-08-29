@@ -12,23 +12,25 @@ declare -a simple_pages=(
 
 declare -a content_pages=(
 # [0]='d20141228 A_Beginning_20141228 singlepost'
-[1]='spiritualtech_being_wrong SpiritualTech_Being_Wrong singlepost'
-[2]='keep_notes Keep_Notes singlepost'
-[3]='consciousness Consciousness singlepost'
-[4]='languages Languages singlepost'
-[5]='universalization Universalization singlepost'
-[6]='identification Identification singlepost'
-[7]='senses Senses singlepost'
-[8]='introduction_legacy Introduction_Legacy singlepost'
-[9]='natural Natural realm'
-[10]='language Language realm'
-[11]='processing Processing realm'
-[12]='kumia Kumia kumia'
-[13]='spiritual Spiritual singlepost'
-[14]='2023_london London singlepost'
-[15]='2023_new_york NewYork singlepost'
-[16]='2025_vietnam Vietnam singlepost'
-[17]='privacy Privacy singlepost'
+[99]='spiritualtech/1 Day_1 singlepost'
+[100]='spiritualtech/one_year_later SpiritualTech_One_Year_Later singlepost'
+[101]='spiritualtech_being_wrong SpiritualTech_Being_Wrong singlepost'
+[102]='keep_notes Keep_Notes singlepost'
+[103]='consciousness Consciousness singlepost'
+[104]='languages Languages singlepost'
+[105]='universalization Universalization singlepost'
+[106]='identification Identification singlepost'
+[107]='senses Senses singlepost'
+[108]='introduction_legacy Introduction_Legacy singlepost'
+[109]='natural Natural realm'
+[110]='language Language realm'
+[111]='processing Processing realm'
+[112]='kumia Kumia kumia'
+[113]='spiritual Spiritual singlepost'
+[114]='2023_london London singlepost'
+[115]='2023_new_york NewYork singlepost'
+[116]='2025_vietnam Vietnam singlepost'
+[117]='privacy Privacy singlepost'
 )
 
 for page in "${simple_pages[@]}"
@@ -50,7 +52,7 @@ do
       posted_date=""
 
       # Try to find and extract data from _meta.py file
-      meta_file=$(find src/app -name "${page_id}_meta.py" -type f | head -1)
+      meta_file=$(find src/app -path "*/${page_id}_meta.py" -type f | head -1)
       if [ -f "$meta_file" ]; then
         # Extract title from _meta.py (handles both single and double quotes)
         title=$(grep -E "^title\s*=" "$meta_file" | head -1 | sed -E "s/^title\s*=\s*['\"]([^'\"]+)['\"].*/\1/")
@@ -110,13 +112,30 @@ done
 for page in "${content_pages[@]}"
 do
   read -ra page_parts <<< "$page"
+
+  # Extract directory and filename
+  IFS='/' read -r -a path_parts <<< "${page_parts[0]}"
+
+  if [ ${#path_parts[@]} -gt 1 ]; then
+    # Handle subdirectories
+    dir_path="static/src/offline/$(dirname "${page_parts[0]}")"
+    mkdir -p "$dir_path"
+    output_file="$dir_path/$(basename "${page_parts[0]}")"
+  else
+    # Handle root directory files
+    output_file="static/src/offline/${page_parts[0]}"
+  fi
+
   # Export page
   cp static/src/offline/template.html static/src/offline/temp
   sed -i "s/TITLE_PLACEHOLDER/Kamutiv Tech | ${page_parts[1]}/g" static/src/offline/temp
   sed -i "s/MAIN_CONTENT_PLACEHOLDER/${page_parts[2]}/g" static/src/offline/temp
-  docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py ${page_parts[0]} > testtest"
 
-  cat <(sed -n "1,${CUT_START}p" static/src/offline/temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/temp) > static/src/offline/${page_parts[0]}
+  # Use the base filename (without path) for tojson.py
+  base_filename=$(basename "${page_parts[0]}")
+  docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py ${base_filename} > testtest"
+
+  cat <(sed -n "1,${CUT_START}p" static/src/offline/temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/temp) > "$output_file"
   rm -rf testtest static/src/offline/temp
   echo "Done with...${page_parts[0]}"
 done
