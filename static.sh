@@ -12,8 +12,8 @@ declare -a simple_pages=(
 
 declare -a content_pages=(
 # [0]='d20141228 A_Beginning_20141228 singlepost'
-[99]='one_year_later_1 SpiritualTech_One_Year_Later_1 singlepost'
-[100]='one_year_later SpiritualTech_One_Year_Later singlepost'
+[99]='spiritualtech/1 Day_1 singlepost'
+[100]='spiritualtech/one_year_later SpiritualTech_One_Year_Later singlepost'
 [101]='spiritualtech_being_wrong SpiritualTech_Being_Wrong singlepost'
 [102]='keep_notes Keep_Notes singlepost'
 [103]='consciousness Consciousness singlepost'
@@ -112,13 +112,30 @@ done
 for page in "${content_pages[@]}"
 do
   read -ra page_parts <<< "$page"
+
+  # Extract directory and filename
+  IFS='/' read -r -a path_parts <<< "${page_parts[0]}"
+
+  if [ ${#path_parts[@]} -gt 1 ]; then
+    # Handle subdirectories
+    dir_path="static/src/offline/$(dirname "${page_parts[0]}")"
+    mkdir -p "$dir_path"
+    output_file="$dir_path/$(basename "${page_parts[0]}")"
+  else
+    # Handle root directory files
+    output_file="static/src/offline/${page_parts[0]}"
+  fi
+
   # Export page
   cp static/src/offline/template.html static/src/offline/temp
   sed -i "s/TITLE_PLACEHOLDER/Kamutiv Tech | ${page_parts[1]}/g" static/src/offline/temp
   sed -i "s/MAIN_CONTENT_PLACEHOLDER/${page_parts[2]}/g" static/src/offline/temp
-  docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py ${page_parts[0]} > testtest"
 
-  cat <(sed -n "1,${CUT_START}p" static/src/offline/temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/temp) > static/src/offline/${page_parts[0]}
+  # Use the base filename (without path) for tojson.py
+  base_filename=$(basename "${page_parts[0]}")
+  docker run --rm -v `pwd`:/app nlp-web:debug bash -c "python3 src/utilities/tojson.py ${base_filename} > testtest"
+
+  cat <(sed -n "1,${CUT_START}p" static/src/offline/temp) testtest <(sed -n "${CUT_END},1000p" static/src/offline/temp) > "$output_file"
   rm -rf testtest static/src/offline/temp
   echo "Done with...${page_parts[0]}"
 done

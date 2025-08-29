@@ -144,7 +144,7 @@ export default function SpiritualTech() {
               <Typography variant="caption" display="block" color="textSecondary">August 14, 2025</Typography>
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <a href="/spiritualtech_one_year_later" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Day-by-day One year later</a>
+              <a href="/spiritualtech/one_year_later" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Day-by-day One year later</a>
               <Typography variant="caption" display="block" color="textSecondary">August 29, 2025</Typography>
             </li>
           </ol>
