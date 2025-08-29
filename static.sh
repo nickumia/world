@@ -52,7 +52,7 @@ do
       posted_date=""
 
       # Try to find and extract data from _meta.py file
-      meta_file=$(find src/app -name "${page_id}_meta.py" -type f | head -1)
+      meta_file=$(find src/app -path "*/${page_id}_meta.py" -type f | head -1)
       if [ -f "$meta_file" ]; then
         # Extract title from _meta.py (handles both single and double quotes)
         title=$(grep -E "^title\s*=" "$meta_file" | head -1 | sed -E "s/^title\s*=\s*['\"]([^'\"]+)['\"].*/\1/")
