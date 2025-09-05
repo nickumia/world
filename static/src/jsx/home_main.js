@@ -123,12 +123,12 @@ const images = [
     width: '50%',
     link: 'spiritual',
   },
-  {
-    url: '/static/img/20231018_180624_optimized.jpg',
-    title: 'NLP Research',
-    width: '30%',
-    link: 'nlp',
-  },
+  // {
+  //   url: '/static/img/20231018_180624_optimized.jpg',
+  //   title: 'NLP Research',
+  //   width: '30%',
+  //   link: 'nlp',
+  // },
 ];
 
 /**
