@@ -12,6 +12,7 @@ declare -a simple_pages=(
 
 declare -a content_pages=(
 # [0]='d20141228 A_Beginning_20141228 singlepost'
+[997]='spiritualtech/3 Day_3 singlepost'
 [998]='spiritualtech/2 Day_2 singlepost'
 [999]='spiritualtech/1 Day_1 singlepost'
 [1000]='spiritualtech/one_year_later SpiritualTech_One_Year_Later singlepost'
