@@ -52,6 +52,13 @@ export default function SpiritualTech() {
         <Typography variant="h6">
           August 11th, 2024 - July 7th, 2025
         </Typography>
+        <Typography variant="subtitle2">
+          The true value of the road trip isn't something that can be easily conveyed.
+          It's about seeing the names of the states and seeing more than just characters
+          on a page.  Without having gone to see it for themselves, what people think about
+          America is simply what they've experienced so far.  No one part of America
+          accurately represents the whole.
+        </Typography>
         <br/>
         <Grid container spacing={2} sx={{px: 8}}>
           <Grid item xs={12} md={3}>
