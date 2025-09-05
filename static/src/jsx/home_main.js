@@ -172,6 +172,32 @@ export default function HomeMain({ allPages }) {
       >
         Connecting People through Technology for a Better Tomorrow
       </Typography>
+
+      <Typography
+        variant="h5"
+        align="center"
+        sx={{
+          mb: 6,
+          fontWeight: 600,
+          letterSpacing: '0.5px',
+          position: 'relative',
+          color: 'text.primary',
+          '&:after': {
+            content: '""',
+            display: 'block',
+            width: 60,
+            height: 4,
+            bgcolor: 'primary.main',
+            mx: 'auto',
+            mt: 2,
+            borderRadius: 2,
+            opacity: 0.8,
+          },
+        }}
+      >
+        True victory isn't about winning against someone strong.<br/>
+        True victory is about defending what's most important to you.
+      </Typography>
       
       {/* Featured Images Grid */}
       <Box 
