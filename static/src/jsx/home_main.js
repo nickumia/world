@@ -91,13 +91,13 @@ const images = [
     url: '/static/img/20231221_204447_optimized.jpg',
     title: 'New York 2023',
     width: '30%',
-    link: 'new_york',
+    link: '2023_new_york',
   },
   {
     url: '/static/img/20231020_142059_optimized.jpg',
     title: 'London 2023',
     width: '40%',
-    link: 'london',
+    link: '2023_london',
   },
   {
     url: '/static/img/vlogging.png',
