@@ -158,6 +158,10 @@ export default function SpiritualTech() {
               <a href="/struggling_to_return" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Struggling to return</a>
               <Typography variant="caption" display="block" color="textSecondary">September 7, 2025</Typography>
             </li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="/fi_value" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: The True Value of Financial Independence</a>
+              <Typography variant="caption" display="block" color="textSecondary">November 18, 2025</Typography>
+            </li>
           </ol>
         </div>
 
