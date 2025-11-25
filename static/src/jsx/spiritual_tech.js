@@ -162,6 +162,10 @@ export default function SpiritualTech() {
               <a href="/fi_value" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: The True Value of Financial Independence</a>
               <Typography variant="caption" display="block" color="textSecondary">November 18, 2025</Typography>
             </li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="/good_and_bad_are_selfish" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Good and Bad Are Equally Selfish</a>
+              <Typography variant="caption" display="block" color="textSecondary">November 24, 2025</Typography>
+            </li>
           </ol>
         </div>
 
