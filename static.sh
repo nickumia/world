@@ -12,13 +12,15 @@ declare -a simple_pages=(
 
 declare -a content_pages=(
 # [0]='d20141228 A_Beginning_20141228 singlepost'
+[289]='road_change_home Road_Change_Home singlepost'
 [290]='good_and_bad_are_selfish Good_And_Bad_Are_Selfish singlepost'
 [291]='fi_value The_True_Value_Of_Financial_Independence singlepost'
 [292]='pain Pain singlepost'
 [293]='learning_and_testing Learning_And_Testing singlepost'
 [294]='learning_v_knowledge Learning_V_Knowledge singlepost'
-[295]='2025_09_11 This_Is_Kind_Of_A_Weird_One singlepost'
-[296]='struggling_to_return Struggling_To_Return singlepost'
+[295]='inhibition Inhibition singlepost'
+[296]='2025_09_11 This_Is_Kind_Of_A_Weird_One singlepost'
+[297]='struggling_to_return Struggling_To_Return singlepost'
 [995]='spiritualtech/5 Day_5 singlepost'
 [996]='spiritualtech/4 Day_4 singlepost'
 [997]='spiritualtech/3 Day_3 singlepost'
