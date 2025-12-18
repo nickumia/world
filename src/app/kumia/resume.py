@@ -1,7 +1,7 @@
 # Resume content
 
 publications = [
-    {"title": "[TRACEE] Traceable and Reliable AI for Computing Energy Efficiency",
+    {"title": "[TRACEE] Traceable and Reliable AI for Computing Energy Efficiency",  # NOQA
      "key": 13,
      "image": "/static/img/dod.png",
      "place": "SBIR Phase I Proposal | Cantonsville, MD (Remote)",
@@ -139,7 +139,9 @@ experiences = [
 ▪ Provide hands-on professional experience building and deploying software solutions in production and research environments.<br/>
 """,  # NOQA
      "link": "https://redshred.com/",
-     "skills": ["GCP", "Kubernetes", "APISIX", "Argo CD", "Knative", "Skaffold", "Behave", "RabbitMQ", "Minio", "Helm", "Postgres", "Kustomize", "RHEL", "Poetry", "Django", "Github", "Redshred"]
+     "skills": ["GCP", "Kubernetes", "APISIX", "Argo CD", "Knative",
+          "Skaffold", "Behave", "RabbitMQ", "Minio", "Helm", "Postgres",
+          "Kustomize", "RHEL", "Poetry", "Django", "Github", "Redshred"]
      },
     {"role": "(Senior) DevOps Engineer",
      "key": 6,
@@ -151,7 +153,10 @@ experiences = [
 ▪ Issues closed and presented: <a href="https://github.com/GSA/datagov-deploy/issues?q=assignee%3Anickumia-reisys">Github</a>
 """,  # NOQA
      "link": "https://reisystems.com/",
-     "skills": ["AWS", "Cloud.gov", "Docker", "Kubernetes", "KiND", "EKS", "Docker-compose", "Make", "Terrraform", "Brokerpaks", "Python", "Postgres", "CKAN", "Solr", "Solrcloud", "Solr-operator", "React", "Pytest", "Jest", "Cypress"]
+     "skills": ["AWS", "Cloud.gov", "Docker", "Kubernetes", "KiND", "EKS",
+          "Docker-compose", "Make", "Terrraform", "Brokerpaks", "Python",
+          "Postgres", "CKAN", "Solr", "Solrcloud", "Solr-operator", "React",
+          "Pytest", "Jest", "Cypress"]
      },
     {"role": "Cybersecurity/Software Engineer",
      "key": 5,
@@ -164,7 +169,8 @@ experiences = [
 ▪ Researched DISA STIGs and verified that engineering design met cybersecurity requirements. <br/>
 """,  # NOQA
      "link": "https://avtsim.com/",
-     "skills": ["RHEL", "Ada", "Docker", "Kubernetes", "Bitbucket", "Confluence", "Jira", "Bamboo", "Ant", "Ivy", "ActiveM"]
+     "skills": ["RHEL", "Ada", "Docker", "Kubernetes", "Bitbucket",
+          "Confluence", "Jira", "Bamboo", "Ant", "Ivy", "ActiveM"]
      },
     {"role": "Computer Scientist | Lab Researcher | System Security Engineer | NLP Developer",  # NOQA
      "key": 4,
@@ -181,7 +187,9 @@ experiences = [
 ▪ NLP Architecture Design and problem-solution assessment
 """,  # NOQA
      "link": "https://www.navair.navy.mil/nawcad/",
-     "skills": ["ROS", "Python", "Ubuntu", "C++", "Arduino", "Git", "Bash", "PCAN", "Barrett Hand", "UR10", "Matlab", "RMF", "Splunk", "ElasticStack", "SCAP", "ACAS", "RMF", "Splunk", "ElasticStack"]
+     "skills": ["ROS", "Python", "Ubuntu", "C++", "Arduino", "Git", "Bash",
+          "PCAN", "Barrett Hand", "UR10", "Matlab", "RMF", "Splunk",
+          "ElasticStack", "SCAP", "ACAS"]
      },
     {"role": "Founder",
      "key": 3,
@@ -209,7 +217,8 @@ Cybersecurity | Artificial Intelligence | Data Analytics | Intelligent Systems/R
 Performed extensive research concerning 3D Printing Technologies, eventually manufacturing a process to develop unique filament and 3D print said filament. Worked with manufacturing processes, including compression molding and 3D printing, as well as testing machines, such as Instron machines.<br/>
 """,  # NOQA
      "link": "https://engineering.nyu.edu/",
-     "skills": ["Arduino", "C++", "MatLab", "MakerBot", "Open-source 3D Printers", "TPU Filament", "G-Code", "Solidworks"]
+     "skills": ["Arduino", "C++", "MatLab", "MakerBot", "Solidworks",
+          "Open-source 3D Printers", "TPU Filament", "G-Code"]
      },
     {"role": "Researcher",
      "key": 0,

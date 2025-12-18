@@ -16,6 +16,7 @@ filepath = os.path.dirname(os.path.realpath(__file__))
 # Dictionary to store all posts
 posts = {}
 
+
 def process_html_file(html_file):
     # Skip files that end with _meta.html
     if html_file.endswith('_meta.html'):
@@ -35,8 +36,10 @@ def process_html_file(html_file):
         'body': content
     }
 
-    # Try to load metadata from a corresponding _meta.py file in the same directory
-    meta_file = os.path.join(os.path.dirname(html_file), f"{base_name}_meta.py")
+    # Try to load metadata from a corresponding _meta.py file in the same
+    # directory
+    meta_file = os.path.join(os.path.dirname(html_file),
+                             f"{base_name}_meta.py")
     if os.path.exists(meta_file):
         try:
             spec = importlib.util.spec_from_file_location(
@@ -55,6 +58,7 @@ def process_html_file(html_file):
     # Create a post variable with the base_name
     globals()[base_name] = metadata
     posts[base_name] = metadata
+
 
 # Process files in the current directory
 for html_file in glob.glob(os.path.join(filepath, '*.html')):
