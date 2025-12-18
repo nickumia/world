@@ -43,6 +43,43 @@ table tr:hover {
     background-color: #f8f9fa;
 }
 
+/* Comparison Layout */
+.comparison-container {
+    max-width: 100%;
+    margin: 2em 0;
+}
+
+.comparison-pair {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    margin: 1.5em 0;
+}
+
+.quality, .quantity {
+    flex: 1;
+    min-width: 300px;
+    padding: 1em;
+    border-radius: 4px;
+}
+
+.quality {
+    border-left: 3px solid #4a6fa5;
+    background-color: rgba(74, 111, 165, 0.05);
+}
+
+.quantity {
+    border-left: 3px solid #e67e22;
+    background-color: rgba(230, 126, 34, 0.05);
+}
+
+@media (max-width: 768px) {
+    .quality, .quantity {
+        min-width: 100%;
+        margin-bottom: 1em;
+    }
+}
+
 table th:first-child,
 table td:first-child {
     padding-left: 20px;
