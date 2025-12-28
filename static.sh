@@ -24,6 +24,7 @@ declare -a content_pages=(
 [295]='inhibition Inhibition singlepost'
 [296]='2025_09_11 This_Is_Kind_Of_A_Weird_One singlepost'
 [297]='struggling_to_return Struggling_To_Return singlepost'
+[868]='spiritualtech/132 Day_132 singlepost'
 [892]='spiritualtech/108 Day_108 singlepost'
 [995]='spiritualtech/5 Day_5 singlepost'
 [996]='spiritualtech/4 Day_4 singlepost'
