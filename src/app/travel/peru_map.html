@@ -17,7 +17,7 @@
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            padding: 20px;
+            padding: 0px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -27,7 +27,7 @@
             height: 500px;
             background-color: #e6f2ff;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 0px 0;
             position: relative;
             overflow: hidden;
         }
@@ -130,7 +130,7 @@
             mapImage.setAttribute("href", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png");
             // Position and scale to center on Americas
             const mapX = -width * 0.15;  // Shift map to the right
-            const mapY = -height * 0.9; // Keep vertical position
+            const mapY = -height * 0.5; // Keep vertical position
             const mapWidth = width * 2.7; // Keep zoom level
             
             mapImage.setAttribute("x", mapX);
@@ -176,11 +176,11 @@
             
             // City coordinates (aligned with world map)
             const cities = [
-                { code: "MIA", name: "Miami", x: width * 0.51, y: height * 0.26, showDot: true },
-                { code: "BOG", name: "Bogotá", x: width * 0.55, y: height * 0.6, showDot: false },
-                { code: "CUZ", name: "Cusco", x: width * 0.56, y: height * 0.83, showDot: true },
-                { code: "LIM", name: "Lima", x: width * 0.52, y: height * 0.81, showDot: true },
-                { code: "UIO", name: "Quito", x: width * 0.51, y: height * 0.67, showDot: true }
+                { code: "MIA", name: "Miami", x: width * 0.51, y: height * 0.315, showDot: true },
+                { code: "BOG", name: "Bogotá", x: width * 0.55, y: height * 0.55, showDot: false },
+                { code: "CUZ", name: "Cusco", x: width * 0.56, y: height * 0.72, showDot: true },
+                { code: "LIM", name: "Lima", x: width * 0.52, y: height * 0.7, showDot: true },
+                { code: "UIO", name: "Quito", x: width * 0.51, y: height * 0.6, showDot: true }
             ];
             
             // Draw routes
@@ -214,7 +214,7 @@
                     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                     circle.setAttribute("cx", city.x);
                     circle.setAttribute("cy", city.y);
-                    circle.setAttribute("r", 8);
+                    circle.setAttribute("r", 4);
                     circle.setAttribute("class", "dot");
                     circle.setAttribute("title", `${city.name} (${city.code})`);
                     svg.appendChild(circle);
@@ -231,7 +231,7 @@
                     const layover = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                     layover.setAttribute("cx", city.x);
                     layover.setAttribute("cy", city.y);
-                    layover.setAttribute("r", 4);
+                    layover.setAttribute("r", 3);
                     layover.setAttribute("class", "layover");
                     layover.setAttribute("title", `Layover in ${city.name} (${city.code})`);
                     svg.appendChild(layover);
