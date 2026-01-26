@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peru Travel Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .map-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        #travelMap {
+            width: 100%;
+            height: 500px;
+            background-color: #e6f2ff;
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dot {
+            fill: #e74c3c;
+            stroke: white;
+            stroke-width: 2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 3px rgba(0,0,0,0.7));
+        }
+        
+        .dot:hover {
+            fill: #c0392b;
+            transform: scale(1.2);
+        }
+        
+        .route {
+            fill: none;
+            stroke: #e74c3c;
+            stroke-width: 2;
+            stroke-dasharray: 5,5;
+            animation: dash 20s linear infinite;
+            opacity: 0.8;
+        }
+        
+        .city-label {
+            font-size: 12px;
+            font-weight: bold;
+            fill: #2c3e50;
+            text-anchor: middle;
+            pointer-events: none;
+            text-shadow: 0 0 3px white, 0 0 5px white;
+        }
+        
+        .airport-code {
+            font-size: 14px;
+            font-weight: bold;
+            fill: #2c3e50;
+            text-anchor: middle;
+            pointer-events: none;
+            text-shadow: 0 0 3px white, 0 0 5px white;
+        }
+        
+        .layover {
+            fill: #f39c12;
+            stroke: white;
+            stroke-width: 2;
+            r: 5;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+        }
+        
+        .info-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            text-align: left;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -500;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <!-- <h2>My Peru Travel Route</h2> -->
+        <div id="travelMap"></div>
+        <!-- <div class="info-box">
+            <h3>Travel Itinerary</h3>
+            <ul>
+                <li>Miami (MIA) → Bogotá (BOG) → Cusco (CUZ)</li>
+                <li>Cusco (CUZ) → Lima (LIM)</li>
+                <li>Lima (LIM) → Quito (UIO)</li>
+                <li>Quito (UIO) → Miami (MIA)</li>
+            </ul>
+        </div> -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('travelMap');
+            const width = container.clientWidth;
+            const height = 500;
+            
+            // Create SVG element
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+            svg.setAttribute("width", "100%");
+            svg.setAttribute("height", "100%");
+            
+            // Add world map background image (centered on Americas)
+            const mapImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
+            mapImage.setAttribute("href", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png");
+            // Position and scale to center on Americas
+            const mapX = -width * 0.15;  // Shift map to the right
+            const mapY = -height * 0.9; // Keep vertical position
+            const mapWidth = width * 2.7; // Keep zoom level
+            
+            mapImage.setAttribute("x", mapX);
+            mapImage.setAttribute("y", mapY);
+            mapImage.setAttribute("width", mapWidth);
+            mapImage.setAttribute("height", "auto");
+            mapImage.setAttribute("opacity", "0.4");
+            mapImage.setAttribute("preserveAspectRatio", "none");
+            svg.appendChild(mapImage);
+            
+            // Add a subtle gradient overlay
+            const gradient = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+            const radialGradient = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient");
+            radialGradient.setAttribute("id", "mapOverlay");
+            radialGradient.setAttribute("cx", "50%");
+            radialGradient.setAttribute("cy", "50%");
+            radialGradient.setAttribute("r", "75%");
+            radialGradient.setAttribute("fx", "50%");
+            radialGradient.setAttribute("fy", "50%");
+            
+            const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop1.setAttribute("offset", "0%");
+            stop1.setAttribute("stop-color", "white");
+            stop1.setAttribute("stop-opacity", "0.6");
+            
+            const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop2.setAttribute("offset", "100%");
+            stop2.setAttribute("stop-color", "white");
+            stop2.setAttribute("stop-opacity", "0.1");
+            
+            radialGradient.appendChild(stop1);
+            radialGradient.appendChild(stop2);
+            gradient.appendChild(radialGradient);
+            svg.appendChild(gradient);
+            
+            const overlay = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            overlay.setAttribute("x", "0");
+            overlay.setAttribute("y", "0");
+            overlay.setAttribute("width", width);
+            overlay.setAttribute("height", height);
+            overlay.setAttribute("fill", "url(#mapOverlay)");
+            svg.appendChild(overlay);
+            
+            // City coordinates (aligned with world map)
+            const cities = [
+                { code: "MIA", name: "Miami", x: width * 0.51, y: height * 0.26, showDot: true },
+                { code: "BOG", name: "Bogotá", x: width * 0.55, y: height * 0.6, showDot: false },
+                { code: "CUZ", name: "Cusco", x: width * 0.56, y: height * 0.83, showDot: true },
+                { code: "LIM", name: "Lima", x: width * 0.52, y: height * 0.81, showDot: true },
+                { code: "UIO", name: "Quito", x: width * 0.51, y: height * 0.67, showDot: true }
+            ];
+            
+            // Draw routes
+            const routes = [
+                { from: "MIA", to: "BOG" },
+                { from: "BOG", to: "CUZ" },
+                { from: "CUZ", to: "LIM" },
+                { from: "LIM", to: "UIO" },
+                { from: "UIO", to: "MIA" }
+            ];
+            
+            // Draw the routes first (so they appear under the dots)
+            routes.forEach(route => {
+                const fromCity = cities.find(c => c.code === route.from);
+                const toCity = cities.find(c => c.code === route.to);
+                
+                if (fromCity && toCity) {
+                    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    const midX = (fromCity.x + toCity.x) / 2;
+                    const midY = (fromCity.y + toCity.y) / 2 - 30;
+                    path.setAttribute("d", `M${fromCity.x},${fromCity.y} Q${midX},${midY} ${toCity.x},${toCity.y}`);
+                    path.setAttribute("class", "route");
+                    svg.appendChild(path);
+                }
+            });
+            
+            // Add city markers and labels
+            cities.forEach(city => {
+                if (city.showDot) {
+                    // City dot for main destinations
+                    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    circle.setAttribute("cx", city.x);
+                    circle.setAttribute("cy", city.y);
+                    circle.setAttribute("r", 8);
+                    circle.setAttribute("class", "dot");
+                    circle.setAttribute("title", `${city.name} (${city.code})`);
+                    svg.appendChild(circle);
+                    
+                    // City name
+                    const name = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    name.setAttribute("x", city.x);
+                    name.setAttribute("y", city.y + 25);
+                    name.setAttribute("class", "city-label");
+                    name.textContent = city.name;
+                    svg.appendChild(name);
+                } else {
+                    // Small indicator for layover (BOG)
+                    const layover = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    layover.setAttribute("cx", city.x);
+                    layover.setAttribute("cy", city.y);
+                    layover.setAttribute("r", 4);
+                    layover.setAttribute("class", "layover");
+                    layover.setAttribute("title", `Layover in ${city.name} (${city.code})`);
+                    svg.appendChild(layover);
+                }
+                
+                // Airport code
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("x", city.x);
+                text.setAttribute("y", city.showDot ? city.y - 15 : city.y - 10);
+                text.setAttribute("class", "airport-code");
+                text.textContent = city.code;
+                svg.appendChild(text);
+            });
+            
+            container.appendChild(svg);
+            
+            // Handle window resize
+            function handleResize() {
+                const newWidth = container.clientWidth;
+                svg.setAttribute("viewBox", `0 0 ${newWidth} ${height}`);
+            }
+            
+            window.addEventListener('resize', handleResize);
+        });
+    </script>
+</body>
+</html>
