@@ -130,7 +130,7 @@
             mapImage.setAttribute("href", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png");
             // Position and scale to center on Americas
             const mapX = -width * 0.15;  // Shift map to the right
-            const mapY = -height * 0.5; // Keep vertical position
+            const mapY = -height * 0.6; // Keep vertical position
             const mapWidth = width * 2.7; // Keep zoom level
             
             mapImage.setAttribute("x", mapX);
@@ -176,11 +176,11 @@
             
             // City coordinates (aligned with world map)
             const cities = [
-                { code: "MIA", name: "Miami", x: width * 0.51, y: height * 0.315, showDot: true },
-                { code: "BOG", name: "Bogotá", x: width * 0.55, y: height * 0.55, showDot: false },
-                { code: "CUZ", name: "Cusco", x: width * 0.56, y: height * 0.72, showDot: true },
-                { code: "LIM", name: "Lima", x: width * 0.52, y: height * 0.7, showDot: true },
-                { code: "UIO", name: "Quito", x: width * 0.51, y: height * 0.6, showDot: true }
+                { code: "MIA", name: "Miami", x: width * 0.51, y: height * 0.13, showDot: true },
+                { code: "BOG", name: "Bogotá", x: width * 0.55, y: height * 0.34, showDot: false },
+                { code: "CUZ", name: "Cusco", x: width * 0.56, y: height * 0.51, showDot: true },
+                { code: "LIM", name: "Lima", x: width * 0.52, y: height * 0.49, showDot: true },
+                { code: "UIO", name: "Quito", x: width * 0.51, y: height * 0.39, showDot: true }
             ];
             
             // Draw routes
