@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Tracker MVP</title>
+    <title>Life Growth Tracker</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .form-section { display: none; }
@@ -20,10 +20,11 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
+    <div id="navbar"></div>
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <header class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Life Tracker MVP</h1>
-            <p class="text-gray-600">Track interactions, value statements, and selections</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Life Growth Tracker</h1>
+            <p class="text-gray-600">Track interactions, value statements, and decisions</p>
         </header>
 
         <!-- Navigation Tabs -->
@@ -116,15 +117,16 @@
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                            <select id="value-category" required 
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <option value="">Select category...</option>
-                                <option value="energy">Energy</option>
-                                <option value="social">Social</option>
-                                <option value="decision">Decision</option>
-                                <option value="focus">Focus</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <div class="flex flex-wrap items-center">
+                                <input type="text" id="category-input" placeholder="Add category..." 
+                                       class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2"
+                                       onkeypress="if(event.key === 'Enter') { event.preventDefault(); addCategory(); }">
+                                <button type="button" onclick="addCategory()" 
+                                        class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
+                                    Add Category
+                                </button>
+                            </div>
+                            <div id="category-container" class="mt-2"></div>
                         </div>
                         
                         <div>
@@ -220,9 +222,38 @@
     </div>
 
     <script src="./config.js"></script>
+    <script type="text/javascript">
+			title="TITLE_PLACEHOLDER";
+			menu=[
+				{key: 0, name: 'Home', link: "/index"},
+				{key: 1, name: 'NLP', link: "/nlp"},
+				{key: 3, name: 'Posts', link: "/index"},
+				{key: 7, name: 'Kumia', link: "/kumia"},
+			]
+      searchOn='false'
+		</script>
+		<script src="/bundle.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M355ZJEPH8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M355ZJEPH8');
+    </script>
+    <script src="https://utteranc.es/client.js"
+        repo="nickumia/world"
+        issue-term="title"
+        theme="github-dark-orange"
+        crossorigin="anonymous"
+        async>
+    </script>
     <script>
         // Global variables
         let contextTags = [];
+        let valueCategories = [];
         const API_ENDPOINT = window.API_CONFIG ? window.API_CONFIG.ENDPOINT : 'http://localhost:5000/tracker';
 
         // Initialize form with current local datetime
@@ -318,6 +349,30 @@
             ).join('');
         }
 
+        // Category management
+        function addCategory() {
+            const input = document.getElementById('category-input');
+            const category = input.value.trim();
+            
+            if (category && !valueCategories.includes(category)) {
+                valueCategories.push(category);
+                renderCategories();
+                input.value = '';
+            }
+        }
+
+        function removeCategory(category) {
+            valueCategories = valueCategories.filter(c => c !== category);
+            renderCategories();
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('category-container');
+            container.innerHTML = valueCategories.map(category => 
+                `<span class="tag-input">${category}<span class="tag-remove" onclick="removeCategory('${category}')">×</span></span>`
+            ).join('');
+        }
+
         // Form submissions
         document.getElementById('interaction-form').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -338,11 +393,16 @@
         document.getElementById('value-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            if (valueCategories.length === 0) {
+                showStatus('Error: At least one category is required', 'error');
+                return;
+            }
+            
             const valueStatement = {
                 value_id: generateId(),
                 date_created: document.getElementById('value-date').value,
                 statement: document.getElementById('value-statement').value,
-                category: document.getElementById('value-category').value,
+                category: valueCategories, // Send as array of strings
                 confidence: parseInt(document.getElementById('value-confidence').value),
                 source_interaction_id: document.getElementById('source-interaction').value || null,
                 last_applied_date: null
@@ -397,6 +457,8 @@
                         document.getElementById('interaction-date').value = formatDateTimeLocal(now);
                     } else if (type === 'value_statements') {
                         formId = 'value-form';
+                        valueCategories = [];
+                        renderCategories();
                         // Reset datetime to current local time
                         const now = new Date();
                         document.getElementById('value-date').value = formatDateTimeLocal(now);

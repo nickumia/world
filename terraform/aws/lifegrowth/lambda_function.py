@@ -299,7 +299,7 @@ def validate_data(data_type, data):
         required_fields = ['value_id', 'date_created', 'statement', 'category', 'confidence']
         return validate_fields(data, required_fields, {
             'confidence': {'type': int, 'min': 1, 'max': 5},
-            'category': {'type': str, 'options': ['energy', 'social', 'decision', 'focus', 'other']}
+            'category': {'type': list}  # Flexible category validation - accepts list of strings
         })
 
     elif data_type == 'decisions':
