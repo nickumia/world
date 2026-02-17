@@ -86,7 +86,7 @@ def lambda_handler(event, context):
                 return {
                     'statusCode': 500,
                     'headers': headers,
-                    'body': json.dumps({'error': 'Failed to save data'})
+                    'body': json.dumps({'error': f'Failed to save data: {str(e)}'})
                 }
         elif event['httpMethod'] == 'GET':
             return handle_get_request(event, headers)
@@ -237,15 +237,19 @@ def get_existing_data():
 def save_data_to_s3(data):
     """Save data to S3"""
     
-    # Update metadata
-    data['metadata']['last_updated'] = datetime.utcnow().isoformat()
-    
-    s3.put_object(
-        Bucket=BUCKET_NAME,
-        Key=DATA_FILE,
-        Body=json.dumps(data, indent=2),
-        ContentType='application/json'
-    )
+    try:
+        # Update metadata
+        data['metadata']['last_updated'] = datetime.utcnow().isoformat()
+        s3.put_object(
+            Bucket=BUCKET_NAME,
+            Key=DATA_FILE,
+            Body=json.dumps(data, indent=2),
+            ContentType='application/json'
+        )
+        
+    except Exception as e:
+        print(f"Error saving data to S3: {str(e)}")
+        raise e
 
 def validate_data(data_type, data):
     """Validate data structure based on type"""

@@ -2,7 +2,7 @@
 variable "life_tracker_bucket_name" {
   description = "Name of the S3 bucket for life tracker data"
   type        = string
-  default     = "nlp-dev"
+  default     = "offline.kamutiv.com"
 }
 
 variable "environment" {
