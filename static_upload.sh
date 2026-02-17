@@ -3,7 +3,7 @@ aws s3 cp static/src/react.css s3://offline.kamutiv.com/react.css
 aws s3 cp static/src/offline/index s3://offline.kamutiv.com/index.html --content-type "text/html"
 
 # Upload tracker files
-aws s3 cp static/src/offline/tracker.html s3://offline.kamutiv.com/tracker.html --content-type "text/html"
+aws s3 cp static/src/offline/tracker s3://offline.kamutiv.com/tracker.html --content-type "text/html"
 aws s3 cp static/src/offline/config.js s3://offline.kamutiv.com/config.js --content-type "application/javascript"
 
 # Upload all files from static/src/offline with their directory structure preserved
