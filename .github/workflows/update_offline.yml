@@ -15,7 +15,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: build
-        run: TEST_ENV=CI make build-test install-front build-front
+        env:
+          API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
+        run: API_ENDPOINT=${API_ENDPOINT} TEST_ENV=CI make build-test install-front build-front
       - name: create offline files
         run: TEST_ENV=CI make build-static
       - name: Configure AWS credentials
