@@ -70,6 +70,7 @@ resource "aws_lambda_function" "life_tracker_lambda" {
   environment {
     variables = {
       S3_BUCKET_NAME = var.life_tracker_bucket_name
+      DEBUG         = "false"
     }
   }
 
