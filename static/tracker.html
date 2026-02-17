@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Tracker MVP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .form-section { display: none; }
+        .form-section.active { display: block; }
+        .tag-input { 
+            display: inline-block; 
+            background: #e5e7eb; 
+            padding: 2px 8px; 
+            margin: 2px; 
+            border-radius: 4px; 
+            font-size: 0.875rem;
+        }
+        .tag-remove { cursor: pointer; margin-left: 4px; color: #ef4444; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Life Tracker MVP</h1>
+            <p class="text-gray-600">Track interactions, value statements, and selections</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="flex space-x-1 mb-8 bg-gray-200 rounded-lg p-1">
+            <button onclick="switchTab('interactions')" id="interactions-tab" class="flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors bg-white text-gray-900 shadow-sm">
+                Interactions
+            </button>
+            <button onclick="switchTab('values')" id="values-tab" class="flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-900">
+                Value Statements
+            </button>
+            <button onclick="switchTab('selections')" id="selections-tab" class="flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-900">
+                Selections
+            </button>
+        </div>
+
+        <!-- Interactions Form -->
+        <div id="interactions-form" class="form-section active">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Log Interaction</h2>
+                <form id="interaction-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                            <input type="datetime-local" id="interaction-date" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Energy Delta (-3 to +3)</label>
+                            <input type="range" id="energy-delta" min="-3" max="3" value="0" 
+                                   class="w-full" oninput="updateEnergyLabel(this.value)">
+                            <span id="energy-label" class="text-sm text-gray-600">0</span>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Alignment Score (0-10)</label>
+                            <input type="range" id="alignment-score" min="0" max="10" value="5" 
+                                   class="w-full" oninput="updateAlignmentLabel(this.value)">
+                            <span id="alignment-label" class="text-sm text-gray-600">5</span>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Interference Score (0-10)</label>
+                            <input type="range" id="interference-score" min="0" max="10" value="5" 
+                                   class="w-full" oninput="updateInterferenceLabel(this.value)">
+                            <span id="interference-label" class="text-sm text-gray-600">5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Context Tags</label>
+                        <div class="flex flex-wrap items-center">
+                            <input type="text" id="tag-input" placeholder="Add tags..." 
+                                   class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2"
+                                   onkeypress="if(event.key === 'Enter') { event.preventDefault(); addTag(); }">
+                            <button type="button" onclick="addTag()" 
+                                    class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                                Add Tag
+                            </button>
+                        </div>
+                        <div id="tags-container" class="mt-2"></div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Note (optional)</label>
+                        <textarea id="interaction-note" rows="3" placeholder="Short note about this interaction..."
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 font-medium">
+                            Save Interaction
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Value Statements Form -->
+        <div id="values-form" class="form-section">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Create Value Statement</h2>
+                <form id="value-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date Created</label>
+                            <input type="datetime-local" id="value-date" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                            <select id="value-category" required 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Select category...</option>
+                                <option value="energy">Energy</option>
+                                <option value="social">Social</option>
+                                <option value="decision">Decision</option>
+                                <option value="focus">Focus</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Confidence (1-5)</label>
+                            <select id="value-confidence" required 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="1">1 - Very Low</option>
+                                <option value="2">2 - Low</option>
+                                <option value="3">3 - Medium</option>
+                                <option value="4">4 - High</option>
+                                <option value="5">5 - Very High</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Source Interaction ID (optional)</label>
+                            <input type="text" id="source-interaction" placeholder="Leave empty if not applicable"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Statement</label>
+                        <textarea id="value-statement" rows="3" required placeholder="Short, behavioral, future-facing statement..."
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 font-medium">
+                            Save Value Statement
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Selections Form -->
+        <div id="selections-form" class="form-section">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Make Selection</h2>
+                <form id="selection-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date Committed</label>
+                            <input type="date" id="selection-date" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Review Date</label>
+                            <input type="date" id="review-date" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Expected Gain</label>
+                            <select id="expected-gain" required 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Select gain type...</option>
+                                <option value="skill">Skill</option>
+                                <option value="relationship">Relationship</option>
+                                <option value="optionality">Optionality</option>
+                                <option value="energy">Energy</option>
+                                <option value="money">Money</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Commitment Name</label>
+                            <input type="text" id="commitment-name" required placeholder="Name of this commitment"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Notes (optional)</label>
+                        <textarea id="selection-notes" rows="3" placeholder="Additional notes about this selection..."
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button type="submit" class="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 font-medium">
+                            Save Selection
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="status-message" class="hidden mt-4 p-4 rounded-md"></div>
+    </div>
+
+    <script src="./config.js"></script>
+    <script>
+        // Global variables
+        let contextTags = [];
+        const API_ENDPOINT = window.API_CONFIG ? window.API_CONFIG.ENDPOINT : 'http://localhost:5000/tracker';
+
+        // Initialize form with current datetime
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const localDateTime = now.toISOString().slice(0, 16);
+            document.getElementById('interaction-date').value = localDateTime;
+            document.getElementById('value-date').value = localDateTime;
+            document.getElementById('selection-date').value = now.toISOString().slice(0, 10);
+            
+            // Set review date to 3 months from now
+            const reviewDate = new Date(now);
+            reviewDate.setMonth(reviewDate.getMonth() + 3);
+            document.getElementById('review-date').value = reviewDate.toISOString().slice(0, 10);
+        });
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all forms
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Reset all tabs
+            document.querySelectorAll('[id$="-tab"]').forEach(tab => {
+                tab.classList.remove('bg-white', 'text-gray-900', 'shadow-sm');
+                tab.classList.add('text-gray-600');
+            });
+            
+            // Show selected form and highlight tab
+            document.getElementById(tabName + '-form').classList.add('active');
+            const activeTab = document.getElementById(tabName + '-tab');
+            activeTab.classList.add('bg-white', 'text-gray-900', 'shadow-sm');
+            activeTab.classList.remove('text-gray-600');
+        }
+
+        // Range input label updates
+        function updateEnergyLabel(value) {
+            document.getElementById('energy-label').textContent = value;
+        }
+
+        function updateAlignmentLabel(value) {
+            document.getElementById('alignment-label').textContent = value;
+        }
+
+        function updateInterferenceLabel(value) {
+            document.getElementById('interference-label').textContent = value;
+        }
+
+        // Tag management
+        function addTag() {
+            const input = document.getElementById('tag-input');
+            const tag = input.value.trim();
+            
+            if (tag && !contextTags.includes(tag)) {
+                contextTags.push(tag);
+                renderTags();
+                input.value = '';
+            }
+        }
+
+        function removeTag(tag) {
+            contextTags = contextTags.filter(t => t !== tag);
+            renderTags();
+        }
+
+        function renderTags() {
+            const container = document.getElementById('tags-container');
+            container.innerHTML = contextTags.map(tag => 
+                `<span class="tag-input">${tag}<span class="tag-remove" onclick="removeTag('${tag}')">×</span></span>`
+            ).join('');
+        }
+
+        // Form submissions
+        document.getElementById('interaction-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const interaction = {
+                interaction_id: generateId(),
+                date: document.getElementById('interaction-date').value,
+                context_tags: contextTags,
+                energy_delta: parseInt(document.getElementById('energy-delta').value),
+                alignment_score: parseInt(document.getElementById('alignment-score').value),
+                interference_score: parseInt(document.getElementById('interference-score').value),
+                note: document.getElementById('interaction-note').value || null
+            };
+            
+            await submitData('interactions', interaction);
+        });
+
+        document.getElementById('value-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const valueStatement = {
+                value_id: generateId(),
+                date_created: document.getElementById('value-date').value,
+                statement: document.getElementById('value-statement').value,
+                category: document.getElementById('value-category').value,
+                confidence: parseInt(document.getElementById('value-confidence').value),
+                source_interaction_id: document.getElementById('source-interaction').value || null,
+                last_applied_date: null
+            };
+            
+            await submitData('value_statements', valueStatement);
+        });
+
+        document.getElementById('selection-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const selection = {
+                selection_id: generateId(),
+                date_committed: document.getElementById('selection-date').value,
+                commitment_name: document.getElementById('commitment-name').value,
+                expected_gain: document.getElementById('expected-gain').value,
+                review_date: document.getElementById('review-date').value,
+                notes: document.getElementById('selection-notes').value || null
+            };
+            
+            await submitData('selections', selection);
+        });
+
+        // Utility functions
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        async function submitData(type, data) {
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        type: type,
+                        data: data
+                    })
+                });
+                
+                if (response.ok) {
+                    showStatus('Success! Data saved.', 'success');
+                    // Reset form
+                    document.getElementById(type + '-form').reset();
+                    if (type === 'interactions') {
+                        contextTags = [];
+                        renderTags();
+                        // Reset datetime
+                        const now = new Date();
+                        document.getElementById('interaction-date').value = now.toISOString().slice(0, 16);
+                    }
+                } else {
+                    throw new Error('Failed to save data');
+                }
+            } catch (error) {
+                showStatus('Error: ' + error.message, 'error');
+            }
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.className = 'mt-4 p-4 rounded-md';
+            
+            if (type === 'success') {
+                statusDiv.classList.add('bg-green-100', 'text-green-700', 'border', 'border-green-300');
+            } else {
+                statusDiv.classList.add('bg-red-100', 'text-red-700', 'border', 'border-red-300');
+            }
+            
+            statusDiv.classList.remove('hidden');
+            
+            setTimeout(() => {
+                statusDiv.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
