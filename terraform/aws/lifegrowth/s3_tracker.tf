@@ -108,21 +108,26 @@ resource "aws_api_gateway_resource" "life_tracker_resource" {
   path_part   = "tracker"
 }
 
+locals {
+  http_methods = ["GET", "POST", "OPTIONS"]
+}
+
 resource "aws_api_gateway_method" "life_tracker_method" {
+  for_each      = toset(local.http_methods)
   rest_api_id   = aws_api_gateway_rest_api.life_tracker_api.id
   resource_id   = aws_api_gateway_resource.life_tracker_resource.id
-  http_method   = "ANY"
+  http_method   = each.key
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "life_tracker_integration" {
-  rest_api_id = aws_api_gateway_rest_api.life_tracker_api.id
-  resource_id = aws_api_gateway_resource.life_tracker_resource.id
-  http_method = aws_api_gateway_method.life_tracker_method.http_method
-
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.life_tracker_lambda.invoke_arn
+  for_each      = toset(local.http_methods)
+  rest_api_id   = aws_api_gateway_rest_api.life_tracker_api.id
+  resource_id   = aws_api_gateway_resource.life_tracker_resource.id
+  http_method   = aws_api_gateway_method.life_tracker_method[each.key].http_method
+  type          = "AWS_PROXY"
+  integration_http_method = aws_api_gateway_method.life_tracker_method[each.key].http_method
+  uri           = aws_lambda_function.life_tracker_lambda.invoke_arn
 }
 
 resource "aws_api_gateway_deployment" "life_tracker_deployment" {
@@ -131,8 +136,8 @@ resource "aws_api_gateway_deployment" "life_tracker_deployment" {
   triggers = {
     redeployment = sha1(jsonencode([
       aws_api_gateway_resource.life_tracker_resource.id,
-      aws_api_gateway_method.life_tracker_method.id,
-      aws_api_gateway_integration.life_tracker_integration.id,
+      values(aws_api_gateway_method.life_tracker_method)[*].id,
+      values(aws_api_gateway_integration.life_tracker_integration)[*].id,
     ]))
   }
 
@@ -145,6 +150,17 @@ resource "aws_api_gateway_stage" "life_tracker_stage" {
   deployment_id = aws_api_gateway_deployment.life_tracker_deployment.id
   rest_api_id   = aws_api_gateway_rest_api.life_tracker_api.id
   stage_name    = var.environment
+
+  # Enable CORS
+  xray_tracing_enabled = false
+
+  # CORS configuration
+  variables = {
+    enableCors = true
+    allowedOrigins = "*"
+    allowedHeaders = "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent"
+    allowedMethods = "GET,POST,OPTIONS"
+  }
 
   tags = {
     Name        = "Life Tracker API Stage"

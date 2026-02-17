@@ -16,27 +16,79 @@ def lambda_handler(event, context):
     """
     
     try:
-        # Handle CORS
+        # Standard CORS headers for all responses
         headers = {
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent',
             'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
             'Content-Type': 'application/json'
         }
+
+        if event['httpMethod'] == 'OPTIONS':
+            return {'statusCode': 200, 'headers': headers, 'body': ''}
         
-        # Handle OPTIONS request for CORS
-        if event.get('httpMethod') == 'OPTIONS':
-            return {
-                'statusCode': 200,
-                'headers': headers,
-                'body': ''
-            }
-        
-        # Parse request body
-        if event.get('httpMethod') == 'POST':
-            body = json.loads(event.get('body', '{}'))
-            return handle_post_request(body, headers)
-        elif event.get('httpMethod') == 'GET':
+        # Handle POST requests
+        if event['httpMethod'] == 'POST':
+            # AWS Lambda body parsing
+            try:
+                body = json.loads(event['body'])
+            except json.JSONDecodeError:
+                body = {}
+            
+            data_type = body.get('type')
+            data = body.get('data')
+            
+            if not data_type or not data:
+                return {
+                    'statusCode': 400,
+                    'headers': headers,
+                    'body': json.dumps({'error': 'Missing type or data'})
+                }
+            
+            # Validate data type
+            valid_types = ['interactions', 'value_statements', 'decisions']
+            if data_type not in valid_types:
+                return {
+                    'statusCode': 400,
+                    'headers': headers,
+                    'body': json.dumps({'error': f'Invalid data type. Must be one of: {valid_types}'})
+                }
+            
+            # Validate data structure
+            validation_error = validate_data(data_type, data)
+            if validation_error:
+                return {
+                    'statusCode': 400,
+                    'headers': headers,
+                    'body': json.dumps({'error': validation_error})
+                }
+            
+            # Add timestamp
+            data['created_at'] = datetime.utcnow().isoformat()
+            
+            # Save to S3
+            try:
+                existing_data = get_existing_data()
+                existing_data[data_type].append(data)
+                save_data_to_s3(existing_data)
+                
+                return {
+                    'statusCode': 200,
+                    'headers': headers,
+                    'body': json.dumps({
+                        'message': 'Data saved successfully',
+                        'id': data.get(f'{data_type[:-1]}_id') or data.get('selection_id') or data.get('value_id')
+                    })
+                }
+                
+            except Exception as e:
+                print(f"Error saving data: {str(e)}")
+                return {
+                    'statusCode': 500,
+                    'headers': headers,
+                    'body': json.dumps({'error': 'Failed to save data'})
+                }
+        elif event['httpMethod'] == 'GET':
             return handle_get_request(event, headers)
         else:
             return {
@@ -116,7 +168,7 @@ def handle_post_request(body, headers):
 def handle_get_request(event, headers):
     """Handle GET requests to retrieve data"""
     
-    query_params = event.get('queryStringParameters', {}) or {}
+    query_params = event['queryStringParameters'] or {}
     data_type = query_params.get('type')
     
     try:
