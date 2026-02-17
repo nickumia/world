@@ -365,14 +365,21 @@
                 if (response.ok) {
                     showStatus('Success! Data saved.', 'success');
                     // Reset form
-                    document.getElementById(type + '-form').reset();
+                    let formId;
                     if (type === 'interactions') {
+                        formId = 'interaction-form';
                         contextTags = [];
                         renderTags();
                         // Reset datetime
                         const now = new Date();
                         document.getElementById('interaction-date').value = now.toISOString().slice(0, 16);
+                    } else if (type === 'value_statements') {
+                        formId = 'value-form';
+                        // Reset datetime
+                        const now = new Date();
+                        document.getElementById('value-date').value = now.toISOString().slice(0, 16);
                     } else if (type === 'decisions') {
+                        formId = 'decision-form';
                         // Reset datetime
                         const now = new Date();
                         document.getElementById('selection-date').value = now.toISOString().slice(0, 10);
@@ -380,6 +387,7 @@
                         reviewDate.setMonth(reviewDate.getMonth() + 3);
                         document.getElementById('review-date').value = reviewDate.toISOString().slice(0, 10);
                     }
+                    document.getElementById(formId).reset();
                 } else {
                     throw new Error('Failed to save data');
                 }
