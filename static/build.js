@@ -36,7 +36,7 @@ try {
             'const API_ENDPOINT = \'{{API_ENDPOINT}}\';', 
             `const API_ENDPOINT = '${API_ENDPOINT}';`
         );
-        const htmlPath = path.join(OUTPUT_DIR, 'tracker.html');
+        const htmlPath = path.join(OUTPUT_DIR, 'tracker');
         fs.writeFileSync(htmlPath, htmlContent);
         console.log('✅ Generated tracker.html ->', htmlPath);
     }

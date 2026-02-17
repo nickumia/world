@@ -225,19 +225,41 @@
         let contextTags = [];
         const API_ENDPOINT = window.API_CONFIG ? window.API_CONFIG.ENDPOINT : 'http://localhost:5000/tracker';
 
-        // Initialize form with current datetime
+        // Initialize form with current local datetime
         document.addEventListener('DOMContentLoaded', function() {
             const now = new Date();
-            const localDateTime = now.toISOString().slice(0, 16);
+            
+            // Format datetime-local input (YYYY-MM-DDTHH:MM) in local timezone
+            const localDateTime = formatDateTimeLocal(now);
             document.getElementById('interaction-date').value = localDateTime;
             document.getElementById('value-date').value = localDateTime;
-            document.getElementById('selection-date').value = now.toISOString().slice(0, 10);
             
-            // Set review date to 3 months from now
+            // Format date input (YYYY-MM-DD) in local timezone
+            const localDate = formatDateLocal(now);
+            document.getElementById('selection-date').value = localDate;
+            
+            // Set review date to 3 months from now in local timezone
             const reviewDate = new Date(now);
             reviewDate.setMonth(reviewDate.getMonth() + 3);
-            document.getElementById('review-date').value = reviewDate.toISOString().slice(0, 10);
+            document.getElementById('review-date').value = formatDateLocal(reviewDate);
         });
+
+        // Helper functions to format dates for input fields in local timezone
+        function formatDateTimeLocal(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        function formatDateLocal(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
 
         // Tab switching
         function switchTab(tabName) {
@@ -370,22 +392,22 @@
                         formId = 'interaction-form';
                         contextTags = [];
                         renderTags();
-                        // Reset datetime
+                        // Reset datetime to current local time
                         const now = new Date();
-                        document.getElementById('interaction-date').value = now.toISOString().slice(0, 16);
+                        document.getElementById('interaction-date').value = formatDateTimeLocal(now);
                     } else if (type === 'value_statements') {
                         formId = 'value-form';
-                        // Reset datetime
+                        // Reset datetime to current local time
                         const now = new Date();
-                        document.getElementById('value-date').value = now.toISOString().slice(0, 16);
+                        document.getElementById('value-date').value = formatDateTimeLocal(now);
                     } else if (type === 'decisions') {
                         formId = 'decision-form';
-                        // Reset datetime
+                        // Reset datetime to current local time
                         const now = new Date();
-                        document.getElementById('selection-date').value = now.toISOString().slice(0, 10);
+                        document.getElementById('selection-date').value = formatDateLocal(now);
                         const reviewDate = new Date(now);
                         reviewDate.setMonth(reviewDate.getMonth() + 3);
-                        document.getElementById('review-date').value = reviewDate.toISOString().slice(0, 10);
+                        document.getElementById('review-date').value = formatDateLocal(reviewDate);
                     }
                     document.getElementById(formId).reset();
                 } else {
