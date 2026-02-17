@@ -34,8 +34,8 @@
             <button onclick="switchTab('values')" id="values-tab" class="flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-900">
                 Value Statements
             </button>
-            <button onclick="switchTab('selections')" id="selections-tab" class="flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-900">
-                Selections
+            <button onclick="switchTab('decisions')" id="decisions-tab" class="flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-900">
+                Decisions
             </button>
         </div>
 
@@ -161,11 +161,11 @@
             </div>
         </div>
 
-        <!-- Selections Form -->
-        <div id="selections-form" class="form-section">
+        <!-- Decisions Form -->
+        <div id="decisions-form" class="form-section">
             <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-semibold mb-4">Make Selection</h2>
-                <form id="selection-form">
+                <h2 class="text-xl font-semibold mb-4">Make Decision</h2>
+                <form id="decision-form">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Date Committed</label>
@@ -329,10 +329,10 @@
             await submitData('value_statements', valueStatement);
         });
 
-        document.getElementById('selection-form').addEventListener('submit', async function(e) {
+        document.getElementById('decision-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const selection = {
+            const decision = {
                 selection_id: generateId(),
                 date_committed: document.getElementById('selection-date').value,
                 commitment_name: document.getElementById('commitment-name').value,
@@ -341,7 +341,7 @@
                 notes: document.getElementById('selection-notes').value || null
             };
             
-            await submitData('selections', selection);
+            await submitData('decisions', decision);
         });
 
         // Utility functions
@@ -372,6 +372,13 @@
                         // Reset datetime
                         const now = new Date();
                         document.getElementById('interaction-date').value = now.toISOString().slice(0, 16);
+                    } else if (type === 'decisions') {
+                        // Reset datetime
+                        const now = new Date();
+                        document.getElementById('selection-date').value = now.toISOString().slice(0, 10);
+                        const reviewDate = new Date(now);
+                        reviewDate.setMonth(reviewDate.getMonth() + 3);
+                        document.getElementById('review-date').value = reviewDate.toISOString().slice(0, 10);
                     }
                 } else {
                     throw new Error('Failed to save data');

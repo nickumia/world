@@ -70,7 +70,7 @@ def handle_post_request(body, headers):
         }
     
     # Validate data type
-    valid_types = ['interactions', 'value_statements', 'selections']
+    valid_types = ['interactions', 'value_statements', 'decisions']
     if data_type not in valid_types:
         return {
             'statusCode': 400,
@@ -124,7 +124,7 @@ def handle_get_request(event, headers):
         
         if data_type:
             # Return specific data type
-            valid_types = ['interactions', 'value_statements', 'selections']
+            valid_types = ['interactions', 'value_statements', 'decisions']
             if data_type not in valid_types:
                 return {
                     'statusCode': 400,
@@ -168,7 +168,7 @@ def get_existing_data():
             existing_data = {
                 'interactions': [],
                 'value_statements': [],
-                'selections': [],
+                'decisions': [],
                 'metadata': {
                     'created_at': datetime.utcnow().isoformat(),
                     'version': '1.0'
@@ -214,7 +214,7 @@ def validate_data(data_type, data):
             'category': {'type': str, 'options': ['energy', 'social', 'decision', 'focus', 'other']}
         })
     
-    elif data_type == 'selections':
+    elif data_type == 'decisions':
         required_fields = ['selection_id', 'date_committed', 'commitment_name', 'expected_gain', 'review_date']
         return validate_fields(data, required_fields, {
             'expected_gain': {'type': str, 'options': ['skill', 'relationship', 'optionality', 'energy', 'money', 'other']}
