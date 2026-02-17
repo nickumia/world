@@ -131,6 +131,37 @@ resource "aws_api_gateway_integration" "life_tracker_integration" {
   uri           = aws_lambda_function.life_tracker_lambda.invoke_arn
 }
 
+# CORS response configurations for GET and POST methods
+resource "aws_api_gateway_method_response" "life_tracker_method_response" {
+  for_each    = toset(["GET", "POST"])
+  rest_api_id = aws_api_gateway_rest_api.life_tracker_api.id
+  resource_id = aws_api_gateway_resource.life_tracker_resource.id
+  http_method = aws_api_gateway_method.life_tracker_method[each.key].http_method
+  status_code = "200"
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Headers" = true
+    "method.response.header.Access-Control-Allow-Methods" = true
+    "method.response.header.Access-Control-Allow-Origin"  = true
+  }
+}
+
+resource "aws_api_gateway_integration_response" "life_tracker_integration_response" {
+  for_each    = toset(["GET", "POST"])
+  rest_api_id = aws_api_gateway_rest_api.life_tracker_api.id
+  resource_id = aws_api_gateway_resource.life_tracker_resource.id
+  http_method = aws_api_gateway_method.life_tracker_method[each.key].http_method
+  status_code = "200"
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'"
+    "method.response.header.Access-Control-Allow-Methods" = "'GET,POST,OPTIONS'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
+  }
+  
+  depends_on = [aws_api_gateway_method_response.life_tracker_method_response]
+}
+
 # OPTIONS method for CORS (separate from Lambda integration)
 resource "aws_api_gateway_integration" "life_tracker_options_integration" {
   rest_api_id = aws_api_gateway_rest_api.life_tracker_api.id
@@ -183,6 +214,8 @@ resource "aws_api_gateway_deployment" "life_tracker_deployment" {
       aws_api_gateway_resource.life_tracker_resource.id,
       values(aws_api_gateway_method.life_tracker_method)[*].id,
       values(aws_api_gateway_integration.life_tracker_integration)[*].id,
+      values(aws_api_gateway_method_response.life_tracker_method_response)[*].id,
+      values(aws_api_gateway_integration_response.life_tracker_integration_response)[*].id,
       aws_api_gateway_integration.life_tracker_options_integration.id,
       aws_api_gateway_method_response.life_tracker_options_method_response.id,
       aws_api_gateway_integration_response.life_tracker_options_response.id,
