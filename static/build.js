@@ -39,7 +39,7 @@ try {
                 'const API_ENDPOINT = \'{{API_ENDPOINT}}\';', 
                 `const API_ENDPOINT = '${API_ENDPOINT}';`
             );
-            const htmlPath = path.join(OUTPUT_DIR, htmlFile);
+            const htmlPath = path.join(OUTPUT_DIR, htmlFile.replace('.html', ''));
             fs.writeFileSync(htmlPath, htmlContent);
             console.log(`✅ Generated ${htmlFile} ->`, htmlPath);
         } else {
