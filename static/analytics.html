@@ -825,16 +825,22 @@
             const alignmentCtx = document.getElementById('alignmentChart').getContext('2d');
             const commonTags = Object.keys(energyMetrics.byTag).filter(tag => alignmentMetrics[tag]);
             
+            const chartData = commonTags.map(tag => ({
+                x: energyMetrics.byTag[tag].energyIndex || 0,
+                y: alignmentMetrics[tag].alignmentIndex || 0,
+                tag: tag
+            }));
+            
+            console.log('Chart data points:', chartData);
+            console.log('Sample energy metric:', energyMetrics.byTag[commonTags[0]]);
+            console.log('Sample alignment metric:', alignmentMetrics[commonTags[0]]);
+            
             new Chart(alignmentCtx, {
                 type: 'scatter',
                 data: {
                     datasets: [{
                         label: 'Energy vs Alignment',
-                        data: commonTags.map(tag => ({
-                            x: energyMetrics.byTag[tag].average,
-                            y: alignmentMetrics[tag].average,
-                            tag: tag
-                        })),
+                        data: chartData,
                         backgroundColor: 'rgba(16, 185, 129, 0.8)',
                         borderColor: 'rgba(16, 185, 129, 1)',
                         borderWidth: 1,
