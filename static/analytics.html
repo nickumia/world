@@ -76,24 +76,39 @@
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Global Energy Index</h3>
                 <div id="global-energy" class="text-3xl font-bold mb-2">--</div>
                 <div class="text-sm text-gray-600">Overall energy balance</div>
+                <div class="text-xs text-gray-500 mt-2">
+                    <strong>Range:</strong> -3 to +3<br>
+                    <strong>Formula:</strong> Average energy_delta per interaction<br>
+                    <strong>Typical:</strong> -1.5 to +1.5
+                </div>
             </div>
             
             <div class="metric-card bg-white rounded-lg shadow-md p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Total Interactions</h3>
                 <div id="total-interactions" class="text-3xl font-bold mb-2">--</div>
-                <div class="text-sm text-gray-600">Data points collected</div>
+                <div class="text-sm text-gray-600">All recorded interactions</div>
             </div>
             
             <div class="metric-card bg-white rounded-lg shadow-md p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Drift Detection</h3>
                 <div id="drift-score" class="text-3xl font-bold mb-2">--</div>
                 <div class="text-sm text-gray-600">30-day vs historical trend</div>
+                <div class="text-xs text-gray-500 mt-2">
+                    <strong>Range:</strong> -6 to +6<br>
+                    <strong>Formula:</strong> Recent_Avg_Energy - Historical_Avg_Energy<br>
+                    <strong>Threshold:</strong> ±1 = structural change
+                </div>
             </div>
         </div>
 
         <!-- Energy Analysis -->
         <div class="bg-white rounded-lg shadow-md p-4 mb-6">
             <h2 class="text-lg font-semibold text-gray-900 mb-4">1️⃣ Energy Index Analysis</h2>
+            <div class="text-sm text-gray-600 mb-4">
+                <strong>Formula:</strong> Average energy_delta per tag<br>
+                <strong>Range:</strong> -3 to +3<br>
+                <strong>Typical:</strong> -1.5 to +1.5
+            </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
@@ -114,6 +129,11 @@
         <!-- Alignment Efficiency -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">2️⃣ Alignment Efficiency Score</h2>
+            <div class="text-sm text-gray-600 mb-4">
+                <strong>Formula:</strong> alignment - (interference * 0.5)<br>
+                <strong>Range:</strong> -5 to +10<br>
+                <strong>Interpretation:</strong> Negative values signal structural friction
+            </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
@@ -134,6 +154,11 @@
         <!-- System Strength -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">3️⃣ System Strength Score</h2>
+            <div class="text-sm text-gray-600 mb-4">
+                <strong>Formula:</strong> (Avg_Energy * 0.4) + (Avg_Effective_Alignment * 0.4) + (log(N) * 0.2)<br>
+                <strong>Range:</strong> -3.5 to +6.5<br>
+                <strong>Interpretation:</strong> Overall system health score
+            </div>
             
             <div id="system-strength-ranking" class="space-y-3">
                 <!-- System strength ranking will be populated here -->
@@ -143,9 +168,14 @@
         <!-- Selection Returns -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">4️⃣ Selection Return Score</h2>
+            <div class="text-sm text-gray-600 mb-4">
+                <strong>Formula:</strong> Avg_Energy + Avg_Effective_Alignment<br>
+                <strong>Range:</strong> -8 to +13 (realistically -3 to +8)<br>
+                <strong>Interpretation:</strong> Consistently below 0 indicates drift
+            </div>
             
             <div id="selection-returns" class="space-y-3">
-                <!-- Selection returns will be populated here -->
+                <!-- Selection return data will be populated here -->
             </div>
         </div>
 
@@ -158,9 +188,14 @@
             </div>
         </div>
 
-        <!-- Energy Profile Vector -->
+        <!-- Energy Profile -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 class="text-xl font-semibold text-gray-900 mb-6">6️⃣ Energy Profile Vector</h2>
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">6️⃣ Energy Profile Analysis</h2>
+            <div class="text-sm text-gray-600 mb-4">
+                <strong>Weighted Energy Formula:</strong> Σ energy_delta * log(N + 1)<br>
+                <strong>Range:</strong> ~ -15 to +15 (practical bounds)<br>
+                <strong>Interpretation:</strong> Relative ranking of tag importance
+            </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
