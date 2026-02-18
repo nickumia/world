@@ -514,7 +514,7 @@
 
                     const reinforcementScore = positiveInteractions / relevantInteractions.length;
 
-                    reinforcement[statement.statement.substring(0, 50) + '...'] = {
+                    reinforcement[statement.statement] = {
                         score: reinforcementScore,
                         relevantInteractions: relevantInteractions.length,
                         consistentInteractions: positiveInteractions,
