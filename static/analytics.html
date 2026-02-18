@@ -26,6 +26,14 @@
             height: 120px !important;
             max-height: 120px !important;
         }
+        
+        .tab-content {
+            display: block;
+        }
+        
+        .tab-content.hidden {
+            display: none;
+        }
         .positive { border-left-color: #10b981; }
         .negative { border-left-color: #ef4444; }
         .neutral { border-left-color: #6b7280; }
@@ -73,36 +81,63 @@
 
         <!-- Overview Section -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="metric-card bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Global Energy Index</h3>
-                <div id="global-energy" class="text-3xl font-bold mb-2">--</div>
-                <div class="text-sm text-gray-600">Overall energy balance</div>
-                <div class="text-xs text-gray-500 mt-2">
-                    <strong>Range:</strong> -3 to +3<br>
-                    <strong>Formula:</strong> Average energy_delta per interaction<br>
-                    <strong>Typical:</strong> -1.5 to +1.5
+                <div class="metric-card bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Global Energy Index</h3>
+                    <div id="global-energy" class="text-3xl font-bold mb-2">--</div>
+                    <div class="text-sm text-gray-600">Overall energy balance</div>
+                    <div class="text-xs text-gray-500 mt-2">
+                        <strong>Range:</strong> -3 to +3<br>
+                        <strong>Formula:</strong> Average energy_delta per interaction<br>
+                        <strong>Typical:</strong> -1.5 to +1.5
+                    </div>
                 </div>
-            </div>
-
-            <div class="metric-card bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Total Interactions</h3>
-                <div id="total-interactions" class="text-3xl font-bold mb-2">--</div>
-                <div class="text-sm text-gray-600">All recorded interactions</div>
-            </div>
-
-            <div class="metric-card bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Drift Detection</h3>
-                <div id="drift-score" class="text-3xl font-bold mb-2">--</div>
-                <div class="text-sm text-gray-600">30-day vs historical trend</div>
-                <div class="text-xs text-gray-500 mt-2">
-                    <strong>Range:</strong> -6 to +6<br>
-                    <strong>Formula:</strong> Recent_Avg_Energy - Historical_Avg_Energy<br>
-                    <strong>Threshold:</strong> ±1 = structural change
+                
+                <div class="metric-card bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Total Interactions</h3>
+                    <div id="total-interactions" class="text-3xl font-bold mb-2">--</div>
+                    <div class="text-sm text-gray-600">All recorded interactions</div>
+                </div>
+                
+                <div class="metric-card bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Drift Detection</h3>
+                    <div id="drift-score" class="text-3xl font-bold mb-2">--</div>
+                    <div class="text-sm text-gray-600">30-day vs historical trend</div>
+                    <div class="text-xs text-gray-500 mt-2">
+                        <strong>Range:</strong> -6 to +6<br>
+                        <strong>Formula:</strong> Recent_Avg_Energy - Historical_Avg_Energy<br>
+                        <strong>Threshold:</strong> ±1 = structural change
                 </div>
             </div>
         </div>
 
-        <!-- Energy Analysis -->
+    <!-- Tab Navigation -->
+    <div class="bg-white rounded-lg shadow-md mb-6">
+        <div class="flex flex-wrap border-b">
+            <button onclick="showTab('energy')" id="tab-energy" class="px-6 py-3 text-sm font-medium border-b-2 border-blue-500 text-blue-600 focus:outline-none">
+                Energy Analysis
+            </button>
+            <button onclick="showTab('alignment')" id="tab-alignment" class="px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 focus:outline-none">
+                Alignment Analysis
+            </button>
+            <button onclick="showTab('system')" id="tab-system" class="px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 focus:outline-none">
+                System Strength
+            </button>
+            <button onclick="showTab('selection')" id="tab-selection" class="px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 focus:outline-none">
+                Selection Returns
+            </button>
+            <button onclick="showTab('values')" id="tab-values" class="px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 focus:outline-none">
+                Value Statements
+            </button>
+            <button onclick="showTab('profile')" id="tab-profile" class="px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 focus:outline-none">
+                Energy Profile
+            </button>
+        </div>
+    </div>
+
+    <!-- Tab Content -->
+    
+    <!-- Energy Analysis -->
+    <div id="content-energy" class="tab-content">
         <div class="bg-white rounded-lg shadow-md p-4 mb-6">
             <h2 class="text-lg font-semibold text-gray-900 mb-4">1️⃣ Energy Index Analysis</h2>
             <div class="text-sm text-gray-600 mb-4">
@@ -126,8 +161,10 @@
                 </div>
             </div>
         </div>
-
-        <!-- Alignment Efficiency -->
+    </div>
+    
+    <!-- Alignment Efficiency -->
+    <div id="content-alignment" class="tab-content">
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">2️⃣ Alignment Efficiency Score</h2>
             <div class="text-sm text-gray-600 mb-4">
@@ -151,8 +188,10 @@
                 </div>
             </div>
         </div>
-
-        <!-- System Strength -->
+    </div>
+    
+    <!-- System Strength -->
+    <div id="content-system" class="tab-content">
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">3️⃣ System Strength Score</h2>
             <div class="text-sm text-gray-600 mb-4">
@@ -165,8 +204,10 @@
                 <!-- System strength ranking will be populated here -->
             </div>
         </div>
-
-        <!-- Selection Returns -->
+    </div>
+    
+    <!-- Selection Returns -->
+    <div id="content-selection" class="tab-content">
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">4️⃣ Selection Return Score</h2>
             <div class="text-sm text-gray-600 mb-4">
@@ -179,8 +220,10 @@
                 <!-- Selection return data will be populated here -->
             </div>
         </div>
-
-        <!-- Value Statement Reinforcement -->
+    </div>
+    
+    <!-- Value Statement Reinforcement -->
+    <div id="content-values" class="tab-content">
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">5️⃣ Value Statement Reinforcement</h2>
 
@@ -188,8 +231,10 @@
                 <!-- Value reinforcement data will be populated here -->
             </div>
         </div>
-
-        <!-- Energy Profile -->
+    </div>
+    
+    <!-- Energy Profile -->
+    <div id="content-profile" class="tab-content">
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">6️⃣ Energy Profile Analysis</h2>
             <div class="text-sm text-gray-600 mb-4">
@@ -284,6 +329,33 @@
         document.addEventListener('DOMContentLoaded', function() {
             refreshData();
         });
+
+        // Tab switching function
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active styling from all tabs
+            document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+                tab.classList.remove('border-blue-500', 'text-blue-600');
+                tab.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            // Show selected tab content
+            const selectedContent = document.getElementById(`content-${tabName}`);
+            if (selectedContent) {
+                selectedContent.classList.remove('hidden');
+            }
+            
+            // Add active styling to selected tab
+            const selectedTab = document.getElementById(`tab-${tabName}`);
+            if (selectedTab) {
+                selectedTab.classList.remove('border-transparent', 'text-gray-500');
+                selectedTab.classList.add('border-blue-500', 'text-blue-600');
+            }
+        }
 
         // Data fetching and processing
         async function refreshData() {
