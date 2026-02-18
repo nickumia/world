@@ -52,6 +52,7 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
+    <div id="navbar"></div>
     <div class="container mx-auto px-4 py-8 max-w-7xl">
         <header class="mb-8">
             <div class="flex items-center justify-between">
@@ -218,6 +219,27 @@
     </div>
 
     <script src="./config.js"></script>
+    <script type="text/javascript">
+			title="Life Growth Analytics";
+			menu=[
+				{key: 0, name: 'Home', link: "/index"},
+				{key: 1, name: 'NLP', link: "/nlp"},
+				{key: 3, name: 'Posts', link: "/index"},
+				{key: 7, name: 'Kumia', link: "/kumia"},
+			]
+      searchOn='false'
+		</script>
+		<script src="/bundle.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M355ZJEPH8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M355ZJEPH8');
+    </script>
     <script>
         // Global variables
         let analyticsData = {
