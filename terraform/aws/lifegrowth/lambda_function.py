@@ -15,6 +15,33 @@ def debug_log(message):
     if DEBUG:
         print(message)
 
+def normalize_labels_in_data(data, data_type):
+    """Normalize labels in data to ensure consistency"""
+    if not isinstance(data, dict):
+        return data
+        
+    normalized = data.copy()
+    
+    # Normalize context_tags for interactions
+    if data_type == 'interactions' and 'context_tags' in normalized:
+        if isinstance(normalized['context_tags'], list):
+            normalized['context_tags'] = [normalize_tag_label(tag) for tag in normalized['context_tags']]
+    
+    # Normalize category for value_statements
+    if data_type == 'value_statements' and 'category' in normalized:
+        if isinstance(normalized['category'], list):
+            normalized['category'] = [normalize_tag_label(cat) for cat in normalized['category']]
+        elif isinstance(normalized['category'], str):
+            normalized['category'] = normalize_tag_label(normalized['category'])
+    
+    return normalized
+
+def normalize_tag_label(label):
+    """Normalize a single tag label: lowercase, strip whitespace, replace spaces with dashes"""
+    if not isinstance(label, str):
+        return str(label).lower().strip().replace(' ', '-').replace('--', '-')
+    return label.lower().strip().replace(' ', '-').replace('--', '-')
+
 def lambda_handler(event, context):
     """
     AWS Lambda function to handle life tracker data operations
@@ -60,8 +87,11 @@ def lambda_handler(event, context):
                     'body': json.dumps({'error': f'Invalid data type. Must be one of: {valid_types}'})
                 }
 
-            # Validate data structure
-            validation_error = validate_data(data_type, data)
+            # Normalize labels in the data
+            normalized_data = normalize_labels_in_data(data, data_type)
+            
+            # Validate normalized data
+            validation_error = validate_data(data_type, normalized_data)
             if validation_error:
                 return {
                     'statusCode': 400,
@@ -70,16 +100,16 @@ def lambda_handler(event, context):
                 }
 
             # Add timestamp
-            data['created_at'] = datetime.utcnow().isoformat()
+            normalized_data['created_at'] = datetime.utcnow().isoformat()
 
             # Save to S3
             try:
                 debug_log(f"Attempting to save data for type: {data_type}")
                 debug_log(f"BUCKET_NAME environment variable: {BUCKET_NAME}")
                 existing_data = get_existing_data()
-                debug_log(f"Retrieved existing data successfully")
-                existing_data[data_type].append(data)
-                debug_log(f"Appended new data to {data_type}")
+                if data_type not in existing_data:
+                    existing_data[data_type] = []
+                existing_data[data_type].append(normalized_data)
                 save_data_to_s3(existing_data)
                 debug_log(f"Successfully saved data to S3")
 
