@@ -15,13 +15,13 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
-        
+
         .chart-container {
             height: 120px !important;
             max-height: 120px !important;
             overflow: hidden;
         }
-        
+
         .chart-container canvas {
             height: 120px !important;
             max-height: 120px !important;
@@ -29,11 +29,11 @@
         .positive { border-left-color: #10b981; }
         .negative { border-left-color: #ef4444; }
         .neutral { border-left-color: #6b7280; }
-        
+
         .energy-high { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
         .energy-medium { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
         .energy-low { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
-        
+
         .tag-chip {
             display: inline-block;
             padding: 4px 12px;
@@ -83,13 +83,13 @@
                     <strong>Typical:</strong> -1.5 to +1.5
                 </div>
             </div>
-            
+
             <div class="metric-card bg-white rounded-lg shadow-md p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Total Interactions</h3>
                 <div id="total-interactions" class="text-3xl font-bold mb-2">--</div>
                 <div class="text-sm text-gray-600">All recorded interactions</div>
             </div>
-            
+
             <div class="metric-card bg-white rounded-lg shadow-md p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Drift Detection</h3>
                 <div id="drift-score" class="text-3xl font-bold mb-2">--</div>
@@ -110,7 +110,7 @@
                 <strong>Range:</strong> -3 to +3<br>
                 <strong>Typical:</strong> -1.5 to +1.5
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
                     <h3 class="text-lg font-medium text-gray-800 mb-4">Energy by Tag</h3>
@@ -135,7 +135,7 @@
                 <strong>Range:</strong> -5 to +10<br>
                 <strong>Interpretation:</strong> Negative values signal structural friction
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
                     <h3 class="text-lg font-medium text-gray-800 mb-4">Alignment by Tag</h3>
@@ -160,7 +160,7 @@
                 <strong>Range:</strong> -3.5 to +6.5<br>
                 <strong>Interpretation:</strong> Overall system health score
             </div>
-            
+
             <div id="system-strength-ranking" class="space-y-3">
                 <!-- System strength ranking will be populated here -->
             </div>
@@ -174,7 +174,7 @@
                 <strong>Range:</strong> -8 to +13 (realistically -3 to +8)<br>
                 <strong>Interpretation:</strong> Consistently below 0 indicates drift
             </div>
-            
+
             <div id="selection-returns" class="space-y-3">
                 <!-- Selection return data will be populated here -->
             </div>
@@ -183,7 +183,7 @@
         <!-- Value Statement Reinforcement -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">5️⃣ Value Statement Reinforcement</h2>
-            
+
             <div id="value-reinforcement" class="space-y-3">
                 <!-- Value reinforcement data will be populated here -->
             </div>
@@ -197,7 +197,7 @@
                 <strong>Range:</strong> ~ -15 to +15 (practical bounds)<br>
                 <strong>Interpretation:</strong> Relative ranking of tag importance
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
                     <h3 class="text-lg font-medium text-gray-800 mb-4">Current Energy Profile</h3>
@@ -247,7 +247,7 @@
             valueStatements: [],
             decisions: []
         };
-        
+
         const API_ENDPOINT = window.API_CONFIG ? window.API_CONFIG.ENDPOINT : 'http://localhost:5000/tracker';
 
         // Label normalization functions
@@ -255,19 +255,19 @@
             if (typeof label !== 'string') return String(label).toLowerCase().trim().replace(/\s+/g, '-');
             return label.toLowerCase().trim().replace(/\s+/g, '-');
         }
-        
+
         function normalizeLabelsInData(data, dataType) {
             if (!data || typeof data !== 'object') return data;
-            
+
             const normalized = {...data};
-            
+
             // Normalize context_tags for interactions
             if (dataType === 'interactions' && normalized.context_tags) {
                 if (Array.isArray(normalized.context_tags)) {
                     normalized.context_tags = normalized.context_tags.map(normalizeTagLabel);
                 }
             }
-            
+
             // Normalize category for value_statements
             if (dataType === 'value_statements' && normalized.category) {
                 if (Array.isArray(normalized.category)) {
@@ -276,7 +276,7 @@
                     normalized.category = normalizeTagLabel(normalized.category);
                 }
             }
-            
+
             return normalized;
         }
 
@@ -288,7 +288,7 @@
         // Data fetching and processing
         async function refreshData() {
             showStatus('Loading analytics data...', 'info');
-            
+
             try {
                 // Fetch all data types
                 const [allDataResponse, valueStatementsResponse, decisionsResponse] = await Promise.all([
@@ -355,7 +355,7 @@
             updateSelectionReturns(selectionReturns);
             updateValueReinforcement(valueReinforcement);
             updateEnergyProfile(energyMetrics);
-            
+
             // Update charts
             updateCharts(energyMetrics, alignmentMetrics);
         }
@@ -392,7 +392,7 @@
                 const n = data.count;
                 const avgEnergy = data.sum / n;
                 const weightedEnergy = data.sum * Math.log(n + 1);
-                
+
                 metrics[tag] = {
                     energyIndex: avgEnergy,
                     weightedEnergy: weightedEnergy,
@@ -456,12 +456,12 @@
             Object.keys(energyMetrics).forEach(tag => {
                 const energy = energyMetrics[tag];
                 const alignment = alignmentMetrics[tag];
-                
+
                 if (alignment) {
                     const n = energy.count;
                     const avgEnergy = energy.energyIndex;
                     const avgAlignment = alignment.alignmentIndex;
-                    
+
                     systemStrength[tag] = {
                         score: (avgEnergy * 0.4) + (avgAlignment * 0.4) + (Math.log(n) * 0.2),
                         energy: avgEnergy,
@@ -485,7 +485,7 @@
                 // Find interactions related to this decision
                 const relatedInteractions = analyticsData.interactions.filter(interaction => {
                     // Simple matching - could be enhanced with better logic
-                    return interaction.context_tags.some(tag => 
+                    return interaction.context_tags.some(tag =>
                         decision.commitment_name.toLowerCase().includes(tag.toLowerCase()) ||
                         tag.toLowerCase().includes(decision.commitment_name.toLowerCase())
                     );
@@ -520,17 +520,17 @@
                 // Find interactions that could relate to this statement
                 const relevantInteractions = analyticsData.interactions.filter(interaction => {
                     // Simple matching based on category overlap
-                    return statement.category && 
-                           interaction.context_tags.some(tag => 
-                               statement.category.includes(tag) || 
+                    return statement.category &&
+                           interaction.context_tags.some(tag =>
+                               statement.category.includes(tag) ||
                                tag.includes(statement.category)
                            );
                 });
 
                 if (relevantInteractions.length > 0) {
                     // Calculate consistency (simplified - could be enhanced)
-                    const positiveInteractions = relevantInteractions.filter(i => 
-                        (i.energy_delta || 0) > 0 && 
+                    const positiveInteractions = relevantInteractions.filter(i =>
+                        (i.energy_delta || 0) > 0 &&
                         (i.alignment_score || 0) > (i.interference_score || 0)
                     ).length;
 
@@ -556,10 +556,10 @@
                 .slice(0, 15); // Top 15 tags
 
             profileDiv.innerHTML = tags.map(([tag, metrics]) => {
-                const energyClass = metrics.energyIndex > 0.5 ? 'energy-high' : 
+                const energyClass = metrics.energyIndex > 0.5 ? 'energy-high' :
                                    metrics.energyIndex < -0.5 ? 'energy-low' : 'energy-medium';
                 const textColor = metrics.energyIndex > 0 ? 'text-white' : 'text-white';
-                
+
                 return `
                     <div class="flex items-center justify-between p-3 rounded-lg ${energyClass}">
                         <span class="tag-chip bg-white bg-opacity-20 ${textColor}">${tag}</span>
@@ -576,19 +576,19 @@
         function calculateDriftDetection() {
             const now = new Date();
             const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));
-            
-            const recentInteractions = analyticsData.interactions.filter(i => 
+
+            const recentInteractions = analyticsData.interactions.filter(i =>
                 new Date(i.date) >= thirtyDaysAgo
             );
-            
-            const olderInteractions = analyticsData.interactions.filter(i => 
+
+            const olderInteractions = analyticsData.interactions.filter(i =>
                 new Date(i.date) < thirtyDaysAgo
             );
 
-            const recentAvg = recentInteractions.length > 0 ? 
+            const recentAvg = recentInteractions.length > 0 ?
                 recentInteractions.reduce((sum, i) => sum + (i.energy_delta || 0), 0) / recentInteractions.length : 0;
-            
-            const historicalAvg = olderInteractions.length > 0 ? 
+
+            const historicalAvg = olderInteractions.length > 0 ?
                 olderInteractions.reduce((sum, i) => sum + (i.energy_delta || 0), 0) / olderInteractions.length : 0;
 
             return recentAvg - historicalAvg;
@@ -598,11 +598,11 @@
         function updateOverview(energyMetrics, driftScore) {
             document.getElementById('global-energy').textContent = energyMetrics.global.average.toFixed(2);
             document.getElementById('total-interactions').textContent = energyMetrics.global.total;
-            
+
             const driftElement = document.getElementById('drift-score');
             driftElement.textContent = driftScore.toFixed(2);
-            driftElement.className = driftScore > 0.1 ? 'text-3xl font-bold mb-2 text-green-600' : 
-                                     driftScore < -0.1 ? 'text-3xl font-bold mb-2 text-red-600' : 
+            driftElement.className = driftScore > 0.1 ? 'text-3xl font-bold mb-2 text-green-600' :
+                                     driftScore < -0.1 ? 'text-3xl font-bold mb-2 text-red-600' :
                                      'text-3xl font-bold mb-2 text-gray-600';
         }
 
@@ -613,9 +613,9 @@
                 .slice(0, 10);
 
             container.innerHTML = tags.map(([tag, metrics]) => {
-                const energyClass = metrics.energyIndex > 0 ? 'positive' : 
+                const energyClass = metrics.energyIndex > 0 ? 'positive' :
                                    metrics.energyIndex < 0 ? 'negative' : 'neutral';
-                
+
                 return `
                     <div class="metric-card ${energyClass} bg-white rounded-lg p-4">
                         <div class="flex justify-between items-center">
@@ -640,9 +640,9 @@
                 .slice(0, 10);
 
             container.innerHTML = tags.map(([tag, metrics]) => {
-                const alignmentClass = metrics.alignmentIndex > 2 ? 'positive' : 
+                const alignmentClass = metrics.alignmentIndex > 2 ? 'positive' :
                                       metrics.alignmentIndex < 0 ? 'negative' : 'neutral';
-                
+
                 return `
                     <div class="metric-card ${alignmentClass} bg-white rounded-lg p-4">
                         <div class="flex justify-between items-center">
@@ -662,19 +662,19 @@
 
         function updateSystemStrength(systemStrength) {
             const container = document.getElementById('system-strength-ranking');
-            
+
             container.innerHTML = systemStrength.map(([tag, metrics], index) => {
-                const strengthClass = metrics.score > 5 ? 'positive' : 
+                const strengthClass = metrics.score > 5 ? 'positive' :
                                      metrics.score < 0 ? 'negative' : 'neutral';
-                
+
                 return `
                     <div class="metric-card ${strengthClass} bg-white rounded-lg p-4">
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="font-semibold text-lg mb-1">#${index + 1} ${tag}</div>
                                 <div class="text-sm text-gray-600">
-                                    Energy: ${metrics.energy.toFixed(2)} | 
-                                    Alignment: ${metrics.alignment.toFixed(2)} | 
+                                    Energy: ${metrics.energy.toFixed(2)} |
+                                    Alignment: ${metrics.alignment.toFixed(2)} |
                                     Freq: ${metrics.frequency}
                                 </div>
                             </div>
@@ -699,17 +699,17 @@
             }
 
             container.innerHTML = selections.map(([name, metrics]) => {
-                const returnClass = metrics.return > 0 ? 'positive' : 
+                const returnClass = metrics.return > 0 ? 'positive' :
                                    metrics.return < 0 ? 'negative' : 'neutral';
-                
+
                 return `
                     <div class="metric-card ${returnClass} bg-white rounded-lg p-4">
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="font-semibold mb-1">${name}</div>
                                 <div class="text-sm text-gray-600">
-                                    Energy: ${metrics.avgEnergy.toFixed(2)} | 
-                                    Alignment: ${metrics.avgAlignment.toFixed(2)} | 
+                                    Energy: ${metrics.avgEnergy.toFixed(2)} |
+                                    Alignment: ${metrics.avgAlignment.toFixed(2)} |
                                     Interactions: ${metrics.interactionCount}
                                 </div>
                             </div>
@@ -734,11 +734,11 @@
             }
 
             container.innerHTML = values.map(([statement, metrics]) => {
-                const reinforcementClass = metrics.score > 0.7 ? 'positive' : 
+                const reinforcementClass = metrics.score > 0.7 ? 'positive' :
                                           metrics.score < 0.5 ? 'negative' : 'neutral';
-                const status = metrics.score > 0.7 ? 'Principle is Real' : 
+                const status = metrics.score > 0.7 ? 'Principle is Real' :
                               metrics.score < 0.5 ? 'Aspirational Fantasy' : 'Developing';
-                
+
                 return `
                     <div class="metric-card ${reinforcementClass} bg-white rounded-lg p-4">
                         <div class="flex justify-between items-start">
@@ -748,8 +748,8 @@
                                     ${metrics.consistentInteractions}/${metrics.relevantInteractions} consistent interactions
                                 </div>
                                 <div class="text-xs px-2 py-1 rounded-full inline-block ${
-                                    metrics.score > 0.7 ? 'bg-green-100 text-green-700' : 
-                                    metrics.score < 0.5 ? 'bg-red-100 text-red-700' : 
+                                    metrics.score > 0.7 ? 'bg-green-100 text-green-700' :
+                                    metrics.score < 0.5 ? 'bg-red-100 text-red-700' :
                                     'bg-yellow-100 text-yellow-700'
                                 }">
                                     ${status}
@@ -824,17 +824,17 @@
             // Energy vs Alignment Scatter Plot
             const alignmentCtx = document.getElementById('alignmentChart').getContext('2d');
             const commonTags = Object.keys(energyMetrics.byTag).filter(tag => alignmentMetrics[tag]);
-            
+
             const chartData = commonTags.map(tag => ({
                 x: energyMetrics.byTag[tag].energyIndex || 0,
                 y: alignmentMetrics[tag].alignmentIndex || 0,
                 tag: tag
             }));
-            
+
             console.log('Chart data points:', chartData);
             console.log('Sample energy metric:', energyMetrics.byTag[commonTags[0]]);
             console.log('Sample alignment metric:', alignmentMetrics[commonTags[0]]);
-            
+
             new Chart(alignmentCtx, {
                 type: 'scatter',
                 data: {
@@ -912,7 +912,7 @@
                     labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
                     datasets: [{
                         label: 'Energy Profile',
-                        data: [2.1, 2.3, 1.8, 2.5], 
+                        data: [2.1, 2.3, 1.8, 2.5],
                         borderColor: 'rgba(245, 101, 101, 1)',
                         backgroundColor: 'rgba(245, 101, 101, 0.1)',
                         borderWidth: 2,
@@ -975,7 +975,7 @@
             const statusDiv = document.getElementById('status-message');
             statusDiv.textContent = message;
             statusDiv.className = 'mt-4 p-4 rounded-md';
-            
+
             if (type === 'success') {
                 statusDiv.classList.add('bg-green-100', 'text-green-700', 'border', 'border-green-300');
             } else if (type === 'error') {
@@ -983,9 +983,9 @@
             } else {
                 statusDiv.classList.add('bg-blue-100', 'text-blue-700', 'border', 'border-blue-300');
             }
-            
+
             statusDiv.classList.remove('hidden');
-            
+
             setTimeout(() => {
                 statusDiv.classList.add('hidden');
             }, 5000);
