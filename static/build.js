@@ -29,17 +29,23 @@ try {
         console.log('⚠️  config.template.js not found, skipping config generation');
     }
 
-    // Process HTML file
-    if (fs.existsSync('tracker.html')) {
-        const htmlTemplate = fs.readFileSync('tracker.html', 'utf8');
-        const htmlContent = htmlTemplate.replace(
-            'const API_ENDPOINT = \'{{API_ENDPOINT}}\';', 
-            `const API_ENDPOINT = '${API_ENDPOINT}';`
-        );
-        const htmlPath = path.join(OUTPUT_DIR, 'tracker');
-        fs.writeFileSync(htmlPath, htmlContent);
-        console.log('✅ Generated tracker.html ->', htmlPath);
-    }
+    // Process HTML files
+    const htmlFiles = ['tracker.html', 'analytics.html'];
+    
+    htmlFiles.forEach(htmlFile => {
+        if (fs.existsSync(htmlFile)) {
+            const htmlTemplate = fs.readFileSync(htmlFile, 'utf8');
+            const htmlContent = htmlTemplate.replace(
+                'const API_ENDPOINT = \'{{API_ENDPOINT}}\';', 
+                `const API_ENDPOINT = '${API_ENDPOINT}';`
+            );
+            const htmlPath = path.join(OUTPUT_DIR, htmlFile);
+            fs.writeFileSync(htmlPath, htmlContent);
+            console.log(`✅ Generated ${htmlFile} ->`, htmlPath);
+        } else {
+            console.log(`⚠️ ${htmlFile} not found, skipping`);
+        }
+    });
 
     console.log('🎉 Build completed successfully!');
     console.log('📤 Files ready for static_upload.sh');
