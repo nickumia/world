@@ -748,8 +748,7 @@
             // Energy Distribution Chart
             const energyCtx = document.getElementById('energyChart').getContext('2d');
             const energyData = Object.entries(energyMetrics.byTag)
-                .sort(([,a], [,b]) => b.count - a.count)
-                .slice(0, 8);
+                .sort(([,a], [,b]) => b.count - a.count);
 
             new Chart(energyCtx, {
                 type: 'bar',
