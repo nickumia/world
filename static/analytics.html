@@ -17,14 +17,14 @@
         }
 
         .chart-container {
-            height: 120px !important;
-            max-height: 120px !important;
+            height: 300px !important;
+            max-height: 300px !important;
             overflow: hidden;
         }
 
         .chart-container canvas {
-            height: 120px !important;
-            max-height: 120px !important;
+            height: 300px !important;
+            max-height: 300px !important;
         }
         
         .tab-content {
@@ -148,15 +148,15 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
-                    <h3 class="text-lg font-medium text-gray-800 mb-4">Energy by Tag</h3>
-                    <div id="energy-by-tags" class="space-y-3">
-                        <!-- Tags will be populated here -->
-                    </div>
-                </div>
-                <div>
                     <h3 class="text-lg font-medium text-gray-800 mb-4">Energy Distribution</h3>
                     <div class="chart-container">
                         <canvas id="energyChart" class="w-full"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-4">Energy by Tag</h3>
+                    <div id="energy-by-tags" class="space-y-3">
+                        <!-- Tags will be populated here -->
                     </div>
                 </div>
             </div>
@@ -175,15 +175,15 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                    <h3 class="text-lg font-medium text-gray-800 mb-4">Alignment by Tag</h3>
-                    <div id="alignment-by-tags" class="space-y-3">
-                        <!-- Alignment data will be populated here -->
-                    </div>
-                </div>
-                <div>
                     <h3 class="text-lg font-medium text-gray-800 mb-4">Energy vs Alignment Matrix</h3>
                     <div class="chart-container">
                         <canvas id="alignmentChart" class="w-full"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-4">Alignment by Tag</h3>
+                    <div id="alignment-by-tags" class="space-y-3">
+                        <!-- Alignment data will be populated here -->
                     </div>
                 </div>
             </div>
@@ -245,15 +245,15 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                    <h3 class="text-lg font-medium text-gray-800 mb-4">Current Energy Profile</h3>
-                    <div id="energy-profile" class="space-y-2">
-                        <!-- Energy profile will be populated here -->
-                    </div>
-                </div>
-                <div>
                     <h3 class="text-lg font-medium text-gray-800 mb-4">Energy Profile Timeline</h3>
                     <div class="chart-container">
                         <canvas id="profileChart" class="w-full"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-4">Current Energy Profile</h3>
+                    <div id="energy-profile" class="space-y-2">
+                        <!-- Energy profile will be populated here -->
                     </div>
                 </div>
             </div>
