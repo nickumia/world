@@ -84,15 +84,6 @@ resource "aws_lambda_function" "life_tracker_lambda" {
   }
 }
 
-# Allow API Gateway to invoke Lambda function
-resource "aws_lambda_permission" "api_gateway_lambda" {
-  statement_id  = "AllowAPIGatewayInvoke"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.life_tracker_lambda.function_name
-  principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_api_gateway_rest_api.life_tracker_api.execution_arn}/*/*/*"
-}
-
 # Create zip file for Lambda
 data "archive_file" "lambda_zip" {
   type        = "zip"
