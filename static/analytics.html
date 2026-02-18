@@ -193,6 +193,36 @@
         
         const API_ENDPOINT = window.API_CONFIG ? window.API_CONFIG.ENDPOINT : 'http://localhost:5000/tracker';
 
+        // Label normalization functions
+        function normalizeTagLabel(label) {
+            if (typeof label !== 'string') return String(label).toLowerCase().trim().replace(/\s+/g, '-');
+            return label.toLowerCase().trim().replace(/\s+/g, '-');
+        }
+        
+        function normalizeLabelsInData(data, dataType) {
+            if (!data || typeof data !== 'object') return data;
+            
+            const normalized = {...data};
+            
+            // Normalize context_tags for interactions
+            if (dataType === 'interactions' && normalized.context_tags) {
+                if (Array.isArray(normalized.context_tags)) {
+                    normalized.context_tags = normalized.context_tags.map(normalizeTagLabel);
+                }
+            }
+            
+            // Normalize category for value_statements
+            if (dataType === 'value_statements' && normalized.category) {
+                if (Array.isArray(normalized.category)) {
+                    normalized.category = normalized.category.map(normalizeTagLabel);
+                } else if (typeof normalized.category === 'string') {
+                    normalized.category = normalizeTagLabel(normalized.category);
+                }
+            }
+            
+            return normalized;
+        }
+
         // Initialize analytics
         document.addEventListener('DOMContentLoaded', function() {
             refreshData();
@@ -221,6 +251,25 @@
                     analyticsData.interactions = allData.interactions || [];
                     analyticsData.valueStatements = valueStatementsData.data || allData.value_statements || [];
                     analyticsData.decisions = decisionsData.data || allData.decisions || [];
+
+                    console.log('Raw data loaded:', {
+                        interactions: analyticsData.interactions.length,
+                        valueStatements: analyticsData.valueStatements.length,
+                        decisions: analyticsData.decisions.length
+                    });
+
+                    // Normalize labels in all data
+                    analyticsData.interactions = analyticsData.interactions.map(item => normalizeLabelsInData(item, 'interactions'));
+                    analyticsData.valueStatements = analyticsData.valueStatements.map(item => normalizeLabelsInData(item, 'value_statements'));
+                    analyticsData.decisions = analyticsData.decisions.map(item => normalizeLabelsInData(item, 'decisions'));
+
+                    console.log('After normalization:', {
+                        interactions: analyticsData.interactions.length,
+                        valueStatements: analyticsData.valueStatements.length,
+                        decisions: analyticsData.decisions.length,
+                        sampleInteraction: analyticsData.interactions[0],
+                        sampleValueStatement: analyticsData.valueStatements[0]
+                    });
 
                     processAnalytics();
                     showStatus('Analytics updated successfully', 'success');
