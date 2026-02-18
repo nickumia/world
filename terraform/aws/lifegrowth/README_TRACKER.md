@@ -2,6 +2,16 @@
 
 A simple web-based data entry system for tracking interactions, value statements, and selections with AWS Lambda backend and S3 storage.
 
+```
+aws lambda add-permission \
+  --function-name life_tracker_api \
+  --statement-id apigateway-open-test \
+  --action lambda:InvokeFunction \
+  --principal apigateway.amazonaws.com
+
+aws apigateway flush-stage-cache --rest-api-id 8gsjgs1uf4 --stage-name dev
+```
+
 ## Architecture
 
 - **Frontend**: Static HTML/CSS/JavaScript form

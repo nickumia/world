@@ -70,7 +70,7 @@ resource "aws_lambda_function" "life_tracker_lambda" {
   environment {
     variables = {
       S3_BUCKET_NAME = var.life_tracker_bucket_name
-      DEBUG         = "false"
+      DEBUG         = "true"
     }
   }
 
@@ -82,6 +82,15 @@ resource "aws_lambda_function" "life_tracker_lambda" {
     Environment = var.environment
     Project     = "Life Tracker MVP"
   }
+}
+
+# Allow API Gateway to invoke Lambda function
+resource "aws_lambda_permission" "api_gateway_lambda" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.life_tracker_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.life_tracker_api.execution_arn}/*/*/*"
 }
 
 # Create zip file for Lambda
@@ -127,51 +136,33 @@ resource "aws_api_gateway_integration" "life_tracker_integration" {
   resource_id   = aws_api_gateway_resource.life_tracker_resource.id
   http_method   = aws_api_gateway_method.life_tracker_method[each.key].http_method
   type          = "AWS_PROXY"
-  integration_http_method = aws_api_gateway_method.life_tracker_method[each.key].http_method
+  integration_http_method = "POST"  # AWS_PROXY always uses POST
   uri           = aws_lambda_function.life_tracker_lambda.invoke_arn
 }
 
-# CORS method responses for GET and POST (required for CORS with AWS_PROXY)
-resource "aws_api_gateway_method_response" "life_tracker_method_response" {
-  for_each    = toset(["GET", "POST"])
+# Integration responses for GET method (AWS_PROXY needs explicit responses)
+resource "aws_api_gateway_integration_response" "life_tracker_get_integration_response" {
   rest_api_id = aws_api_gateway_rest_api.life_tracker_api.id
   resource_id = aws_api_gateway_resource.life_tracker_resource.id
-  http_method = aws_api_gateway_method.life_tracker_method[each.key].http_method
+  http_method = aws_api_gateway_method.life_tracker_method["GET"].http_method
   status_code = "200"
-
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = true
-    "method.response.header.Access-Control-Allow-Methods" = true
-    "method.response.header.Access-Control-Allow-Origin"  = true
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'"
+    "method.response.header.Access-Control-Allow-Methods" = "'GET,POST,OPTIONS'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
   }
 }
 
-# Error responses for GET and POST
-resource "aws_api_gateway_method_response" "life_tracker_error_response" {
-  for_each    = toset(["GET", "POST"])
+# Integration responses for POST method (AWS_PROXY needs explicit responses)
+resource "aws_api_gateway_integration_response" "life_tracker_post_integration_response" {
   rest_api_id = aws_api_gateway_rest_api.life_tracker_api.id
   resource_id = aws_api_gateway_resource.life_tracker_resource.id
-  http_method = aws_api_gateway_method.life_tracker_method[each.key].http_method
-  status_code = "400"
-
+  http_method = aws_api_gateway_method.life_tracker_method["POST"].http_method
+  status_code = "200"
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = true
-    "method.response.header.Access-Control-Allow-Methods" = true
-    "method.response.header.Access-Control-Allow-Origin"  = true
-  }
-}
-
-resource "aws_api_gateway_method_response" "life_tracker_server_error_response" {
-  for_each    = toset(["GET", "POST"])
-  rest_api_id = aws_api_gateway_rest_api.life_tracker_api.id
-  resource_id = aws_api_gateway_resource.life_tracker_resource.id
-  http_method = aws_api_gateway_method.life_tracker_method[each.key].http_method
-  status_code = "500"
-
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = true
-    "method.response.header.Access-Control-Allow-Methods" = true
-    "method.response.header.Access-Control-Allow-Origin"  = true
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'"
+    "method.response.header.Access-Control-Allow-Methods" = "'GET,POST,OPTIONS'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
   }
 }
 
@@ -227,13 +218,12 @@ resource "aws_api_gateway_deployment" "life_tracker_deployment" {
       aws_api_gateway_resource.life_tracker_resource.id,
       values(aws_api_gateway_method.life_tracker_method)[*].id,
       values(aws_api_gateway_integration.life_tracker_integration)[*].id,
-      values(aws_api_gateway_method_response.life_tracker_method_response)[*].id,
-      values(aws_api_gateway_method_response.life_tracker_error_response)[*].id,
-      values(aws_api_gateway_method_response.life_tracker_server_error_response)[*].id,
+      aws_api_gateway_integration_response.life_tracker_get_integration_response.id,
+      aws_api_gateway_integration_response.life_tracker_post_integration_response.id,
       aws_api_gateway_integration.life_tracker_options_integration.id,
       aws_api_gateway_method_response.life_tracker_options_method_response.id,
       aws_api_gateway_integration_response.life_tracker_options_response.id,
-      "force-redeployment-${replace(timestamp(), ":", "-")}"
+      aws_lambda_permission.life_tracker_api_permission.id,
     ]))
   }
 
