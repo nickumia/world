@@ -17,14 +17,14 @@
         }
 
         .chart-container {
-            height: 300px !important;
-            max-height: 300px !important;
+            height: 800px !important;
+            max-height: 1000px !important;
             overflow: hidden;
         }
 
         .chart-container canvas {
-            height: 300px !important;
-            max-height: 300px !important;
+            height: 800px !important;
+            max-height: 1000px !important;
         }
         
         .tab-content {
@@ -354,6 +354,25 @@
             if (selectedTab) {
                 selectedTab.classList.remove('border-transparent', 'text-gray-500');
                 selectedTab.classList.add('border-blue-500', 'text-blue-600');
+            }
+        }
+
+        // Color function for interference-based coloring
+        function getInterferenceColor(tag) {
+            const tagInteractions = analyticsData.interactions.filter(interaction => 
+                interaction.context_tags.includes(tag)
+            );
+            
+            const avgInterference = tagInteractions.reduce((sum, i) => 
+                sum + (i.interference_score || 0), 0) / tagInteractions.length;
+            
+            // Lower interference = more green, higher interference = more red
+            if (avgInterference <= 0) {
+                return 'rgba(16, 185, 129, 0.8)';  // Green
+            } else if (avgInterference <= 2) {
+                return 'rgba(245, 158, 11, 0.8)';  // Yellow/Orange
+            } else {
+                return 'rgba(239, 68, 68, 0.8)';  // Red
             }
         }
 
@@ -908,33 +927,21 @@
             new Chart(alignmentCtx, {
                 type: 'scatter',
                 data: {
-                    datasets: [{
-                        label: 'Energy vs Alignment',
-                        data: chartData,
-                        backgroundColor: 'rgba(16, 185, 129, 0.8)',
-                        borderColor: 'rgba(16, 185, 129, 1)',
+                    datasets: chartData.map(point => ({
+                        label: point.tag,
+                        data: [{x: point.x, y: point.y}],
+                        backgroundColor: getInterferenceColor(point.tag),
+                        borderColor: getInterferenceColor(point.tag),
                         borderWidth: 1,
                         pointRadius: 6,
                         pointHoverRadius: 8
-                    }]
+                    }))
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.raw.tag}: (${context.raw.x.toFixed(1)}, ${context.raw.y.toFixed(1)})`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
                             title: {
                                 display: true,
                                 text: 'Avg Energy',
