@@ -28,11 +28,15 @@
         }
         
         .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
             display: block;
         }
         
-        .tab-content.hidden {
-            display: none;
+        #content-energy.active {
+            display: block;
         }
         .positive { border-left-color: #10b981; }
         .negative { border-left-color: #ef4444; }
@@ -334,7 +338,7 @@
         function showTab(tabName) {
             // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
+                content.classList.remove('active');
             });
             
             // Remove active styling from all tabs
@@ -346,7 +350,7 @@
             // Show selected tab content
             const selectedContent = document.getElementById(`content-${tabName}`);
             if (selectedContent) {
-                selectedContent.classList.remove('hidden');
+                selectedContent.classList.add('active');
             }
             
             // Add active styling to selected tab
