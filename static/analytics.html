@@ -495,17 +495,15 @@
                     if (!tagAlignment[tag]) {
                         tagAlignment[tag] = {
                             sum: 0,
-                            count: 0,
-                            effectiveAlignments: []
+                            count: 0
                         };
                     }
                     tagAlignment[tag].sum += effectiveAlignment;
                     tagAlignment[tag].count++;
-                    tagAlignment[tag].effectiveAlignments.push(effectiveAlignment);
                 });
             });
 
-            // Calculate alignment index for each tag
+            // Calculate metrics for each tag
             const metrics = {};
             Object.keys(tagAlignment).forEach(tag => {
                 const data = tagAlignment[tag];
