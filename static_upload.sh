@@ -4,7 +4,8 @@ aws s3 cp static/src/offline/index s3://offline.kamutiv.com/index.html --content
 aws s3 cp src/app/travel/peru_map.html s3://offline.kamutiv.com/map/peru_map.html --content-type "text/html"
 
 # Upload tracker files
-aws s3 cp static/src/offline/tracker s3://offline.kamutiv.com/tracker.html --content-type "text/html"
+aws s3 cp static/src/offline/tracker s3://offline.kamutiv.com/tracker --content-type "text/html"
+aws s3 cp static/src/offline/analytics s3://offline.kamutiv.com/analytics --content-type "text/html"
 aws s3 cp static/src/offline/config.js s3://offline.kamutiv.com/config.js --content-type "application/javascript"
 
 # Upload all files from static/src/offline with their directory structure preserved
