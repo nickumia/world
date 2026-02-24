@@ -76,16 +76,10 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 const images = [
   {
-    url: '/static/img/2025_peru.jpg',
-    title: 'Peru 2025',
-    width: '40%',
+    url: '/static/img/2026_peru.jpg',
+    title: 'Peru 2026',
+    width: '35%',
     link: '2026_peru',
-  },
-  {
-    url: '/static/img/2025_vietnam.jpg',
-    title: 'Vietnam 2025',
-    width: '30%',
-    link: '2025_vietnam',
   },
   {
     url: '/static/img/20231014_143134_optimized.jpg',
@@ -94,22 +88,28 @@ const images = [
     link: 'kumia',
   },
   {
+    url: '/static/img/2025_vietnam.jpg',
+    title: 'Vietnam 2025',
+    width: '35%',
+    link: '2025_vietnam',
+  },
+  {
     url: '/static/img/20231221_204447_optimized.jpg',
     title: 'New York 2023',
     width: '40%',
     link: '2023_new_york',
   },
   {
-    url: '/static/img/20231020_142059_optimized.jpg',
-    title: 'London 2023',
-    width: '40%',
-    link: '2023_london',
-  },
-  {
     url: '/static/img/vlogging.png',
     title: 'Vlogging!',
     width: '20%',
     link: 'https://www.youtube.com/@nickumia',
+  },
+  {
+    url: '/static/img/20231020_142059_optimized.jpg',
+    title: 'London 2023',
+    width: '40%',
+    link: '2023_london',
   },
   {
     url: '/static/img/road_trip_main.jpg',
@@ -120,13 +120,13 @@ const images = [
   {
     url: '/static/img/financial_background.jpg',
     title: 'Financial Resources',
-    width: '20%',
+    width: '35%',
     link: 'financial',
   },
   {
     url: '/static/img/spiritual_background.jpg',
     title: 'Hinduism + Spiritual Resources',
-    width: '50%',
+    width: '35%',
     link: 'spiritual',
   },
   // {
