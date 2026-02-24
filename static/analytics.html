@@ -701,6 +701,82 @@
             }).join('');
         }
 
+        // Function to process interactions into time-based energy data
+        function getTimeBasedEnergyData() {
+            if (analyticsData.interactions.length === 0) {
+                return { labels: [], data: [] };
+            }
+
+            // Sort interactions by date
+            const sortedInteractions = analyticsData.interactions
+                .filter(i => i.date) // Only include interactions with dates
+                .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            if (sortedInteractions.length === 0) {
+                return { labels: [], data: [] };
+            }
+
+            // Determine time range and appropriate grouping
+            const earliestDate = new Date(sortedInteractions[0].date);
+            const latestDate = new Date(sortedInteractions[sortedInteractions.length - 1].date);
+            const daysDiff = Math.ceil((latestDate - earliestDate) / (1000 * 60 * 60 * 24));
+
+            console.log('Time range:', daysDiff, 'days from', earliestDate.toISOString().split('T')[0], 'to', latestDate.toISOString().split('T')[0]);
+
+            let groupedData = {};
+            let labelFormat = '';
+
+            if (daysDiff <= 31) {
+                // Group by day for short periods
+                labelFormat = 'daily';
+                sortedInteractions.forEach(interaction => {
+                    const date = new Date(interaction.date).toISOString().split('T')[0]; // YYYY-MM-DD
+                    if (!groupedData[date]) {
+                        groupedData[date] = { totalEnergy: 0, count: 0 };
+                    }
+                    groupedData[date].totalEnergy += interaction.energy_delta || 0;
+                    groupedData[date].count += 1;
+                });
+            } else if (daysDiff <= 90) {
+                // Group by week for medium periods
+                labelFormat = 'weekly';
+                sortedInteractions.forEach(interaction => {
+                    const date = new Date(interaction.date);
+                    const weekStart = new Date(date);
+                    weekStart.setDate(date.getDate() - date.getDay());
+                    const weekKey = `Week ${weekStart.getFullYear()}-W${Math.ceil((weekStart - new Date(weekStart.getFullYear(), 0, 1)) / (7 * 24 * 60 * 60 * 1000))}`;
+                    if (!groupedData[weekKey]) {
+                        groupedData[weekKey] = { totalEnergy: 0, count: 0 };
+                    }
+                    groupedData[weekKey].totalEnergy += interaction.energy_delta || 0;
+                    groupedData[weekKey].count += 1;
+                });
+            } else {
+                // Group by month for long periods
+                labelFormat = 'monthly';
+                sortedInteractions.forEach(interaction => {
+                    const date = new Date(interaction.date);
+                    const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+                    if (!groupedData[monthKey]) {
+                        groupedData[monthKey] = { totalEnergy: 0, count: 0 };
+                    }
+                    groupedData[monthKey].totalEnergy += interaction.energy_delta || 0;
+                    groupedData[monthKey].count += 1;
+                });
+            }
+
+            // Calculate averages and create labels
+            const labels = Object.keys(groupedData).sort();
+            const data = labels.map(label => {
+                const group = groupedData[label];
+                return group.count > 0 ? group.totalEnergy / group.count : 0;
+            });
+
+            console.log('Time-based energy data:', { labels, data, labelFormat });
+
+            return { labels, data, labelFormat };
+        }
+
         // 7️⃣ Drift Detection
         function calculateDriftDetection() {
             const now = new Date();
@@ -1027,71 +1103,162 @@
                 }
             });
 
-            // Energy Profile Timeline (placeholder - would need time-based data)
+            // Energy Profile Timeline with actual data
             const profileCtx = document.getElementById('profileChart').getContext('2d');
-            new Chart(profileCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-                    datasets: [{
-                        label: 'Energy Profile',
-                        data: [2.1, 2.3, 1.8, 2.5],
-                        borderColor: 'rgba(245, 101, 101, 1)',
-                        backgroundColor: 'rgba(245, 101, 101, 0.1)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
+            const timeData = getTimeBasedEnergyData();
+            
+            if (timeData.labels.length === 0) {
+                // Show placeholder if no data
+                new Chart(profileCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['No data available'],
+                        datasets: [{
+                            label: 'Energy Profile',
+                            data: [0],
+                            borderColor: 'rgba(245, 101, 101, 1)',
+                            backgroundColor: 'rgba(245, 101, 101, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Energy',
-                                font: {
-                                    size: 10
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Energy',
+                                    font: {
+                                        size: 10
+                                    }
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
                                 }
                             },
-                            ticks: {
-                                font: {
-                                    size: 8
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Time Period',
+                                    font: {
+                                        size: 10
+                                    }
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
                                 }
                             }
                         },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Period',
-                                font: {
-                                    size: 10
-                                }
-                            },
-                            ticks: {
-                                font: {
-                                    size: 8
-                                }
+                        layout: {
+                            padding: {
+                                top: 5,
+                                bottom: 5,
+                                left: 5,
+                                right: 5
                             }
                         }
+                    }
+                });
+            } else {
+                // Show actual data
+                new Chart(profileCtx, {
+                    type: 'line',
+                    data: {
+                        labels: timeData.labels,
+                        datasets: [{
+                            label: 'Average Energy',
+                            data: timeData.data,
+                            borderColor: 'rgba(245, 101, 101, 1)',
+                            backgroundColor: 'rgba(245, 101, 101, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: timeData.labels.length > 20 ? 2 : 4,
+                            pointHoverRadius: timeData.labels.length > 20 ? 4 : 6
+                        }]
                     },
-                    layout: {
-                        padding: {
-                            top: 5,
-                            bottom: 5,
-                            left: 5,
-                            right: 5
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: function(context) {
+                                        return `Period: ${context[0].label}`;
+                                    },
+                                    label: function(context) {
+                                        return `Average Energy: ${context.parsed.y.toFixed(2)}`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Average Energy',
+                                    font: {
+                                        size: 10
+                                    }
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: `Time Period (${timeData.labelFormat})`,
+                                    font: {
+                                        size: 10
+                                    }
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    },
+                                    maxRotation: timeData.labels.length > 10 ? 45 : 0,
+                                    autoSkip: timeData.labels.length > 20,
+                                    maxTicksLimit: 20
+                                }
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                top: 5,
+                                bottom: 5,
+                                left: 5,
+                                right: 5
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
 
         function showStatus(message, type) {
