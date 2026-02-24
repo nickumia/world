@@ -76,6 +76,12 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 const images = [
   {
+    url: '/static/img/2025_peru.jpg',
+    title: 'Peru 2025',
+    width: '40%',
+    link: '2026_peru',
+  },
+  {
     url: '/static/img/2025_vietnam.jpg',
     title: 'Vietnam 2025',
     width: '30%',
@@ -84,13 +90,13 @@ const images = [
   {
     url: '/static/img/20231014_143134_optimized.jpg',
     title: 'Kumia',
-    width: '40%',
+    width: '30%',
     link: 'kumia',
   },
   {
     url: '/static/img/20231221_204447_optimized.jpg',
     title: 'New York 2023',
-    width: '30%',
+    width: '40%',
     link: '2023_new_york',
   },
   {
@@ -108,13 +114,13 @@ const images = [
   {
     url: '/static/img/road_trip_main.jpg',
     title: 'US Road Trip 2024 - 2025',
-    width: '40%',
+    width: '30%',
     link: 'spiritual-tech',
   },
   {
     url: '/static/img/financial_background.jpg',
     title: 'Financial Resources',
-    width: '50%',
+    width: '20%',
     link: 'financial',
   },
   {
