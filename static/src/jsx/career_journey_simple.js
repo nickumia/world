@@ -285,7 +285,7 @@ const CareerJourney = () => {
 
     setChoices(prev => prev.map(c =>
       c.id === choiceId
-        ? { ...c, selected: true }
+        ? { ...c, selected: false, completed: true }
         : c
     ));
     setCurrentTime(prev => prev + choice.timeRequired);
