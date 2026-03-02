@@ -49,7 +49,7 @@ const CentralNode = styled(Box)(({ theme }) => ({
   textAlign: 'center',
   boxShadow: theme.shadows[8],
   position: 'relative',
-  zIndex: 10,
+  zIndex: 20,
 }));
 
 const PathBranch = styled(Box)(({ theme, direction, isActive, branchColor }) => ({
@@ -370,54 +370,150 @@ const CareerJourney = () => {
         </Box>
       </Box>
       <GraphContainer>
+        {/* SVG for precise connections */}
+        <svg
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            zIndex: 15,
+            border: '1px solid red' // Debug border
+          }}
+        >
+          {/* Debug: Show completed choices count */}
+          <text x="10" y="20" fill="red" fontSize="12">
+            Completed Choices: {completedChoices.length}
+          </text>
+          
+          {/* Connection lines between past choices */}
+          {completedChoices.slice(-3).map((choice, index) => {
+            if (index === 0) return null; // First choice connects to center
+            
+            const theme = CAREER_THEMES[choice.theme];
+            const prevChoice = completedChoices.slice(-3)[index - 1];
+            
+            // Calculate current choice position
+            const baseDistance = 25;
+            const stepDistance = 18;
+            const totalDistance = baseDistance + (index * stepDistance);
+            const themeAngles = {
+              coding: -60, skills: -45, career: -30, personal: -15,
+              exploration: 15, balance: 30
+            };
+            const baseAngle = themeAngles[choice.theme] || -45;
+            const angleVariation = (index % 2 === 0 ? 1 : -1) * Math.floor(index / 2) * 8;
+            const finalAngle = baseAngle + angleVariation;
+            const angleRad = (finalAngle * Math.PI) / 180;
+            const currentX = 50 - (totalDistance * Math.cos(angleRad));
+            const currentY = 50 + (totalDistance * Math.sin(angleRad) / 4); // Scale down for SVG coords
+            
+            // Calculate previous choice position
+            const prevDistance = baseDistance + ((index - 1) * stepDistance);
+            const prevAngle = themeAngles[prevChoice.theme] || -45;
+            const prevAngleVariation = ((index - 1) % 2 === 0 ? 1 : -1) * Math.floor((index - 1) / 2) * 8;
+            const prevFinalAngle = prevAngle + prevAngleVariation;
+            const prevAngleRad = (prevFinalAngle * Math.PI) / 180;
+            const prevX = 50 - (prevDistance * Math.cos(prevAngleRad));
+            const prevY = 50 + (prevDistance * Math.sin(prevAngleRad) / 4);
+            
+            return (
+              <g key={`connection-${choice.id}`}>
+                {/* Debug: Show connection points */}
+                <circle cx={`${prevX}%`} cy={`${prevY}%`} r="3" fill="red" />
+                <circle cx={`${currentX}%`} cy={`${currentY}%`} r="3" fill="blue" />
+                
+                <line
+                  x1={`${prevX}%`}
+                  y1={`${prevY}%`}
+                  x2={`${currentX}%`}
+                  y2={`${currentY}%`}
+                  stroke={theme.color}
+                  strokeWidth="3"
+                  strokeOpacity="0.7"
+                />
+              </g>
+            );
+          })}
+          
+          {/* Connection from center to first choice */}
+          {completedChoices.length > 0 && (() => {
+            const firstChoice = completedChoices.slice(-3)[0];
+            const theme = CAREER_THEMES[firstChoice.theme];
+            const baseDistance = 25;
+            const themeAngles = {
+              coding: -60, skills: -45, career: -30, personal: -15,
+              exploration: 15, balance: 30
+            };
+            const baseAngle = themeAngles[firstChoice.theme] || -45;
+            const angleRad = (baseAngle * Math.PI) / 180;
+            const choiceX = 50 - (baseDistance * Math.cos(angleRad));
+            const choiceY = 50 + (baseDistance * Math.sin(angleRad) / 4);
+            
+            return (
+              <g key="center-to-first">
+                {/* Debug: Show center and first choice points */}
+                <circle cx="50%" cy="50%" r="3" fill="green" />
+                <circle cx={`${choiceX}%`} cy={`${choiceY}%`} r="3" fill="orange" />
+                
+                <line
+                  x1="50%"
+                  y1="50%"
+                  x2={`${choiceX}%`}
+                  y2={`${choiceY}%`}
+                  stroke={theme.color}
+                  strokeWidth="3"
+                  strokeOpacity="0.7"
+                />
+              </g>
+            );
+          })()}
+        </svg>
+
         {/* Central Node */}
         <CentralNode>
           TODAY
         </CentralNode>
 
-        {/* Past Paths - Left Side - Tree Structure */}
+        {/* Past Paths - Left Side - Connected Tree Structure */}
         {completedChoices.slice(-3).map((choice, index) => {
           const theme = CAREER_THEMES[choice.theme];
-          // Position progressively to the right, building tree outward
-          const horizontalOffset = 15 - (index * 8); // Move each choice further left
-          const verticalOffset = (index % 2 === 0 ? 1 : -1) * (Math.floor(index / 2) + 1) * 80; // Alternate up/down
 
-          // Theme-based branching directions for more dramatic effect
-          const themeBranchDirections = {
-            coding: -60 - (index * 10),     // Sharp left for technical
-            skills: -45 - (index * 8),      // Moderate left for skills
-            career: -30 - (index * 6),      // Gentle left for career
-            personal: -15 - (index * 4),    // Slight left for personal
-            exploration: 15 + (index * 4),  // Slight right for exploration
-            balance: 30 + (index * 6)       // Gentle right for balance
+          // Create connected path: each choice builds from previous position
+          const baseDistance = 25; // Distance from center
+          const stepDistance = 18; // Distance between choices
+          const totalDistance = baseDistance + (index * stepDistance);
+
+          // Theme-based angle variations for branching effect
+          const themeAngles = {
+            coding: -60,      // Sharp left for technical
+            skills: -45,      // Moderate left for skills
+            career: -30,      // Gentle left for career
+            personal: -15,    // Slight left for personal
+            exploration: 15,  // Slight right for exploration
+            balance: 30       // Gentle right for balance
           };
 
-          const branchDirection = themeBranchDirections[choice.theme] || -45 - (index * 15);
+          // Add progressive angle variation for tree-like growth
+          const baseAngle = themeAngles[choice.theme] || -45;
+          const angleVariation = (index % 2 === 0 ? 1 : -1) * Math.floor(index / 2) * 8;
+          const finalAngle = baseAngle + angleVariation;
+
+          // Calculate position using polar coordinates for smooth branching
+          const angleRad = (finalAngle * Math.PI) / 180;
+          const horizontalOffset = 50 - (totalDistance * Math.cos(angleRad));
+          const verticalOffset = totalDistance * Math.sin(angleRad);
 
           return (
             <Box key={choice.id} sx={{
               position: 'absolute',
               left: `${horizontalOffset}%`,
               top: `calc(50% + ${verticalOffset}px)`,
-              transform: 'translateY(-50%)',
-              zIndex: 10
+              transform: 'translate(-50%, -50%)',
+              zIndex: 5
             }}>
-              <PathBranch
-                direction={branchDirection}
-                isActive={true}
-                branchColor={theme.color}
-                sx={{
-                  position: 'absolute',
-                  right: -80,
-                  top: 10,
-                  width: 6,
-                  height: 140 - (index * 20), // Shorter branches for further back choices
-                  '&::after': {
-                    width: 14,
-                    height: 14,
-                  }
-                }}
-              />
               <PathContent
                 isActive={true}
                 contentColor={theme.color}
@@ -444,7 +540,7 @@ const CareerJourney = () => {
               right: '8%',
               top: `calc(50% + ${verticalOffset}px)`,
               transform: 'translateY(-50%)',
-              zIndex: 10
+              zIndex: 5
             }}>
               <PathBranch
                 direction={45 + (index * 15)}
