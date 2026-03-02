@@ -7,16 +7,89 @@ import {
   CardContent,
   Chip,
   Avatar,
-  Tooltip
+  Tooltip,
+  Paper
 } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import {
   School as SchoolIcon,
   Code as CodeIcon,
   Work as WorkIcon,
   Psychology as PsychologyIcon,
   Explore as ExploreIcon,
-  Favorite as FavoriteIcon
+  Favorite as FavoriteIcon,
+  ArrowBack as ArrowBackIcon,
+  ArrowForward as ArrowForwardIcon
 } from '@mui/icons-material';
+
+// Styled components
+const GraphContainer = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  width: '100%',
+  height: '400px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'rgba(255,255,255,0.05)',
+  borderRadius: theme.shape.borderRadius,
+  margin: '20px 0',
+}));
+
+const CentralNode = styled(Box)(({ theme }) => ({
+  width: 100,
+  height: 100,
+  borderRadius: '50%',
+  background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  textAlign: 'center',
+  boxShadow: theme.shadows[8],
+  position: 'relative',
+  zIndex: 10,
+}));
+
+const PathBranch = styled(Box)(({ theme, direction, isActive, branchColor }) => ({
+  position: 'absolute',
+  width: isActive ? 4 : 2,
+  height: 120,
+  backgroundColor: isActive ? branchColor || '#10b981' : '#94a3b8',
+  borderRadius: isActive ? 2 : 1,
+  opacity: isActive ? 1 : 0.4,
+  transformOrigin: 'top center',
+  transform: `rotate(${direction}deg)`,
+  transition: 'all 0.3s ease',
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    top: '100%',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: isActive ? 12 : 8,
+    height: isActive ? 12 : 8,
+    borderRadius: '50%',
+    backgroundColor: isActive ? branchColor || '#10b981' : '#94a3b8',
+  },
+}));
+
+const PathContent = styled(Paper)(({ theme, isActive, contentColor }) => ({
+  position: 'absolute',
+  padding: theme.spacing(1.5),
+  backgroundColor: isActive ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255,255,255,0.1)',
+  color: 'white',
+  borderRadius: theme.shape.borderRadius,
+  borderLeft: `4px solid ${isActive ? contentColor || '#10b981' : '#94a3b8'}`,
+  cursor: 'pointer',
+  transition: 'all 0.3s ease',
+  opacity: isActive ? 1 : 0.6,
+  '&:hover': {
+    transform: 'translateY(-2px)',
+    boxShadow: theme.shadows[4],
+  },
+}));
 
 // Career themes
 const CAREER_THEMES = {
@@ -212,7 +285,7 @@ const CareerJourney = () => {
 
     setChoices(prev => prev.map(c =>
       c.id === choiceId
-        ? { ...c, selected: false, completed: true }
+        ? { ...c, selected: true }
         : c
     ));
     setCurrentTime(prev => prev + choice.timeRequired);
@@ -296,8 +369,75 @@ const CareerJourney = () => {
           })}
         </Box>
       </Box>
+      <GraphContainer>
+        {/* Central Node */}
+        <CentralNode>
+          TODAY
+        </CentralNode>
 
-      {/* Progress Summary */}
+        {/* Past Paths - Left Side */}
+        <Box sx={{ position: 'absolute', left: '10%', top: '50%', transform: 'translateY(-50%)' }}>
+          <Typography variant="h6" sx={{ color: 'white', mb: 2, textAlign: 'center' }}>
+            Past Choices
+          </Typography>
+          {completedChoices.slice(-2).map((choice, index) => {
+            const theme = CAREER_THEMES[choice.theme];
+            return (
+              <Box key={choice.id} sx={{ position: 'relative', mb: 2 }}>
+                <PathBranch
+                  direction={-30 - (index * 20)}
+                  isActive={true}
+                  branchColor={theme.color}
+                  sx={{ position: 'absolute', right: -60, top: 10 }}
+                />
+                <PathContent
+                  isActive={true}
+                  contentColor={theme.color}
+                  sx={{ width: 120 }}
+                >
+                  <Typography variant="body2" sx={{ fontSize: '0.75rem', fontWeight: 'bold' }}>
+                    ✓ {choice.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: '0.7rem', opacity: 0.8 }}>
+                    {choice.timeRequired}mo
+                  </Typography>
+                </PathContent>
+              </Box>
+            );
+          })}
+        </Box>
+
+        {/* Future Paths - Right Side */}
+        <Box sx={{ position: 'absolute', right: '10%', top: '50%', transform: 'translateY(-50%)' }}>
+          <Typography variant="h6" sx={{ color: 'white', mb: 2, textAlign: 'center' }}>
+            Future Paths
+          </Typography>
+          {availableChoices.slice(0, 3).map((choice, index) => {
+            const theme = CAREER_THEMES[choice.theme];
+            return (
+              <Box key={choice.id} sx={{ position: 'relative', mb: 2 }}>
+                <PathBranch
+                  direction={30 + (index * 20)}
+                  isActive={false}
+                  sx={{ position: 'absolute', left: -60, top: 10 }}
+                />
+                <PathContent
+                  isActive={false}
+                  onClick={() => handleChoiceSelect(choice.id)}
+                  sx={{ width: 120, cursor: 'pointer' }}
+                >
+                  <Typography variant="body2" sx={{ fontSize: '0.75rem', fontWeight: 'bold' }}>
+                    {choice.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: '0.7rem', opacity: 0.8 }}>
+                    {choice.timeRequired}mo
+                  </Typography>
+                </PathContent>
+              </Box>
+            );
+          })}
+        </Box>
+      </GraphContainer>
       <Box sx={{ textAlign: 'center', mb: 4 }}>
         <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)' }}>
           Completed: {completedChoices.length} • Selected: {selectedChoices.length} • Available: {availableChoices.length}
