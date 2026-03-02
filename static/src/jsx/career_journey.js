@@ -60,6 +60,24 @@ const CAREER_THEMES = {
   }
 };
 
+// Path data structure
+const PATH_DATA = {
+  past: [
+    { id: 1, title: "Traditional College", isDead: true, description: "The expected path" },
+    { id: 2, title: "Gap Year", isDead: true, description: "Time to explore" },
+    { id: 3, title: "Trade School", isDead: true, description: "Practical skills focus" },
+    { id: 4, title: "Self-Taught", isDead: false, description: "Your chosen path" },
+  ],
+  future: [
+    { id: 1, title: "Tech Industry", theme: "skills", isChosen: false },
+    { id: 2, title: "Creative Arts", theme: "identity", isChosen: false },
+    { id: 3, title: "Entrepreneurship", theme: "exploration", isChosen: false },
+    { id: 4, title: "Healthcare", theme: "reality", isChosen: false },
+    { id: 5, title: "Education", theme: "balance", isChosen: false },
+    { id: 6, title: "Research", theme: "exploration", isChosen: false },
+  ]
+};
+
 // Styled components
 const CentralPoint = styled(Box)(({ theme }) => ({
   position: 'relative',
@@ -98,26 +116,43 @@ const CentralPoint = styled(Box)(({ theme }) => ({
   },
 }));
 
-const PathBranch = styled(Box)(({ theme, isChosen, isDead, branchIndex }) => ({
+const PathBranch = styled(Box)(({ theme, isChosen, isDead, branchIndex, pathType }) => ({
   position: 'absolute',
-  width: 4,
-  backgroundColor: isChosen ? '#10b981' : isDead ? '#ef4444' : '#94a3b8',
-  borderRadius: 2,
-  transition: 'all 0.3s ease',
-  opacity: isDead ? 0.3 : 1,
-  transform: `rotate(${branchIndex * 45}deg)`,
+  width: pathType === 'main' ? 6 : 3,
+  backgroundColor: isChosen ? '#10b981' : isDead ? '#94a3b8' : '#3b82f6',
+  borderRadius: pathType === 'main' ? 3 : 1.5,
+  transition: 'all 0.5s ease',
+  opacity: isDead ? 0.3 : isChosen ? 1 : 0.8,
+  transform: `rotate(${branchIndex * 30}deg)`,
   transformOrigin: 'top center',
+  height: pathType === 'main' ? 200 : 150,
   '&::after': {
     content: '""',
     position: 'absolute',
     top: '100%',
     left: '50%',
     transform: 'translateX(-50%)',
-    width: 12,
-    height: 12,
+    width: pathType === 'main' ? 16 : 10,
+    height: pathType === 'main' ? 16 : 10,
     borderRadius: '50%',
-    backgroundColor: isChosen ? '#10b981' : isDead ? '#ef4444' : '#94a3b8',
+    backgroundColor: isChosen ? '#10b981' : isDead ? '#94a3b8' : '#3b82f6',
+    boxShadow: isChosen ? '0 0 20px rgba(16, 185, 129, 0.5)' : 'none',
   },
+  '&:hover': {
+    backgroundColor: isChosen ? '#10b981' : isDead ? '#94a3b8' : '#60a5fa',
+    width: pathType === 'main' ? 8 : 4,
+  },
+}));
+
+const PathVisualization = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  width: '100%',
+  height: '400px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  overflow: 'visible',
+  margin: '20px 0',
 }));
 
 const CarriedItem = styled(Chip)(({ theme, themeColor }) => ({
@@ -154,7 +189,8 @@ const CareerJourney = () => {
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       py: 4,
-      px: 2
+      px: 2,
+      overflowX: 'hidden'
     }}>
       {/* Header */}
       <Box sx={{ textAlign: 'center', mb: 4 }}>
@@ -189,14 +225,7 @@ const CareerJourney = () => {
       </Box>
 
       {/* Main Visual */}
-      <Box sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        minHeight: '400px',
-        mb: 4
-      }}>
+      <PathVisualization>
         {/* Central Point - Today */}
         <Fade in={currentView === 'present'} timeout={500}>
           <CentralPoint>
@@ -207,25 +236,49 @@ const CareerJourney = () => {
         {/* Past Paths (when viewing past) */}
         {currentView === 'past' && (
           <Fade in={true} timeout={300}>
-            <Box sx={{ position: 'absolute', left: '20%', transform: 'translateX(-50%)' }}>
+            <Box sx={{ 
+              position: 'absolute', 
+              left: '5%', 
+              top: '50%', 
+              transform: 'translateY(-50%)',
+              maxWidth: '35%',
+              zIndex: 10
+            }}>
               <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>
-                Paths You Left Behind
+                Paths Behind You
               </Typography>
-              {['Traditional College', 'Gap Year', 'Trade School'].map((path, index) => (
-                <Paper
-                  key={path}
-                  elevation={3}
-                  sx={{
-                    p: 2,
-                    mb: 1,
-                    backgroundColor: 'rgba(255,255,255,0.1)',
-                    color: 'white',
-                    borderLeft: '4px solid #ef4444',
-                    opacity: 0.7
-                  }}
-                >
-                  <Typography variant="body2">{path}</Typography>
-                </Paper>
+              {PATH_DATA.past.map((path, index) => (
+                <Box key={path.id} sx={{ mb: 2, position: 'relative' }}>
+                  <PathBranch
+                    isChosen={!path.isDead}
+                    isDead={path.isDead}
+                    branchIndex={index}
+                    pathType={!path.isDead ? 'main' : 'secondary'}
+                    sx={{
+                      position: 'absolute',
+                      right: -40,
+                      top: 20,
+                      transform: `rotate(${-15 + index * 10}deg)`,
+                    }}
+                  />
+                  <Paper
+                    elevation={3}
+                    sx={{
+                      p: 2,
+                      backgroundColor: path.isDead ? 'rgba(148, 163, 184, 0.2)' : 'rgba(16, 185, 129, 0.2)',
+                      color: 'white',
+                      borderLeft: `4px solid ${path.isDead ? '#94a3b8' : '#10b981'}`,
+                      opacity: path.isDead ? 0.6 : 1,
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                      {path.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                      {path.description}
+                    </Typography>
+                  </Paper>
+                </Box>
               ))}
             </Box>
           </Fade>
@@ -234,47 +287,97 @@ const CareerJourney = () => {
         {/* Future Branches (when viewing future) */}
         {currentView === 'future' && (
           <Fade in={true} timeout={300}>
-            <Box sx={{ position: 'absolute', right: '20%', transform: 'translateX(50%)' }}>
+            <Box sx={{ 
+              position: 'absolute', 
+              right: '5%', 
+              top: '50%', 
+              transform: 'translateY(-50%)',
+              maxWidth: '35%',
+              zIndex: 10
+            }}>
               <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>
                 Possible Futures
               </Typography>
-              {Object.entries(CAREER_THEMES).map(([key, theme]) => {
+              {PATH_DATA.future.map((path, index) => {
+                const theme = CAREER_THEMES[path.theme];
                 const IconComponent = theme.icon;
                 return (
-                  <Paper
-                    key={key}
-                    elevation={3}
-                    sx={{
-                      p: 2,
-                      mb: 1,
-                      backgroundColor: 'rgba(255,255,255,0.1)',
-                      color: 'white',
-                      cursor: 'pointer',
-                      borderLeft: `4px solid ${theme.color}`,
-                      '&:hover': {
-                        backgroundColor: 'rgba(255,255,255,0.2)',
-                      },
-                    }}
-                    onClick={() => handleThemeSelect(key)}
-                  >
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <IconComponent sx={{ mr: 1 }} />
-                      <Box>
-                        <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
-                          {theme.title}
-                        </Typography>
-                        <Typography variant="body2" sx={{ opacity: 0.8 }}>
-                          {theme.description}
-                        </Typography>
+                  <Box key={path.id} sx={{ mb: 2, position: 'relative' }}>
+                    <PathBranch
+                      isChosen={path.isChosen}
+                      isDead={false}
+                      branchIndex={index}
+                      pathType={path.isChosen ? 'main' : 'secondary'}
+                      sx={{
+                        position: 'absolute',
+                        left: -40,
+                        top: 20,
+                        transform: `rotate(${180 - index * 10}deg)`,
+                        backgroundColor: theme.color,
+                        '&::after': {
+                          backgroundColor: theme.color,
+                        },
+                      }}
+                    />
+                    <Paper
+                      elevation={3}
+                      sx={{
+                        p: 2,
+                        backgroundColor: 'rgba(255,255,255,0.1)',
+                        color: 'white',
+                        cursor: 'pointer',
+                        borderLeft: `4px solid ${theme.color}`,
+                        '&:hover': {
+                          backgroundColor: 'rgba(255,255,255,0.2)',
+                        },
+                      }}
+                      onClick={() => handleThemeSelect(path.theme)}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <IconComponent sx={{ mr: 1 }} />
+                        <Box>
+                          <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                            {path.title}
+                          </Typography>
+                          <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                            {theme.description}
+                          </Typography>
+                        </Box>
                       </Box>
-                    </Box>
-                  </Paper>
+                    </Paper>
+                  </Box>
                 );
               })}
             </Box>
           </Fade>
         )}
-      </Box>
+
+        {/* Converging Paths Visualization */}
+        {currentView === 'present' && carriedChoices.length > 0 && (
+          <Fade in={true} timeout={300}>
+            <Box sx={{ position: 'absolute', width: '100%', height: '100%', pointerEvents: 'none' }}>
+              {carriedChoices.map((choice, index) => {
+                const theme = CAREER_THEMES[choice.theme];
+                return (
+                  <Box
+                    key={choice.id}
+                    sx={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      width: 2,
+                      height: 100,
+                      backgroundColor: theme.color,
+                      transform: `translate(-50%, -50%) rotate(${index * (360 / carriedChoices.length)}deg)`,
+                      opacity: 0.6,
+                    }}
+                  />
+                );
+              })}
+            </Box>
+          </Fade>
+        )}
+      </PathVisualization>
 
       {/* Carried Choices Display */}
       {carriedChoices.length > 0 && (
