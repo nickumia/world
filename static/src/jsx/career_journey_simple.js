@@ -376,36 +376,38 @@ const CareerJourney = () => {
         </CentralNode>
 
         {/* Past Paths - Left Side */}
-        <Box sx={{ position: 'absolute', left: '10%', top: '50%', transform: 'translateY(-50%)' }}>
-          <Typography variant="h6" sx={{ color: 'white', mb: 2, textAlign: 'center' }}>
-            Past Choices
-          </Typography>
-          {completedChoices.slice(-2).map((choice, index) => {
-            const theme = CAREER_THEMES[choice.theme];
-            return (
-              <Box key={choice.id} sx={{ position: 'relative', mb: 2 }}>
-                <PathBranch
-                  direction={-30 - (index * 20)}
-                  isActive={true}
-                  branchColor={theme.color}
-                  sx={{ position: 'absolute', right: -60, top: 10 }}
-                />
-                <PathContent
-                  isActive={true}
-                  contentColor={theme.color}
-                  sx={{ width: 120 }}
-                >
-                  <Typography variant="body2" sx={{ fontSize: '0.75rem', fontWeight: 'bold' }}>
-                    ✓ {choice.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ fontSize: '0.7rem', opacity: 0.8 }}>
-                    {choice.timeRequired}mo
-                  </Typography>
-                </PathContent>
-              </Box>
-            );
-          })}
-        </Box>
+        {completedChoices.slice(-3).map((choice, index) => {
+          const theme = CAREER_THEMES[choice.theme];
+          const verticalOffset = (index - 1) * 120; // Spread choices vertically
+          return (
+            <Box key={choice.id} sx={{
+              position: 'absolute',
+              left: '8%',
+              top: `calc(50% + ${verticalOffset}px)`,
+              transform: 'translateY(-50%)',
+              zIndex: 10
+            }}>
+              <PathBranch
+                direction={-45 - (index * 15)}
+                isActive={true}
+                branchColor={theme.color}
+                sx={{ position: 'absolute', right: -80, top: 10 }}
+              />
+              <PathContent
+                isActive={true}
+                contentColor={theme.color}
+                sx={{ width: 130, position: 'relative' }}
+              >
+                <Typography variant="body2" sx={{ fontSize: '0.75rem', fontWeight: 'bold' }}>
+                  ✓ {choice.title}
+                </Typography>
+                <Typography variant="body2" sx={{ fontSize: '0.7rem', opacity: 0.8 }}>
+                  {choice.timeRequired}mo
+                </Typography>
+              </PathContent>
+            </Box>
+          );
+        })}
 
         {/* Future Paths - Right Side */}
         <Box sx={{ position: 'absolute', right: '10%', top: '50%', transform: 'translateY(-50%)' }}>
