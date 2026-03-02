@@ -16,7 +16,7 @@ import NLPMain from './nlp_main';
 import HomeMain from './home_main';
 import SpiritualTech from './spiritual_tech';
 import Financial from './financial';
-import CareerJourney from './career_journey';
+import CareerJourney from './career_journey_simple';
 
 import decrypt from "./encryption";
 
