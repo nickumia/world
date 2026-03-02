@@ -375,23 +375,48 @@ const CareerJourney = () => {
           TODAY
         </CentralNode>
 
-        {/* Past Paths - Left Side */}
+        {/* Past Paths - Left Side - Tree Structure */}
         {completedChoices.slice(-3).map((choice, index) => {
           const theme = CAREER_THEMES[choice.theme];
-          const verticalOffset = (index - 1) * 120; // Spread choices vertically
+          // Position progressively to the right, building tree outward
+          const horizontalOffset = 15 - (index * 8); // Move each choice further left
+          const verticalOffset = (index % 2 === 0 ? 1 : -1) * (Math.floor(index / 2) + 1) * 80; // Alternate up/down
+
+          // Theme-based branching directions for more dramatic effect
+          const themeBranchDirections = {
+            coding: -60 - (index * 10),     // Sharp left for technical
+            skills: -45 - (index * 8),      // Moderate left for skills
+            career: -30 - (index * 6),      // Gentle left for career
+            personal: -15 - (index * 4),    // Slight left for personal
+            exploration: 15 + (index * 4),  // Slight right for exploration
+            balance: 30 + (index * 6)       // Gentle right for balance
+          };
+
+          const branchDirection = themeBranchDirections[choice.theme] || -45 - (index * 15);
+
           return (
             <Box key={choice.id} sx={{
               position: 'absolute',
-              left: '8%',
+              left: `${horizontalOffset}%`,
               top: `calc(50% + ${verticalOffset}px)`,
               transform: 'translateY(-50%)',
               zIndex: 10
             }}>
               <PathBranch
-                direction={-45 - (index * 15)}
+                direction={branchDirection}
                 isActive={true}
                 branchColor={theme.color}
-                sx={{ position: 'absolute', right: -80, top: 10 }}
+                sx={{
+                  position: 'absolute',
+                  right: -80,
+                  top: 10,
+                  width: 6,
+                  height: 140 - (index * 20), // Shorter branches for further back choices
+                  '&::after': {
+                    width: 14,
+                    height: 14,
+                  }
+                }}
               />
               <PathContent
                 isActive={true}
@@ -410,35 +435,37 @@ const CareerJourney = () => {
         })}
 
         {/* Future Paths - Right Side */}
-        <Box sx={{ position: 'absolute', right: '10%', top: '50%', transform: 'translateY(-50%)' }}>
-          <Typography variant="h6" sx={{ color: 'white', mb: 2, textAlign: 'center' }}>
-            Future Paths
-          </Typography>
-          {availableChoices.slice(0, 3).map((choice, index) => {
-            const theme = CAREER_THEMES[choice.theme];
-            return (
-              <Box key={choice.id} sx={{ position: 'relative', mb: 2 }}>
-                <PathBranch
-                  direction={30 + (index * 20)}
-                  isActive={false}
-                  sx={{ position: 'absolute', left: -60, top: 10 }}
-                />
-                <PathContent
-                  isActive={false}
-                  onClick={() => handleChoiceSelect(choice.id)}
-                  sx={{ width: 120, cursor: 'pointer' }}
-                >
-                  <Typography variant="body2" sx={{ fontSize: '0.75rem', fontWeight: 'bold' }}>
-                    {choice.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ fontSize: '0.7rem', opacity: 0.8 }}>
-                    {choice.timeRequired}mo
-                  </Typography>
-                </PathContent>
-              </Box>
-            );
-          })}
-        </Box>
+        {availableChoices.slice(0, 3).map((choice, index) => {
+          const theme = CAREER_THEMES[choice.theme];
+          const verticalOffset = (index - 1) * 120; // Spread choices vertically
+          return (
+            <Box key={choice.id} sx={{
+              position: 'absolute',
+              right: '8%',
+              top: `calc(50% + ${verticalOffset}px)`,
+              transform: 'translateY(-50%)',
+              zIndex: 10
+            }}>
+              <PathBranch
+                direction={45 + (index * 15)}
+                isActive={false}
+                sx={{ position: 'absolute', left: -80, top: 10 }}
+              />
+              <PathContent
+                isActive={false}
+                onClick={() => handleChoiceSelect(choice.id)}
+                sx={{ width: 130, position: 'relative', cursor: 'pointer' }}
+              >
+                <Typography variant="body2" sx={{ fontSize: '0.75rem', fontWeight: 'bold' }}>
+                  {choice.title}
+                </Typography>
+                <Typography variant="body2" sx={{ fontSize: '0.7rem', opacity: 0.8 }}>
+                  {choice.timeRequired}mo
+                </Typography>
+              </PathContent>
+            </Box>
+          );
+        })}
       </GraphContainer>
       <Box sx={{ textAlign: 'center', mb: 4 }}>
         <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)' }}>
