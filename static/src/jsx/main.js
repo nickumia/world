@@ -16,7 +16,6 @@ import NLPMain from './nlp_main';
 import HomeMain from './home_main';
 import SpiritualTech from './spiritual_tech';
 import Financial from './financial';
-import CareerJourney from './career_journey_simple';
 
 import decrypt from "./encryption";
 
@@ -64,7 +63,6 @@ var pages = {
 	"#syntaxapp": function test1() {return <SyntaxApp details={details} />},
 	"#spiritualtech": function test1() {return <SpiritualTech />},
 	"#financial": function test1() {return <Financial />},
-	"#career": function test1() {return <CareerJourney />},
 	"#nlpmain": function test1() {return <NLPMain />},
 	"#homemain": function test1() {return <HomeMain allPages={allPages} />}
 }

@@ -8,7 +8,6 @@ declare -a simple_pages=(
 [1]='nlp NLP nlpmain'
 [2]='spiritual-tech SpiritualTech spiritualtech'
 [3]='financial Financial financial'
-[4]='career CareerAdvice career'
 )
 
 declare -a content_pages=(
