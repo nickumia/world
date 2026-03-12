@@ -1,0 +1,307 @@
+/* Career Day Storybook Styles */
+
+/* Story Section Base Styles */
+.story-section {
+    margin: 60px 0;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.story-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #05B3F2, #F08714, #05B3F2);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Story Header */
+.story-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.story-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.story-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #05B3F2, #F08714);
+    border-radius: 2px;
+}
+
+.story-intro {
+    font-size: 1.2rem;
+    color: #5a6c7d;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Learning Paths Container */
+.learning-paths-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* Path Cards */
+.path-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.path-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.path-others {
+    border-color: #e3f2fd;
+}
+
+.path-others:hover {
+    border-color: #05B3F2;
+}
+
+.path-self {
+    border-color: #fff3e0;
+}
+
+.path-self:hover {
+    border-color: #F08714;
+}
+
+/* Path Icons */
+.path-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Path Headers */
+.path-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.path-card p {
+    color: #5a6c7d;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Path Details */
+.path-details {
+    margin-bottom: 25px;
+}
+
+.path-element {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid #05B3F2;
+    transition: all 0.3s ease;
+}
+
+.path-element:hover {
+    background: #e3f2fd;
+    transform: translateX(5px);
+}
+
+.path-element h4 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.path-element p {
+    color: #5a6c7d;
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* Path Outcomes */
+.path-outcome {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 10px;
+    font-weight: 600;
+    color: #2c3e50;
+    border: 1px dashed #05B3F2;
+}
+
+/* Synthesis Section */
+.synthesis-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.synthesis-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.synthesis-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.synthesis-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.synthesis-section p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+/* Mentorship Callout */
+.mentorship-callout {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
+
+.mentorship-callout h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.mentorship-callout p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Story Image Container */
+.story-image-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.image-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed #05B3F2;
+    border-radius: 15px;
+    padding: 60px 20px;
+    color: #5a6c7d;
+    font-style: italic;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.image-placeholder:hover {
+    background: #e3f2fd;
+    border-color: #F08714;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+    .learning-paths-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .story-header h2 {
+        font-size: 2rem;
+    }
+    
+    .story-intro {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .story-section {
+        margin: 30px 0;
+        padding: 20px 15px;
+    }
+    
+    .story-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .path-card {
+        padding: 20px;
+    }
+    
+    .synthesis-section {
+        padding: 30px 20px;
+    }
+    
+    .synthesis-section h3 {
+        font-size: 1.5rem;
+    }
+}
