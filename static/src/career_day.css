@@ -89,6 +89,12 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
+.path-sub {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #777;
+}
+
 .path-others {
     border-color: #e3f2fd;
 }
@@ -259,7 +265,11 @@
     color: #5a6c7d;
     font-style: italic;
     transition: all 0.3s ease;
-    width: 100%;
+}
+
+.image-placeholder img {
+    max-width: 100%;
+    height: auto;
 }
 
 .image-placeholder:hover {
