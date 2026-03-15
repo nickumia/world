@@ -41,85 +41,100 @@
         </div>
         
         <div class="learning-paths-container">
-            <div class="path-card path-others">
-                <div class="path-icon">📚</div>
-                <h3>The Experience of Others</h3>
-                <p>One way we grow is by standing on the shoulders of
-                    giants; learning from those who came before us.</p>
-                <div class="path-details">
-                    <div class="path-element">
-                        <h4>📖 Books <span class="path-sub">(Captured Experience)</span></h4>
-                        <p>The accumulated wisdom and knowledge of
+            <!-- Left Column - Tab Navigation -->
+            <div class="tab-navigation-column">
+                <div class="tab-nav-item active" onclick="showPathTab(0)">
+                    <div class="tab-nav-icon">📚</div>
+                    <h4>The Experience of Others</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showPathTab(1)">
+                    <div class="tab-nav-icon">🛤️</div>
+                    <h4>Your Own Experience</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showPathTab(2)">
+                    <div class="tab-nav-icon">🌟</div>
+                    <h4>The Synthesis</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showPathTab(3)">
+                    <div class="tab-nav-icon">🖼️</div>
+                    <h4>What It Looks Like</h4>
+                </div>
+            </div>
+            
+            <!-- Right Column - Tab Content -->
+            <div class="tab-content-column">
+                <!-- Tab 1: Experience of Others -->
+                <div class="tab-content active" id="path-tab-0">
+                    <div class="content-details">
+                        <div class="content-item">
+                            <h4>📖 Books <small>(Captured Experience)</small></h4>
+                            <p>The accumulated wisdom and knowledge of
                             generations, distilled into pages we can
                             absorb at our own pace. These represent
                             compressed experience across generations.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🎓 Education <small>(Structured Knowledge)</small></h4>
+                            <p>Structured learning environments designed to
+                            impart foundational knowledge and critical
+                            thinking skills.</p>
+                        </div>
                     </div>
-                    <div class="path-element">
-                        <h4>🎓 Formal Education <span class="path-sub">(Structured knowledge delivery)</span></h4>
-                        <p>Structured learning environments designed to
-                        impart foundational knowledge and critical
-                        thinking skills.</p>
+                    <div class="content-outcome">
+                        <strong>Stream of Knowledge → "Here's how <i>I think</i> the world works."</strong>
                     </div>
                 </div>
-                <div class="path-outcome">
-                    <strong>Stream of Knowledge → "Here's how <i>I think</i> the world works."</strong>
-                </div>
-            </div>
-            
-            <div class="path-card path-self">
-                <div class="path-icon">🛤️</div>
-                <h3>Your Own Experience</h3>
-                <p>Equally vital is the knowledge gained through walking
-                    your own path; making choices, taking action, and
-                    learning from the consequences.</p>
-
-                <div class="path-details">
-                    <div class="path-element">
-                        <h4>🤔 Decisions</h4>
-                        <p>The moments where you choose a direction;
+                
+                <!-- Tab 2: Your Own Experience -->
+                <div class="tab-content" id="path-tab-1">
+                    <div class="content-details">
+                        <div class="content-item">
+                            <h4>🤔 Decisions</h4>
+                            <p>The moments where you choose a direction;
                             often without perfect information. Every
                             decision becomes a step forward.</p>
-                    </div>
-                    <div class="path-element">
-                        <h4>🎯 Actions & Reactions</h4>
-                        <p>Real understanding comes from acting on those
+                        </div>
+                        <div class="content-item">
+                            <h4>🎯 Actions & Results</h4>
+                            <p>Real understanding comes from acting on those
                             decisions and experiencing the results, both
                             successes and failures.</p>
+                        </div>
+                    </div>
+                    <div class="content-outcome">
+                        <strong>Awareness + Experience → "Here's how <i>my</i> world works."</strong>
                     </div>
                 </div>
-                <div class="path-outcome">
-                    <strong>Awareness + Experience → "Here's how <i>my</i> world works."</strong>
-                </div>
-            </div>
-        </div>
-        
-        <div class="synthesis-section">
-            <div class="synthesis-icon">🌟</div>
-            <h3>You: The Synthesis</h3>
-            <p>Both paths converge within you. The true power lies in
-                synthesizing external knowledge with internal
-                experience.</p>
-            
-            <div class="mentorship-callout">
-                <h4>🎯 Mentorship: Cultivating Awareness</h4>
-                <p>Guiding this synthesis is mentorship: the art of
-                    helping others see what they cannot yet see, and
-                    navigate these learning journeys with greater
-                    wisdom.</p>
-            </div>
+                
+                <!-- Tab 3: Synthesis -->
+                <div class="tab-content" id="path-tab-2">
+                    <div class="synthesis-content">
+                        <p>Both paths converge within you. The true power lies in
+                        synthesizing external knowledge with internal
+                        experience.</p>
 
-            <div class="mentorship-callout">
-                <h4>🎯 The Two Sides of the Same Coin</h4>
-                <p>👉 Knowledge can be borrowed.  (You are reading this)</p>
-                <p>👉 Judgment must be earned.  (You can act on this)</p>
-            </div>
-            
-        </div>
-        
-        <div class="story-image-container">
-    <!-- Image will be placed here -->
-            <div class="image-placeholder">
-                <img src="career_day_1.png" alt="Career Day">
+                        <p>Guiding this synthesis is mentorship: the art of
+                        helping others see what they cannot yet see, and
+                        navigate these learning journeys with greater
+                        wisdom.</p>
+                        
+                        <div class="mentorship-callout">
+                            <h4>🎯 Knowledge vs Judgment</h4>
+                            <p>👉 Knowledge can be borrowed. (You are reading this)</p>
+                            <p>👉 Judgment must be earned. (You can act on this)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 4: Visual -->
+                <div class="tab-content" id="path-tab-3">
+                    <div class="visual-content">
+                        <div class="image-placeholder">
+                            <img src="career_day_1.png" alt="Career Day Learning Paths">
+                        </div>
+                        <p class="image-caption">The two paths of learning converge to create your unique understanding of the world.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

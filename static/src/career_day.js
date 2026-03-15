@@ -1,4 +1,5 @@
 let currentSection = 0;
+let currentPathTab = 0;
 
 function showSection(sectionIndex) {
     // Hide all sections
@@ -24,16 +25,35 @@ function showSection(sectionIndex) {
     }, 300);
 }
 
+function showPathTab(tabIndex) {
+    // Hide all path tabs
+    const tabs = document.querySelectorAll('.tab-content');
+    const navItems = document.querySelectorAll('.tab-nav-item');
+    
+    tabs.forEach(tab => tab.classList.remove('active'));
+    navItems.forEach(item => item.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById(`path-tab-${tabIndex}`).classList.add('active');
+    navItems[tabIndex].classList.add('active');
+    currentPathTab = tabIndex;
+}
+
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' && currentSection > 0) {
         showSection(currentSection - 1);
     } else if (e.key === 'ArrowRight' && currentSection < 4) {
         showSection(currentSection + 1);
+    } else if (e.key === 'ArrowUp' && currentPathTab > 0) {
+        showPathTab(currentPathTab - 1);
+    } else if (e.key === 'ArrowDown' && currentPathTab < 3) {
+        showPathTab(currentPathTab + 1);
     }
 });
 
 // Initialize first section
 document.addEventListener('DOMContentLoaded', () => {
     showSection(0);
+    showPathTab(0);
 });
