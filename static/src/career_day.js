@@ -9,7 +9,6 @@ function showSection(sectionIndex) {
     const sections = document.querySelectorAll('.story-section');
     sections.forEach(section => {
         section.classList.remove('active');
-        section.style.opacity = '0';
     });
     
     // Remove active class from all tabs and dots
@@ -21,11 +20,10 @@ function showSection(sectionIndex) {
     // Show selected section with fade-in
     setTimeout(() => {
         sections[sectionIndex].classList.add('active');
-        sections[sectionIndex].style.opacity = '1';
         tabs[sectionIndex].classList.add('active');
         dots[sectionIndex].classList.add('active');
         currentSection = sectionIndex;
-    }, 300);
+    }, 50);
 }
 
 function showPathTab(tabIndex) {
