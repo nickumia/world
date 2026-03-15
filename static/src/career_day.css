@@ -116,15 +116,15 @@
 }
 
 .content-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     flex-shrink: 0;
 }
 
 .content-header h3 {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     margin: 0;
     color: #2c3e50;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .content-details {
@@ -140,17 +140,17 @@
 }
 
 .content-item h4 {
-    font-size: 1.225rem;
+    font-size: 1.4rem;
     color: #2c3e50;
-    margin-bottom: 8px;
-    font-weight: 600;
+    margin-bottom: 10px;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .content-item small {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #6c757d;
     font-weight: 400;
     opacity: 0.8;
@@ -158,19 +158,19 @@
 
 .content-item p {
     color: #5a6c7d;
-    font-size: 1.275rem;
+    font-size: 1.1rem;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .content-outcome {
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
     border-radius: 8px;
-    padding: 15px;
-    font-weight: 600;
+    padding: 18px;
+    font-weight: 700;
     color: #2c3e50;
     border: 1px dashed #05B3F2;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -180,10 +180,10 @@
 }
 
 .synthesis-content p {
-    font-size: 1.275rem;
+    font-size: 1.2rem;
     color: #5a6c7d;
-    margin-bottom: 20px;
-    line-height: 1.5;
+    margin-bottom: 25px;
+    line-height: 1.6;
 }
 
 .mentorship-callout {
@@ -195,14 +195,16 @@
 }
 
 .mentorship-callout h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .mentorship-callout p {
     /* color: rgba(255, 255, 255, 0.9); */
-    margin: 5px 0;
-    font-size: 1rem;
+    margin: 8px 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
 }
 
 /* Visual Content */
