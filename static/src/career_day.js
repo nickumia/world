@@ -1,8 +1,8 @@
 let currentSection = 0;
-let currentPathTab = 0;
-let currentFoundationTab = 0;
-let currentPerspectiveTab = 0;
-let currentAviationTab = 0;
+let currentPathTab = 3;
+let currentFoundationTab = 3;
+let currentPerspectiveTab = 3;
+let currentAviationTab = 3;
 
 function showSection(sectionIndex) {
     // Hide all sections
@@ -23,6 +23,25 @@ function showSection(sectionIndex) {
         tabs[sectionIndex].classList.add('active');
         dots[sectionIndex].classList.add('active');
         currentSection = sectionIndex;
+        
+        // Default to the "What It Looks Like" tab (last tab) for each section
+        switch(sectionIndex) {
+            case 0: // Section 1 - Learning Paths
+                showPathTab(3);
+                break;
+            case 1: // Section 2 - Foundation Years  
+                showFoundationTab(3);
+                break;
+            case 3: // Section 4 - Perspective
+                showPerspectiveTab(3);
+                break;
+            case 4: // Section 5 - Aviation Lens
+                showAviationTab(3);
+                break;
+            default:
+                // For other sections, don't change tab selection
+                break;
+        }
     }, 50);
 }
 
@@ -114,8 +133,4 @@ document.addEventListener('keydown', (e) => {
 // Initialize first section
 document.addEventListener('DOMContentLoaded', () => {
     showSection(0);
-    showPathTab(0);
-    showFoundationTab(0);
-    showPerspectiveTab(0);
-    showAviationTab(0);
 });
