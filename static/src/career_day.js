@@ -2,6 +2,7 @@ let currentSection = 0;
 let currentPathTab = 0;
 let currentFoundationTab = 0;
 let currentPerspectiveTab = 0;
+let currentAviationTab = 0;
 
 function showSection(sectionIndex) {
     // Hide all sections
@@ -69,6 +70,20 @@ function showPerspectiveTab(tabIndex) {
     currentPerspectiveTab = tabIndex;
 }
 
+function showAviationTab(tabIndex) {
+    // Hide all aviation tabs
+    const tabs = document.querySelectorAll('.tab-content');
+    const navItems = document.querySelectorAll('.tab-nav-item');
+    
+    tabs.forEach(tab => tab.classList.remove('active'));
+    navItems.forEach(item => item.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById(`aviation-tab-${tabIndex}`).classList.add('active');
+    navItems[tabIndex].classList.add('active');
+    currentAviationTab = tabIndex;
+}
+
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' && currentSection > 0) {
@@ -82,6 +97,8 @@ document.addEventListener('keydown', (e) => {
             showFoundationTab(currentFoundationTab - 1);
         } else if (currentSection === 3 && currentPerspectiveTab > 0) {
             showPerspectiveTab(currentPerspectiveTab - 1);
+        } else if (currentSection === 4 && currentAviationTab > 0) {
+            showAviationTab(currentAviationTab - 1);
         }
     } else if (e.key === 'ArrowDown') {
         if (currentSection === 0 && currentPathTab < 3) {
@@ -90,6 +107,8 @@ document.addEventListener('keydown', (e) => {
             showFoundationTab(currentFoundationTab + 1);
         } else if (currentSection === 3 && currentPerspectiveTab < 3) {
             showPerspectiveTab(currentPerspectiveTab + 1);
+        } else if (currentSection === 4 && currentAviationTab < 3) {
+            showAviationTab(currentAviationTab + 1);
         }
     }
 });
@@ -100,4 +119,5 @@ document.addEventListener('DOMContentLoaded', () => {
     showPathTab(0);
     showFoundationTab(0);
     showPerspectiveTab(0);
+    showAviationTab(0);
 });
