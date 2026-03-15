@@ -315,3 +315,216 @@
         font-size: 1.5rem;
     }
 }
+
+/* Foundation Years Section Styles */
+.foundation-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.foundation-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.foundation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.decision-making {
+    border-color: #e8f5e8;
+}
+
+.decision-making:hover {
+    border-color: #28a745;
+}
+
+.exploration {
+    border-color: #fff3cd;
+}
+
+.exploration:hover {
+    border-color: #ffc107;
+}
+
+.foundation-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.foundation-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.foundation-card p {
+    color: #5a6c7d;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.foundation-details {
+    margin-bottom: 0;
+}
+
+.foundation-element {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid #28a745;
+    transition: all 0.3s ease;
+}
+
+.foundation-element:hover {
+    background: #e8f5e8;
+    transform: translateX(5px);
+}
+
+.exploration .foundation-element {
+    border-left-color: #ffc107;
+}
+
+.exploration .foundation-element:hover {
+    background: #fff3cd;
+}
+
+.foundation-element h4 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.foundation-element p {
+    color: #5a6c7d;
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* Foundation Outcome Section */
+.foundation-outcome {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.foundation-outcome::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.outcome-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.foundation-outcome h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.foundation-outcome p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+/* Key Learnings */
+.key-learnings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.learning-item {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.learning-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+.learning-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.learning-item p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Responsive Design for Foundation Section */
+@media screen and (max-width: 900px) {
+    .foundation-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .key-learnings {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .foundation-card {
+        padding: 20px;
+    }
+    
+    .foundation-outcome {
+        padding: 30px 20px;
+    }
+    
+    .foundation-outcome h3 {
+        font-size: 1.5rem;
+    }
+    
+    .learning-item {
+        padding: 20px;
+    }
+}
+
+/* Preface Styles */
