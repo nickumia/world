@@ -1,5 +1,6 @@
 let currentSection = 0;
 let currentPathTab = 0;
+let currentFoundationTab = 0;
 
 function showSection(sectionIndex) {
     // Hide all sections
@@ -39,16 +40,38 @@ function showPathTab(tabIndex) {
     currentPathTab = tabIndex;
 }
 
+function showFoundationTab(tabIndex) {
+    // Hide all foundation tabs
+    const tabs = document.querySelectorAll('.tab-content');
+    const navItems = document.querySelectorAll('.tab-nav-item');
+    
+    tabs.forEach(tab => tab.classList.remove('active'));
+    navItems.forEach(item => item.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById(`foundation-tab-${tabIndex}`).classList.add('active');
+    navItems[tabIndex].classList.add('active');
+    currentFoundationTab = tabIndex;
+}
+
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' && currentSection > 0) {
         showSection(currentSection - 1);
     } else if (e.key === 'ArrowRight' && currentSection < 4) {
         showSection(currentSection + 1);
-    } else if (e.key === 'ArrowUp' && currentPathTab > 0) {
-        showPathTab(currentPathTab - 1);
-    } else if (e.key === 'ArrowDown' && currentPathTab < 3) {
-        showPathTab(currentPathTab + 1);
+    } else if (e.key === 'ArrowUp') {
+        if (currentSection === 0 && currentPathTab > 0) {
+            showPathTab(currentPathTab - 1);
+        } else if (currentSection === 1 && currentFoundationTab > 0) {
+            showFoundationTab(currentFoundationTab - 1);
+        }
+    } else if (e.key === 'ArrowDown') {
+        if (currentSection === 0 && currentPathTab < 3) {
+            showPathTab(currentPathTab + 1);
+        } else if (currentSection === 1 && currentFoundationTab < 3) {
+            showFoundationTab(currentFoundationTab + 1);
+        }
     }
 });
 
@@ -56,4 +79,5 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     showSection(0);
     showPathTab(0);
+    showFoundationTab(0);
 });

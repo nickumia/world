@@ -119,9 +119,12 @@
                         wisdom.</p>
                         
                         <div class="mentorship-callout">
-                            <h4>🎯 Knowledge vs Judgment</h4>
-                            <p>👉 Knowledge can be borrowed. (You are reading this)</p>
-                            <p>👉 Judgment must be earned. (You can act on this)</p>
+                            <div class="learning-item">
+                                <p>👉 Knowledge can be borrowed.<br/>(You are reading this)</p>
+                            </div>
+                            <div class="learning-item">
+                                <p>👉 Judgment must be earned.<br/>(You can act on this)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -150,85 +153,107 @@
             </p>
         </div>
         
-        <div class="foundation-container">
-            <div class="foundation-card decision-making">
-                <div class="foundation-icon">⚖️</div>
-                <h3>Learning to Decide</h3>
-                <p>The most crucial skill I developed wasn't making the
-                    "right" choice, but learning to make <em>a</em> choice
-                    and commit to it.</p>
-                
-                <div class="foundation-details">
-                    <div class="foundation-element">
-                        <h4>🎯 Analysis Paralysis</h4>
-                        <p>Early in my 20s, I struggled with endless research and overthinking. 
-                        I learned that waiting for perfect certainty means waiting forever.</p>
-                    </div>
-                    <div class="foundation-element">
-                        <h4>🚀 The 70% Rule</h4>
-                        <p>When you have 70% of the information you think you need, 
-                        that's usually enough to make a good decision and adjust course.</p>
-                    </div>
-                    <div class="foundation-element">
-                        <h4>🔄 Course Correction</h4>
-                        <p>Understanding that decisions aren't final; they're directional. 
-                        The ability to pivot and adapt became my superpower.</p>
-                    </div>
+        <div class="learning-paths-container">
+            <!-- Left Column - Tab Navigation -->
+            <div class="tab-navigation-column">
+                <div class="tab-nav-item active" onclick="showFoundationTab(0)">
+                    <div class="tab-nav-icon">⚖️</div>
+                    <h4>Learning to Decide</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showFoundationTab(1)">
+                    <div class="tab-nav-icon">🧭</div>
+                    <h4>The Freedom to Explore</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showFoundationTab(2)">
+                    <div class="tab-nav-icon">🏗️</div>
+                    <h4>Building the Foundation</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showFoundationTab(3)">
+                    <div class="tab-nav-icon">🖼️</div>
+                    <h4>What It Looks Like</h4>
                 </div>
             </div>
             
-            <div class="foundation-card exploration">
-                <div class="foundation-icon">🧭</div>
-                <h3>The Freedom to Explore</h3>
-                <p>My 20s gave me permission to try, fail, and discover what truly mattered to me.</p>
+            <!-- Right Column - Tab Content -->
+            <div class="tab-content-column">
+                <!-- Tab 1: Learning to Decide -->
+                <div class="tab-content active" id="foundation-tab-0">
+                    <div class="content-details">
+                        <div class="content-item">
+                            <h4>🎯 Analysis Paralysis</h4>
+                            <p>Early in my 20s, I struggled with endless research and overthinking. 
+                            I learned that waiting for perfect certainty means waiting forever.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🚀 The 70% Rule</h4>
+                            <p>When you have 70% of the information you think you need, 
+                            that's usually enough to make a good decision and adjust course.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🔄 Course Correction</h4>
+                            <p>Understanding that decisions aren't final; they're directional. 
+                            The ability to pivot and adapt became my superpower.</p>
+                        </div>
+                    </div>
+                    <div class="content-outcome">
+                        <strong>The most crucial skill I developed wasn't making the "right" choice, but learning to make <em>a</em> choice and commit to it.</strong>
+                    </div>
+                </div>
                 
-                <div class="foundation-details">
-                    <div class="foundation-element">
-                        <h4>💼 Career Experiments</h4>
-                        <p>From software engineering to product management to entrepreneurship,
-                        each role taught me something valuable about myself and my capabilities.</p>
+                <!-- Tab 2: The Freedom to Explore -->
+                <div class="tab-content" id="foundation-tab-1">
+                    <div class="content-details">
+                        <div class="content-item">
+                            <h4>💼 Career Experiments</h4>
+                            <p>From software engineering to product management to entrepreneurship,
+                            each role taught me something valuable about myself and my capabilities.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🌍 Geographic Freedom</h4>
+                            <p>Living in different cities and working with diverse teams 
+                            expanded my perspective beyond what any book could teach.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🧘 Personal Growth</h4>
+                            <p>Learning who I was outside of work, my values, my boundaries, 
+                            and my non-negotiables, proved just as important as professional skills.</p>
+                        </div>
                     </div>
-                    <div class="foundation-element">
-                        <h4>🌍 Geographic Freedom</h4>
-                        <p>Living in different cities and working with diverse teams 
-                        expanded my perspective beyond what any book could teach.</p>
-                    </div>
-                    <div class="foundation-element">
-                        <h4>🧘 Personal Growth</h4>
-                        <p>Learning who I was outside of work, my values, my boundaries, 
-                        and my non-negotiables, proved just as important as professional skills.</p>
+                    <div class="content-outcome">
+                        <strong>My 20s gave me permission to try, fail, and discover what truly mattered to me.</strong>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="foundation-outcome">
-            <div class="outcome-icon">🏗️</div>
-            <h3>Building the Foundation</h3>
-            <p>By the end of my 20s, I hadn't figured everything out; but I had built 
-            something far more valuable: a foundation of self-trust, adaptability, 
-            and clarity about what truly matters to me.</p>
-            
-            <div class="key-learnings">
-                <div class="learning-item">
-                    <h4>🎖️ Self-Trust</h4>
-                    <p>Confidence that I could handle whatever came my way</p>
+                
+                <!-- Tab 3: Building the Foundation -->
+                <div class="tab-content" id="foundation-tab-2">
+                    <div class="synthesis-content">
+                        <p>By the end of my 20s, I hadn't figured everything out; but I had built 
+                        something far more valuable: a foundation of self-trust, adaptability, 
+                        and clarity about what truly matters to me.</p>
+                        
+                        <div class="key-learnings">
+                            <div class="learning-item">
+                                <h4>🎖️ Self-Trust</h4>
+                                <p>Confidence that I could handle whatever came my way</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🔍 Clarity of Values</h4>
+                                <p>Understanding what I wouldn't compromise on</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🤝 Relationship Skills</h4>
+                                <p>Learning to build meaningful connections and networks</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="learning-item">
-                    <h4>🔍 Clarity of Values</h4>
-                    <p>Understanding what I wouldn't compromise on</p>
+                
+                <!-- Tab 4: Visual -->
+                <div class="tab-content" id="foundation-tab-3">
+                    <div class="visual-content">
+                        <img src="career_day_2.png" alt="Foundation Years">
+                    </div>
                 </div>
-                <div class="learning-item">
-                    <h4>🤝 Relationship Skills</h4>
-                    <p>Learning to build meaningful connections and networks</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="story-image-container">
-    <!-- Image will be placed here -->
-            <div class="image-placeholder">
-                <img src="career_day_2.png" alt="Career Day 2">
             </div>
         </div>
     </div>
