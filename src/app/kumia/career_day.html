@@ -1,0 +1,593 @@
+<div class="preface">
+    <div class="preface-title">The Origin</div>
+    <p>This page is born out of my high school inviting me back for
+        Career Day. There is a lot to be said about what I've gained
+        throughout life so far, and I hope some of it may be useful for
+        others on their own path.</p>
+</div>
+
+<!-- Tabbed Navigation -->
+<div class="tab-navigation">
+    <button class="tab-btn active" onclick="showSection(0)">🧭 Learning</button>
+    <button class="tab-btn" onclick="showSection(1)">🏗️ Foundational 20s</button>
+    <button class="tab-btn" onclick="showSection(2)">🚀 The Next...</button>
+    <button class="tab-btn" onclick="showSection(3)">🔍 Back vs Forward</button>
+    <button class="tab-btn" onclick="showSection(4)">✈️ Life Lens</button>
+</div>
+
+<!-- Progress Dots -->
+<div class="progress-dots">
+    <span class="dot active" onclick="showSection(0)"></span>
+    <span class="dot" onclick="showSection(1)"></span>
+    <span class="dot" onclick="showSection(2)"></span>
+    <span class="dot" onclick="showSection(3)"></span>
+    <span class="dot" onclick="showSection(4)"></span>
+</div>
+
+<!-- Content Container -->
+<div class="content-container">
+    <!-- SECTION 1 -->
+    <div class="story-section active" id="section-0">
+        <div class="story-header">
+            <h2>The Two Paths of Learning</h2>
+            <p class="story-intro">
+                Throughout my journey, I've discovered that growth
+                happens through two fundamental ways of learning.
+                Understanding these paths has been invaluable in
+                navigating my own career and life decisions; helping
+                to create mental models for operating in different
+                environments.
+            </p>
+        </div>
+        
+        <div class="learning-paths-container">
+            <!-- Left Column - Tab Navigation -->
+            <div class="tab-navigation-column">
+                <div class="tab-nav-item" onclick="showPathTab(0)">
+                    <div class="tab-nav-icon">📚</div>
+                    <h4>The Experience of Others</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showPathTab(1)">
+                    <div class="tab-nav-icon">🛤️</div>
+                    <h4>Your Own Experience</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showPathTab(2)">
+                    <div class="tab-nav-icon">🌟</div>
+                    <h4>The Synthesis</h4>
+                </div>
+                <div class="tab-nav-item active" onclick="showPathTab(3)">
+                    <div class="tab-nav-icon">🖼️</div>
+                    <h4>What It Looks Like</h4>
+                </div>
+            </div>
+            
+            <!-- Right Column - Tab Content -->
+            <div class="tab-content-column">
+                <!-- Tab 1: Experience of Others -->
+                <div class="tab-content" id="path-tab-0">
+                    <div class="content-details">
+                        <div class="content-item">
+                            <h4>📖 Books <small>(Captured Experience)</small></h4>
+                            <p>The accumulated wisdom and knowledge of
+                            generations, distilled into pages we can
+                            absorb at our own pace. These represent
+                            compressed experience across generations.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🎓 Education <small>(Structured Knowledge)</small></h4>
+                            <p>Structured learning environments designed to
+                            impart foundational knowledge and critical
+                            thinking skills.</p>
+                        </div>
+                    </div>
+                    <div class="content-outcome">
+                        <strong>Stream of Knowledge → "Here's how <i>I think</i> the world works."</strong>
+                    </div>
+                </div>
+                
+                <!-- Tab 2: Your Own Experience -->
+                <div class="tab-content" id="path-tab-1">
+                    <div class="content-details">
+                        <div class="content-item">
+                            <h4>🤔 Decisions</h4>
+                            <p>The moments where you choose a direction;
+                            often without perfect information. Every
+                            decision becomes a step forward.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🎯 Actions & Results</h4>
+                            <p>Real understanding comes from acting on those
+                            decisions and experiencing the results, both
+                            successes and failures.</p>
+                        </div>
+                    </div>
+                    <div class="content-outcome">
+                        <strong>Awareness + Experience → "Here's how <i>my</i> world works."</strong>
+                    </div>
+                </div>
+                
+                <!-- Tab 3: Synthesis -->
+                <div class="tab-content" id="path-tab-2">
+                    <div class="synthesis-content">
+                        <p>Both paths converge within you. The true power lies in
+                        synthesizing external knowledge with internal
+                        experience.</p>
+
+                        <p>Guiding this synthesis is mentorship: the art of
+                        helping others see what they cannot yet see, and
+                        navigate these learning journeys with greater
+                        wisdom.</p>
+                        
+                        <div class="mentorship-callout">
+                            <div class="learning-item">
+                                <p>👉 Knowledge can be borrowed.<br/>(You are reading this)</p>
+                            </div>
+                            <div class="learning-item">
+                                <p>👉 Judgment must be earned.<br/>(You can act on this)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 4: Visual -->
+                <div class="tab-content active" id="path-tab-3">
+                    <div id="learningPathsCarousel" class="carousel slide" data-bs-autoplay="false">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#learningPathsCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#learningPathsCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#learningPathsCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="visual-content">
+                                    <img src="/static/img/career_day_1a.png" alt="Career Day Learning Paths 1" class="d-block w-100">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="visual-content">
+                                    <img src="/static/img/career_day_1b.png" alt="Career Day Learning Paths 2" class="d-block w-100">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#learningPathsCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#learningPathsCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="story-section" id="section-1">
+        <div class="story-header">
+            <h2>The Foundation Years: My 20s</h2>
+            <p class="story-intro">
+                My twenties were defined by learning to make decisions
+                and commit to them.  It was a decade of exploration,
+                building foundations, and understanding that
+                perfect information rarely exists; sometimes you just
+                have to choose and move forward.
+            </p>
+        </div>
+        
+        <div class="learning-paths-container">
+            <!-- Left Column - Tab Navigation -->
+            <div class="tab-navigation-column">
+                <div class="tab-nav-item" onclick="showFoundationTab(0)">
+                    <div class="tab-nav-icon">⚖️</div>
+                    <h4>Learning to Decide</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showFoundationTab(1)">
+                    <div class="tab-nav-icon">🧭</div>
+                    <h4>The Freedom to Explore</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showFoundationTab(2)">
+                    <div class="tab-nav-icon">🏗️</div>
+                    <h4>Building the Foundation</h4>
+                </div>
+                <div class="tab-nav-item active" onclick="showFoundationTab(3)">
+                    <div class="tab-nav-icon">🖼️</div>
+                    <h4>What It Looks Like</h4>
+                </div>
+            </div>
+            
+            <!-- Right Column - Tab Content -->
+            <div class="tab-content-column">
+                <!-- Tab 1: Learning to Decide -->
+                <div class="tab-content" id="foundation-tab-0">
+                    <div class="content-details">
+                        <div class="content-item">
+                            <h4>🎯 Analysis Paralysis</h4>
+                            <p>Early in my 20s, I struggled with endless research and overthinking. 
+                            I learned that waiting for perfect certainty means waiting forever.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🚀 The 70% Rule</h4>
+                            <p>When you have 70% of the information you think you need, 
+                            that's usually enough to make a good decision and adjust course.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🔄 Course Correction</h4>
+                            <p>Understanding that decisions aren't final; they're directional. 
+                            The ability to pivot and adapt became my superpower.</p>
+                        </div>
+                    </div>
+                    <div class="content-outcome">
+                        <strong>The most crucial skill I developed wasn't making the "right" choice, but learning to make <em>a</em> choice and commit to it.</strong>
+                    </div>
+                </div>
+                
+                <!-- Tab 2: The Freedom to Explore -->
+                <div class="tab-content" id="foundation-tab-1">
+                    <div class="content-details">
+                        <div class="content-item">
+                            <h4>💼 Career Experiments</h4>
+                            <p>From software engineering to product management to entrepreneurship,
+                            each role taught me something valuable about myself and my capabilities.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🌍 Geographic Freedom</h4>
+                            <p>Living in different cities and working with diverse teams 
+                            expanded my perspective beyond what any book could teach.</p>
+                        </div>
+                        <div class="content-item">
+                            <h4>🧘 Personal Growth</h4>
+                            <p>Learning who I was outside of work, my values, my boundaries, 
+                            and my non-negotiables, proved just as important as professional skills.</p>
+                        </div>
+                    </div>
+                    <div class="content-outcome">
+                        <strong>My 20s gave me permission to try, fail, and discover what truly mattered to me.</strong>
+                    </div>
+                </div>
+                
+                <!-- Tab 3: Building the Foundation -->
+                <div class="tab-content" id="foundation-tab-2">
+                    <div class="synthesis-content">
+                        <p>By the end of my 20s, I hadn't figured everything out; but I had built 
+                        something far more valuable: a foundation of self-trust, adaptability, 
+                        and clarity about what truly matters to me.</p>
+                        
+                        <div class="key-learnings">
+                            <div class="learning-item">
+                                <h4>🎖️ Self-Trust</h4>
+                                <p>Confidence that I could handle whatever came my way</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🔍 Clarity of Values</h4>
+                                <p>Understanding what I wouldn't compromise on</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🤝 Relationship Skills</h4>
+                                <p>Learning to build meaningful connections and networks</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 4: Visual -->
+                <div class="tab-content active" id="foundation-tab-3">
+                    <div id="foundationCarousel" class="carousel slide" data-bs-autoplay="false">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#foundationCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#foundationCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#foundationCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="visual-content">
+                                    <img src="/static/img/career_day_2a.png" alt="Career Day Foundation Years 1" class="d-block w-100">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="visual-content">
+                                    <img src="/static/img/career_day_2b.png" alt="Career Day Foundation Years 2" class="d-block w-100">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#foundationCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#foundationCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3 Placeholder -->
+    <div class="story-section" id="section-2">
+        <div class="story-header">
+            <h2>Going into my 30s is going to be very different...</h2>
+        </div>
+        <div class="placeholder-content">
+            <p>This section is being written as you read this...</p>
+        </div>
+    </div>
+
+    <!-- SECTION 4 Placeholder -->
+    <div class="story-section" id="section-3">
+        <div class="story-header">
+            <h2>Perspective: Backwards vs Forwards</h2>
+            <p class="story-intro">
+                Life looks very different backwards than forward...
+            </p>
+        </div>
+        <div class="learning-paths-container">
+            <!-- Left Column - Tab Navigation -->
+            <div class="tab-navigation-column">
+                <div class="tab-nav-item" onclick="showPerspectiveTab(0)">
+                    <div class="tab-nav-icon">⏮️</div>
+                    <h4>Looking Back</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showPerspectiveTab(1)">
+                    <div class="tab-nav-icon">⏭️</div>
+                    <h4>Looking Forward</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showPerspectiveTab(2)">
+                    <div class="tab-nav-icon">🔮</div>
+                    <h4>The Wisdom</h4>
+                </div>
+                <div class="tab-nav-item active" onclick="showPerspectiveTab(3)">
+                    <div class="tab-nav-icon">🖼️</div>
+                    <h4>What It Looks Like</h4>
+                </div>
+            </div>
+            
+            <!-- Right Column - Tab Content -->
+            <div class="tab-content-column">
+                <!-- Tab 1: Looking Back -->
+                <div class="tab-content" id="perspective-tab-0">
+                    <div class="synthesis-content">
+                        <p>Life looks very different backwards than
+                            forward. Looking back, everything makes
+                            perfect sense: each decision, each
+                            failure, each success connects in a beautiful
+                            pattern that was invisible at the time.</p>
+                        
+                        <div class="key-learnings">
+                            <div class="learning-item">
+                                <h4>📍 Certainty</h4>
+                                <p>The past is known, outcomes are
+                                    clear, and lessons are obvious
+                                    in hindsight</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🧩 Pattern Recognition</h4>
+                                <p>Connections between events become
+                                    visible, revealing the deeper
+                                    story</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🎯 Clarity</h4>
+                                <p>The "why" behind every experience
+                                    becomes crystal clear</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 2: Looking Forward -->
+                <div class="tab-content" id="perspective-tab-1">
+                    <div class="synthesis-content">
+                        <p>Looking forward is uncertainty. Every
+                            path branches into possibilities, every
+                            decision carries risk, and the future is
+                            always unwritten. This is where courage
+                            meets opportunity.</p>
+                        
+                        <div class="key-learnings">
+                            <div class="learning-item">
+                                <h4>🌊 Uncertainty</h4>
+                                <p>The future is unknown, multiple
+                                    paths exist, outcomes are unclear</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>⚡ Potential</h4>
+                                <p>Every moment holds infinite
+                                    possibilities and new beginnings</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🤔 Choice</h4>
+                                <p>We must act without complete
+                                    information, trusting our
+                                    judgment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 3: The Wisdom -->
+                <div class="tab-content" id="perspective-tab-2">
+                    <div class="synthesis-content">
+                        <p>The wisdom lies in understanding both
+                            perspectives: the clarity of hindsight
+                            and the courage of foresight. True
+                            wisdom isn't about having all the answers;
+                            it's about navigating the tension
+                            between what we know and what we must
+                            discover.</p>
+                        
+                        <div class="mentorship-callout">
+                            <div class="learning-item">
+                                <p>👉 The past gives us <strong>certainty</strong><br/>(We know what happened)</p>
+                            </div>
+                            <div class="learning-item">
+                                <p>👉 The future gives us <strong>possibility</strong><br/>(We can create what's next)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 4: Visual -->
+                <div class="tab-content" id="perspective-tab-3">
+                    <div id="perspectiveCarousel" class="carousel slide" data-bs-autoplay="false">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#perspectiveCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#perspectiveCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#perspectiveCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="visual-content">
+                                    <img src="/static/img/career_day_3a.png" alt="Perspective: Backwards vs Forwards" class="d-block w-100">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="visual-content">
+                                    <img src="/static/img/career_day_3b.png" alt="Perspective: Backwards vs Forwards" class="d-block w-100">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="trailer-box ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/AlUWvRN3_U8?si=Jc_qEDuCrJzyBWMF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#perspectiveCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#perspectiveCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5 Placeholder -->
+    <div class="story-section" id="section-4">
+        <div class="story-header">
+            <h2>Life Through Aviation Lens</h2>
+            <p class="story-intro">
+                One way to explain <i>my</i> life is through an aviation lens...
+            </p>
+        </div>
+        <div class="learning-paths-container">
+            <!-- Left Column - Tab Navigation -->
+            <div class="tab-navigation-column">
+                <div class="tab-nav-item" onclick="showAviationTab(0)">
+                    <div class="tab-nav-icon">✈️</div>
+                    <h4>The Aviation Path</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showAviationTab(1)">
+                    <div class="tab-nav-icon">🧭</div>
+                    <h4>The Reality</h4>
+                </div>
+                <div class="tab-nav-item" onclick="showAviationTab(2)">
+                    <div class="tab-nav-icon">💡</div>
+                    <h4>The Lesson</h4>
+                </div>
+                <div class="tab-nav-item active" onclick="showAviationTab(3)">
+                    <div class="tab-nav-icon">🖼️</div>
+                    <h4>What It Looks Like</h4>
+                </div>
+            </div>
+            
+            <!-- Right Column - Tab Content -->
+            <div class="tab-content-column">
+                <!-- Tab 1: The Aviation Path -->
+                <div class="tab-content" id="aviation-tab-0">
+                    <div class="synthesis-content">
+                        <p>Looking back at my journey, you'd think I
+                            was on an aviation path from the start.
+                            The evidence seems compelling: technical
+                            projects, leadership roles, systematic
+                            thinking, even the way I approach
+                            problems.</p>
+                        
+                        <div class="key-learnings">
+                            <div class="learning-item">
+                                <h4>🔧 Technical Foundation</h4>
+                                <p>Engineering mindset, systematic
+                                    problem-solving, precision
+                                    thinking</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>📈 Career Progression</h4>
+                                <p>From individual contributor to
+                                    leadership, from specialist to
+                                    generalist</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🎯 Goal-Oriented</h4>
+                                <p>Clear flight plans, defined
+                                    destinations, measurable progress</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 2: The Reality -->
+                <div class="tab-content" id="aviation-tab-1">
+                    <div class="synthesis-content">
+                        <p>Here's the truth: I don't really care
+                            about aviation. It's cool, but it's not
+                            something that represents who I am. The
+                            aviation path was a lens, not the
+                            destination.</p>
+                        
+                        <div class="key-learnings">
+                            <div class="learning-item">
+                                <h4>🎭 Identity vs Strategy</h4>
+                                <p>Aviation was a strategic framework,
+                                    not my core identity</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>🔍 Self-Awareness</h4>
+                                <p>Understanding that tools and
+                                    identity are different things</p>
+                            </div>
+                            <div class="learning-item">
+                                <h4>⚖️ Values Alignment</h4>
+                                <p>What matters is what drives
+                                    decisions, not the framework
+                                    used</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 3: The Lesson -->
+                <div class="tab-content" id="aviation-tab-2">
+                    <div class="synthesis-content">
+                        <p>The profound insight: We can use any lens
+                            to view our lives. Some lenses are more
+                            useful than others, but none are the
+                            complete truth. The wisdom is knowing
+                            which lens serves which purpose.</p>
+                        
+                        <div class="mentorship-callout">
+                            <div class="learning-item">
+                                <p>👉 <strong>Lenses are tools</strong><br/>(They help us see patterns)</p>
+                            </div>
+                            <div class="learning-item">
+                                <p>👉 <strong>Identity is deeper</strong><br/>(It's what drives the tool selection)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 4: Visual -->
+                <div class="tab-content active" id="aviation-tab-3">
+                    <div class="visual-content">
+                        <img src="/static/img/career_day_4.png" alt="Aviation Lens vs Reality">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
