@@ -383,9 +383,38 @@
                 </div>
                 
                 <!-- Tab 4: Visual -->
-                <div class="tab-content active" id="perspective-tab-3">
-                    <div class="visual-content">
-                        <img src="career_day_3.png" alt="Perspective: Backwards vs Forwards">
+                <div class="tab-content" id="perspective-tab-3">
+                    <div id="perspectiveCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#perspectiveCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#perspectiveCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#perspectiveCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="visual-content">
+                                    <img src="career_day_3a.png" alt="Perspective: Backwards vs Forwards" class="d-block w-100">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="visual-content">
+                                    <img src="career_day_3b.png" alt="Perspective: Backwards vs Forwards" class="d-block w-100">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="trailer-box ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/AlUWvRN3_U8?si=Jc_qEDuCrJzyBWMF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#perspectiveCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#perspectiveCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
                 </div>
             </div>
