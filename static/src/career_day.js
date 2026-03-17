@@ -46,9 +46,9 @@ function showSection(sectionIndex) {
 }
 
 function showPathTab(tabIndex) {
-    // Hide all path tabs
-    const tabs = document.querySelectorAll('.tab-content');
-    const navItems = document.querySelectorAll('.tab-nav-item');
+    // Hide all path tabs within this section only
+    const tabs = document.querySelectorAll('#section-0 .tab-content');
+    const navItems = document.querySelectorAll('#section-0 .tab-nav-item');
     
     tabs.forEach(tab => tab.classList.remove('active'));
     navItems.forEach(item => item.classList.remove('active'));
@@ -60,9 +60,9 @@ function showPathTab(tabIndex) {
 }
 
 function showFoundationTab(tabIndex) {
-    // Hide all foundation tabs
-    const tabs = document.querySelectorAll('.tab-content');
-    const navItems = document.querySelectorAll('.tab-nav-item');
+    // Hide all foundation tabs within this section only
+    const tabs = document.querySelectorAll('#section-1 .tab-content');
+    const navItems = document.querySelectorAll('#section-1 .tab-nav-item');
     
     tabs.forEach(tab => tab.classList.remove('active'));
     navItems.forEach(item => item.classList.remove('active'));
@@ -74,9 +74,9 @@ function showFoundationTab(tabIndex) {
 }
 
 function showPerspectiveTab(tabIndex) {
-    // Hide all perspective tabs
-    const tabs = document.querySelectorAll('.tab-content');
-    const navItems = document.querySelectorAll('.tab-nav-item');
+    // Hide all perspective tabs within this section only
+    const tabs = document.querySelectorAll('#section-3 .tab-content');
+    const navItems = document.querySelectorAll('#section-3 .tab-nav-item');
     
     tabs.forEach(tab => tab.classList.remove('active'));
     navItems.forEach(item => item.classList.remove('active'));
@@ -88,9 +88,9 @@ function showPerspectiveTab(tabIndex) {
 }
 
 function showAviationTab(tabIndex) {
-    // Hide all aviation tabs
-    const tabs = document.querySelectorAll('.tab-content');
-    const navItems = document.querySelectorAll('.tab-nav-item');
+    // Hide all aviation tabs within this section only
+    const tabs = document.querySelectorAll('#section-4 .tab-content');
+    const navItems = document.querySelectorAll('#section-4 .tab-nav-item');
     
     tabs.forEach(tab => tab.classList.remove('active'));
     navItems.forEach(item => item.classList.remove('active'));
