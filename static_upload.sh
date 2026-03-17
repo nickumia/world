@@ -8,6 +8,10 @@ aws s3 cp static/src/offline/tracker s3://offline.kamutiv.com/tracker --content-
 aws s3 cp static/src/offline/analytics s3://offline.kamutiv.com/analytics --content-type "text/html"
 aws s3 cp static/src/offline/config.js s3://offline.kamutiv.com/config.js --content-type "application/javascript"
 
+# Special Career Day styling
+aws s3 cp static/src/offline/career_day.js s3://offline.kamutiv.com/career_day.js --content-type "application/javascript"
+aws s3 cp static/src/offline/career_day.css s3://offline.kamutiv.com/career_day.css
+
 # Upload all files from static/src/offline with their directory structure preserved
 find static/src/offline -type f -not -name "*.*" | while read -r file; do
     # Get the relative path from static/src/offline
