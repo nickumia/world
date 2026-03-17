@@ -34,7 +34,7 @@
 }
 
 .story-intro {
-    font-size: 1rem;
+    font-size: 1.1rem;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -397,7 +397,7 @@
     }
     
     .tab-nav-icon {
-        font-size: 1rem;
+        font-size: 1.1rem;
         margin-bottom: 3px;
     }
     
