@@ -284,7 +284,7 @@
 }
 
 .synthesis-section p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin-bottom: 20px;
     opacity: 0.9;
 }
@@ -415,11 +415,11 @@
     }
     
     .content-item h4 {
-        font-size: 0.85rem;
+        font-size: 1.3rem;
     }
     
     .content-item p {
-        font-size: 0.8rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -564,7 +564,7 @@
 
 .foundation-element p {
     color: #5a6c7d;
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin: 0;
     text-align: left;
 }
@@ -631,7 +631,7 @@
 .learning-item p {
     color: rgba(255, 255, 255, 0.9);
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 /* Responsive Design for Foundation Section */
