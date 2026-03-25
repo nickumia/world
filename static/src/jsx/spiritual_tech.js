@@ -167,31 +167,31 @@ export default function SpiritualTech() {
         <div style={{ margin: '20px 0', padding: '15px', border: '0px', textAlign: 'center' }}>
           <ol style={{ paddingLeft: '20px', margin: '10px 0', textAlign: 'center' }}>
             <li style={{ marginBottom: '8px' }}>
-              <a href="/keep_notes" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Digital Notes taken during the trip</a>
+              <a href="/keep-notes" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Digital Notes taken during the trip</a>
               <Typography variant="caption" display="block" color="textSecondary">July 31, 2025</Typography>
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <a href="/spiritualtech_being_wrong" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Reframing the goal</a>
+              <a href="/spiritualtech-being-wrong" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Reframing the goal</a>
               <Typography variant="caption" display="block" color="textSecondary">August 14, 2025</Typography>
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <a href="/spiritualtech/one_year_later" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Day-by-day One year later</a>
+              <a href="/spiritualtech/one-year-later" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Day-by-day One year later</a>
               <Typography variant="caption" display="block" color="textSecondary">August 29, 2025</Typography>
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <a href="/struggling_to_return" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Struggling to return</a>
+              <a href="/struggling-to-return" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Struggling to return</a>
               <Typography variant="caption" display="block" color="textSecondary">September 7, 2025</Typography>
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <a href="/fi_value" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: The True Value of Financial Independence</a>
+              <a href="/fi-value" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: The True Value of Financial Independence</a>
               <Typography variant="caption" display="block" color="textSecondary">November 18, 2025</Typography>
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <a href="/good_and_bad_are_selfish" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Good and Bad Are Equally Selfish</a>
+              <a href="/good-and-bad-are-selfish" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: Good and Bad Are Equally Selfish</a>
               <Typography variant="caption" display="block" color="textSecondary">November 24, 2025</Typography>
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <a href="/road_change_home" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: When the Road Changes You, but Home Stays the Same</a>
+              <a href="/road-change-home" style={{ textDecoration: 'none', color: '#1976d2' }}>Update: When the Road Changes You, but Home Stays the Same</a>
               <Typography variant="caption" display="block" color="textSecondary">November 27, 2025</Typography>
             </li>
           </ol>

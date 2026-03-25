@@ -79,7 +79,7 @@ const images = [
     url: '/static/img/2026_peru.jpg',
     title: 'Peru 2026',
     width: '35%',
-    link: '2026_peru',
+    link: '2026-peru',
   },
   {
     url: '/static/img/20231014_143134_optimized.jpg',
@@ -91,13 +91,13 @@ const images = [
     url: '/static/img/2025_vietnam.jpg',
     title: 'Vietnam 2025',
     width: '35%',
-    link: '2025_vietnam',
+    link: '2025-vietnam',
   },
   {
     url: '/static/img/20231221_204447_optimized.jpg',
     title: 'New York 2023',
     width: '40%',
-    link: '2023_new_york',
+    link: '2023-new-york',
   },
   {
     url: '/static/img/vlogging.png',
@@ -109,7 +109,7 @@ const images = [
     url: '/static/img/20231020_142059_optimized.jpg',
     title: 'London 2023',
     width: '40%',
-    link: '2023_london',
+    link: '2023-london',
   },
   {
     url: '/static/img/road_trip_main.jpg',
