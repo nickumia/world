@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import GroupIcon from '@mui/icons-material/Group';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -61,6 +62,29 @@ export default function SpiritualTech() {
         </Typography>
         <br/>
         <Grid container spacing={2} sx={{px: 8}}>
+          <Grid item xs={12} md={3}>
+            <Link href="/spiritualtech-collab" underline="hover">
+              <Button
+                variant="contained"
+                startIcon={<GroupIcon />}
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  backgroundColor: '#FF6B35',
+                  py: 2,
+                  boxShadow: '0 4px 12px rgba(255, 107, 53, 0.3)',
+                  border: '2px solid #FF6B35',
+                  '&:hover': {
+                    backgroundColor: '#E55A2B',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 6px 16px rgba(255, 107, 53, 0.4)'
+                  }
+                }}
+              >
+                We met in person!
+              </Button>
+            </Link>
+          </Grid>
           <Grid item xs={12} md={3}>
             <Link href="https://github.com/nickumia/world/issues/131" underline="hover">
               <Button 
