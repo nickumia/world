@@ -1,6 +1,16 @@
 # Resume content
 
 publications = [
+    {"title": "SpiritualTech | A 330-day Road Trip Across America",  # NOQA
+     "key": 14,
+     "image": "/static/img/logo_black.png",
+     "place": "Continental USA + Alaska",
+     "date": "Aug 2024 - Jul 2025",
+     "link": "/spiritual-tech",
+     "support": """
+     <p>See Published Works.</p>
+     """,  # NOQA
+     },
     {"title": "[TRACEE] Traceable and Reliable AI for Computing Energy Efficiency",  # NOQA
      "key": 13,
      "image": "/static/img/dod.png",
@@ -233,8 +243,8 @@ Performed extensive research concerning 3D Printing Technologies, eventually man
 educations = [
     {"school": "Florida Atlantic Univertify (FAU)",
      "key": 12,
-     "date": "May 2023 - Not sure",
-     "degree": "Computer Science PhD - TBD",
+     "date": "May 2023 - Aug 2024",
+     "degree": "Computer Science PhD - Incomplete",
      "image": "/static/img/fau.png",
      "link": "",  # NOQA
      },
