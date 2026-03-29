@@ -1,5 +1,5 @@
 title = "The Vedas — An Understanding of the Texts 📚"
-posted_time = "March 29th, 2026"
+posted_time = "March 19th, 2026"
 description = "An exploration of the four Vedas — Rigveda, Yajurveda, Samaveda, and Atharvaveda — and their significance in Vedic tradition."
 css = ["vedic-knowledge.css"]
 fonts = [
