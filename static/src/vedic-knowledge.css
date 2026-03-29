@@ -87,6 +87,7 @@
   color: var(--vedic-ash);
   margin-bottom: 2.5rem;
   font-weight: 300;
+  text-align: center;
 }
 
 .vedic-hero-desc {
