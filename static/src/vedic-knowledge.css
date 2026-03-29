@@ -177,12 +177,8 @@
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--vedic-ink);
-  margin: 1rem 0 0.75rem;
+  margin: 2rem 0 0.75rem;
   line-height: 1.4;
-}
-
-.vedic-section p {
-  margin-bottom: 1.5rem;
 }
 
 .vedic-section ul, .vedic-section ol {
@@ -523,7 +519,6 @@
     display: grid;
     grid-template-columns: 3rem 1fr;
     gap: 1.5rem;
-    margin-bottom: 2.5rem;
     align-items: start;
   }
 
@@ -535,9 +530,10 @@
     opacity: 0.5;
     line-height: 1;
     padding-top: 0.15rem;
+    margin-top: 0.25rem;
   }
 
-  .step-title {
+  .vedic-step-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.25rem;
     font-weight: 600;
@@ -546,13 +542,12 @@
     display: block;
   }
 
-  .step-subtitle {
+  .vedic-step-subtitle {
     font-family: 'Cinzel', serif;
     font-size: 0.7rem;
     letter-spacing: 0.15em;
-    color: var(--vedic-gold);
+    color: var(--vedic-ash);
     display: block;
-    margin-bottom: 0.5rem;
   }
 
   .step-body { font-size: 0.95rem; color: #3a3020; }
