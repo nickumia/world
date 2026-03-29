@@ -597,3 +597,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+footer .om {
+  font-size: 3rem;
+  color: var(--vedic-gold);
+  display: block;
+  opacity: 0.6;
+}
+
+footer p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
