@@ -1,5 +1,6 @@
 aws s3 cp static/src/offline/bundle.js s3://offline.kamutiv.com/bundle.js
 aws s3 cp static/src/react.css s3://offline.kamutiv.com/react.css
+aws s3 cp static/src/vedic-knowledge.css s3://offline.kamutiv.com/vedic-knowledge.css
 aws s3 cp static/src/offline/index s3://offline.kamutiv.com/index.html --content-type "text/html"
 aws s3 cp src/app/travel/peru_map.html s3://offline.kamutiv.com/map/peru_map.html --content-type "text/html"
 

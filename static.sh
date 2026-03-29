@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CUT_START='29'
-CUT_END='30'
+CUT_START='31'
+CUT_END='32'
 
 declare -a simple_pages=(
 [0]='index Home homemain'
@@ -12,6 +12,8 @@ declare -a simple_pages=(
 
 declare -a content_pages=(
 # [0]='d20141228 A_Beginning_20141228 singlepost'
+[9280]='vedic-death Vedic.Death singlepost'
+[9281]='vedic-outline Vedic.Outline singlepost'
 [9282]='spiritualtech-collab SpiritualTech.Collab singlepost'
 [9283]='career-day Career.Day singlepost'
 [9284]='sanatan-dharma Sanatan.Dharma singlepost'
