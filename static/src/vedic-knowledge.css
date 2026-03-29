@@ -13,6 +13,29 @@
   --vedic-border: rgba(200, 150, 42, 0.3);
 }
 
+.vedic-mahavakya .vedic-sanskrit {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: var(--vedic-gold);
+  display: block;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+.vedic-mahavakya .vedic-translation {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--vedic-parchment-deep);
+  opacity: 0.7;
+}
+
+.vedic-mahavakya .vedic-source {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--vedic-ash);
+  font-style: italic;
+}
+
 .vedic-container {
   /* background-color: var(--vedic-parchment); */
   color: var(--vedic-ink);
@@ -83,18 +106,18 @@
 }
 
 .vedic-callout {
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid var(--vedic-gold);
   padding: 1rem 1.5rem;
   margin: 2rem 0;
   background: rgba(200,150,42,0.06);
   font-style: italic;
   font-size: 1.05rem;
-  color: var(--ink);
+  color: var(--vedic-ink);
 }
 
 .vedic-callout strong {
   font-style: normal;
-  color: var(--gold);
+  color: var(--vedic-gold);
   font-family: 'Cinzel', serif;
   font-size: 0.8rem;
   letter-spacing: 0.1em;
@@ -160,7 +183,6 @@
 
 .vedic-section p {
   margin-bottom: 1.5rem;
-  text-align: justify;
 }
 
 .vedic-section ul, .vedic-section ol {
@@ -235,8 +257,8 @@
 }
 
 .vedic-table-wrap thead tr {
-  background: var(--ink);
-  color: var(--parchment);
+  background: var(--vedic-ink);
+  color: var(--vedic-parchment);
 }
 
 .vedic-table-wrap thead th {
@@ -246,11 +268,11 @@
   padding: 0.9rem 1.2rem;
   text-align: left;
   font-weight: 400;
-  color: var(--gold-light);
+  color: var(--vedic-gold-light);
 }
 
 .vedic-table-wrap tbody tr {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--vedic-border);
 }
 
 .vedic-table-wrap tbody tr:nth-child(even) {
@@ -270,10 +292,10 @@
   white-space: nowrap;
 }
 
-/* ===== FIVE FIRES ===== */
+/* ===== FIVE vedic-fireS ===== */
 .vedic-fires-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1px;
   background: var(--vedic-border);
   margin: 2rem 0;
@@ -287,9 +309,7 @@
   transition: background 0.3s;
 }
 
-.vedic-fire-cell:hover { 
-  background: rgba(200,150,42,0.08); 
-}
+.vedic-fire-cell:hover { background: rgba(200,150,42,0.08); }
 
 .vedic-fire-number {
   font-family: 'Cinzel', serif;
@@ -298,134 +318,245 @@
   opacity: 0.4;
   display: block;
   margin-bottom: 0.4rem;
+  line-height: 1;
 }
 
-.vedic-fire-title {
+.vedic-fire-name {
   font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
-  color: var(--vedic-ink);
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--rust);
+  display: block;
+  margin-bottom: 0.4rem;
 }
 
-.vedic-fire-desc {
+.vedic-fire-element {
+  font-style: italic;
   font-size: 0.85rem;
   color: var(--vedic-ash);
-  line-height: 1.4;
 }
 
-/* ===== TIMELINE ===== */
+/* ===== vedic-granthi CARDS ===== */
+.vedic-granthi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.vedic-granthi-card {
+  border: 1px solid var(--vedic-border);
+  padding: 1.8rem;
+  background: linear-gradient(135deg, rgba(200,150,42,0.04) 0%, transparent 100%);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.vedic-granthi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(26,18,8,0.12);
+}
+
+.vedic-granthi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+}
+
+.vedic-granthi-card.brahma::before { background: var(--rust); }
+.vedic-granthi-card.vishnu::before { background: var(--sky); }
+.vedic-granthi-card.rudra::before { background: var(--lotus); }
+
+.vedic-granthi-number {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.vedic-granthi-card.brahma .vedic-granthi-number { color: var(--rust); }
+.vedic-granthi-card.vishnu .vedic-granthi-number { color: var(--sky); }
+.vedic-granthi-card.rudra .vedic-granthi-number { color: var(--lotus); }
+
+.vedic-granthi-card h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: var(--vedic-ink);
+}
+
+.vedic-granthi-card .location {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--vedic-ash);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.vedic-granthi-card p { font-size: 0.9rem; margin-bottom: 0.6rem; }
+
+.vedic-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.vedic-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--vedic-border);
+  color: var(--vedic-ash);
+}
+
+/* ===== vedic-timeline ===== */
 .vedic-timeline {
   position: relative;
-  padding: 2rem 0;
-  margin: 3rem 0;
+  padding-left: 2.5rem;
+  margin: 2rem 0;
 }
 
 .vedic-timeline::before {
   content: '';
   position: absolute;
-  left: 50%;
-  top: 0;
+  left: 0;
+  top: 0.6rem;
   bottom: 0;
   width: 1px;
-  background: var(--vedic-border);
-  transform: translateX(-50%);
+  background: linear-gradient(to bottom, var(--vedic-gold), transparent);
 }
 
 .vedic-timeline-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 3rem;
   position: relative;
+  margin-bottom: 2.5rem;
 }
 
-.vedic-timeline-item:nth-child(odd) {
-  flex-direction: row;
+.vedic-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.8rem;
+  top: 0.5rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--vedic-gold);
+  border: 2px solid var(--vedic-parchment);
+  box-shadow: 0 0 0 1px var(--vedic-gold);
 }
 
-.vedic-timeline-item:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-.vedic-timeline-content {
-  flex: 1;
-  padding: 1.5rem;
-  background: var(--vedic-parchment-deep);
-  border: 1px solid var(--vedic-border);
-  border-radius: 8px;
-  margin: 0 2rem;
-}
-
-.vedic-timeline-day {
+.vedic-timeline-label {
   font-family: 'Cinzel', serif;
-  font-size: 1.2rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
   color: var(--vedic-gold);
-  margin-bottom: 0.5rem;
+  display: block;
+  margin-bottom: 0.2rem;
 }
 
 .vedic-timeline-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--vedic-ink);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
+  display: block;
 }
 
-.vedic-timeline-desc {
-  font-size: 0.9rem;
-  color: var(--vedic-ash);
-  line-height: 1.4;
-}
+.vedic-timeline-body { font-size: 0.92rem; color: #3a3020; }
 
-.vedic-timeline-dot {
-  width: 12px;
-  height: 12px;
-  background: var(--vedic-gold);
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 2px solid var(--vedic-parchment);
-}
-
-/* ===== CHECKLIST ===== */
-.vedic-checklist {
-  background: var(--vedic-parchment-deep);
-  border: 1px solid var(--vedic-border);
-  border-radius: 8px;
-  padding: 2rem;
+ /* ===== vedic-checklist SECTION ===== */
+.vedic-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
   margin: 2rem 0;
 }
 
-.vedic-checklist h4 {
+.vedic-checklist-card {
+  background: var(--vedic-ink);
+  color: var(--vedic-parchment);
+  padding: 1.8rem;
+}
+
+.vedic-checklist-card h4 {
   font-family: 'Cinzel', serif;
-  font-size: 1.2rem;
-  color: var(--vedic-ink);
-  margin-bottom: 1rem;
-}
-
-.vedic-checklist ul {
-  list-style: none;
-  padding: 0;
-}
-
-.vedic-checklist li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--vedic-border);
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.vedic-checklist li::before {
-  content: '☐';
-  position: absolute;
-  left: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
   color: var(--vedic-gold);
-  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(200,150,42,0.3);
 }
 
-.vedic-checklist li:last-child {
-  border-bottom: none;
+.vedic-checklist-card ul { list-style: none; }
+
+.vedic-checklist-card li {
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+  color: var(--vedic-parchment-deep);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
+
+.vedic-checklist-card li::before {
+  content: '—';
+  color: var(--vedic-gold);
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+/* ===== NUMBERED vedic-steps ===== */
+  .vedic-steps { list-style: none; counter-reset: step-counter; }
+
+  .vedic-steps li {
+    counter-increment: step-counter;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    align-items: start;
+  }
+
+  .vedic-steps li::before {
+    content: counter(step-counter);
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--vedic-gold);
+    opacity: 0.5;
+    line-height: 1;
+    padding-top: 0.15rem;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--vedic-ink);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .step-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--vedic-gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-body { font-size: 0.95rem; color: #3a3020; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
@@ -445,24 +576,24 @@
     font-size: 2rem;
   }
   
-  .vedic-timeline::before {
+  .vedic-vedic-timeline::before {
     left: 20px;
   }
   
-  .vedic-timeline-item {
+  .vedic-vedic-timeline-item {
     flex-direction: row !important;
     margin-left: 40px;
   }
   
-  .vedic-timeline-content {
+  .vedic-vedic-timeline-content {
     margin: 0 0 0 2rem;
   }
   
-  .vedic-timeline-dot {
+  .vedic-vedic-timeline-dot {
     left: 20px;
   }
   
-  .vedic-fires-grid {
+  .vedic-vedic-fires-grid {
     grid-template-columns: 1fr;
   }
 }
