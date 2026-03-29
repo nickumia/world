@@ -16,7 +16,7 @@
 .vedic-mahavakya .vedic-sanskrit {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
-  color: var(--vedic-gold);
+  color: var(--vedic-saffron);
   display: block;
   margin-bottom: 0.5rem;
   font-style: italic;
@@ -25,7 +25,7 @@
   font-family: 'Cinzel', serif;
   font-size: 0.8rem;
   letter-spacing: 0.2em;
-  color: var(--vedic-parchment-deep);
+  /* color: var(--vedic-parchment-deep); */
   opacity: 0.7;
 }
 
@@ -187,7 +187,7 @@
 
 .vedic-section ul, .vedic-section ol {
   margin: 1.5rem 0;
-  padding-left: 2rem;
+  padding-left: 0rem;
 }
 
 .vedic-section li {
