@@ -170,7 +170,6 @@
   color: var(--vedic-ash);
   margin-bottom: 3rem;
   font-style: italic;
-  max-width: 700px;
 }
 
 .vedic-section h3 {
@@ -269,7 +268,6 @@
   padding: 0.9rem 1.2rem;
   text-align: left;
   font-weight: 400;
-  color: var(--vedic-gold-light);
 }
 
 .vedic-table-wrap tbody tr {
