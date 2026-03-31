@@ -61,6 +61,25 @@
 }
 @keyframes rotate { to { transform: rotate(360deg); } }
 
+/* ─── DECORATIVE FLAME ───────────────────────── */
+.flame-divider {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 2.5rem auto;
+  max-width: var(--max-w);
+}
+.flame-divider::before,
+.flame-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--vedic-gold), transparent);
+}
+.flame-divider span {
+  color: var(--vedic-gold);
+  font-size: 1.1rem;
+  opacity: .8;
+}
+
 .vedic-mahavakya .vedic-sanskrit {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
@@ -186,13 +205,8 @@
 .vedic-section {
   /* padding: 60px 20px; */
   margin-bottom: 40px;
-  border-bottom: 1px solid var(--vedic-border);
   transform:translateY(30px);
   transition:opacity 0.9s ease,transform 0.9s ease;
-}
-
-.vedic-section:last-child {
-  border-bottom: none;
 }
 
 .vedic-section-label {
