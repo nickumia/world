@@ -64,7 +64,7 @@
 /* ─── DECORATIVE FLAME ───────────────────────── */
 .flame-divider {
   display: flex; align-items: center; gap: 1rem;
-  margin: 2.5rem auto;
+  margin: 1.5rem auto;
   max-width: var(--max-w);
 }
 .flame-divider::before,
