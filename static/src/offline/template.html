@@ -32,6 +32,44 @@
       searchOn='false'
 		</script>
 		<script src="/bundle.js"></script>
+    <script>
+      // Function to create stars
+      function createStars() {
+        const sf = document.getElementById('starfield');
+        if (sf) {
+          for (let i = 0; i < 180; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() < 0.85 ? Math.random() * 1.5 + 0.5 : Math.random() * 3 + 1.5;
+            s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${Math.random()*5+3}s;--delay:${Math.random()*6}s;--max-op:${Math.random()*0.5+0.1};`;
+            sf.appendChild(s);
+          }
+          return true;
+        } else {
+          return false;
+        }
+      }
+      
+      // Try immediately, then keep trying
+      if (!createStars()) {
+        let attempts = 0;
+        const maxAttempts = 20;
+        const checkInterval = setInterval(() => {
+          attempts++;
+          
+          if (createStars()) {
+            clearInterval(checkInterval);
+          } else if (attempts >= maxAttempts) {
+            clearInterval(checkInterval);
+          }
+        }, 100); // Check every 100ms
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.section').forEach(s => observer.observe(s));
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M355ZJEPH8"></script>
