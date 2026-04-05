@@ -201,6 +201,10 @@
   color: var(--vedic-ink);
 }
 
+.vedic-callout p.dark {
+  color: var(--vedic-dawn);
+}
+
 .vedic-callout strong {
   font-style: normal;
   color: var(--vedic-gold);
