@@ -280,7 +280,7 @@
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--vedic-ink);
-  margin: 2rem 0 0.75rem;
+  margin: 1.5rem 0 0.75rem;
   line-height: 1.4;
 }
 
@@ -972,18 +972,10 @@
   white-space: nowrap;
 }
 
-.yuga-duration {
-  font-family: var(--font-quote);
-  font-size: .9rem;
-  font-style: italic;
-  color: var(--mist);
-  text-align: right;
-}
-
-.yuga-row.satya .yuga-label { color: var(--satya); }
-.yuga-row.treta .yuga-label { color: var(--treta); }
-.yuga-row.dvapara .yuga-label { color: var(--dvapara); }
-.yuga-row.kali .yuga-label { color: var(--kali); }
+.yuga-row.satya .yuga-label { color: var(--vedic-satya); }
+.yuga-row.treta .yuga-label { color: var(--vedic-treta); }
+.yuga-row.dvapara .yuga-label { color: var(--vedic-dvapara); }
+.yuga-row.kali .yuga-label { color: var(--vedic-kali); }
 
 .yuga-row.satya .yuga-bar { background: linear-gradient(90deg, rgba(228,185,74,.55), rgba(228,185,74,.2)); width: 100%; }
 .yuga-row.treta .yuga-bar  { background: linear-gradient(90deg, rgba(192,200,176,.45), rgba(192,200,176,.15)); width: 75%; }
