@@ -11,11 +11,12 @@
   --vedic-lotus: #9e4a6b;
   --vedic-sky: #3a6b8b;
   --vedic-mist:       #7a6e5f;
+  --vedic-aged:       #e8dfc0;
   --vedic-border: rgba(200, 150, 42, 0.3);
 
   --vedic-void: #030306;
   --vedic-deep: #07070f;
-  --vedic-ember: #c8601a;
+  --vedic-ember: #8b2200;
   --vedic-flame: #e8a44a;
   --vedic-dawn: #f5d98e;
   --vedic-cream: #f2e8d0;
@@ -25,13 +26,6 @@
   --vedic-treta:      #c0c8b0;
   --vedic-dvapara:    #b08870;
   --vedic-kali:       #6a7080;
-
-  --aged:       #e8dfc0;
-  --gold-lt:    #e4b94a;
-  --saffron:    #d4651a;
-  --ember:      #8b2200;
-  --smoke:      #2a221a;
-  --veil:       rgba(201,149,42,.12);
 }
 
 .starfield { 
@@ -246,7 +240,7 @@
   margin-bottom: 1rem;
   opacity: 0.7;
 
-  /* color:var(--ember); */
+  /* color:var(--vedic-ember); */
   /* gap:1rem; */
 }
 
@@ -495,13 +489,13 @@
   border-color: rgba(228,185,74,.4);
   background: rgba(228,185,74,.05);
 }
-.guna-card.sattva .guna-name { color: var(--gold-lt); }
+.guna-card.sattva .guna-name { color: var(--vedic-gold-light); }
 
 .guna-card.rajas {
   border-color: rgba(212,101,26,.4);
   background: rgba(212,101,26,.05);
 }
-.guna-card.rajas .guna-name { color: var(--saffron); }
+.guna-card.rajas .guna-name { color: var(--vedic-saffron); }
 
 .guna-card.tamas {
   border-color: rgba(122,110,95,.4);
@@ -521,7 +515,7 @@
   font-family: var(--font-quote);
   font-size: 1.4rem;
   font-style: italic;
-  color: var(--aged);
+  color: var(--vedic-aged);
   display: block;
   margin-bottom: .5rem;
 }
@@ -536,7 +530,7 @@
   font-size: .8rem;
   margin-top: .6rem;
   font-style: italic;
-  color: var(--aged);
+  color: var(--vedic-aged);
 }
 
 /* ─── CONCEPT PILLS ──────────────────────────── */
@@ -569,7 +563,7 @@
   font-family: var(--font-quote);
   font-size: 1.25rem;
   font-style: italic;
-  color: var(--aged);
+  color: var(--vedic-aged);
   display: block;
   margin-bottom: .3rem;
 }
@@ -620,14 +614,14 @@
   margin-bottom: .5rem;
 }
 
-.kama .desire-card-label { color: var(--gold-lt); }
-.trishna .desire-card-label { color: var(--saffron); }
+.kama .desire-card-label { color: var(--vedic-gold-light); }
+.trishna .desire-card-label { color: var(--vedic-saffron); }
 
 .desire-card-sanscrit {
   font-family: var(--font-quote);
   font-size: 1.5rem;
   font-style: italic;
-  color: var(--aged);
+  color: var(--vedic-aged);
   display: block;
   margin-bottom: .4rem;
 }
@@ -988,7 +982,7 @@
   left: 1.2%; /* 5127 / 432000 ≈ 1.2% */
   top: 0; bottom: 0;
   width: 2px;
-  background: var(--saffron);
+  background: var(--vedic-saffron);
 }
 .kali-now::after {
   content: 'NOW';
@@ -998,7 +992,7 @@
   font-family: var(--font-head);
   font-size: .45rem;
   letter-spacing: .15em;
-  color: var(--saffron);
+  color: var(--vedic-saffron);
 }
 
 /* ─── HOLOCENE TABLE HIGHLIGHT ───────────────── */
