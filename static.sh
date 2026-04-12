@@ -13,6 +13,7 @@ declare -a simple_pages=(
 declare -a content_pages=(
 # [0]='d20141228 A_Beginning_20141228 singlepost'
 [1000]='ideas Ideas singlepost'
+[9278]='vedic-yugas Vedic.Yugas singlepost'
 [9279]='vedic-duality Vedic.Duality singlepost'
 [9280]='vedic-death Vedic.Death singlepost'
 [9281]='vedic-outline Vedic.Outline singlepost'
