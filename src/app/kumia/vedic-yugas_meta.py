@@ -1,4 +1,4 @@
-title = "The Vedas — Yugas and the Evolution of Consciousness"
+title = "The Vedas — Yugas and the Evolution of Consciousness ⏳"
 posted_time = "April 12th, 2026"
 css = ["vedic-knowledge.css"]
 fonts = [

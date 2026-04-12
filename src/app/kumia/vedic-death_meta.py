@@ -1,4 +1,4 @@
-title = "The Vedic Journey — A Study of the Soul's Path"
+title = "The Vedic Journey — A Study of the Soul's Path ⛵"
 posted_time = "March 29th, 2026"
 description = "A comprehensive guide to the soul's journey through existence, from the Five Fires to final liberation, compiled from Upanishads and Vedic texts."
 css = ["vedic-knowledge.css"]
