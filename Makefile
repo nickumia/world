@@ -29,12 +29,17 @@ install-front: # Install dependencies for front-end
 	# TODO: fix mui imports :/
 	cd static && npm install --legacy-peer-deps
 
-build-front: # Build jsx into js
+build-tracker: # Build tracker with API endpoint
+	cd static && API_ENDPOINT=$(API_ENDPOINT) node build.js
+
+build-front: # Build jsx into js and inject API endpoint
 	# cd src && ./node_modules/browserify/bin/cmd.js app/static/jsx/*.js --standalone nlp > app/static/js/bundle.js
 	mkdir -p static/src/js
 	cd static && ./node_modules/gulp/bin/gulp.js
 	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_concepts.mmd -o financial_concepts.svg
 	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_lifestyle.mmd -o financial_lifestyle.svg
+	# Build tracker configuration with API endpoint
+	cd static && API_ENDPOINT=$(API_ENDPOINT) node build.js
 
 build-mermaid:
 	docker run --rm -u $(id -u):$(id -g) -v ./mermaid:/data minlag/mermaid-cli -i financial_concepts.mmd -o financial_concepts.svg

@@ -1,8 +1,6 @@
 import React from "react";
-
-import Typography from "@material-ui/core/Typography";
+import { Typography, colors } from "@mui/material";
 import Tooltip from '@mui/material/Tooltip';
-import brown from "@material-ui/core/colors/brown";
 import Button from '@mui/material/Button';
 
 import List from '@mui/material/List';
@@ -78,99 +76,279 @@ export default function Realm({domain, asteroids}) {
 		'natural': '/static/img/sunset.jpg'
 	};
 
-	const styles = {
-    paperContainer: {
-  		backgroundImage: `url(${pics[domain_specifics[0]]})`,
-			backgroundRepeat: "no-repeat",
-			backgroundSize: "cover",
-			opacity: 0.7,
-    },
-		transparent: {
-			backgroundColor: `rgba(18,18,18,0.6)`,
-		},
-		transparentFull: {
-			backgroundColor: `rgba(255,255,255,0)`,
-		}
-	};
+	const paperContainerSx = {
+    backgroundImage: `url(${pics[domain_specifics[0]]})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    opacity: 0.7,
+  };
+
+  const transparentSx = {
+    backgroundColor: 'rgba(18,18,18,0.6)',
+  };
+
+  const transparentFullSx = {
+    backgroundColor: 'rgba(255,255,255,0)',
+  };
 
 	return (
-			<div style={styles.paperContainer}>
-    <React.Fragment>
-			<Paper
-				style={{padding: 16, backgroundColor: brown[50]}}>
-				<Typography variant="h5"
-					dangerouslySetInnerHTML={{__html: domain_specifics[1]}}>
-				</Typography>
-				<Typography variant="subtitle2">
-					{domain_specifics[2]}
-				</Typography>
-			</Paper>
+    <Box 
+      sx={{
+        ...paperContainerSx,
+        minHeight: '100vh',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      <React.Fragment>
+        <Paper
+          elevation={3}
+          sx={{
+            p: 3,
+            mb: 3,
+            backgroundColor: 'background.paper',
+            backgroundImage: 'none',
+            borderRadius: 2,
+            boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)'
+          }}
+        >
+          <Typography 
+            variant="h4"
+            component="h1"
+            gutterBottom
+            dangerouslySetInnerHTML={{__html: domain_specifics[1]}}
+            sx={{
+              fontWeight: 'bold',
+              color: 'primary.main',
+              mb: 2
+            }}
+          />
+          <Typography 
+            variant="subtitle1"
+            color="text.secondary"
+            sx={{
+              lineHeight: 1.6,
+              fontSize: '1.1rem'
+            }}
+          >
+            {domain_specifics[2]}
+          </Typography>
 
 
 
 			{asteroid_list.map(asteroid => (
-				<Accordion key={asteroid.key} style={styles.transparent}>
-					<AccordionSummary
-					  expandIcon={<ExpandMoreIcon />}
-					  aria-controls="panel1a-content"
-					  id="panel1a-header"
-					>
-						<Typography variant="h6" color="secondary">
-							{asteroid.type}
-					  </Typography>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Box sx={{ minWidth: 275 }}>
-				      <Card variant="outlined" sx={{ display: 'flex' }} style={styles.transparentFull}>
-								<Box sx={{ display: 'flex', flexDirection: 'column' }} justifyContent="center">
-									<CardContent>
-									  <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
-									    <b>{asteroid.phrase}</b>
-									  </Typography>
-									  <Typography variant="body2"
-											dangerouslySetInnerHTML={{__html: asteroid.description}}>
-									  </Typography>
-									</CardContent>
-								</Box>
-      					<CardMedia
-      					  component="img"
-      					  sx={{ width: 1/3 }}
-      					  image={pics[asteroid.type]}
-      					  alt={asteroid.type}
-      					/>
-							</Card>
-				    </Box>
-						{asteroid.subject.map(subject => (
-							<ListItemButton component='a' href={subject.link} key={subject.key}>
-								<ListItemAvatar>
-									<Avatar alt={subject.type} src={pics[subject.type]} />
-								</ListItemAvatar>
-						  	<ListItemText
-									disableTypography
-						    	primary=<Typography color="secondary">{subject.type}</Typography>
-									secondary=<Typography color="secondary">{subject.description}</Typography>
-						      />
-						  </ListItemButton>
-						))}
+        <Accordion 
+          key={asteroid.key} 
+          sx={{
+            backgroundColor: 'rgba(18,18,18,0.6)',
+            mb: 1
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon color="secondary" />}
+            aria-controls={`${asteroid.key}-content`}
+            id={`${asteroid.key}-header`}
+          >
+            <Typography variant="h6" color="secondary">
+              {asteroid.type}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Box sx={{ minWidth: 275 }}>
+              <Card 
+                variant="outlined" 
+                sx={{ 
+                  display: 'flex',
+                  backgroundColor: 'rgba(255,255,255,0)'
+                }}
+              >
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                  <CardContent>
+                    <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+                      <b>{asteroid.phrase}</b>
+                    </Typography>
+                    <Typography 
+                      variant="body2"
+                      dangerouslySetInnerHTML={{__html: asteroid.description}}
+                      color="text.secondary"
+                    />
+                  </CardContent>
+                </Box>
+                <CardMedia
+                  component="img"
+                  sx={{ width: 1/3, objectFit: 'cover' }}
+                  image={pics[asteroid.type]}
+                  alt={asteroid.type}
+                />
+              </Card>
+            </Box>
+						<List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+              {asteroid.subject.map(subject => (
+                <ListItemButton 
+                  component="a" 
+                  href={subject.link} 
+                  key={subject.key}
+                  sx={{ 
+                    py: 1.5,
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)'
+                    }
+                  }}
+                >
+                  <ListItemAvatar>
+                    <Avatar 
+                      alt={subject.type} 
+                      src={pics[subject.type]} 
+                      sx={{ 
+                        width: 40, 
+                        height: 40,
+                        border: '1px solid rgba(255, 255, 255, 0.23)'
+                      }} 
+                    />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={
+                      <Typography 
+                        variant="subtitle2" 
+                        color="secondary"
+                        sx={{ fontWeight: 'medium' }}
+                      >
+                        {subject.type}
+                      </Typography>
+                    }
+                    secondary={
+                      <Typography 
+                        variant="body2" 
+                        color="text.secondary"
+                        sx={{
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis'
+                        }}
+                      >
+                        {subject.description}
+                      </Typography>
+                    }
+                    sx={{ my: 0 }}
+                  />
+                </ListItemButton>
+              ))}
+            </List>
 					</AccordionDetails>
 				</Accordion>
 			))}
 
 
-			<Paper
-				style={{padding: 16, backgroundColor: brown[50]}}>
-				<Typography variant="h5" align="center">
-					{domain_specifics[3]}
-				</Typography>
-				<Typography variant="subtitle1" align="center">
-					{domain_specifics[4]}
-				</Typography>
-				<Box textAlign='center'>
-        	<Button size="small" href="/nlp/posts/101">Explore Senses</Button>
-				</Box>
-			</Paper>
-
-    </React.Fragment>
-			</div>
-	);
+        <Paper
+          elevation={3}
+          sx={{
+            p: { xs: 3, md: 4 },
+            mt: 4,
+            textAlign: 'center',
+            backgroundColor: (theme) => theme.palette.mode === 'light' ? 'background.paper' : 'rgba(255, 255, 255, 0.05)',
+            backgroundImage: 'none',
+            borderRadius: 2,
+            boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
+            border: (theme) => `1px solid ${theme.palette.divider}`,
+            transition: 'all 0.3s ease-in-out',
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 6px 24px 0 rgba(0,0,0,0.15)'
+            }
+          }}
+        >
+          <Typography 
+            variant="h5" 
+            component="h2"
+            gutterBottom
+            sx={{
+              fontWeight: 700,
+              color: 'primary.main',
+              fontSize: { xs: '1.5rem', sm: '1.75rem' },
+              mb: 2
+            }}
+          >
+            {domain_specifics[3]}
+          </Typography>
+          <Typography 
+            variant="subtitle1"
+            color="text.secondary"
+            sx={{
+              mb: 3,
+              lineHeight: 1.7,
+              fontSize: { xs: '1rem', sm: '1.1rem' },
+              maxWidth: '800px',
+              mx: 'auto',
+              '& a': {
+                color: 'primary.main',
+                textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline'
+                }
+              }
+            }}
+          >
+            {domain_specifics[4]}
+          </Typography>
+          <Box sx={{ 
+            mt: 2,
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 2,
+            flexWrap: 'wrap'
+          }}>
+            <Button 
+              size="large" 
+              href="/nlp/posts/101"
+              variant="contained"
+              color="primary"
+              startIcon={<TravelExploreIcon />}
+              sx={{
+                px: 4,
+                py: 1.5,
+                fontWeight: 600,
+                textTransform: 'none',
+                borderRadius: 2,
+                minWidth: '200px',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: 4
+                },
+                transition: 'all 0.2s ease-in-out',
+                fontSize: '1rem'
+              }}
+            >
+              Explore Senses
+            </Button>
+            <Button 
+              size="large" 
+              href="/nlp/"
+              variant="outlined"
+              color="primary"
+              sx={{
+                px: 4,
+                py: 1.5,
+                fontWeight: 500,
+                textTransform: 'none',
+                borderRadius: 2,
+                minWidth: '200px',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  backgroundColor: (theme) => theme.palette.mode === 'light' 
+                    ? 'rgba(25, 118, 210, 0.04)' 
+                    : 'rgba(144, 202, 249, 0.08)'
+                },
+                transition: 'all 0.2s ease-in-out',
+                fontSize: '1rem'
+              }}
+            >
+              Back to Home
+            </Button>
+          </Box>
+        </Paper>
+		</Paper>
+      </React.Fragment>
+    </Box>
+  );
 }
