@@ -147,3 +147,10 @@ terraform.tfvars
 terraform.tfstate*
 .terraform*
 *env*
+*.png
+
+**/*output/
+*.mp4
+**/notes
+
+tmp.sh

@@ -1,11 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Button from '@material-ui/core/Button';
-import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
-import brown from "@material-ui/core/colors/brown";
-import indigo from "@material-ui/core/colors/indigo";
-import blue from "@material-ui/core/colors/blue";
-import lightGreen from "@material-ui/core/colors/lightGreen";
+import { Button } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brown, indigo, blue, lightGreen } from '@mui/material/colors';
 
 import Navbar from './navbar';
 import RealmNavbar from './realmnav';
@@ -17,6 +14,8 @@ import Kumia from './kumia';
 import SyntaxApp from './syntax';
 import NLPMain from './nlp_main';
 import HomeMain from './home_main';
+import SpiritualTech from './spiritual_tech';
+import Financial from './financial';
 
 import decrypt from "./encryption";
 
@@ -62,17 +61,21 @@ var pages = {
 	"#realm": function test1() {return <Realm domain={domain} asteroids={asteroids} />},
 	"#kumia": function test1() {return <Kumia pubs={pubs} work={work} edu={edu} />},
 	"#syntaxapp": function test1() {return <SyntaxApp details={details} />},
+	"#spiritualtech": function test1() {return <SpiritualTech />},
+	"#financial": function test1() {return <Financial />},
 	"#nlpmain": function test1() {return <NLPMain />},
-	"#homemain": function test1() {return <HomeMain />}
+	"#homemain": function test1() {return <HomeMain allPages={allPages} />}
 }
 
 for (let page in pages) {
-	var pageElement = document.querySelector(page);
-	if (pageElement) {
-		createRoot(pageElement).render(
-			<MuiThemeProvider theme={theme}>
-						{pages[page].call()}
-			</MuiThemeProvider>
-		);
-	}
+  var pageElement = document.querySelector(page);
+  if (pageElement) {
+    createRoot(pageElement).render(
+      <React.StrictMode>
+        <ThemeProvider theme={theme}>
+          {pages[page].call()}
+        </ThemeProvider>
+      </React.StrictMode>
+    );
+  }
 }

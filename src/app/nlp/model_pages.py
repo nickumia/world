@@ -127,7 +127,7 @@ asteroid_nick_json = [
      "type": "Expanding Knowledge",
      "phrase": "The cause and effect of communication",
      "description": """
-Why do we use langauge...?<br/>
+Why do we use language...?<br/>
 ....To communicate ideas, theories, beliefs, values, reasoning ... knowledge?<br/>
 What happens when we communicate these things...?<br/>
 ....We create more knowledge?<br/>

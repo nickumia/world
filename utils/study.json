@@ -1,0 +1,84 @@
+{
+  "total_flow": 1000,
+  "nodes": [
+    {"id": "School", "level": 0, "links_to": ["Subjects"]},
+    {"id": "Childhood", "level": 0, "links_to": ["Subjects"]},
+
+    {"id": "Subjects", "level": 1, "links_to": ["Math", "Science", "Computers", "Language Arts", "Social Studies", "PE", "Arts", "Health"]},
+
+
+    {"id": "Math", "level": 2, 
+    "links_to": ["Engineering", "Physics", "Data Science", "Economics", "Finance", "Architecture", "Business Administration", "Entrepreneurship", "Marketing", "Management"]},
+
+    {"id": "Science", "level": 2, 
+    "links_to": ["Engineering", "Physics", "Medicine", "Biology", "Chemistry", "Environmental Science", "Geology", "Oceanography"]},
+
+    {"id": "Computers", "level": 2, 
+    "links_to": ["Engineering", "Computer Science", "Data Science", "Business Administration", "Entrepreneurship", "Marketing", "Management"]},
+
+    {"id": "Language Arts", "level": 2, 
+    "links_to": ["Law", "Journalism", "Communication", "Public Policy"]},
+
+    {"id": "Social Studies", "level": 2, 
+    "links_to": ["Law", "Political Science", "Criminology", "International Relations", "Psychology", "Neuroscience", "Behavioral Science", "Business Administration", "Entrepreneurship", "Marketing", "Management"]},
+
+    {"id": "Health", "level": 2, 
+    "links_to": ["Medicine", "Nursing", "Psychology", "Neuroscience", "Behavioral Science"]},
+
+    {"id": "PE", "level": 2, 
+    "links_to": ["Kinesiology", "Sports Science", "Athlete"]},
+    
+    {"id": "Arts", "level": 2, 
+    "links_to": ["Architecture", "Graphic Design", "Music", "Film", "Animation", "Game Design"]},
+    
+
+    {"id": "Engineering", "level": 3, 
+    "links_to": ["Mechanical Eng", "Civil Eng", "Aerospace Eng", "Robotics", "Electrical", "Computer", "Mechatronics"]},
+    
+    {"id": "Computer Science", "level": 3, 
+    "links_to": ["Software Engineer", "AI Engineer", "Systems Architect", "Web Developer", "UI/X Designer"]},
+
+    {"id": "Data Science", "level": 3,
+    "links_to": ["Data Scientist", "Quant Analyst", "AI Engineer"]},
+    
+    {"id": "Medicine", "level": 3,
+    "links_to": ["Physician", "Researcher", "Pharmacologist", "Public Health Official"]},
+
+    {"id": "Law", "level": 3,
+    "links_to": ["Lawyer", "Judge", "Policy Advisor"]},
+
+    {"id": "Political Science", "level": 3,
+    "links_to": ["Diplomat", "Policy Advisor"]},
+
+    {"id": "Criminology", "level": 3,
+    "links_to": ["Forensic Analyst", "Investigator"]},
+
+    {"id": "Kinesiology", "level": 3,
+    "links_to": ["Physical Therapist", "Athletic Trainer"]},
+
+    {"id": "Sports Science", "level": 3,
+    "links_to": ["Exercise Physiologist", "Sports Coach"]},
+
+    {"id": "Architecture", "level": 3,
+    "links_to": ["Architect", "Landscape Designer"]},
+
+    {"id": "Graphic Design", "level": 3,
+    "links_to": ["Director", "Multimedia Artist"]},
+
+    {"id": "Music", "level": 3,
+    "links_to": ["Musician"]},
+
+    {"id": "Nursing", "level": 3,
+    "links_to": ["Registered Nurse"]},
+
+    {"id": "Environmental Science", "level": 3,
+    "links_to": ["Environmental Consultant", "Climate Analyst", "Geologist"]},
+
+    {"id": "Psychology", "level": 3,
+    "links_to": ["Therapist", "Psychologist", "Behavioral Analyst"]},
+
+    {"id": "Business Administration", "level": 3,
+    "links_to": ["Business Manager", "Entrepreneur", "Marketing Strategist", "Operations Manager"]}
+  ]
+}
+
