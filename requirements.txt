@@ -16,7 +16,7 @@ cryptography
 gunicorn
 
 nlp @ git+https://github.com/nickumia/nlp.git@main#egg=nlp
-setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+setuptools>=70.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
 numpy>=1.22.2 # not directly required, pinned by Snyk to avoid a vulnerability
 werkzeug<3.0.3
 pyarrow>=14.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
