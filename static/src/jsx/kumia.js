@@ -388,7 +388,7 @@ export default function Kumia({ pubs, work, edu }) {
               {[
                 { icon: <GitHubIcon />, label: 'GitHub', href: 'https://github.com/nickumia/' },
                 { icon: <YouTubeIcon />, label: 'YouTube', href: 'https://www.youtube.com/@nickumia' },
-                { icon: <MonetizationOnIcon />, label: 'Financial', href: 'https://agents.worldfinancialgroup.com/Nicholas-Kumia-92UJS' },
+                // { icon: <MonetizationOnIcon />, label: 'Financial', href: 'https://agents.worldfinancialgroup.com/Nicholas-Kumia-92UJS' },
                 { icon: <InstagramIcon />, label: 'Instagram', href: 'https://www.instagram.com/nickumia/' }
               ].map((item, index) => (
                 <Tooltip key={index} title={item.label} arrow>
