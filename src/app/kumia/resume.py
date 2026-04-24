@@ -260,14 +260,14 @@ educations = [
      "date": "Mar 2023",
      "degree": "Life and Health Insurance License",
      "image": "https://licenseesearch.fldfs.com/images/CFOLogo.png",
-     "link": "https://licenseesearch.fldfs.com/Licensee/2343303",  # NOQA
+     "link": "",  # NOQA
      },
     {"school": "Florida Department of Agriculture and Consumer Services - Department of Licensing",  # NOQA
      "key": 9,
      "date": "Jan 2023 - Jan 2025",
      "degree": "Security Officer 'D' License",
      "image": "/static/img/fdacs.png",
-     "link": "https://licensing.freshfromflorida.com/access/individual.aspx?TYPE=INDIVIDUAL&CATEGORY=&COUNTY=00&LICENSE=D%203300056&STATUS=IND_DETAIL",  # NOQA
+     "link": "",  # NOQA
      },
     {"school": "American Flyers",
      "key": 8,
