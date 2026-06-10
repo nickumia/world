@@ -150,8 +150,8 @@ experiences = [
 """,  # NOQA
      "link": "https://redshred.com/",
      "skills": ["GCP", "Kubernetes", "APISIX", "Argo CD", "Knative",
-          "Skaffold", "Behave", "RabbitMQ", "Minio", "Helm", "Postgres",
-          "Kustomize", "RHEL", "Poetry", "Django", "Github", "Redshred"]
+                "Skaffold", "Behave", "RabbitMQ", "Minio", "Helm", "Postgres",
+                "Kustomize", "RHEL", "Poetry", "Django", "Github", "Redshred"]
      },
     {"role": "(Senior) DevOps Engineer",
      "key": 6,
@@ -164,9 +164,9 @@ experiences = [
 """,  # NOQA
      "link": "https://reisystems.com/",
      "skills": ["AWS", "Cloud.gov", "Docker", "Kubernetes", "KiND", "EKS",
-          "Docker-compose", "Make", "Terrraform", "Brokerpaks", "Python",
-          "Postgres", "CKAN", "Solr", "Solrcloud", "Solr-operator", "React",
-          "Pytest", "Jest", "Cypress"]
+                "Docker-compose", "Make", "Terrraform", "Brokerpaks", "Python",
+                "Postgres", "CKAN", "Solr", "Solrcloud", "Solr-operator", "React",
+                "Pytest", "Jest", "Cypress"]
      },
     {"role": "Cybersecurity/Software Engineer",
      "key": 5,
@@ -180,7 +180,7 @@ experiences = [
 """,  # NOQA
      "link": "https://avtsim.com/",
      "skills": ["RHEL", "Ada", "Docker", "Kubernetes", "Bitbucket",
-          "Confluence", "Jira", "Bamboo", "Ant", "Ivy", "ActiveM"]
+                "Confluence", "Jira", "Bamboo", "Ant", "Ivy", "ActiveM"]
      },
     {"role": "Computer Scientist | Lab Researcher | System Security Engineer | NLP Developer",  # NOQA
      "key": 4,
@@ -198,8 +198,8 @@ experiences = [
 """,  # NOQA
      "link": "https://www.navair.navy.mil/nawcad/",
      "skills": ["ROS", "Python", "Ubuntu", "C++", "Arduino", "Git", "Bash",
-          "PCAN", "Barrett Hand", "UR10", "Matlab", "RMF", "Splunk",
-          "ElasticStack", "SCAP", "ACAS"]
+                "PCAN", "Barrett Hand", "UR10", "Matlab", "RMF", "Splunk",
+                "ElasticStack", "SCAP", "ACAS"]
      },
     {"role": "Founder",
      "key": 3,
@@ -228,7 +228,7 @@ Performed extensive research concerning 3D Printing Technologies, eventually man
 """,  # NOQA
      "link": "https://engineering.nyu.edu/",
      "skills": ["Arduino", "C++", "MatLab", "MakerBot", "Solidworks",
-          "Open-source 3D Printers", "TPU Filament", "G-Code"]
+                "Open-source 3D Printers", "TPU Filament", "G-Code"]
      },
     {"role": "Researcher",
      "key": 0,
