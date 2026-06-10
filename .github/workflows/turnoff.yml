@@ -5,6 +5,10 @@ on:
   # schedule:
   #  - cron: '0 23 * * *'
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   terraform:
     name: "Turn off Server"
