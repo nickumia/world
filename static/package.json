@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.22.20",
+    "@babel/plugin-transform-modules-systemjs": "^7.29.7",
     "@babel/runtime": "^7.22.15",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
