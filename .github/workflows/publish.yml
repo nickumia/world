@@ -1,6 +1,9 @@
 ---
 name: Publish NLP Image
 
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
     inputs:
