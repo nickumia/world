@@ -76,6 +76,12 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 const images = [
   {
+    url: '/static/img/2026_guatemala.jpg',
+    title: 'Guatemala 2026',
+    width: '35%',
+    link: '2026-guatemala',
+  },
+  {
     url: '/static/img/2026_peru.jpg',
     title: 'Peru 2026',
     width: '35%',
@@ -90,25 +96,25 @@ const images = [
   {
     url: '/static/img/2025_vietnam.jpg',
     title: 'Vietnam 2025',
-    width: '35%',
+    width: '25%',
     link: '2025-vietnam',
   },
   {
     url: '/static/img/20231221_204447_optimized.jpg',
     title: 'New York 2023',
-    width: '40%',
+    width: '25%',
     link: '2023-new-york',
   },
   {
     url: '/static/img/vlogging.png',
     title: 'Vlogging!',
-    width: '20%',
+    width: '25%',
     link: 'https://www.youtube.com/@nickumia',
   },
   {
     url: '/static/img/20231020_142059_optimized.jpg',
     title: 'London 2023',
-    width: '40%',
+    width: '25%',
     link: '2023-london',
   },
   {
