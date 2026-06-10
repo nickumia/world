@@ -4,6 +4,10 @@ name: commit
 on:
   push:
 
+permissions:
+  contents: read
+  packages: read
+
 jobs:
   pylint:
     name: Python lint
